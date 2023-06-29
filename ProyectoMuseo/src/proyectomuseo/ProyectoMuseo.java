@@ -15,6 +15,8 @@ public class ProyectoMuseo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(" Proyecto Final");    }
+        System.out.println(" Proyecto Final");  
+        System.out.println("Hola"
+                + "");}
     
 }
