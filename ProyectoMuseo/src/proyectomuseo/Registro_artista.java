@@ -4,12 +4,18 @@
  */
 package proyectomuseo;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import com.toedter.calendar.JDateChooser;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 /**
@@ -25,6 +31,75 @@ public class Registro_artista extends javax.swing.JFrame {
 
     public Registro_artista() {
         initComponents();
+//        verificar(ObjectContainer BaseD);
+    }
+
+    String cedula = "";
+    String nombrea = "";
+    String apellidoa = "";
+    String email = "";
+    String genero1 = "";
+    String fechaTexto = "";
+    String habilidad = "";
+    String provincia1 = "";
+    String ciudad1 = "";
+    String calle1 = "";
+    String telefono = "";
+
+    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
+        cedula = txtcedula.getText();
+        nombrea = txtnombre.getText();
+        apellidoa = txtapellido.getText();
+        email = txtcorreo.getText();
+        genero1 = combo_gene.getSelectedItem().toString();
+        fechaTexto = calendarioS.getText();
+        habilidad = txt_habilidad.getText();
+        provincia1 = combo_provincia.getSelectedItem().toString();
+        ciudad1 = combo_cuidad.getSelectedItem().toString();
+        calle1 = txtcalle.getText();
+        telefono = txtcell.getText();
+        int numero = 0; // Valor por defecto
+
+        if (!telefono.isEmpty()) {
+            try {
+                numero = Integer.parseInt(telefono);
+            } catch (NumberFormatException e) {
+                // Manejo de errores en caso de que el número de teléfono no sea un entero válido
+                e.printStackTrace();
+            }
+        }
+
+        Date fecha = null;
+
+        if (!fechaTexto.isEmpty()) {
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fecha = formatter.parse(fechaTexto);
+            } catch (ParseException e) {
+                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void LimpiarCampos() {
+
+        txtcedula.setText("");
+        txtnombre.setText("");
+        txtapellido.setText("");
+        txtcell.setText("");
+        txtcorreo.setText("");
+        combo_gene.setSelectedItem("");
+        calendarioS.setText("");
+        txt_habilidad.setText("");
+        combo_cuidad.setSelectedItem("");
+        combo_provincia.setSelectedItem("");
+        txtcalle.setText("");
+
     }
 
     /**
@@ -87,7 +162,6 @@ public class Registro_artista extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectomuseo/imagnes_erick/artista.png"))); // NOI18N
         jLabel1.setText("REGISTRO DE ARTISTA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -368,124 +442,171 @@ public class Registro_artista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
 
-        String cedulaa = txtcedula.getText();
-        String nombrea = txtnombre.getText();
-        String apellidoa = txtapellido.getText();
-        String telefono = txtcell.getText();
-        int numero = Integer.parseInt(telefono);
-        String email = txtcorreo.getText();
-        String genero = combo_gene.getSelectedItem().toString();
-        String fechaTexto = calendarioS.getText();
-        String habilidad = txt_habilidad.getText();
-        String provincia = combo_provincia.getSelectedItem().toString();
-        String ciudad = combo_cuidad.getSelectedItem().toString();
-        String calle = txtcalle.getText();
-        Boolean discapacidad = false;
-        Boolean seguro = false;
+//        ObjectContainer Baseprincipal = Db4o.openFile("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        crearartista(BaseD);
+        Cerrar_BD(BaseD);
 
-        LocalDate fecha = null;
+//        // TODO add your handling code here:
+//
+//        String cedulaa = txtcedula.getText();
+//        String nombrea = txtnombre.getText();
+//        String apellidoa = txtapellido.getText();
+//        String telefono = txtcell.getText();
+//        int numero = Integer.parseInt(telefono);
+//        String email = txtcorreo.getText();
+//        String genero = combo_gene.getSelectedItem().toString();
+//        String fechaTexto = calendarioS.getText();
+//        String habilidad = txt_habilidad.getText();
+//        String provincia = combo_provincia.getSelectedItem().toString();
+//        String ciudad = combo_cuidad.getSelectedItem().toString();
+//        String calle = txtcalle.getText();
+//        Boolean discapacidad = false;
+//        Boolean seguro = false;
+//
+//        LocalDate fecha = null;
+//        if (!fechaTexto.isEmpty()) {
+//            try {
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//                fecha = LocalDate.parse(fechaTexto, formatter);
+//            } catch (DateTimeParseException e) {
+//                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
+//                e.printStackTrace();
+//            }
+//        }
+////        if (jCheckBox1.isSelected()) {
+////            discapacidad = true;
+////
+////        } else {
+////            // Ninguno de los checkboxes está seleccionado
+////
+////            discapacidad = false;
+////        }
+////        if (jCheckBox3.isSelected()) {
+////            seguro = true;
+////
+////        } else {
+////            // Ninguno de los checkboxes está seleccionado
+////            seguro = false;
+////        }
+////        Artista mipersona = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fecha, numero, provincia, ciudad, calle, email, genero);
+////
+////        listapersonas.add(mipersona);
+////        cargarNacionalidades();
+////        for (int i = 0; i < Menu1.lista_nacionalidades.size(); i++) {
+////    Nacionalidad nacionalidad1 = Menu1.lista_nacionalidades.get(i);
+////    txtnacionalidad1.addItem(nacionalidad1.getNombre_nacioanlidad()); // Suponiendo que `Nacionalidad` tiene un método `getNombre()` para obtener el nombre de la nacionalidad
+////}
+//
+////
+//// Obtener el arreglo de nacionalidades desde el ArrayList
+//        // Limpiar los campos de texto
+//        txtcedula.setText("");
+//        txtnombre.setText("");
+//        txtapellido.setText("");
+//        txtcell.setText("");
+//        txtcorreo.setText("");
+//        combo_gene.setSelectedItem("");
+//        calendarioS.setText("");
+//        txt_habilidad.setText("");
+//        combo_cuidad.setSelectedItem("");
+//        combo_provincia.setSelectedItem("");
+//        txtcalle.setText("");
+//
+//        // Actualizar la matriz con los datos de la lista de personas
+////        MostrarDatosN();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    public void crearartista(ObjectContainer BaseD) {
+        
+        int numero = 0; // Valor por defecto
+
+        if (!telefono.isEmpty()) {
+            try {
+                numero = Integer.parseInt(telefono);
+            } catch (NumberFormatException e) {
+                // Manejo de errores en caso de que el número de teléfono no sea un entero válido
+                e.printStackTrace();
+            }
+        }
+
+        Date fecha = null;
+
         if (!fechaTexto.isEmpty()) {
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                fecha = LocalDate.parse(fechaTexto, formatter);
-            } catch (DateTimeParseException e) {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fecha = formatter.parse(fechaTexto);
+            } catch (ParseException e) {
                 // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
                 e.printStackTrace();
             }
         }
-//        if (jCheckBox1.isSelected()) {
-//            discapacidad = true;
-//
-//        } else {
-//            // Ninguno de los checkboxes está seleccionado
-//
-//            discapacidad = false;
-//        }
-//        if (jCheckBox3.isSelected()) {
-//            seguro = true;
-//
-//        } else {
-//            // Ninguno de los checkboxes está seleccionado
-//            seguro = false;
-//        }
-//        Artista mipersona = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fecha, numero, provincia, ciudad, calle, email, genero);
-//
-//        listapersonas.add(mipersona);
-//        cargarNacionalidades();
-//        for (int i = 0; i < Menu1.lista_nacionalidades.size(); i++) {
-//    Nacionalidad nacionalidad1 = Menu1.lista_nacionalidades.get(i);
-//    txtnacionalidad1.addItem(nacionalidad1.getNombre_nacioanlidad()); // Suponiendo que `Nacionalidad` tiene un método `getNombre()` para obtener el nombre de la nacionalidad
-//}
 
-//
-// Obtener el arreglo de nacionalidades desde el ArrayList
-        // Limpiar los campos de texto
-        txtcedula.setText("");
-        txtnombre.setText("");
-        txtapellido.setText("");
-        txtcell.setText("");
-        txtcorreo.setText("");
-        combo_gene.setSelectedItem("");
-        calendarioS.setText("");
-        txt_habilidad.setText("");
-        combo_cuidad.setSelectedItem("");
-        combo_provincia.setSelectedItem("");
-        txtcalle.setText("");
 
-        // Actualizar la matriz con los datos de la lista de personas
-//        MostrarDatosN();
+        
+        Artista mipartista = new Artista("", habilidad, cedula, nombrea, apellidoa, fecha, numero, provincia1, ciudad1, calle1, email, genero1);
 
-    }//GEN-LAST:event_jButton3ActionPerformed
-//    public void MostrarDatosN() {
-//        String[][] Matriz = new String[listapersonas.size()][20];
-//        for (int i = 0; i < listapersonas.size(); i++) {
-//            Persona_1 naci = listapersonas.get(i);
-//            Matriz[i][0] = naci.getCodigo();
-//            Matriz[i][1] = naci.getNombre_nacioanlidad();
-//        }
-//        tablanacionalidades.setModel(new javax.swing.table.DefaultTableModel(
-//                Matriz, new String[]{
-//                    "CODIGO", "NOMBRE NACIOANLIDAD",}
-//        ));
-//    }
+        if (verificar(BaseD, cedula) == 0) {
+            
+            BaseD.set(mipartista);
+            JOptionPane.showMessageDialog(null, "El dueño Creado");
+            LimpiarCampos();
+
+        } else {
+            System.out.println("EL dueño ya existe");
+            JOptionPane.showMessageDialog(null, "El dueño ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static int verificar(ObjectContainer BaseD, String cedula) {
+        Artista midueñobuscar = new Artista(cedula, null, null, null, null, null, 0, null, null, null, null, null);
+        ObjectSet resul = BaseD.get(midueñobuscar);
+        return resul.size();
+
+    }
+    
+     public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
+    }
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Registro_artista().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Registro_artista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Registro_artista().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

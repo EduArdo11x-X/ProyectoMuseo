@@ -5,8 +5,10 @@
  */
 package proyectomuseo;
 
+import com.sun.org.apache.xml.internal.security.signature.ObjectContainer;
 import java.awt.Color;
 import static java.awt.Color.black;
+import com.db4o.*;
 
 /**
  *
@@ -17,6 +19,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
+   
     public menuPrincipal() {
         initComponents();
     }

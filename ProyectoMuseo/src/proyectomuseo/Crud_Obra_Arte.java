@@ -54,6 +54,8 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
         jLabel1.setText("OBRAS DE ARTE");
 
         Lblnombre.setText("NOMBRE");
@@ -265,9 +267,9 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnregistrarActionPerformed
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
-        this.dispose();
-        Menu i = new Menu();
-        i.setVisible(true);
+//        this.dispose();
+//        Menu i = new Menu();
+//        i.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
     /**
