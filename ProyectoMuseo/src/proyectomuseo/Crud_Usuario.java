@@ -5,6 +5,19 @@
  */
 package proyectomuseo;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.toedter.calendar.JDateChooser;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import static proyectomuseo.Registro_artista.Cerrar_BD;
+import static proyectomuseo.Registro_artista.direccionBD;
+
 /**
  *
  * @author usuario
@@ -14,10 +27,135 @@ public class Crud_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Crud_Usuario
      */
+    
+    public static ArrayList<Usuario> listaUsurios = new ArrayList<>();
+    
     public Crud_Usuario() {
         initComponents();
     }
+    
+    String idUsuario="";
+    String cedula = "";
+    String nombre = "";
+    String apellido = "";
+    String fechaNac = "";
+    String telefono="";
+    String correo = "";
+    String provincia = "";
+    String cuidad = "";
+    String calle = "";
+    String nivel_conoci = "";
+    String genero="";
+    
+    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
+    
+     public void asignarVariables(ObjectContainer BaseD) {
 
+        idUsuario=txtIdUsuario.getText();
+        cedula = txtCedula.getText();
+        nombre = txtNombre.getText();
+        apellido = txtApellido.getText();
+        fechaNac = jTextField1.getText();
+        telefono=txtTelefono.getText();
+        correo = txtCorreo.getText();
+        provincia = txtProvi.getText();
+        cuidad = txtCiudad.getText();
+        calle = txtxCalle.getText();
+        nivel_conoci = txtNivel.getText();
+        genero = boxGnero.getSelectedItem().toString();
+        int numero = 0; // Valor por defecto
+
+        if (!telefono.isEmpty()) {
+            try {
+                numero = Integer.parseInt(telefono);
+            } catch (NumberFormatException e) {
+                // Manejo de errores en caso de que el número de teléfono no sea un entero válido
+                e.printStackTrace();
+            }
+        }
+
+        Date fecha = null;
+
+        if (!fechaNac.isEmpty()) {
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fecha = formatter.parse(fechaNac);
+            } catch (ParseException e) {
+                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
+                e.printStackTrace();
+            }
+        }
+    }
+     
+      public void LimpiarCampos() {
+
+        txtIdUsuario.setText("");
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        jTextField1.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtProvi.setText("");
+        txtCiudad.setText("");
+        txtxCalle.setText("");
+        txtNivel.setText("");
+        boxGnero.setSelectedItem("");
+
+    }
+
+        public void crearUsuario(ObjectContainer BaseD) {
+        
+        int numero = 0; // Valor por defecto
+
+        if (!telefono.isEmpty()) {
+            try {
+                numero = Integer.parseInt(telefono);
+            } catch (NumberFormatException e) {
+                // Manejo de errores en caso de que el número de teléfono no sea un entero válido
+                e.printStackTrace();
+            }
+        }
+
+        Date fecha = null;
+
+        if (!fechaNac.isEmpty()) {
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fecha = formatter.parse(fechaNac);
+            } catch (ParseException e) {
+                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
+                e.printStackTrace();
+            }
+        }
+
+
+        
+        Usuario mipartista = new Usuario( "", nivel_conoci, cedula,  nombre, apellido,fechaNac, telefono, provincia, cuidad, calle, correo,genero);
+
+        if (verificar(BaseD, cedula) == 0) {
+            
+            BaseD.set(mipartista);
+            JOptionPane.showMessageDialog(null, "Usuario Creado");
+            LimpiarCampos();
+
+        } else {
+            System.out.println("EL usuario ya existe");
+            JOptionPane.showMessageDialog(null, "El dueño ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static int verificar(ObjectContainer BaseD, String cedula) {
+        Artista midueñobuscar = new Artista(cedula, null, null, null, null, null, 0, null, null, null, null, null);
+        ObjectSet resul = BaseD.get(midueñobuscar);
+        return resul.size();
+
+    }
+    
+     public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +193,10 @@ public class Crud_Usuario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        abriCal = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        boxGnero = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,12 +252,23 @@ public class Crud_Usuario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        abriCal.setText("Abrir");
+        abriCal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abriCalActionPerformed(evt);
+            }
+        });
+
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel14.setText("Genero:");
+
+        boxGnero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,21 +296,27 @@ public class Crud_Usuario extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTelefono))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(124, 124, 124)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(boxGnero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTelefono))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNivel))
+                                .addComponent(abriCal)))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -175,19 +333,24 @@ public class Crud_Usuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCiudad))))
+                                .addComponent(txtCiudad))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNivel))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(244, 244, 244)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(51, 51, 51)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
+                        .addGap(239, 239, 239)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
                         .addComponent(jButton2)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +389,8 @@ public class Crud_Usuario extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(abriCal))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
@@ -234,20 +398,23 @@ public class Crud_Usuario extends javax.swing.JFrame {
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13)
                         .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(boxGnero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(38, 38, 38))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,11 +433,31 @@ public class Crud_Usuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        crearUsuario(BaseD);
+        Cerrar_BD(BaseD);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void abriCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abriCalActionPerformed
+        // TODO add your handling code here:
+        JPopupMenu popupMenu = new JPopupMenu();
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd/MM/yyyy");
+        dateChooser.getDateEditor().addPropertyChangeListener("date", evtt -> {
+            if (dateChooser.getDate() != null) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                jTextField1.setText(dateFormat.format(dateChooser.getDate()));
+                popupMenu.setVisible(false);
+            }
+        });
+        popupMenu.add(dateChooser);
+
+        popupMenu.show(jButton2, 0, jButton2.getHeight());
+    }//GEN-LAST:event_abriCalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,6 +495,8 @@ public class Crud_Usuario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abriCal;
+    private javax.swing.JComboBox<String> boxGnero;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -315,6 +504,7 @@ public class Crud_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
