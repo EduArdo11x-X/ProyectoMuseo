@@ -39,7 +39,7 @@ public class Registro_artista extends javax.swing.JFrame {
     String apellidoa = "";
     String email = "";
     String genero1 = "";
-    String fechaTexto = "";
+    Date fechaTexto ;
     String habilidad = "";
     String provincia1 = "";
     String ciudad1 = "";
@@ -55,7 +55,7 @@ public class Registro_artista extends javax.swing.JFrame {
         apellidoa = txtapellido.getText();
         email = txtcorreo.getText();
         genero1 = combo_gene.getSelectedItem().toString();
-        fechaTexto = calendarioS.getText();
+        fechaTexto = fechaN.getDate();
         habilidad = txt_habilidad.getText();
         provincia1 = combo_provincia.getSelectedItem().toString();
         ciudad1 = combo_cuidad.getSelectedItem().toString();
@@ -72,18 +72,7 @@ public class Registro_artista extends javax.swing.JFrame {
             }
         }
 
-        Date fecha = null;
-
-        if (!fechaTexto.isEmpty()) {
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                fecha = formatter.parse(fechaTexto);
-            } catch (ParseException e) {
-                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-                e.printStackTrace();
-            }
-        }
-
+      
     }
 
     public void LimpiarCampos() {
@@ -94,7 +83,7 @@ public class Registro_artista extends javax.swing.JFrame {
         txtcell.setText("");
         txtcorreo.setText("");
         combo_gene.setSelectedItem("");
-        calendarioS.setText("");
+   
         txt_habilidad.setText("");
         combo_cuidad.setSelectedItem("");
         combo_provincia.setSelectedItem("");
@@ -137,8 +126,6 @@ public class Registro_artista extends javax.swing.JFrame {
         txtcedula = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
-        calendarioS = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         txtcell = new javax.swing.JTextField();
         txtcorreo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -147,7 +134,8 @@ public class Registro_artista extends javax.swing.JFrame {
         combo_cuidad = new javax.swing.JComboBox<>();
         txtcalle = new javax.swing.JTextField();
         txt_habilidad = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        Registrar = new javax.swing.JButton();
+        fechaN = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -253,19 +241,6 @@ public class Registro_artista extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 102));
         jLabel14.setText("Calle:");
 
-        calendarioS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calendarioSActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Abrir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel15.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabel15.setText("Habilidad:");
 
@@ -275,10 +250,10 @@ public class Registro_artista extends javax.swing.JFrame {
 
         combo_cuidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton3.setText("Registrarse");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Registrar.setText("Registrarse");
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                RegistrarActionPerformed(evt);
             }
         });
 
@@ -328,11 +303,9 @@ public class Registro_artista extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(calendarioS, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton2)
-                                .addGap(109, 109, 109)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -353,7 +326,7 @@ public class Registro_artista extends javax.swing.JFrame {
                 .addGap(262, 262, 262))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(449, 449, 449)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -387,11 +360,13 @@ public class Registro_artista extends javax.swing.JFrame {
                             .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15)
                             .addComponent(txt_habilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(calendarioS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -407,8 +382,8 @@ public class Registro_artista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtcalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
 
@@ -426,28 +401,7 @@ public class Registro_artista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        JPopupMenu popupMenu = new JPopupMenu();
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy");
-        dateChooser.getDateEditor().addPropertyChangeListener("date", evtt -> {
-            if (dateChooser.getDate() != null) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                calendarioS.setText(dateFormat.format(dateChooser.getDate()));
-                popupMenu.setVisible(false);
-            }
-        });
-        popupMenu.add(dateChooser);
-
-        popupMenu.show(jButton2, 0, jButton2.getHeight());
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
 
 //        ObjectContainer Baseprincipal = Db4o.openFile("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
@@ -457,46 +411,25 @@ public class Registro_artista extends javax.swing.JFrame {
         
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void calendarioSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarioSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_calendarioSActionPerformed
+    }//GEN-LAST:event_RegistrarActionPerformed
 
     public void crearartista(ObjectContainer BaseD) {
-        
-        int numero = 0; // Valor por defecto
+        asignarVariables(BaseD);
+          int numero = 0; // Valor por defecto
 
         if (!telefono.isEmpty()) {
             try {
                 numero = Integer.parseInt(telefono);
-                
             } catch (NumberFormatException e) {
                 // Manejo de errores en caso de que el número de teléfono no sea un entero válido
                 e.printStackTrace();
             }
         }
-
-        Date fecha = null;
-
-        if (!fechaTexto.isEmpty()) {
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                fecha = formatter.parse(fechaTexto);
-            } catch (ParseException e) {
-                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-                e.printStackTrace();
-            }
-        }
-
-
         
-       
-
         if (verificar(BaseD, cedulaa) == 0) {
-            Artista mipartista = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fecha, numero, provincia1, ciudad1, calle1, email, genero1);
+            Artista mipartista = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fechaTexto, numero, provincia1, ciudad1, calle1, email, genero1);
             BaseD.set(mipartista);
-            JOptionPane.showMessageDialog(null, "El dueño Creado");
+            JOptionPane.showMessageDialog(null, "El artista Creado");
             LimpiarCampos();
 
         } else {
@@ -555,18 +488,17 @@ public class Registro_artista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Registrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.JTextField calendarioS;
     private javax.swing.JComboBox<String> combo_cuidad;
     private javax.swing.JComboBox<String> combo_gene;
     private javax.swing.JComboBox<String> combo_provincia;
+    private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
