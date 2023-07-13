@@ -253,6 +253,12 @@ public class Registro_artista extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 102));
         jLabel14.setText("Calle:");
 
+        calendarioS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calendarioSActionPerformed(evt);
+            }
+        });
+
         jButton2.setText("Abrir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -452,6 +458,10 @@ public class Registro_artista extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void calendarioSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarioSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calendarioSActionPerformed
 
     public void crearartista(ObjectContainer BaseD) {
         

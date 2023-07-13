@@ -5,19 +5,23 @@
  */
 package proyectomuseo;
 
+import java.util.Date;
+
 /**
  *
  * @author usuario
  */
-public class Usuario {
+public class Usuario extends Persona_1{
     
     private String id_Usuario;
     private String nivel_conoci;
 
     public Usuario() {
+        super();
     }
 
-    public Usuario(String id_Usuario, String nivel_conoci) {
+    public Usuario(String id_Usuario, String nivel_conoci, String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, String provincia, String ciudad, String calle, String correo, String genero) {
+        super(cedula, nombre, apellido, F_nacimiento, num_telefono, provincia, ciudad, calle, correo, genero);
         this.id_Usuario = id_Usuario;
         this.nivel_conoci = nivel_conoci;
     }
@@ -40,8 +44,9 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id_Usuario=" + id_Usuario + ", nivel_conoci=" + nivel_conoci + '}';
+        return super.toString()+"Usuario{" + "id_Usuario=" + id_Usuario + ", nivel_conoci=" + nivel_conoci + '}';
     }
+    
     
     
     
