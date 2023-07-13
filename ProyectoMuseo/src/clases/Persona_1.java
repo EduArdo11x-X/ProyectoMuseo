@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectomuseo;
+package clases;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -22,12 +22,12 @@ public class Persona_1 {
     private String ciudad;
     private String calle;
     private String correo;
-    private String genero;
+    private char genero;
 
     public Persona_1() {
     }
 
-    public Persona_1(String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, String provincia, String ciudad, String calle, String correo, String genero) {
+    public Persona_1(String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, String provincia, String ciudad, String calle, String correo, char genero) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -112,11 +112,11 @@ public class Persona_1 {
         this.correo = correo;
     }
 
-    public String getGenero() {
+    public char getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(char genero) {
         this.genero = genero;
     }
 

@@ -5,6 +5,8 @@
  */
 package proyectomuseo;
 
+import clases.Artista;
+import clases.Usuario;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
 import static proyectomuseo.Registro_artista.Cerrar_BD;
 import static proyectomuseo.Registro_artista.direccionBD;
 
@@ -27,42 +30,39 @@ public class Crud_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Crud_Usuario
      */
-    
     public static ArrayList<Usuario> listaUsurios = new ArrayList<>();
-    
+
     public Crud_Usuario() {
         initComponents();
     }
-    
-    String idUsuario="";
+
+    String idUsuario = "";
     String cedula = "";
     String nombre = "";
     String apellido = "";
-    String fechaNac = "";
-    String telefono="";
+    Date fechaNac;
+    String telefono = "";
     String correo = "";
     String provincia = "";
     String cuidad = "";
     String calle = "";
     String nivel_conoci = "";
-    String genero="";
-    
-    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
-    
-     public void asignarVariables(ObjectContainer BaseD) {
+    char genero;
 
-        idUsuario=txtIdUsuario.getText();
+    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
         cedula = txtCedula.getText();
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
-        fechaNac = jTextField1.getText();
-        telefono=txtTelefono.getText();
+        fechaNac = fechaN.getDate();
+        telefono = txtTelefono.getText();
         correo = txtCorreo.getText();
         provincia = txtProvi.getText();
         cuidad = txtCiudad.getText();
         calle = txtxCalle.getText();
         nivel_conoci = txtNivel.getText();
-        genero = boxGnero.getSelectedItem().toString();
         int numero = 0; // Valor por defecto
 
         if (!telefono.isEmpty()) {
@@ -74,38 +74,25 @@ public class Crud_Usuario extends javax.swing.JFrame {
             }
         }
 
-        Date fecha = null;
-
-        if (!fechaNac.isEmpty()) {
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                fecha = formatter.parse(fechaNac);
-            } catch (ParseException e) {
-                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-                e.printStackTrace();
-            }
-        }
     }
-     
-      public void LimpiarCampos() {
 
-        txtIdUsuario.setText("");
+    public void LimpiarCampos() {
+
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        jTextField1.setText("");
         txtTelefono.setText("");
         txtCorreo.setText("");
         txtProvi.setText("");
         txtCiudad.setText("");
         txtxCalle.setText("");
         txtNivel.setText("");
-        boxGnero.setSelectedItem("");
 
     }
 
-        public void crearUsuario(ObjectContainer BaseD) {
-        
+    public void crearUsuario(ObjectContainer BaseD) {
+        asignarVariables(BaseD);
+
         int numero = 0; // Valor por defecto
 
         if (!telefono.isEmpty()) {
@@ -117,45 +104,66 @@ public class Crud_Usuario extends javax.swing.JFrame {
             }
         }
 
-        Date fecha = null;
-
-        if (!fechaNac.isEmpty()) {
-            try {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                fecha = formatter.parse(fechaNac);
-            } catch (ParseException e) {
-                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-                e.printStackTrace();
-            }
+        if (rdhombre.isSelected()) {
+            genero = 'H';
+        } else {
+            genero = 'M';
         }
 
-
-        
-        Usuario mipartista = new Usuario( "", nivel_conoci, cedula,  nombre, apellido,fechaNac, telefono, provincia, cuidad, calle, correo,genero);
-
         if (verificar(BaseD, cedula) == 0) {
-            
-            BaseD.set(mipartista);
+            Usuario miUsuario = new Usuario(nivel_conoci, cedula, nombre, apellido, fechaNac, numero, provincia, cuidad, calle, correo, genero);
+
+            BaseD.set(miUsuario);
             JOptionPane.showMessageDialog(null, "Usuario Creado");
             LimpiarCampos();
 
         } else {
-            System.out.println("EL usuario ya existe");
-            JOptionPane.showMessageDialog(null, "El dueño ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static int verificar(ObjectContainer BaseD, String cedula) {
-        Artista midueñobuscar = new Artista(cedula, null, null, null, null, null, 0, null, null, null, null, null);
-        ObjectSet resul = BaseD.get(midueñobuscar);
+        Usuario buscarUsuario = new Usuario(null, cedula, null, null, null, 0, null, null, null, null,'\u0000' );
+        ObjectSet resul = BaseD.get(buscarUsuario);
         return resul.size();
 
     }
-    
-     public static void Cerrar_BD(ObjectContainer basep) {
+
+    public void mostrarDatos(ObjectSet result) {
+        String matrizUsuario[][] = new String[result.size()][3];
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        } else {
+            for (int i = 0; i < result.size(); i++) {
+                Usuario miUsuario = new Usuario();
+
+                miUsuario = (Usuario) result.get(i);
+                matrizUsuario[i][0] = miUsuario.getCedula();
+                matrizUsuario[i][1] = miUsuario.getNombre();
+                matrizUsuario[i][2] = miUsuario.getApellido();
+                matrizUsuario[i][3] = String.valueOf(miUsuario.getF_nacimiento());
+                matrizUsuario[i][4] = String.valueOf(miUsuario.getNum_telefono());
+                matrizUsuario[i][5] = String.valueOf(miUsuario.getGenero());
+                matrizUsuario[i][6] = miUsuario.getCorreo();
+                matrizUsuario[i][7] = miUsuario.getProvincia();
+                matrizUsuario[i][8] = miUsuario.getCiudad();
+                matrizUsuario[i][9] = miUsuario.getCalle();
+                matrizUsuario[i][10] = miUsuario.getNivel_conoci();
+
+                tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(matrizUsuario, new String[]{"Cedula", "Nombre", "Apellido", "Fecha Nacimiento", "Telefono", "Genero", "Correo", "Provincia", "Ciudad", "Calle", "Nivel Conocimiento"}));
+
+            }
+        }
+
+    }
+
+    public static void Cerrar_BD(ObjectContainer basep) {
 
         basep.close();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,10 +173,9 @@ public class Crud_Usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtIdUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -189,67 +196,109 @@ public class Crud_Usuario extends javax.swing.JFrame {
         txtxCalle = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtNivel = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        boxGnero = new javax.swing.JComboBox<>();
-        DateFecha = new com.toedter.calendar.JDateChooser();
+        fechaN = new com.toedter.calendar.JDateChooser();
+        jButton3 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaUsuario = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        rdhombre = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Registro Usuario");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Id Usuario:");
+        jLabel1.setText("Registro Usuario");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 6, -1, -1));
 
         jLabel3.setText("Cedula:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 145, -1));
 
         jLabel4.setText("Nombre:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, -1, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 116, 138, -1));
 
         jLabel5.setText("Apellido:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 162, -1, -1));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 158, 136, -1));
 
         jLabel6.setText("Fecha de nacimiento:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 204, -1, -1));
 
         jLabel7.setText("Telefono:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 255, -1, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 247, 188, -1));
 
         jLabel8.setText("Correo:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 44, -1, -1));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 110, -1));
 
         jLabel9.setText("Direcion:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 86, -1, -1));
 
         jLabel10.setText("Provincia:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 124, -1, -1));
+        jPanel1.add(txtProvi, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 116, 95, -1));
 
         jLabel11.setText("Cuidad:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 162, -1, -1));
+        jPanel1.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 158, 108, -1));
 
-        jLabel12.setText("N° de calle:");
+        jLabel12.setText("Calle:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 204, -1, -1));
+        jPanel1.add(txtxCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 200, 78, -1));
 
         jLabel13.setText("Nivel conocimiento:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 251, -1, -1));
 
         txtNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNivelActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 247, 80, -1));
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                GuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 326, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel14.setText("Genero:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel1.add(fechaN, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 200, -1, -1));
+
+        jButton3.setText("Modificar");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
+
+        tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaUsuario);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, 140));
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -257,161 +306,25 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
-        jLabel14.setText("Genero:");
+        buttonGroup1.add(rdhombre);
+        rdhombre.setText("Hombre");
+        jPanel1.add(rdhombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
-        boxGnero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtApellido))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtNombre))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtCedula))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxGnero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTelefono))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(DateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(61, 61, 61)))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtxCalle))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtProvi))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCiudad))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNivel))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jButton2)))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel10)))
-                            .addComponent(txtProvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel12)
-                        .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(DateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel13)
-                        .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(boxGnero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2))
-        );
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Mujer");
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -421,17 +334,37 @@ public class Crud_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNivelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
         crearUsuario(BaseD);
         Cerrar_BD(BaseD);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_GuardarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+
+
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    public void eliminar(ObjectContainer BaseD) {
+        DefaultTableModel TablaModelo = (DefaultTableModel) tablaUsuario.getModel();
+
+        int seleccion = tablaUsuario.getSelectedRow();
+        String cedula = tablaUsuario.getValueAt(seleccion, 0).toString();
+
+        Usuario Abuscar = new Usuario(null, cedula, null, null, null, 0, null, null, null, null,'\u0000' );
+        ObjectSet result = BaseD.get(Abuscar);
+
+        Usuario AsignaturaElim = (Usuario) result.next();
+        BaseD.delete(AsignaturaElim);
+
+        TablaModelo.removeRow(tablaUsuario.getSelectedRow());
+        JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
+    }
     /**
      * @param args the command line arguments
      */
@@ -468,17 +401,18 @@ public class Crud_Usuario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser DateFecha;
-    private javax.swing.JComboBox<String> boxGnero;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Guardar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton eliminar;
+    private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -487,13 +421,14 @@ public class Crud_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rdhombre;
+    private javax.swing.JTable tablaUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtProvi;
