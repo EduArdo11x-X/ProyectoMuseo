@@ -81,7 +81,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtcodigo" min="-2" pref="119" max="-2" attributes="0"/>
                               <Component id="txtdescripcion" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="calendario" min="-2" max="-2" attributes="0"/>
                               <Component id="txtnombre" min="-2" pref="119" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -114,14 +113,8 @@
                       <Component id="Lbldescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtdescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="calendario" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="Lblfecha" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="Lblfecha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="109" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -175,8 +168,6 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtdescripcionKeyTyped"/>
           </Events>
-        </Component>
-        <Component class="com.toedter.calendar.JCalendar" name="calendario">
         </Component>
         <Component class="javax.swing.JButton" name="bttnregistrar">
           <Properties>
