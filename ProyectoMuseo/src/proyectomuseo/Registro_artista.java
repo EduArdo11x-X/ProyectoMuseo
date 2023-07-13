@@ -440,7 +440,7 @@ public class Registro_artista extends javax.swing.JFrame {
     }
 
     public static int verificar(ObjectContainer BaseD, String cedula) {
-        Artista midueñobuscar = new Artista(cedula, null, null, null, null, null, 0, null, null, null, null, null);
+        Artista midueñobuscar = new Artista(null,null, cedula, null, null, null, 0, null, null, null, null, null);
         ObjectSet resul = BaseD.get(midueñobuscar);
         return resul.size();
 
