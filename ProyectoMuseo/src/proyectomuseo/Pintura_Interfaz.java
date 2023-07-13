@@ -10,9 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -27,7 +25,6 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         initComponents();
     }
     
-    public static ArrayList<Pintura> listapinturas = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -353,67 +350,67 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
 
         popupMenu.show(jButton1, 0, jButton1.getHeight());
     }//GEN-LAST:event_jButton4ActionPerformed
-    public void MostrarDatos() {
-        
-        
-        String[][] Matriz = new String[listapinturas.size()][6];
-        for (int i = 0; i < listapinturas.size(); i++) {
-            Pintura mipintura = listapinturas.get(i);
-            Matriz[i][0] = mipintura.getCod_arte_pintura();
-            Matriz[i][1] = mipintura.getNombre_pintura();
-            Matriz[i][2] = mipintura.getFecha_creacion_pintura() != null ? mipintura.getFecha_creacion_pintura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "";
-            Matriz[i][3] = mipintura.getDescripcion_pintura();
-            Matriz[i][4] = mipintura.getTipo_pintura();
-            Matriz[i][5] = mipintura.getEstilo_pintura();
-            
-        }
-
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
-                        Matriz, new String[]{
-                            "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
-                        }
-                ));
-            }
-        });
-
-    }
+//    public void MostrarDatos() {
+//        
+//        
+//        String[][] Matriz = new String[listapinturas.size()][6];
+//        for (int i = 0; i < listapinturas.size(); i++) {
+//            Pintura mipintura = listapinturas.get(i);
+//            Matriz[i][0] = mipintura.getCod_arte_pintura();
+//            Matriz[i][1] = mipintura.getNombre_pintura();
+//            Matriz[i][2] = mipintura.getFecha_creacion_pintura() != null ? mipintura.getFecha_creacion_pintura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "";
+//            Matriz[i][3] = mipintura.getDescripcion_pintura();
+//            Matriz[i][4] = mipintura.getTipo_pintura();
+//            Matriz[i][5] = mipintura.getEstilo_pintura();
+//            
+//        }
+//
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
+//                        Matriz, new String[]{
+//                            "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
+//                        }
+//                ));
+//            }
+//        });
+//
+//    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Pintura_Interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Pintura_Interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField calendarioS;

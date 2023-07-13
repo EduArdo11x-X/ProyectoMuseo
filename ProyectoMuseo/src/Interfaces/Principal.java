@@ -1,4 +1,4 @@
-package proyectomuseo;
+package Interfaces;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,7 +23,11 @@ public class Principal {
     public static void main(String[] args) {
         // TODO code application logic here
 
-      ObjectContainer Baseprincipal = Db4o.openFile("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
-
+      ObjectContainer Baseprincipal = Db4o.openFile("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yap");
+cerrarB(Baseprincipal);
+    }
+    
+    private static void cerrarB(ObjectContainer Baseprincipal){
+        Baseprincipal.close();
     }
 }
