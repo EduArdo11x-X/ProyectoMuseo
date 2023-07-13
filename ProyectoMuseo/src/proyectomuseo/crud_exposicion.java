@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 
 public class crud_exposicion extends javax.swing.JFrame {
-static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
+static ArrayList<clases.Exposicion> listaExposicion = new ArrayList<clases.Exposicion>();
    
     public crud_exposicion() {
         initComponents();
@@ -26,13 +26,13 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
         jLabel5 = new javax.swing.JLabel();
         codigotxt = new javax.swing.JTextField();
         nombretxt = new javax.swing.JTextField();
-        finicio = new com.toedter.calendar.JDateChooser();
-        ffinal = new com.toedter.calendar.JDateChooser();
         guardarbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         exposiciontbl = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
+        fechai = new com.toedter.calendar.JDateChooser();
+        fechaf = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +54,6 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
         jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 174, -1));
         jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 118, 174, -1));
-        jPanel1.add(finicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 216, -1));
-        jPanel1.add(ffinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 217, -1));
 
         guardarbtn.setText("Guardar");
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +83,8 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
         jScrollPane2.setViewportView(descripciontxt);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+        jPanel1.add(fechai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 230, -1));
+        jPanel1.add(fechaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +101,7 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarbtnActionPerformed
-Exposicion miExposicion = new Exposicion();
+clases.Exposicion miExposicion = new clases.Exposicion();
 
 miExposicion.setCod_exposicion(codigotxt.getText());
 miExposicion.setNombre_exposicion(nombretxt.getText());
@@ -146,8 +146,8 @@ limpiarDatos();
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
-    private com.toedter.calendar.JDateChooser ffinal;
-    private com.toedter.calendar.JDateChooser finicio;
+    private com.toedter.calendar.JDateChooser fechaf;
+    private com.toedter.calendar.JDateChooser fechai;
     private javax.swing.JButton guardarbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
