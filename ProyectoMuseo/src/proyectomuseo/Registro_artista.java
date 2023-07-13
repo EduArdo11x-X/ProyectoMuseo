@@ -34,7 +34,7 @@ public class Registro_artista extends javax.swing.JFrame {
 //        verificar(ObjectContainer BaseD);
     }
 
-    String cedula = "";
+    String cedulaa = "";
     String nombrea = "";
     String apellidoa = "";
     String email = "";
@@ -50,7 +50,7 @@ public class Registro_artista extends javax.swing.JFrame {
 
     public void asignarVariables(ObjectContainer BaseD) {
 
-        cedula = txtcedula.getText();
+        cedulaa = txtcedula.getText();
         nombrea = txtnombre.getText();
         apellidoa = txtapellido.getText();
         email = txtcorreo.getText();
@@ -453,75 +453,9 @@ public class Registro_artista extends javax.swing.JFrame {
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
         crearartista(BaseD);
         Cerrar_BD(BaseD);
+     
+        
 
-//        // TODO add your handling code here:
-//
-//        String cedulaa = txtcedula.getText();
-//        String nombrea = txtnombre.getText();
-//        String apellidoa = txtapellido.getText();
-//        String telefono = txtcell.getText();
-//        int numero = Integer.parseInt(telefono);
-//        String email = txtcorreo.getText();
-//        String genero = combo_gene.getSelectedItem().toString();
-//        String fechaTexto = calendarioS.getText();
-//        String habilidad = txt_habilidad.getText();
-//        String provincia = combo_provincia.getSelectedItem().toString();
-//        String ciudad = combo_cuidad.getSelectedItem().toString();
-//        String calle = txtcalle.getText();
-//        Boolean discapacidad = false;
-//        Boolean seguro = false;
-//
-//        LocalDate fecha = null;
-//        if (!fechaTexto.isEmpty()) {
-//            try {
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//                fecha = LocalDate.parse(fechaTexto, formatter);
-//            } catch (DateTimeParseException e) {
-//                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-//                e.printStackTrace();
-//            }
-//        }
-////        if (jCheckBox1.isSelected()) {
-////            discapacidad = true;
-////
-////        } else {
-////            // Ninguno de los checkboxes está seleccionado
-////
-////            discapacidad = false;
-////        }
-////        if (jCheckBox3.isSelected()) {
-////            seguro = true;
-////
-////        } else {
-////            // Ninguno de los checkboxes está seleccionado
-////            seguro = false;
-////        }
-////        Artista mipersona = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fecha, numero, provincia, ciudad, calle, email, genero);
-////
-////        listapersonas.add(mipersona);
-////        cargarNacionalidades();
-////        for (int i = 0; i < Menu1.lista_nacionalidades.size(); i++) {
-////    Nacionalidad nacionalidad1 = Menu1.lista_nacionalidades.get(i);
-////    txtnacionalidad1.addItem(nacionalidad1.getNombre_nacioanlidad()); // Suponiendo que `Nacionalidad` tiene un método `getNombre()` para obtener el nombre de la nacionalidad
-////}
-//
-////
-//// Obtener el arreglo de nacionalidades desde el ArrayList
-//        // Limpiar los campos de texto
-//        txtcedula.setText("");
-//        txtnombre.setText("");
-//        txtapellido.setText("");
-//        txtcell.setText("");
-//        txtcorreo.setText("");
-//        combo_gene.setSelectedItem("");
-//        calendarioS.setText("");
-//        txt_habilidad.setText("");
-//        combo_cuidad.setSelectedItem("");
-//        combo_provincia.setSelectedItem("");
-//        txtcalle.setText("");
-//
-//        // Actualizar la matriz con los datos de la lista de personas
-////        MostrarDatosN();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -536,6 +470,7 @@ public class Registro_artista extends javax.swing.JFrame {
         if (!telefono.isEmpty()) {
             try {
                 numero = Integer.parseInt(telefono);
+                
             } catch (NumberFormatException e) {
                 // Manejo de errores en caso de que el número de teléfono no sea un entero válido
                 e.printStackTrace();
@@ -556,17 +491,18 @@ public class Registro_artista extends javax.swing.JFrame {
 
 
         
-        Artista mipartista = new Artista("", habilidad, cedula, nombrea, apellidoa, fecha, numero, provincia1, ciudad1, calle1, email, genero1);
+       
 
-        if (verificar(BaseD, cedula) == 0) {
-            
+        if (verificar(BaseD, cedulaa) == 0) {
+            Artista mipartista = new Artista("", habilidad, cedulaa, nombrea, apellidoa, fecha, numero, provincia1, ciudad1, calle1, email, genero1);
             BaseD.set(mipartista);
             JOptionPane.showMessageDialog(null, "El dueño Creado");
             LimpiarCampos();
 
         } else {
-            System.out.println("EL dueño ya existe");
-            JOptionPane.showMessageDialog(null, "El dueño ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+          
+            JOptionPane.showMessageDialog(null, "El ARTISTA ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+              txtcedula.setText("");
         }
     }
 
