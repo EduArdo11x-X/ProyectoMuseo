@@ -23,12 +23,11 @@ public class Crud_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Crud_Usuario
      */
-
     public Crud_Usuario() {
         initComponents();
         
     }
-
+    
     String idUsuario = "";
     String cedula = "";
     String nombre = "";
@@ -41,11 +40,11 @@ public class Crud_Usuario extends javax.swing.JFrame {
     String calle = "";
     String nivel_conoci = "";
     char genero;
-
-    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yap");
-
+    
+    public static String direccionBD = ("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\BASEDATOSABRIL2023\\guia.yap");
+    
     public void asignarVariables(ObjectContainer BaseD) {
-
+        
         cedula = txtCedula.getText();
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
@@ -66,11 +65,11 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
     }
-
+    
     public void LimpiarCampos() {
-
+        
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
@@ -80,12 +79,12 @@ public class Crud_Usuario extends javax.swing.JFrame {
         txtCiudad.setText("");
         txtxCalle.setText("");
         txtNivel.setText("");
-
+        
     }
-
+    
     public void crearUsuario(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-
+        
         int numero = 0; // Valor por defecto
 
         if (!telefono.isEmpty()) {
@@ -96,49 +95,47 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         if (rdhombre.isSelected()) {
             genero = 'H';
         } else {
             genero = 'M';
         }
-
+        
         if (verificar(BaseD, cedula) == 0) {
             Usuario miUsuario = new Usuario(nivel_conoci, cedula, nombre, apellido, fechaNac, numero, provincia, cuidad, calle, correo, genero);
-
+            
             BaseD.set(miUsuario);
             JOptionPane.showMessageDialog(null, "Usuario Creado");
             
-            
-                Usuario Abuscar = new Usuario(null, null, null, null, null, 0, null, null, null, null,'\u0000' );
-                ObjectSet result = BaseD.get(Abuscar);
-                mostrarDatos(result);
+            Usuario Abuscar = new Usuario(null, null, null, null, null, 0, null, null, null, null, '\u0000');
+            ObjectSet result = BaseD.get(Abuscar);
+            mostrarDatos(result);
             LimpiarCampos();
-
+            
         } else {
-
+            
             JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-                
     }
-
+    
     public static int verificar(ObjectContainer BaseD, String cedula) {
-        Usuario buscarUsuario = new Usuario(null, cedula, null, null, null, 0, null, null, null, null,'\u0000' );
+        Usuario buscarUsuario = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
         ObjectSet resul = BaseD.get(buscarUsuario);
         return resul.size();
-
+        
     }
-
+    
     public void mostrarDatos(ObjectSet result) {
         String matrizUsuario[][] = new String[result.size()][11];
-
+        
         if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "El usuario no existe");
         } else {
             for (int i = 0; i < result.size(); i++) {
                 Usuario miUsuario = new Usuario();
-
+                
                 miUsuario = (Usuario) result.get(i);
                 matrizUsuario[i][0] = miUsuario.getCedula();
                 matrizUsuario[i][1] = miUsuario.getNombre();
@@ -151,16 +148,16 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 matrizUsuario[i][8] = miUsuario.getCiudad();
                 matrizUsuario[i][9] = miUsuario.getCalle();
                 matrizUsuario[i][10] = miUsuario.getNivel_conoci();
-
+                
                 tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(matrizUsuario, new String[]{"Cedula", "Nombre", "Apellido", "Fecha Nacimiento", "Telefono", "Genero", "Correo", "Provincia", "Ciudad", "Calle", "Nivel Conocimiento"}));
-
+                
             }
         }
-
+        
     }
-
+    
     public static void Cerrar_BD(ObjectContainer basep) {
-
+        
         basep.close();
     }
 
@@ -199,13 +196,14 @@ public class Crud_Usuario extends javax.swing.JFrame {
         Guardar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         fechaN = new com.toedter.calendar.JDateChooser();
-        jButton3 = new javax.swing.JButton();
+        Cargardatos = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuario = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         rdhombre = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdmujer = new javax.swing.JRadioButton();
+        modificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -248,7 +246,12 @@ public class Crud_Usuario extends javax.swing.JFrame {
 
         jLabel14.setText("Genero:");
 
-        jButton3.setText("Modificar");
+        Cargardatos.setText("Cargar Datos");
+        Cargardatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargardatosActionPerformed(evt);
+            }
+        });
 
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -280,8 +283,15 @@ public class Crud_Usuario extends javax.swing.JFrame {
         buttonGroup1.add(rdhombre);
         rdhombre.setText("Hombre");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Mujer");
+        buttonGroup1.add(rdmujer);
+        rdmujer.setText("Mujer");
+
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -344,12 +354,12 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(rdhombre)
                 .addGap(46, 46, 46)
-                .addComponent(jRadioButton2))
+                .addComponent(rdmujer))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(Guardar)
                 .addGap(21, 21, 21)
-                .addComponent(jButton3)
+                .addComponent(Cargardatos)
                 .addGap(21, 21, 21)
                 .addComponent(eliminar))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -357,7 +367,9 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 .addComponent(jButton2))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modificar))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,17 +429,19 @@ public class Crud_Usuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(rdhombre)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rdmujer))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Guardar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
+                            .addComponent(Cargardatos)
                             .addComponent(eliminar))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modificar))
                 .addGap(10, 10, 10)
                 .addComponent(jButton2))
         );
@@ -463,28 +477,89 @@ public class Crud_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
- ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
         eliminar(BaseD);
         
         Cerrar_BD(BaseD);
 
     }//GEN-LAST:event_eliminarActionPerformed
 
-    public void eliminar(ObjectContainer BaseD) {
-        DefaultTableModel TablaModelo = (DefaultTableModel) tablaUsuario.getModel();
+    private void CargardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargardatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CargardatosActionPerformed
 
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+
+
+    }//GEN-LAST:event_modificarActionPerformed
+  
+    
+//    public void modificar(ObjectContainer BaseD){
+//          Usuario Umodi = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
+//                ObjectSet result = BaseD.get(Umodi);
+//                Usuario Umodificar = (Usuario) result.next();
+//                Umodificar.setNombreEstudiante(jTFnombre.getText());
+//                Umodificar.setApellidoEstudiante(jTFapellido.getText());
+//                Umodificar.setCiudadEstudiante(jCBciudad.getSelectedItem().toString());
+//                Emodificar.setEdadEstudiante((Integer) jSedad.getValue());
+//                Emodificar.setGeneroEstudiante(GeneroEstudiante);
+//                basep.set(Emodificar);
+//        
+//    }
+    public void CargarDatos(ObjectContainer BaseD){
+       DefaultTableModel TablaModelo = (DefaultTableModel) tablaUsuario.getModel();
+        
         int seleccion = tablaUsuario.getSelectedRow();
         String cedula = tablaUsuario.getValueAt(seleccion, 0).toString();
-
-        Usuario Abuscar = new Usuario(null, cedula, null, null, null, 0, null, null, null, null,'\u0000' );
+        Usuario Abuscar = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
         ObjectSet result = BaseD.get(Abuscar);
+        for(int i = 0 ; i < result.size(); i++){
+            Usuario miUsuario = new Usuario();
+            miUsuario = (Usuario) result.get(i);
+         txtCedula.setText(miUsuario.getNombre());
+        txtNombre.setText(miUsuario.getCedula());
+        txtApellido.setText(miUsuario.getApellido());
+    fechaN.setDate(miUsuario.getF_nacimiento());
+        txtTelefono.setText(String.valueOf(miUsuario.getNum_telefono()));
+        txtCorreo.setText(miUsuario.getCorreo());
+        txtProvi.setText(miUsuario.getProvincia());
+        txtCiudad.setText(miUsuario.getCiudad());
+       txtxCalle.setText(miUsuario.getCalle());
+        txtNivel.setText(miUsuario.getNivel_conoci());
+        
+         if (miUsuario.getGenero()=='H') {
+                        rdhombre.setSelected(true);
+                        rdmujer.setSelected(false);
+                    }
+               if (miUsuario.getGenero()=='M') {
+                        rdmujer.setSelected(true);
+                        rdhombre.setSelected(false);
+                    }
+            
+            
+            
+        }
+        
+        
+  }
 
+    public void eliminar(ObjectContainer BaseD) {
+        DefaultTableModel TablaModelo = (DefaultTableModel) tablaUsuario.getModel();
+        
+        int seleccion = tablaUsuario.getSelectedRow();
+        String cedula = tablaUsuario.getValueAt(seleccion, 0).toString();
+        
+        Usuario Abuscar = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
+        ObjectSet result = BaseD.get(Abuscar);
+        
         Usuario AsignaturaElim = (Usuario) result.next();
         BaseD.delete(AsignaturaElim);
-
+        
         TablaModelo.removeRow(tablaUsuario.getSelectedRow());
         JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
     }
+    
+
     /**
      * @param args the command line arguments
      */
@@ -521,12 +596,12 @@ public class Crud_Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cargardatos;
     private javax.swing.JButton Guardar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton eliminar;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -541,9 +616,10 @@ public class Crud_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton modificar;
     private javax.swing.JRadioButton rdhombre;
+    private javax.swing.JRadioButton rdmujer;
     private javax.swing.JTable tablaUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
