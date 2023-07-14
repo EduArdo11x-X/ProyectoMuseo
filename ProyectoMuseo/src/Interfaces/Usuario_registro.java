@@ -494,18 +494,18 @@ public class Crud_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarActionPerformed
   
     
-//    public void modificar(ObjectContainer BaseD){
-//          Usuario Umodi = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
-//                ObjectSet result = BaseD.get(Umodi);
-//                Usuario Umodificar = (Usuario) result.next();
-//                Umodificar.setNombreEstudiante(jTFnombre.getText());
-//                Umodificar.setApellidoEstudiante(jTFapellido.getText());
-//                Umodificar.setCiudadEstudiante(jCBciudad.getSelectedItem().toString());
-//                Emodificar.setEdadEstudiante((Integer) jSedad.getValue());
-//                Emodificar.setGeneroEstudiante(GeneroEstudiante);
-//                basep.set(Emodificar);
-//        
-//    }
+    public void modificar(ObjectContainer BaseD){
+          Usuario Umodi = new Usuario(null, cedula, null, null, null, 0, null, null, null, null, '\u0000');
+                ObjectSet result = BaseD.get(Umodi);
+                Usuario Umodificar = (Usuario) result.next();
+                Umodificar.setNombreEstudiante(jTFnombre.getText());
+                Umodificar.setApellidoEstudiante(jTFapellido.getText());
+                Umodificar.setCiudadEstudiante(jCBciudad.getSelectedItem().toString());
+                Umodificar.setEdadEstudiante((Integer) jSedad.getValue());
+                Umodificar.setGeneroEstudiante(GeneroEstudiante);
+                basep.set(Emodificar);
+        
+    }
     public void CargarDatos(ObjectContainer BaseD){
        DefaultTableModel TablaModelo = (DefaultTableModel) tablaUsuario.getModel();
         

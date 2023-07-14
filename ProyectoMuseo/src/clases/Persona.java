@@ -11,33 +11,35 @@ import java.util.Date;
  *
  * @author ASUS TUF
  */
-public class Persona_1 {
+public class Persona {
 
     private String cedula;
     private String nombre;
     private String apellido;
     private Date F_nacimiento;
     private int num_telefono;
+    private char genero;
     private String provincia;
     private String ciudad;
     private String calle;
-    private String correo;
-    private char genero;
+    private String correo;  
+    private String contraseña;
 
-    public Persona_1() {
+    public Persona() {
     }
 
-    public Persona_1(String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, String provincia, String ciudad, String calle, String correo, char genero) {
+    public Persona(String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.F_nacimiento = F_nacimiento;
         this.num_telefono = num_telefono;
+        this.genero = genero;
         this.provincia = provincia;
         this.ciudad = ciudad;
         this.calle = calle;
         this.correo = correo;
-        this.genero = genero;
+        this.contraseña = contraseña;
     }
 
     public String getCedula() {
@@ -80,6 +82,14 @@ public class Persona_1 {
         this.num_telefono = num_telefono;
     }
 
+    public char getGenero() {
+        return genero;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
     public String getProvincia() {
         return provincia;
     }
@@ -112,17 +122,23 @@ public class Persona_1 {
         this.correo = correo;
     }
 
-    public char getGenero() {
-        return genero;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setGenero(char genero) {
-        this.genero = genero;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override
     public String toString() {
-        return "Persona_1{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", F_nacimiento=" + F_nacimiento + ", num_telefono=" + num_telefono + ", provincia=" + provincia + ", ciudad=" + ciudad + ", calle=" + calle + ", correo=" + correo + ", genero=" + genero + '}';
+        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", F_nacimiento=" + F_nacimiento + ", num_telefono=" + num_telefono + ", genero=" + genero + ", provincia=" + provincia + ", ciudad=" + ciudad + ", calle=" + calle + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + '}';
     }
 
+    
+
+
 }
+
+
+    

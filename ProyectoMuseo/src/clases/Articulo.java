@@ -7,10 +7,8 @@ package clases;
 
 /**
  *
- * @author LENOVO
+ * @author EDU
  */
-public class Escultura extends ObrArte{
-  private String titulo;
-  private String descripcion;
-  
+public class Articulo {
+    
 }

@@ -1,5 +1,5 @@
 
-package proyectomuseo;
+package Interfaces;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

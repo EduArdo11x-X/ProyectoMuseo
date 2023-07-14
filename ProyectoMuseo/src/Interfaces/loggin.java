@@ -1,4 +1,4 @@
-package proyectomuseo;
+package Interfaces;
 
 import com.db4o.ObjectContainer;
 import java.awt.Color;
