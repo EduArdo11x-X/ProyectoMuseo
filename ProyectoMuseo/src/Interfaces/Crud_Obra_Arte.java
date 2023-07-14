@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.db4o.ObjectContainer;
 
 /**
  *
@@ -16,8 +17,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Crud_Obra_Arte extends javax.swing.JFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<ObrArte> listaObra = new ArrayList<>();
     String nombre = " ";
     int codigo = 0;
     String descripcion = " ";
@@ -25,9 +24,35 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
 
     public Crud_Obra_Arte() {
         initComponents();
-        LlenarTabla();
+        //LlenarTabla();
     }
 
+    public void crearibra(ObjectContainer BaseD) {
+
+    }
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
+       nombre = txtnombre.getText();
+     codigo = txtcodigo.getText();
+    descripcion = txtarea.getText();
+     fecha_creacion;
+    }
+
+    public void limpiarDatos() {
+
+    }
+
+    public void comproparobra(ObjectContainer BaseD, String codigo) {
+
+    }
+
+    public void cerrarBD(Object Container 
+    
+
+    BaseD){
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,13 +68,15 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
         Lblcodigo = new javax.swing.JLabel();
         Lbldescripcion = new javax.swing.JLabel();
         Lblfecha = new javax.swing.JLabel();
-        txtnombre = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
-        txtdescripcion = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         bttnregistrar = new javax.swing.JButton();
-        bttnregresar = new javax.swing.JButton();
+        bttnmostrard = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbobrasarte = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtarea = new javax.swing.JTextArea();
+        calendario = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +92,17 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
 
         Lblfecha.setText("FECHA DE CREACION");
 
+        txtcodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcodigoActionPerformed(evt);
+            }
+        });
+        txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcodigoKeyTyped(evt);
+            }
+        });
+
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
@@ -76,31 +114,19 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
             }
         });
 
-        txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtcodigoKeyTyped(evt);
-            }
-        });
-
-        txtdescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtdescripcionKeyTyped(evt);
-            }
-        });
-
         bttnregistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registro/iconos/disco-flexible.png"))); // NOI18N
-        bttnregistrar.setText("REGISTRAR");
+        bttnregistrar.setText("GUARDAR");
         bttnregistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnregistrarActionPerformed(evt);
             }
         });
 
-        bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registro/iconos/deshacer.png"))); // NOI18N
-        bttnregresar.setText("REGRESAR");
-        bttnregresar.addActionListener(new java.awt.event.ActionListener() {
+        bttnmostrard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registro/iconos/deshacer.png"))); // NOI18N
+        bttnmostrard.setText("MOSTRAR DATOS");
+        bttnmostrard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnregresarActionPerformed(evt);
+                bttnmostrardActionPerformed(evt);
             }
         });
 
@@ -128,6 +154,10 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
             tbobrasarte.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        txtarea.setColumns(20);
+        txtarea.setRows(5);
+        jScrollPane2.setViewportView(txtarea);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,56 +168,64 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addComponent(bttnregistrar)
                         .addGap(173, 173, 173)
-                        .addComponent(bttnregresar))
+                        .addComponent(bttnmostrard))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Lbldescripcion)
-                                    .addComponent(Lblcodigo)
-                                    .addComponent(Lblfecha)))
+                                    .addComponent(Lblcodigo)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
                                 .addComponent(Lblnombre)))
-                        .addGap(211, 211, 211)
+                        .addGap(237, 237, 237)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(Lblfecha)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lblnombre)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lblcodigo)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lbldescripcion)
-                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addComponent(Lblfecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttnregistrar)
-                    .addComponent(bttnregresar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Lblnombre)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Lblcodigo)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(Lbldescripcion)
+                        .addGap(80, 80, 80))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Lblfecha)
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bttnregistrar)
+                            .addComponent(bttnmostrard)))
+                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69))
         );
 
@@ -195,60 +233,46 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnombreActionPerformed
+    }//GEN-LAST:event_txtcodigoActionPerformed
 
-    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+    private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
         char letra = evt.getKeyChar();
         if (!Character.isLetter(letra)) {
             evt.consume();
         }
 
-        if (txtnombre.getText().length() > 20) {
+        if (txtcodigo.getText().length() > 20) {
             evt.consume();
         }
-    }//GEN-LAST:event_txtnombreKeyTyped
+    }//GEN-LAST:event_txtcodigoKeyTyped
 
-    private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
         char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)) {
             evt.consume();
         }
 
-        if (txtcodigo.getText().length() > 3) {
+        if (txtnombre.getText().length() > 3) {
             evt.consume();
 
         }
 
 
-    }//GEN-LAST:event_txtcodigoKeyTyped
-
-    private void txtdescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdescripcionKeyTyped
-        char letra = evt.getKeyChar();
-        if (!Character.isLetter(letra)) {
-            evt.consume();
-        }
-
-        if (txtdescripcion.getText().length() > 120) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtdescripcionKeyTyped
+    }//GEN-LAST:event_txtnombreKeyTyped
 
     private void bttnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregistrarActionPerformed
         int filas = tbobrasarte.getRowCount();
@@ -257,14 +281,18 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
         }
         //asignacionVariables();
         crearPersona();
-        LlenarTabla();
+        //LlenarTabla();
     }//GEN-LAST:event_bttnregistrarActionPerformed
 
-    private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
+    private void bttnmostrardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnmostrardActionPerformed
 //        this.dispose();
 //        Menu i = new Menu();
 //        i.setVisible(true);
-    }//GEN-LAST:event_bttnregresarActionPerformed
+    }//GEN-LAST:event_bttnmostrardActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,103 +303,106 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
     private javax.swing.JLabel Lbldescripcion;
     private javax.swing.JLabel Lblfecha;
     private javax.swing.JLabel Lblnombre;
+    private javax.swing.JButton bttnmostrard;
     private javax.swing.JButton bttnregistrar;
-    private javax.swing.JButton bttnregresar;
+    private com.toedter.calendar.JDateChooser calendario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbobrasarte;
+    private javax.swing.JTextArea txtarea;
     private javax.swing.JTextField txtcodigo;
-    private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 
     private void crearPersona() {
         boolean error = false;
 
-        for (int i = 0; i < listaObra.size(); i++) {
-            if (listaObra.get(i).getNombre().equals(nombre)) {
-
-                JOptionPane.showMessageDialog(null, "LA OBRA YA EXISTE");
-                txtnombre.setText("");
-                error = true;
-            }
-        }
-
-        ObrArte miobra = new ObrArte(
-                txtnombre.getText(),
-                codigo = Integer.parseInt(txtcodigo.toString()),
-                txtdescripcion.getText(),
-                fecha_creacion = calendario.getDate()
-        );
-
-        listaObra.add(miobra);
-        JOptionPane.showMessageDialog(null, " PERSONA CREADO");
-        LimpiarCampos();
-    }
-
-    private void LlenarTabla() {
-
-        modelo.setColumnIdentifiers(new String[]{"NOMBRE", "cODIGO", "DESCRIPCION", "FECHA DE CREACION"});
-
-        for (int i = 0; i < listaObra.size(); i++) {
-            Object[] datos = new Object[12];
-            datos[0] = listaObra.get(i).getNombre();
-            datos[1] = listaObra.get(i).getNombre();
-            datos[2] = listaObra.get(i).getCodigo();
-            datos[3] = listaObra.get(i).getDescripcion();
-            datos[11] = listaObra.get(i).getFecha_creacion();
-
-            modelo.addRow(datos);
-        }
-
-        tbobrasarte.setModel(modelo);
-
-    }
-
-    public void ModificarPersona() {
-        int filaSeleccionada = tbobrasarte.getSelectedRow();
-        if (filaSeleccionada >= 0) {
-            txtnombre.setText(tbobrasarte.getValueAt(filaSeleccionada, 0).toString());
-            txtcodigo.setText(tbobrasarte.getValueAt(filaSeleccionada, 1).toString());
-            txtdescripcion.setText(tbobrasarte.getValueAt(filaSeleccionada, 2).toString());
-
-            //botones.setSelected(tablacrud.getValueAt(filaSeleccionada, 6).toString());
-            //txtemail.setText(tablacrud.getValueAt(filaSeleccionada, 4).toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "NO HAS SELECCIONADO NINGUNA ");
-        }
-
-    }
-
-    public void EliminarPersona(String Cedula) {
-
-        for (int i = 0; i < listaObra.size(); i++) {
-            if (listaObra.get(i).getNombre().equals(nombre)) {
-                listaObra.remove(i);
-                JOptionPane.showMessageDialog(null, "ELIMINADO CORRECTAMENTE");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "NO SE ENCONTRADO");
-            }
-        }
-    }
-
-    private void LimpiarCampos() {
-
-        txtnombre.setText("");
-        txtdescripcion.setText("");
-        txtcodigo.setText("");
-        calendario.setDate(fecha_creacion);
-
-    }
-
-    public void asignacionVariables() {
-
-        nombre = txtnombre.getText();
-
-        descripcion = txtdescripcion.getText();
-
+//        for (int i = 0; i < listaObra.size(); i++) {
+//            if (listaObra.get(i).getNombre().equals(nombre)) {
+//
+//                JOptionPane.showMessageDialog(null, "LA OBRA YA EXISTE");
+//                txtcodigo.setText("");
+//                error = true;
+//            }
+//        }
+//
+//        ObrArte miobra = new ObrArte(
+//                txtcodigo.getText(),
+//                codigo = Integer.parseInt(txtnombre.toString()),
+//                txtdescripcion.getText(),
+//                fecha_creacion = calendario.getDate()
+//        );
+//
+//        listaObra.add(miobra);
+//        JOptionPane.showMessageDialog(null, " PERSONA CREADO");
+//        LimpiarCampos();
+//    }
+//
+//    private void LlenarTabla() {
+//
+//        modelo.setColumnIdentifiers(new String[]{"NOMBRE", "cODIGO", "DESCRIPCION", "FECHA DE CREACION"});
+//
+//        for (int i = 0; i < listaObra.size(); i++) {
+//            Object[] datos = new Object[12];
+//            datos[0] = listaObra.get(i).getNombre();
+//            datos[1] = listaObra.get(i).getNombre();
+//            datos[2] = listaObra.get(i).getCodigo();
+//            datos[3] = listaObra.get(i).getDescripcion();
+//            datos[11] = listaObra.get(i).getFecha_creacion();
+//
+//            modelo.addRow(datos);
+//        }
+//
+//        tbobrasarte.setModel(modelo);
+//
+//    }
+//
+//    public void ModificarPersona() {
+//        int filaSeleccionada = tbobrasarte.getSelectedRow();
+//        if (filaSeleccionada >= 0) {
+//            txtcodigo.setText(tbobrasarte.getValueAt(filaSeleccionada, 0).toString());
+//            txtnombre.setText(tbobrasarte.getValueAt(filaSeleccionada, 1).toString());
+//            txtdescripcion.setText(tbobrasarte.getValueAt(filaSeleccionada, 2).toString());
+//
+//            //botones.setSelected(tablacrud.getValueAt(filaSeleccionada, 6).toString());
+//            //txtemail.setText(tablacrud.getValueAt(filaSeleccionada, 4).toString());
+//        } else {
+//            JOptionPane.showMessageDialog(null, "NO HAS SELECCIONADO NINGUNA ");
+//        }
+//
+//    }
+//
+//    public void EliminarPersona(String Cedula) {
+//
+//        for (int i = 0; i < listaObra.size(); i++) {
+//            if (listaObra.get(i).getNombre().equals(nombre)) {
+//                listaObra.remove(i);
+//                JOptionPane.showMessageDialog(null, "ELIMINADO CORRECTAMENTE");
+//
+//            } else {
+//                JOptionPane.showMessageDialog(null, "NO SE ENCONTRADO");
+//            }
+//        }
+//    }
+//
+//    private void LimpiarCampos() {
+//
+//        txtcodigo.setText("");
+//        txtdescripcion.setText("");
+//        txtnombre.setText("");
+//        calendario.setDate(fecha_creacion);
+//
+//    }
+//
+//    public void asignacionVariables() {
+//
+//        nombre = txtcodigo.getText();
+//
+//        descripcion = txtdescripcion.getText();
+//
+//    }
     }
 
 }
