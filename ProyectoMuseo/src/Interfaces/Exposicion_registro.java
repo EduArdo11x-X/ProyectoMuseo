@@ -1,19 +1,26 @@
-
 package Interfaces;
 
-import java.util.ArrayList;
+import clases.Exposicion;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
+public class Exposicion_registro extends javax.swing.JFrame {
 
-public class crud_exposicion extends javax.swing.JFrame {
-static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
-   
-    public crud_exposicion() {
+    String cod_exposicion = "";
+    String nombre_exposicion = " ";
+    String descripcion_exposicion = "";
+    Date fecha_inicio;
+    Date fecha_fin;
+    
+     public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+
+    public Exposicion_registro() {
         initComponents();
-        mostrarDatos();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,6 +40,7 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
         exposiciontbl = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
+        Mostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,63 +94,144 @@ static ArrayList<Exposicion> listaExposicion = new ArrayList<Exposicion>();
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
+        Mostrar.setText("Mostrar Datos");
+        Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarbtnActionPerformed
-Exposicion miExposicion = new Exposicion();
+ObjectContainer BaseD = Db4o.openFile(direccionBD);  
+crearExposicion(BaseD);
+cerrarBD(BaseD);
 
-miExposicion.setCod_exposicion(codigotxt.getText());
-miExposicion.setNombre_exposicion(nombretxt.getText());
-miExposicion.setDescripcion_exposicion(descripciontxt.getText());
-miExposicion.setFecha_inicio(finicio.getDate());
-miExposicion.setFecha_fin(ffinal.getDate());
-
-listaExposicion.add(miExposicion);
-
-JOptionPane.showMessageDialog(null, "Exposicion registrado");
-
-mostrarDatos();
-limpiarDatos();
-
-
-
-     
-        
     }//GEN-LAST:event_guardarbtnActionPerformed
 
-    public void mostrarDatos(){
-        String matrizExposicion[][]=new String [listaExposicion.size()] [5];
-        for(int i = 0 ; i< listaExposicion.size(); i ++){
-            matrizExposicion[i][0] = listaExposicion.get(i).getCod_exposicion();
-            matrizExposicion[i][1] = listaExposicion.get(i).getNombre_exposicion();
-            matrizExposicion[i][2] = listaExposicion.get(i).getDescripcion_exposicion();
-            matrizExposicion[i][3] = String.valueOf(listaExposicion.get(i).getFecha_inicio());
-            matrizExposicion[i][4] = String.valueOf(listaExposicion.get(i).getFecha_fin());
-            
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo","Nombre","Descripcion","Fecha inicio","Fecha final"}));
-            
-            
-            
+    private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
+ObjectContainer BaseD = Db4o.openFile(direccionBD);  
+cargarDatos(BaseD);
+cerrarBD(BaseD);
+        
+
+
+    }//GEN-LAST:event_MostrarActionPerformed
+
+    public void cargarDatos(ObjectContainer BaseD){
+        
+        Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        mostrarDatos(result);
+    }
+    public void mostrarDatos(ObjectSet result) {
+        String matrizExposicion[][] = new String[result.size()][5];
+        if(result.size() == 0){
+            JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
         
+        for (int i = 0; i < result.size(); i++) {
+            Exposicion miExposicion = new Exposicion();
+            miExposicion = (Exposicion) result.get(i);
+            matrizExposicion[i][0] = miExposicion.getCod_exposicion();
+            matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
+            matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
+            matrizExposicion[i][3] = String.valueOf(miExposicion.getFecha_inicio());
+            matrizExposicion[i][4] = String.valueOf(miExposicion.getFecha_fin());
+            
+
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion", "Fecha inicio", "Fecha final"}));
+
+        }
+
     }
 
-    public void limpiarDatos(){
-        
+    public void asignarVariables(ObjectContainer BaseD) {
+        cod_exposicion = codigotxt.getText();
+        nombre_exposicion = nombretxt.getText();
+        descripcion_exposicion = descripciontxt.getText();
+        fecha_inicio = finicio.getDate();
+        fecha_fin = ffinal.getDate();
     }
+
+    public void limpiarDatos() {
+        codigotxt.setText("");
+        nombretxt.setText("");
+        descripciontxt.setText("");
+
+    }
+
+    public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
+        Exposicion Exbuscar = new Exposicion(codigo, null, null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        return result.size();
+
+    }
+
+    public void crearExposicion(ObjectContainer BaseD) {
+asignarVariables(BaseD);
+if(comprobarExposicion(BaseD , cod_exposicion) == 0){
+    Exposicion Exnuevo = new Exposicion( cod_exposicion,  nombre_exposicion,  descripcion_exposicion,  fecha_inicio,  fecha_fin); 
+   BaseD.set(Exnuevo);
+   JOptionPane.showMessageDialog(null, "Registrado correctamente");
+}else{
+       JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
+
+}
+    }
+
+    public static void cerrarBD(ObjectContainer BaseD) {
+BaseD.close();
+    }
+
+      public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Exposicion_registro().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Mostrar;
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
