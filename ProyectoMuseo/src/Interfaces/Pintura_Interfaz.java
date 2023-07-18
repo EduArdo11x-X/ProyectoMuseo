@@ -54,11 +54,11 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         esti_pintura = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableregistro = new javax.swing.JTable();
         eliminar = new javax.swing.JButton();
         fechaN = new com.toedter.calendar.JDateChooser();
+        btnvolver = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,13 +134,6 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("MODIFICAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -163,6 +156,13 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
+            }
+        });
+
+        btnvolver.setText("VOLVER");
+        btnvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvolverActionPerformed(evt);
             }
         });
 
@@ -214,9 +214,9 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(222, 222, 222)))
+                                .addGap(34, 34, 34)
+                                .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(236, 236, 236)))
                         .addGap(0, 135, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -252,7 +252,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
@@ -377,59 +377,27 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         ventaina.setVisible(true);
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        this.dispose();
-        Pintura_modificar ventaina = new  Pintura_modificar();
-        ventaina.setVisible(true);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
+     this.dispose();
+        menuPrincipal ventaina = new  menuPrincipal();
+        ventaina.setVisible(true);   
+    }//GEN-LAST:event_btnvolverActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Pintura_Interfaz().setVisible(true);
-            }
-        });
-    }
+ 
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnvolver;
     private javax.swing.JTextField cod_pintura;
     private javax.swing.JTextField desc_pintura;
     private javax.swing.JButton eliminar;
     private javax.swing.JTextField esti_pintura;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

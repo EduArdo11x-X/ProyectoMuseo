@@ -41,6 +41,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
         Mostrar = new javax.swing.JButton();
+        btnvolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +106,14 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jPanel1.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
+        btnvolver.setText("Volver");
+        btnvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnvolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,6 +143,12 @@ cerrarBD(BaseD);
 
 
     }//GEN-LAST:event_MostrarActionPerformed
+
+    private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
+  this.dispose();
+  menuPrincipal ventana = new menuPrincipal();
+  ventana.setVisible(true);
+    }//GEN-LAST:event_btnvolverActionPerformed
 
     public void cargarTabla(ObjectContainer BaseD){
         
@@ -201,40 +216,10 @@ if(comprobarExposicion(BaseD , cod_exposicion) == 0){
 BaseD.close();
     }
 
-      public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Crud_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Exposicion_registro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Mostrar;
+    private javax.swing.JButton btnvolver;
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
