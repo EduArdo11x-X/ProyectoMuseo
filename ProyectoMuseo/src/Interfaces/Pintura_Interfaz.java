@@ -5,12 +5,16 @@
  */
 package Interfaces;
 
+import com.db4o.*;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,7 +28,6 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     public Pintura_Interfaz() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,10 +55,10 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         esti_pintura = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        calendarioS = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableregistro = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+        fechaN = new com.toedter.calendar.JDateChooser();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,14 +136,6 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
 
         jButton2.setText("MODIFICAR");
 
-        calendarioS.setBackground(new java.awt.Color(255, 255, 255));
-        calendarioS.setForeground(new java.awt.Color(0, 0, 204));
-        calendarioS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calendarioSActionPerformed(evt);
-            }
-        });
-
         jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -162,10 +157,10 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtableregistro);
 
-        jButton4.setText("Abrir calendario");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                eliminarActionPerformed(evt);
             }
         });
 
@@ -182,22 +177,25 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                 .addComponent(jScrollPane2)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel2))
                                 .addGap(34, 34, 34))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(fechaN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cod_pintura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                     .addComponent(nom_pintura, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(117, 117, 117)
@@ -207,17 +205,14 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tipo_pint, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                    .addComponent(esti_pintura)))
-                            .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(calendarioS, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton4))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
+                                    .addComponent(esti_pintura)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -238,21 +233,23 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(esti_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(calendarioS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
+                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
@@ -272,154 +269,171 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     String cod_arte_pintura = "";
-    String nombre_pintura= "";
-    String fecha_creacion_pintura= "";
-    String descripcion_pintura= "";
-    String tipos_pintura= "";
-    String estilos_pintura= "";
+    String nombre_pintura = "";
+    Date fecha_creacion_pintura;
+    String descripcion_pintura = "";
+    String tipos_pintura = "";
+    String estilos_pintura = "";
+
+    public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\Proyecto Final\\guia.yap");
+
+    public void LimpiarCampos() {
+
+        cod_pintura.setText("");
+        nom_pintura.setText("");
+        tipo_pint.setText("");
+        esti_pintura.setText("");
+        desc_pintura.setText("");
+
+    }
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
+        cod_arte_pintura = cod_pintura.getText();
+        nombre_pintura = nom_pintura.getText();
+        fecha_creacion_pintura = fechaN.getDate();
+        descripcion_pintura = desc_pintura.getText();
+        tipos_pintura = tipo_pint.getText();
+        estilos_pintura = esti_pintura.getText();
+
+    }
+
+    public void crearUsuario(ObjectContainer BaseD) {
+        asignarVariables(BaseD);
+
+        if (verificar(BaseD, cod_arte_pintura) == 0) {
+            clases.Pintura miUsuario = new clases.Pintura(estilos_pintura, tipos_pintura, cod_arte_pintura, nombre_pintura, descripcion_pintura, fecha_creacion_pintura);
+
+            BaseD.set(miUsuario);
+            JOptionPane.showMessageDialog(null, "Usuario Creado");
+
+            ObjectSet result = BaseD.queryByExample(new clases.Pintura());
+            mostrarDatos(result);
+            LimpiarCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static int verificar(ObjectContainer BaseD, String cod_arte_pintura) {
+        clases.Pintura buscarUsuario = new clases.Pintura(null, null, cod_arte_pintura, null, null, null);
+        ObjectSet resul = BaseD.queryByExample(buscarUsuario);
+        return resul.size();
+    }
+
+    public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) jtableregistro.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        } else {
+            while (result.hasNext()) {
+                clases.Pintura mipintura = (clases.Pintura) result.next();
+                Object[] fila = {
+                    mipintura.getCodigo(),
+                    mipintura.getNombre(),
+                    String.valueOf(mipintura.getFecha_creacion()),
+                    mipintura.getDescripcion(),
+                    mipintura.getTipo(),
+                    mipintura.getEstilo()
+                };
+                model.addRow(fila);
+            }
+        }
+    }
+
+    public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
+    }
+
+    public void eliminar(ObjectContainer BaseD) {
+        DefaultTableModel TablaModelo = (DefaultTableModel) jtableregistro.getModel();
+
+        int seleccion = jtableregistro.getSelectedRow();
+        String cod_arte_pintura = jtableregistro.getValueAt(seleccion, 0).toString();
+
+        clases.Pintura Abuscar = new clases.Pintura(null, null, cod_arte_pintura, null, null, null);
+        ObjectSet result = BaseD.get(Abuscar);
+
+        clases.Pintura AsignaturaElim = (clases.Pintura) result.next();
+        BaseD.delete(AsignaturaElim);
+
+        TablaModelo.removeRow(jtableregistro.getSelectedRow());
+        JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
+    }
+
+    /**
+     * @param args the command line arguments
+     */
     
-    
-    
-    
-    
-    
+
+
     private void desc_pinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc_pinturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desc_pinturaActionPerformed
 
-    private void calendarioSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarioSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_calendarioSActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String codigo = cod_pintura.getText();
-        String nombre = nom_pintura.getText();
-        String fechaTexto = calendarioS.getText();
-        String desc_pintur = desc_pintura.getText();
-        String tipo_pintura = tipo_pint.getText();
-        String estilo_pintura = esti_pintura.getText();
-       
-        
-       
-        
-        
-        LocalDate fecha = null;
-        if (!fechaTexto.isEmpty()) {
-            try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                fecha = LocalDate.parse(fechaTexto, formatter);
-            } catch (DateTimeParseException e) {
-                // Manejo de errores en caso de que la cadena de texto de la fecha no sea válida
-                e.printStackTrace();
-            }
-        }
-        
-        Pintura mipintura = new Pintura(codigo, nombre, fecha,desc_pintur ,tipo_pintura , estilo_pintura );
-        listapinturas.add(mipintura);
-        
-        
-         // Limpiar los campos de texto
-        cod_pintura.setText("");
-        nom_pintura.setText("");
-        calendarioS.setText("");
-        desc_pintura.setText("");
-        tipo_pint.setText("");
-        esti_pintura.setText("");
-        
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        crearUsuario(BaseD);
 
-        // Actualizar la matriz con los datos de la lista de personas
-        MostrarDatos();
+        Cerrar_BD(BaseD);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        JPopupMenu popupMenu = new JPopupMenu();
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("dd/MM/yyyy");
-        dateChooser.getDateEditor().addPropertyChangeListener("date", evtt -> {
-            if (dateChooser.getDate() != null) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                calendarioS.setText(dateFormat.format(dateChooser.getDate()));
-                popupMenu.setVisible(false);
-            }
-        });
-        popupMenu.add(dateChooser);
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        eliminar(BaseD);
 
-        popupMenu.show(jButton1, 0, jButton1.getHeight());
-    }//GEN-LAST:event_jButton4ActionPerformed
-//    public void MostrarDatos() {
-//        
-//        
-//        String[][] Matriz = new String[listapinturas.size()][6];
-//        for (int i = 0; i < listapinturas.size(); i++) {
-//            Pintura mipintura = listapinturas.get(i);
-//            Matriz[i][0] = mipintura.getCod_arte_pintura();
-//            Matriz[i][1] = mipintura.getNombre_pintura();
-//            Matriz[i][2] = mipintura.getFecha_creacion_pintura() != null ? mipintura.getFecha_creacion_pintura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "";
-//            Matriz[i][3] = mipintura.getDescripcion_pintura();
-//            Matriz[i][4] = mipintura.getTipo_pintura();
-//            Matriz[i][5] = mipintura.getEstilo_pintura();
-//            
-//        }
-//
-//        SwingUtilities.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
-//                        Matriz, new String[]{
-//                            "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
-//                        }
-//                ));
-//            }
-//        });
-//
-//    }
+        Cerrar_BD(BaseD);
+    }//GEN-LAST:event_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Pintura_Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Pintura_Interfaz().setVisible(true);
-//            }
-//        });
-//    }
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Pintura_Interfaz().setVisible(true);
+            }
+        });
+    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField calendarioS;
     private javax.swing.JTextField cod_pintura;
     private javax.swing.JTextField desc_pintura;
+    private javax.swing.JButton eliminar;
     private javax.swing.JTextField esti_pintura;
+    private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
