@@ -32,415 +32,75 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         inicio = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        exposicionesfondo = new javax.swing.JPanel();
-        exposicionesletra = new javax.swing.JLabel();
-        articulosfondo = new javax.swing.JPanel();
-        articulosletra = new javax.swing.JLabel();
-        eventosfondo = new javax.swing.JPanel();
-        eventosletra = new javax.swing.JLabel();
-        manualidadesfondo = new javax.swing.JPanel();
-        manualidadesletra = new javax.swing.JLabel();
-        logofondo = new javax.swing.JPanel();
-        salafondo = new javax.swing.JPanel();
-        salaletra = new javax.swing.JLabel();
-        iniciofondo = new javax.swing.JPanel();
-        inicioletra = new javax.swing.JLabel();
+        logotipo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+
+        jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inicio.setBackground(new java.awt.Color(215, 205, 176));
-        inicio.setPreferredSize(new java.awt.Dimension(900, 700));
+        inicio.setPreferredSize(new java.awt.Dimension(500, 700));
         inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane2.setFont(new java.awt.Font("Zapfino", 1, 18)); // NOI18N
-
-        jTextArea1.setBackground(new java.awt.Color(178, 138, 89));
-        jTextArea1.setColumns(10);
-        jTextArea1.setFont(new java.awt.Font("Heiti SC", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jTextArea1.setTabSize(6);
-        jTextArea1.setText("Contacto: \n0981049052 -\n0985048835\nDireccion:\nMariscal Sucre \n1527\ny Coronel \nTálbot Cuenca, \nEcuador");
-        jTextArea1.setAutoscrolls(false);
-        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextArea1.setMinimumSize(new java.awt.Dimension(100, 64));
-        jScrollPane2.setViewportView(jTextArea1);
-
-        inicio.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, -1, 200));
-
-        jScrollPane3.setHorizontalScrollBar(null);
-
-        jTextArea2.setBackground(new java.awt.Color(178, 138, 89));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Heiti SC", 0, 13)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Este museo, como su nombre lo indica está dedicado a la \nexhibición de obras de arte moderno,\ncon exhibiciones temporales de las obras de los más importantes \nartistas,tanto nacionales como extranjeros, además de las exposiciones \npermanentes de la colección de la reserva patrimonial del Museo, \naquí se exhiben también las obras de la Bienal Internacional de Pintura,\npues es su sede.También se puede encontrar una diversidad de actividades \nculturales dirigidas a niños,\n jóvenes y adultos mayores.");
-        jScrollPane3.setViewportView(jTextArea2);
-
-        inicio.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 490, 160));
 
         jLabel1.setFont(new java.awt.Font("Palatino", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("MUSEO MODERNO DE CUENCA");
-        inicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 590, 70));
+        inicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 590, 70));
 
-        exposicionesfondo.setBackground(new java.awt.Color(178, 138, 89));
-        exposicionesfondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exposicionesfondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exposicionesfondoMouseEntered(evt);
-            }
-        });
+        logotipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Logotipo.png"))); // NOI18N
+        logotipo.setText("jLabel2");
+        inicio.add(logotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 250, 240));
 
-        exposicionesletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exposicionesletra.setText("EXPOSICIONES");
-        exposicionesletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exposicionesletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exposicionesletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                exposicionesletraMouseExited(evt);
-            }
-        });
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Fondo.jpeg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        inicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 460));
 
-        javax.swing.GroupLayout exposicionesfondoLayout = new javax.swing.GroupLayout(exposicionesfondo);
-        exposicionesfondo.setLayout(exposicionesfondoLayout);
-        exposicionesfondoLayout.setHorizontalGroup(
-            exposicionesfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exposicionesfondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exposicionesletra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        exposicionesfondoLayout.setVerticalGroup(
-            exposicionesfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exposicionesfondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exposicionesletra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 460));
 
-        inicio.add(exposicionesfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 100, 80));
+        jMenu1.setText("USUARIOS");
+        jMenuBar1.add(jMenu1);
 
-        articulosfondo.setBackground(new java.awt.Color(178, 138, 89));
-        articulosfondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        articulosfondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                articulosfondoMouseEntered(evt);
-            }
-        });
+        jMenu2.setText("ARTICULOS");
+        jMenuBar1.add(jMenu2);
 
-        articulosletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        articulosletra.setText("ARTICULOS");
-        articulosletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        articulosletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                articulosletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                articulosletraMouseExited(evt);
-            }
-        });
+        jMenu3.setText("PINTURA");
+        jMenuBar1.add(jMenu3);
 
-        javax.swing.GroupLayout articulosfondoLayout = new javax.swing.GroupLayout(articulosfondo);
-        articulosfondo.setLayout(articulosfondoLayout);
-        articulosfondoLayout.setHorizontalGroup(
-            articulosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-            .addGroup(articulosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(articulosfondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(articulosletra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        articulosfondoLayout.setVerticalGroup(
-            articulosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-            .addGroup(articulosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(articulosfondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(articulosletra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jMenu4.setText("ESCULTURAS");
+        jMenuBar1.add(jMenu4);
 
-        inicio.add(articulosfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 100, -1));
+        jMenu5.setText("SALAS");
+        jMenuBar1.add(jMenu5);
 
-        eventosfondo.setBackground(new java.awt.Color(178, 138, 89));
-        eventosfondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        eventosfondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eventosfondoMouseEntered(evt);
-            }
-        });
+        jMenu6.setText("EVENTOS");
+        jMenuBar1.add(jMenu6);
 
-        eventosletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eventosletra.setText("EVENTOS");
-        eventosletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        eventosletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eventosletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                eventosletraMouseExited(evt);
-            }
-        });
+        jMenu7.setText("BOLETO");
+        jMenuBar1.add(jMenu7);
 
-        javax.swing.GroupLayout eventosfondoLayout = new javax.swing.GroupLayout(eventosfondo);
-        eventosfondo.setLayout(eventosfondoLayout);
-        eventosfondoLayout.setHorizontalGroup(
-            eventosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-            .addGroup(eventosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(eventosfondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(eventosletra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        eventosfondoLayout.setVerticalGroup(
-            eventosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-            .addGroup(eventosfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(eventosfondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(eventosletra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jMenu8.setText("ADMINISTRADORES");
+        jMenuBar1.add(jMenu8);
 
-        inicio.add(eventosfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
-
-        manualidadesfondo.setBackground(new java.awt.Color(178, 138, 89));
-        manualidadesfondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manualidadesfondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                manualidadesfondoMouseEntered(evt);
-            }
-        });
-
-        manualidadesletra.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
-        manualidadesletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manualidadesletra.setText("MANUALIDADES");
-        manualidadesletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manualidadesletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                manualidadesletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                manualidadesletraMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout manualidadesfondoLayout = new javax.swing.GroupLayout(manualidadesfondo);
-        manualidadesfondo.setLayout(manualidadesfondoLayout);
-        manualidadesfondoLayout.setHorizontalGroup(
-            manualidadesfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manualidadesfondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(manualidadesletra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        manualidadesfondoLayout.setVerticalGroup(
-            manualidadesfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manualidadesfondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(manualidadesletra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        inicio.add(manualidadesfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 100, 80));
-
-        logofondo.setBackground(new java.awt.Color(178, 138, 89));
-        logofondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logofondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logofondoMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout logofondoLayout = new javax.swing.GroupLayout(logofondo);
-        logofondo.setLayout(logofondoLayout);
-        logofondoLayout.setHorizontalGroup(
-            logofondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        logofondoLayout.setVerticalGroup(
-            logofondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-
-        inicio.add(logofondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 80));
-
-        salafondo.setBackground(new java.awt.Color(178, 138, 89));
-        salafondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salafondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salafondoMouseEntered(evt);
-            }
-        });
-
-        salaletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        salaletra.setText("SALAS");
-        salaletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salaletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salaletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                salaletraMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout salafondoLayout = new javax.swing.GroupLayout(salafondo);
-        salafondo.setLayout(salafondoLayout);
-        salafondoLayout.setHorizontalGroup(
-            salafondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salafondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(salaletra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        salafondoLayout.setVerticalGroup(
-            salafondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salafondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(salaletra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        inicio.add(salafondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 100, 80));
-
-        iniciofondo.setBackground(new java.awt.Color(178, 138, 89));
-        iniciofondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iniciofondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iniciofondoMouseEntered(evt);
-            }
-        });
-
-        inicioletra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inicioletra.setText("INICIO");
-        inicioletra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        inicioletra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                inicioletraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                inicioletraMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout iniciofondoLayout = new javax.swing.GroupLayout(iniciofondo);
-        iniciofondo.setLayout(iniciofondoLayout);
-        iniciofondoLayout.setHorizontalGroup(
-            iniciofondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicioletra, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        iniciofondoLayout.setVerticalGroup(
-            iniciofondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicioletra, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-        );
-
-        inicio.add(iniciofondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 100, 80));
-
-        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exposicionesfondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exposicionesfondoMouseEntered
-
-    }//GEN-LAST:event_exposicionesfondoMouseEntered
-
-    private void exposicionesletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exposicionesletraMouseExited
-        exposicionesletra.setForeground(black);
-        exposicionesfondo.setBackground(new Color(178,138,89));
-    }//GEN-LAST:event_exposicionesletraMouseExited
-
-    private void exposicionesletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exposicionesletraMouseEntered
-
-        exposicionesletra.setForeground(new Color(215,205,176));
-        
-         exposicionesfondo.setBackground( black);
-    }//GEN-LAST:event_exposicionesletraMouseEntered
-
-    private void articulosletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articulosletraMouseEntered
-articulosletra.setForeground(new Color(215,205,176));
-        
-         articulosfondo.setBackground( black);
-    }//GEN-LAST:event_articulosletraMouseEntered
-
-    private void articulosletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articulosletraMouseExited
-articulosletra.setForeground(black);
-        articulosfondo.setBackground(new Color(178,138,89));    }//GEN-LAST:event_articulosletraMouseExited
-
-    private void articulosfondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articulosfondoMouseEntered
-
- 
-    }//GEN-LAST:event_articulosfondoMouseEntered
-
-    private void eventosletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosletraMouseEntered
-
-eventosletra.setForeground(new Color(215,205,176));
-        
-         eventosfondo.setBackground( black);
-    }//GEN-LAST:event_eventosletraMouseEntered
-
-    private void eventosletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosletraMouseExited
-eventosletra.setForeground(black);
-        eventosfondo.setBackground(new Color(178,138,89)); 
-    }//GEN-LAST:event_eventosletraMouseExited
-
-    private void eventosfondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosfondoMouseEntered
- 
-    }//GEN-LAST:event_eventosfondoMouseEntered
-
-    private void manualidadesletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualidadesletraMouseEntered
- manualidadesletra.setForeground(new Color(215,205,176));
-        
-         manualidadesfondo.setBackground( black);    }//GEN-LAST:event_manualidadesletraMouseEntered
-
-    private void manualidadesletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualidadesletraMouseExited
-manualidadesletra.setForeground(black);
-        manualidadesfondo.setBackground(new Color(178,138,89));     }//GEN-LAST:event_manualidadesletraMouseExited
-
-    private void manualidadesfondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualidadesfondoMouseEntered
-
-    }//GEN-LAST:event_manualidadesfondoMouseEntered
-
-    private void logofondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logofondoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logofondoMouseEntered
-
-    private void salaletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaletraMouseEntered
-salaletra.setForeground(new Color(215,205,176));
-         salafondo.setBackground( black);     }//GEN-LAST:event_salaletraMouseEntered
-
-    private void salaletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salaletraMouseExited
-salaletra.setForeground(black);
-
-         salafondo.setBackground(new Color(178,138,89));     }//GEN-LAST:event_salaletraMouseExited
-
-    private void salafondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salafondoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salafondoMouseEntered
-
-    private void inicioletraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioletraMouseEntered
-inicioletra.setForeground(new Color(215,205,176));
-         iniciofondo.setBackground( black);
-
-    }//GEN-LAST:event_inicioletraMouseEntered
-
-    private void inicioletraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioletraMouseExited
-inicioletra.setForeground(black);
-
-         iniciofondo.setBackground(new Color(178,138,89));     }//GEN-LAST:event_inicioletraMouseExited
-
-    private void iniciofondoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciofondoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iniciofondoMouseEntered
 
     /**
      * @param args the command line arguments
@@ -448,24 +108,20 @@ inicioletra.setForeground(black);
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel articulosfondo;
-    private javax.swing.JLabel articulosletra;
-    private javax.swing.JPanel eventosfondo;
-    private javax.swing.JLabel eventosletra;
-    private javax.swing.JPanel exposicionesfondo;
-    private javax.swing.JLabel exposicionesletra;
     private javax.swing.JPanel inicio;
-    private javax.swing.JPanel iniciofondo;
-    private javax.swing.JLabel inicioletra;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JPanel logofondo;
-    private javax.swing.JPanel manualidadesfondo;
-    private javax.swing.JLabel manualidadesletra;
-    private javax.swing.JPanel salafondo;
-    private javax.swing.JLabel salaletra;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logotipo;
     // End of variables declaration//GEN-END:variables
 }

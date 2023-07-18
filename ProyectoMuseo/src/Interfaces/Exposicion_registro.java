@@ -62,6 +62,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
         jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 174, -1));
         jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 118, 174, -1));
+
+        finicio.setMaxSelectableDate(new java.util.Date(253370786487000L));
+        finicio.setMinSelectableDate(new java.util.Date(-62135747913000L));
         jPanel1.add(finicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 216, -1));
         jPanel1.add(ffinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 217, -1));
 
@@ -125,14 +128,14 @@ cerrarBD(BaseD);
 
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
 ObjectContainer BaseD = Db4o.openFile(direccionBD);  
-cargarDatos(BaseD);
+cargarTabla(BaseD);
 cerrarBD(BaseD);
         
 
 
     }//GEN-LAST:event_MostrarActionPerformed
 
-    public void cargarDatos(ObjectContainer BaseD){
+    public void cargarTabla(ObjectContainer BaseD){
         
         Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);

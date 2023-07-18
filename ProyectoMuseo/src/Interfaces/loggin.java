@@ -21,7 +21,6 @@ public class loggin extends javax.swing.JFrame {
         log = new javax.swing.JLabel();
         nombreempresa = new javax.swing.JLabel();
         city = new javax.swing.JLabel();
-        BOTONLOGO = new javax.swing.JLabel();
         iniciarsesion = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
@@ -42,27 +41,22 @@ public class loggin extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setBackground(new java.awt.Color(0, 0, 0));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         log.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logo.png"))); // NOI18N
+        log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Logotipo.png"))); // NOI18N
         log.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bg.add(log, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 290, -1));
+        bg.add(log, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 250, 230));
 
         nombreempresa.setBackground(new java.awt.Color(0, 0, 0));
         nombreempresa.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
         nombreempresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreempresa.setText("EMPRESA NEW");
-        bg.add(nombreempresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 240, 280, -1));
+        nombreempresa.setText("MUSEO MODERNO DE CUENCA");
+        bg.add(nombreempresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 280, -1));
 
-        city.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/city.png"))); // NOI18N
+        city.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/ImagenMuseo.jpeg"))); // NOI18N
         bg.add(city, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 290, 500));
-
-        BOTONLOGO.setFont(new java.awt.Font("Copperplate", 1, 24)); // NOI18N
-        BOTONLOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/favicon.png"))); // NOI18N
-        BOTONLOGO.setText("LOGO");
-        bg.add(BOTONLOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 50));
 
         iniciarsesion.setFont(new java.awt.Font("Copperplate", 1, 24)); // NOI18N
         iniciarsesion.setText("INICIAR SESION");
@@ -109,7 +103,7 @@ public class loggin extends javax.swing.JFrame {
         });
         bg.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 360, 30));
 
-        entrarbtn.setBackground(new java.awt.Color(0, 134, 190));
+        entrarbtn.setBackground(new java.awt.Color(255, 255, 255));
         entrarbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarbtnMouseClicked(evt);
@@ -122,8 +116,9 @@ public class loggin extends javax.swing.JFrame {
             }
         });
 
+        entrartxt.setBackground(new java.awt.Color(0, 0, 0));
         entrartxt.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
-        entrartxt.setForeground(new java.awt.Color(255, 255, 255));
+        entrartxt.setForeground(new java.awt.Color(0, 0, 0));
         entrartxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         entrartxt.setText("ENTRAR");
         entrartxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -152,7 +147,7 @@ public class loggin extends javax.swing.JFrame {
 
         bg.add(entrarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 130, 50));
 
-        cabecera.setBackground(new java.awt.Color(255, 255, 255));
+        cabecera.setBackground(new java.awt.Color(0, 0, 0));
         cabecera.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 cabeceraMouseDragged(evt);
@@ -164,8 +159,9 @@ public class loggin extends javax.swing.JFrame {
             }
         });
 
-        exitbtn.setBackground(new java.awt.Color(255, 255, 255));
+        exitbtn.setBackground(new java.awt.Color(0, 0, 0));
 
+        exitTxt.setBackground(new java.awt.Color(0, 0, 0));
         exitTxt.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitTxt.setText("X");
@@ -367,7 +363,6 @@ miMenu.setVisible(true);
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BOTONLOGO;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel cabecera;
     private javax.swing.JLabel city;
