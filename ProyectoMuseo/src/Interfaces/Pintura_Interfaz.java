@@ -5,139 +5,28 @@
  */
 package Interfaces;
 
-import clases.Pintura;
 import com.db4o.*;
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author EDU
+ * @author Lenovo
  */
-public class Pintura_modificar extends javax.swing.JFrame {
-
-    String cod_arte_pintura = "";
-    String nombre_pintura = "";
-    Date fecha_creacion_pintura;
-    String descripcion_pintura = "";
-    String tipos_pintura = "";
-    String estilos_pintura = "";
+public class Pintura_Interfaz extends javax.swing.JFrame {
 
     /**
-     * Creates new form Exposicion_modificar
+     * Creates new form Pintura_Interfaz
      */
-    public Pintura_modificar() {
+    public Pintura_Interfaz() {
         initComponents();
-    }
-
-    public void buscar(ObjectContainer basep) {//cargardatos
-
-        Modificarjb.setEnabled(false);
-        String IDAux;
-        IDAux = cod_pintura.getText();
-
-        Pintura_Interfaz EAux = new Pintura_Interfaz();
-
-        if (cod_pintura.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(null, "Ingrese un ID");
-        } else {
-
-            if (EAux.verificar(basep, IDAux) == 0) {
-
-                JOptionPane.showMessageDialog(null, "La pintura no existe en la base de datos");
-                LimpiarCamposdeTexto();
-
-            } else {
-
-                Pintura Ebuscar = new Pintura(null, null, IDAux, null, null, null);
-
-                ObjectSet result = basep.get(Ebuscar);
-                for (int i = 0; i < result.size(); i++) {
-
-                    Pintura miE = new Pintura();
-
-                    miE = (Pintura) result.get(i);
-
-                    cod_pintura.setText(miE.getCodigo());
-                    tipo_pint.setText(miE.getTipo());
-                    nom_pintura.setText(miE.getNombre());
-                    esti_pintura.setText(miE.getEstilo());
-                    desc_pintura.setText(miE.getDescripcion());
-                    fechaN.setDate((miE.getFecha_creacion()));
-
-                    Modificarjb.setEnabled(true);
-                    //Hacer editable los campos de texto
-                    mostrarDatos(result);
-                    HabilitarCampos_deTexto();
-                    cod_pintura.setEditable(false);
-                }
-
-            }
-
-        }
-    }
-
-    public void LimpiarCamposdeTexto() {
-
-        cod_pintura.setText("");
-        nom_pintura.setText("");
-        tipo_pint.setText("");
-        esti_pintura.setText("");
-        desc_pintura.setText("");
-
-    }
-
-    public void HabilitarCampos_deTexto() {
-        tipo_pint.setEditable(true);
-        esti_pintura.setEditable(true);
-        desc_pintura.setEditable(true);
-
-    }
-
-    public void Modificar_pintura(ObjectContainer basep) {
-
-        Pintura Emodi = new Pintura(null, null, cod_pintura.getText(), null, null, null);
-        ObjectSet result = basep.get(Emodi);
-        Pintura Emodificar = (Pintura) result.next();
-        Emodificar.setNombre(nom_pintura.getText());
-        Emodificar.setTipo(tipo_pint.getText());
-        Emodificar.setEstilo(esti_pintura.getText());
-        Emodificar.setDescripcion(desc_pintura.getText());
-        ;
-        basep.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "La pintura fue modificado exitosamente");
-
-        mostrarDatos(result);
-        LimpiarCamposdeTexto();
-    }
-
-    public static void Cerrar_BD(ObjectContainer basep) {
-
-        basep.close();
-    }
-
-    public void mostrarDatos(ObjectSet result) {
-        DefaultTableModel model = (DefaultTableModel) jtableregistro.getModel();
-        model.setRowCount(0); // Limpiar la tabla
-
-        if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "El usuario no existe");
-        } else {
-            while (result.hasNext()) {
-                clases.Pintura mipintura = (clases.Pintura) result.next();
-                Object[] fila = {
-                    mipintura.getCodigo(),
-                    mipintura.getNombre(),
-                    String.valueOf(mipintura.getFecha_creacion()),
-                    mipintura.getDescripcion(),
-                    mipintura.getTipo(),
-                    mipintura.getEstilo()
-                };
-                model.addRow(fila);
-            }
-        }
     }
 
     /**
@@ -149,6 +38,8 @@ public class Pintura_modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -162,12 +53,25 @@ public class Pintura_modificar extends javax.swing.JFrame {
         tipo_pint = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         esti_pintura = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableregistro = new javax.swing.JTable();
+        eliminar = new javax.swing.JButton();
         fechaN = new com.toedter.calendar.JDateChooser();
-        Modificarjb = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,7 +80,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Modificar Pintura");
+        jLabel1.setText("Ingreso Pintura");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
@@ -223,7 +127,14 @@ public class Pintura_modificar extends javax.swing.JFrame {
 
         esti_pintura.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("BUSCAR");
+        jButton1.setText("INGRESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("MODIFICAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -248,17 +159,10 @@ public class Pintura_modificar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtableregistro);
 
-        Modificarjb.setText("Guardar");
-        Modificarjb.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("ELIMINAR");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarjbActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                eliminarActionPerformed(evt);
             }
         });
 
@@ -267,12 +171,16 @@ public class Pintura_modificar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(381, 381, 381)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,15 +197,11 @@ public class Pintura_modificar extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(fechaN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                                .addComponent(nom_pintura, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(cod_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton2)))
-                                        .addGap(34, 34, 34)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(fechaN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                            .addComponent(cod_pintura, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nom_pintura, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(117, 117, 117)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel6))
@@ -306,16 +210,15 @@ public class Pintura_modificar extends javax.swing.JFrame {
                                             .addComponent(tipo_pint, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                                             .addComponent(esti_pintura)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(381, 381, 381)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                                .addContainerGap()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(222, 222, 222)))
+                        .addGap(0, 135, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addComponent(Modificarjb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,8 +230,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cod_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(tipo_pint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(tipo_pint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nom_pintura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,13 +248,14 @@ public class Pintura_modificar extends javax.swing.JFrame {
                         .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,32 +272,123 @@ public class Pintura_modificar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void desc_pinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc_pinturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_desc_pinturaActionPerformed
+    String cod_arte_pintura = "";
+    String nombre_pintura = "";
+    Date fecha_creacion_pintura;
+    String descripcion_pintura = "";
+    String tipos_pintura = "";
+    String estilos_pintura = "";
 
-    private void ModificarjbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarjbActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
-        Modificar_pintura(BaseD);
-        Cerrar_BD(BaseD);
-        cod_pintura.setEditable(true);
-    }//GEN-LAST:event_ModificarjbActionPerformed
+    public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\Proyecto Final\\guia.yap");
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
-        buscar(BaseD);
-        Cerrar_BD(BaseD);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    public void LimpiarCampos() {
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        Pintura_Interfaz ventaina = new  Pintura_Interfaz();
-        ventaina.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cod_pintura.setText("");
+        nom_pintura.setText("");
+        tipo_pint.setText("");
+        esti_pintura.setText("");
+        desc_pintura.setText("");
+
+    }
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
+        cod_arte_pintura = cod_pintura.getText();
+        nombre_pintura = nom_pintura.getText();
+        fecha_creacion_pintura = fechaN.getDate();
+        descripcion_pintura = desc_pintura.getText();
+        tipos_pintura = tipo_pint.getText();
+        estilos_pintura = esti_pintura.getText();
+
+    }
+
+    public void crearUsuario(ObjectContainer BaseD) {
+        asignarVariables(BaseD);
+
+        if (verificar(BaseD, cod_arte_pintura) == 0) {
+            clases.Pintura miUsuario = new clases.Pintura(estilos_pintura, tipos_pintura, cod_arte_pintura, nombre_pintura, descripcion_pintura, fecha_creacion_pintura);
+
+            BaseD.set(miUsuario);
+            JOptionPane.showMessageDialog(null, "Usuario Creado");
+
+            ObjectSet result = BaseD.queryByExample(new clases.Pintura());
+            mostrarDatos(result);
+            LimpiarCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static int verificar(ObjectContainer BaseD, String cod_arte_pintura) {
+        clases.Pintura buscarUsuario = new clases.Pintura(null, null, cod_arte_pintura, null, null, null);
+        ObjectSet resul = BaseD.queryByExample(buscarUsuario);
+        return resul.size();
+    }
+
+    public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) jtableregistro.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        } else {
+            while (result.hasNext()) {
+                clases.Pintura mipintura = (clases.Pintura) result.next();
+                Object[] fila = {
+                    mipintura.getCodigo(),
+                    mipintura.getNombre(),
+                    String.valueOf(mipintura.getFecha_creacion()),
+                    mipintura.getDescripcion(),
+                    mipintura.getTipo(),
+                    mipintura.getEstilo()
+                };
+                model.addRow(fila);
+            }
+        }
+    }
+
+    public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
+    }
+
+    
 
     /**
      * @param args the command line arguments
      */
+    
+
+
+    private void desc_pinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc_pinturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desc_pinturaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        crearUsuario(BaseD);
+
+        Cerrar_BD(BaseD);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        this.dispose();
+        Pintura_buscar_modificar ventaina = new  Pintura_buscar_modificar();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        this.dispose();
+        Pintura_modificar ventaina = new  Pintura_modificar();
+        ventaina.setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -409,31 +403,29 @@ public class Pintura_modificar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pintura_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pintura_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pintura_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pintura_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pintura_buscar_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pintura_modificar().setVisible(true);
+                new Pintura_Interfaz().setVisible(true);
             }
         });
     }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Modificarjb;
     private javax.swing.JTextField cod_pintura;
     private javax.swing.JTextField desc_pintura;
+    private javax.swing.JButton eliminar;
     private javax.swing.JTextField esti_pintura;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
@@ -446,7 +438,9 @@ public class Pintura_modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jtableregistro;
     private javax.swing.JTextField nom_pintura;
     private javax.swing.JTextField tipo_pint;
