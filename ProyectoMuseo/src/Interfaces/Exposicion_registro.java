@@ -29,12 +29,8 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         codigotxt = new javax.swing.JTextField();
         nombretxt = new javax.swing.JTextField();
-        finicio = new com.toedter.calendar.JDateChooser();
-        ffinal = new com.toedter.calendar.JDateChooser();
         guardarbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         exposiciontbl = new javax.swing.JTable();
@@ -48,34 +44,24 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Codigo:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 74, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 122, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel3.setText("Descripcion:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 175, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 174, -1));
+        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 174, -1));
 
-        jLabel4.setText("Fecha inicio:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        jLabel5.setText("Fecha final:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
-        jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 174, -1));
-        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 118, 174, -1));
-
-        finicio.setMaxSelectableDate(new java.util.Date(253370786487000L));
-        finicio.setMinSelectableDate(new java.util.Date(-62135747913000L));
-        jPanel1.add(finicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 216, -1));
-        jPanel1.add(ffinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 217, -1));
-
+        guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarbtnActionPerformed(evt);
             }
         });
-        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,8 +82,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
 
+        Mostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         Mostrar.setText("Mostrar Datos");
         Mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,13 +93,14 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jPanel1.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
+        btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         btnvolver.setText("Volver");
         btnvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnvolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnvolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
+        jPanel1.add(btnvolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,12 +140,12 @@ cerrarBD(BaseD);
 
     public void cargarTabla(ObjectContainer BaseD){
         
-        Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
     public void mostrarDatos(ObjectSet result) {
-        String matrizExposicion[][] = new String[result.size()][5];
+        String matrizExposicion[][] = new String[result.size()][3];
         if(result.size() == 0){
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
@@ -168,11 +156,9 @@ cerrarBD(BaseD);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            matrizExposicion[i][3] = String.valueOf(miExposicion.getFecha_inicio());
-            matrizExposicion[i][4] = String.valueOf(miExposicion.getFecha_fin());
             
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion", "Fecha inicio", "Fecha final"}));
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
 
@@ -182,8 +168,6 @@ cerrarBD(BaseD);
         cod_exposicion = codigotxt.getText();
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
-        fecha_inicio = finicio.getDate();
-        fecha_fin = ffinal.getDate();
     }
 
     public void limpiarDatos() {
@@ -194,7 +178,7 @@ cerrarBD(BaseD);
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -203,7 +187,7 @@ cerrarBD(BaseD);
     public void crearExposicion(ObjectContainer BaseD) {
 asignarVariables(BaseD);
 if(comprobarExposicion(BaseD , cod_exposicion) == 0){
-    Exposicion Exnuevo = new Exposicion( cod_exposicion,  nombre_exposicion,  descripcion_exposicion,  fecha_inicio,  fecha_fin); 
+    Exposicion Exnuevo = new Exposicion( cod_exposicion,  nombre_exposicion,  descripcion_exposicion ); 
    BaseD.set(Exnuevo);
    JOptionPane.showMessageDialog(null, "Registrado correctamente");
 }else{
@@ -223,14 +207,10 @@ BaseD.close();
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
-    private com.toedter.calendar.JDateChooser ffinal;
-    private com.toedter.calendar.JDateChooser finicio;
     private javax.swing.JButton guardarbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

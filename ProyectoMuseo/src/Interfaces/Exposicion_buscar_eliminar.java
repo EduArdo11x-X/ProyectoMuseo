@@ -116,12 +116,13 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eliminarbtn)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Buscarbtn)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buscarbtn))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -168,21 +169,21 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selección invalida");
         } else {
             if (filtrocmb.getSelectedIndex() == 1) {
-                Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
+                Exposicion Exbuscar = new Exposicion(null, null, null );
                 ObjectSet result = BaseD.get(Exbuscar);
                 mostrarDatos(result);
 
             } else {
                 if (filtrocmb.getSelectedIndex() == 2) {
                     String codigoEx = JOptionPane.showInputDialog("Ingrese el Codigo a consultar");
-                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null, null, null);
+                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null );
                     ObjectSet result = BaseD.get(Exbuscar);
                     mostrarDatos(result);
 
                 } else {
                     if (filtrocmb.getSelectedIndex() == 3) {
                         String nombreEx = JOptionPane.showInputDialog("Ingrese el nombre a consultar");
-                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null, null, null);
+                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null );
                         ObjectSet result = BaseD.get(Exbuscar);
                         mostrarDatos(result);
                     }
@@ -206,10 +207,8 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            matrizExposicion[i][3] = String.valueOf(miExposicion.getFecha_inicio());
-            matrizExposicion[i][4] = String.valueOf(miExposicion.getFecha_fin());
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion", "Fecha inicio", "Fecha final"}));
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
 
@@ -221,7 +220,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un Codigo");
         } else {
             String codigo = codigotxt.getText();
-            Exposicion ExEliminar = new Exposicion(codigo, null, null, null, null);
+            Exposicion ExEliminar = new Exposicion(codigo, null, null );
             ObjectSet result = BaseD.get(ExEliminar);
 
             if (comprobarExposicion(BaseD, codigo) == 0) {
@@ -230,7 +229,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             } else {
                 Exposicion EliminarEx = (Exposicion) result.next();
                 BaseD.delete(EliminarEx);
-                JOptionPane.showMessageDialog(null, "El aula fue eliminada exitosamente");
+                JOptionPane.showMessageDialog(null, "La exposicion fue eliminada exitosamente");
             }
 
         }
@@ -241,7 +240,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
