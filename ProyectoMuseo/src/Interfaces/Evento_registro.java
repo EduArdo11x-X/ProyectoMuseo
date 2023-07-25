@@ -5,6 +5,14 @@
  */
 package Interfaces;
 
+import clases.Evento;
+import clases.Exposicion;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EDU
@@ -17,6 +25,16 @@ public class Evento_registro extends javax.swing.JFrame {
     public Evento_registro() {
         initComponents();
     }
+
+    
+     String id_evento = "";
+     String nombre_evento = "";
+     String descripcion = "";
+     Date fecha_inicio;
+     Date fecha_final;
+     String id_exposicion = "";
+
+          public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +56,11 @@ public class Evento_registro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         codigotxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaevento = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         idextxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descripciontxt = new javax.swing.JTextArea();
         btnguardar = new javax.swing.JButton();
         btncargar = new javax.swing.JButton();
         btnvolver = new javax.swing.JButton();
@@ -59,7 +77,7 @@ public class Evento_registro extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha final:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaevento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,19 +88,29 @@ public class Evento_registro extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaevento);
 
         jLabel6.setText("Id exposicion:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        descripciontxt.setColumns(20);
+        descripciontxt.setRows(5);
+        jScrollPane2.setViewportView(descripciontxt);
 
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         btnguardar.setText("GUARDAR");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         btncargar.setText("MOSTRAR DATOS");
+        btncargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncargarActionPerformed(evt);
+            }
+        });
 
         btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         btnvolver.setText("VOLVER");
@@ -98,28 +126,28 @@ public class Evento_registro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombretxt, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(codigotxt)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(fechaf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fechai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idextxt)))
+                            .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idextxt, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnguardar)
                         .addGap(29, 29, 29)
                         .addComponent(btncargar)
                         .addGap(45, 45, 45)
-                        .addComponent(btnvolver)))
+                        .addComponent(btnvolver))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fechaf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fechai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
@@ -131,21 +159,22 @@ public class Evento_registro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(jLabel6)
+                    .addComponent(idextxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63)
                         .addComponent(jLabel3)
-                        .addGap(77, 77, 77))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idextxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                        .addGap(83, 83, 83)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(fechai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,32 +211,101 @@ public class Evento_registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   public void cargarTabla(ObjectContainer BaseD){
-       
-   }
-   
-   public void mostrarDatos(ObjectContainer BaseD){
-       
-   }
-   
-   public void asignarVariables(ObjectContainer BaseD){
-       
-   } 
-   public void limpiarDatos(){
-       
-   }
-   
-   public static int comprobarEvento(ObjectContainer BaseD, String codigo){
-       
-   }
-   
-   public void crearExposicion(ObjectContainer BaseD){
-       
-   }
-   
-   public static void cerrarBD(ObjectContainer BaseD){
-       
-   }
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+ObjectContainer BaseD = Db4o.openFile(direccionBD);
+
+        crearEvento(BaseD);
+        cerrarBD(BaseD);
+
+
+
+
+    }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
+ObjectContainer BaseD = Db4o.openFile(direccionBD);
+
+        cargarTabla(BaseD);
+        cerrarBD(BaseD);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncargarActionPerformed
+
+   public void asignarVariables(ObjectContainer BaseD) {
+          id_evento = codigotxt.getText();
+      nombre_evento = nombretxt.getText();
+      
+      descripcion = descripciontxt.getText();
+      
+      fecha_inicio = fechai.getDate();
+      
+      fecha_final = fechaf.getDate();
+      
+      id_exposicion = idextxt.getText();
+    }
+
+    public void limpiarDatos() {
+        codigotxt.setText("");
+        nombretxt.setText("");
+        descripciontxt.setText("");
+idextxt.setText("");
+    }
+
+    public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
+        Evento Evbuscar = new Evento(codigo, null, null, null, null, null);
+        ObjectSet result = BaseD.get(Evbuscar);
+        return result.size();
+
+    }
+
+    public void crearEvento(ObjectContainer BaseD) {
+asignarVariables(BaseD);
+if(comprobarEvento(BaseD , id_evento) == 0){
+    if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) == 0){
+    Evento Evnuevo = new Evento( id_evento,  nombre_evento,  descripcion , fecha_inicio, fecha_final, id_exposicion ); 
+   BaseD.set(Evnuevo);
+   JOptionPane.showMessageDialog(null, "Registrado correctamente");
+    }else{
+        JOptionPane.showMessageDialog(null, "Exposicion no existe");
+    }
+}else{
+       JOptionPane.showMessageDialog(null, "Evento ya existe");
+
+}
+    }
+    
+      public void cargarTabla(ObjectContainer BaseD){
+        
+        Evento Evbuscar = new Evento(null, null, null, null, null, null);
+        ObjectSet result = BaseD.get(Evbuscar);
+        mostrarDatos(result);
+    }
+    public void mostrarDatos(ObjectSet result) {
+        String matrizEvento[][] = new String[result.size()][6];
+        if(result.size() == 0){
+            JOptionPane.showMessageDialog(null, "La exposicion no existe");
+        }
+        
+        for (int i = 0; i < result.size(); i++) {
+            Evento miEvento = new Evento();
+            miEvento = (Evento) result.get(i);
+            matrizEvento[i][0] = miEvento.getId_evento();
+            matrizEvento[i][1] = miEvento.getId_evento();
+            matrizEvento[i][2] = miEvento.getNombre_evento();
+            matrizEvento[i][3] = miEvento.getDescripcion();
+            matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());
+            matrizEvento[i][5] = String.valueOf(miEvento.getFecha_final());
+
+            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo","Id Exposicion", "Nombre", "Descripcion","Fehca inicio", "Fecha Final"}));
+
+        }
+
+    }
+
+    public static void cerrarBD(ObjectContainer BaseD) {
+BaseD.close();
+    }
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -246,6 +344,7 @@ public class Evento_registro extends javax.swing.JFrame {
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnvolver;
     private javax.swing.JTextField codigotxt;
+    private javax.swing.JTextArea descripciontxt;
     private com.toedter.calendar.JDateChooser fechaf;
     private com.toedter.calendar.JDateChooser fechai;
     private javax.swing.JTextField idextxt;
@@ -258,8 +357,7 @@ public class Evento_registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nombretxt;
+    private javax.swing.JTable tablaevento;
     // End of variables declaration//GEN-END:variables
 }

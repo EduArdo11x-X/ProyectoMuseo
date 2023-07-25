@@ -5,7 +5,14 @@
  */
 package Interfaces;
 
+import static Interfaces.Exposicion_registro.cerrarBD;
+import static Interfaces.Exposicion_registro.direccionBD;
+import clases.Evento;
 import clases.Exposicion;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +27,14 @@ public class Evento_modificar extends javax.swing.JFrame {
     public Evento_modificar() {
         initComponents();
     }
+  String id_evento = "";
+     String nombre_evento = "";
+     String descripcion = "";
+     Date fecha_inicio;
+     Date fecha_final;
+     String id_exposicion = "";
 
+          public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,11 +55,11 @@ public class Evento_modificar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         codigotxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaevento = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         idextxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descripciontxt = new javax.swing.JTextArea();
         btnguardar = new javax.swing.JButton();
         btnmostrar = new javax.swing.JButton();
         btnvolver = new javax.swing.JButton();
@@ -63,7 +77,7 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha final:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaevento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,19 +88,29 @@ public class Evento_modificar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaevento);
 
         jLabel6.setText("Id exposicion:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        descripciontxt.setColumns(20);
+        descripciontxt.setRows(5);
+        jScrollPane2.setViewportView(descripciontxt);
 
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         btnguardar.setText("GUARDAR");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         btnmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         btnmostrar.setText("MOSTRAR DATOS");
+        btnmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmostrarActionPerformed(evt);
+            }
+        });
 
         btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         btnvolver.setText("VOLVER");
@@ -191,29 +215,47 @@ public class Evento_modificar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+     
+        
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);  
+modificarEvento(BaseD);
+cerrarBD(BaseD);
+    }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
+ ObjectContainer BaseD = Db4o.openFile(direccionBD);  
+cargarTabla(BaseD);
+cerrarBD(BaseD);
+    }//GEN-LAST:event_btnmostrarActionPerformed
+
     
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
-        String CodigoEx;
-        CodigoEx = codigotxt.getText();
+        btnguardar.setEnabled(false);
+        String CodigoEv;
+        CodigoEv = codigotxt.getText();
         if (codigotxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
-            if (comprobarExposicion(BaseD, CodigoEx) == 0) {
-                JOptionPane.showMessageDialog(null, "La Exposicion no existe en la base de datos");
+            if (comprobarEvento(BaseD, CodigoEv) == 0) {
+                JOptionPane.showMessageDialog(null, "El evento no existe en la base de datos");
 
             } else {
-                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null );
-                ObjectSet result = BaseD.get(Exbuscar);
+                Evento Evbuscar = new Evento(CodigoEv, null, null , null, null, null);
+                ObjectSet result = BaseD.get(Evbuscar);
                 for (int i = 0; i < result.size(); i++) {
-                    Exposicion Miexposicion = new Exposicion();
-                    Miexposicion = (Exposicion) result.get(i);
+                    Evento Mievento = new Evento();
+                    Mievento = (Evento) result.get(i);
 
-                    nombretxt.setText(Miexposicion.getNombre_exposicion());
-                    descripciontxt.setText(Miexposicion.getDescripcion_exposicion());
+                    nombretxt.setText(Mievento.getNombre_evento());
+                    descripciontxt.setText(Mievento.getDescripcion());
+                    idextxt.setText(Mievento.getId_exposicion());
+                    fechai.setDate(Mievento.getFecha_inicio());
+                    fechaf.setDate(Mievento.getFecha_final());
 
 //                    if(ValidarCampos(Base D)){
-//                    guardarbtn.setEnabled(true);
+                 btnguardar.setEnabled(true);
 //                    
 //                }
                     codigotxt.setEnabled(false);
@@ -224,23 +266,26 @@ public class Evento_modificar extends javax.swing.JFrame {
 
     }
 
-    public void modificarExposicion(ObjectContainer BaseD) {
+    public void modificarEvento(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        Exposicion Emodi = new Exposicion(cod_exposicion, null, null );
-        ObjectSet result = BaseD.get(Emodi);
-        Exposicion Emodificar = (Exposicion) result.next();
+        Evento Evmodi = new Evento(id_evento, null, null , null, null, null);
+        ObjectSet result = BaseD.get(Evmodi);
+        Evento Evmodificar = (Evento) result.next();
 
-        Emodificar.setNombre_exposicion(nombre_exposicion);
-        Emodificar.setDescripcion_exposicion(descripcion_exposicion);
+        Evmodificar.setNombre_evento(nombre_evento);
+        Evmodificar.setDescripcion(descripcion);
+        Evmodificar.setId_exposicion(id_exposicion);
+        Evmodificar.setFecha_inicio(fecha_inicio);
+        Evmodificar.setFecha_final(fecha_final);
 
-        BaseD.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "La exposicion fue modificado exitosamente");
+        BaseD.set(Evmodificar);
+        JOptionPane.showMessageDialog(null, "El evento fue modificado exitosamente");
         limpiarDatos();
     }
 
-    public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null );
-        ObjectSet result = BaseD.get(Exbuscar);
+   public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
+        Evento Evbuscar = new Evento(codigo, null, null, null, null, null);
+        ObjectSet result = BaseD.get(Evbuscar);
         return result.size();
 
     }
@@ -249,46 +294,56 @@ public class Evento_modificar extends javax.swing.JFrame {
         BaseD.close();
     }
 
-    public void asignarVariables(ObjectContainer BaseD) {
-        cod_exposicion = codigotxt.getText();
-        nombre_exposicion = nombretxt.getText();
-        descripcion_exposicion = descripciontxt.getText();
+     public void asignarVariables(ObjectContainer BaseD) {
+          id_evento = codigotxt.getText();
+      nombre_evento = nombretxt.getText();
+      
+      descripcion = descripciontxt.getText();
+      
+      fecha_inicio = fechai.getDate();
+      
+      fecha_final = fechaf.getDate();
+      
+      id_exposicion = idextxt.getText();
     }
 
     public void limpiarDatos() {
         codigotxt.setText("");
         nombretxt.setText("");
         descripciontxt.setText("");
-
+idextxt.setText("");
     }
     
     //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA
     
      public void cargarTabla(ObjectContainer BaseD){
         
-        Exposicion Exbuscar = new Exposicion(null, null, null);
-        ObjectSet result = BaseD.get(Exbuscar);
+        Evento Evbuscar = new Evento(null, null, null, null, null, null);
+        ObjectSet result = BaseD.get(Evbuscar);
         mostrarDatos(result);
     }
     public void mostrarDatos(ObjectSet result) {
-        String matrizExposicion[][] = new String[result.size()][3];
+        String matrizEvento[][] = new String[result.size()][6];
         if(result.size() == 0){
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
         
         for (int i = 0; i < result.size(); i++) {
-            Exposicion miExposicion = new Exposicion();
-            miExposicion = (Exposicion) result.get(i);
-            matrizExposicion[i][0] = miExposicion.getCod_exposicion();
-            matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
-            matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            
+            Evento miEvento = new Evento();
+            miEvento = (Evento) result.get(i);
+            matrizEvento[i][0] = miEvento.getId_evento();
+            matrizEvento[i][1] = miEvento.getId_evento();
+            matrizEvento[i][2] = miEvento.getNombre_evento();
+            matrizEvento[i][3] = miEvento.getDescripcion();
+            matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());
+            matrizEvento[i][5] = String.valueOf(miEvento.getFecha_final());
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
+            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo","Id Exposicion", "Nombre", "Descripcion","Fehca inicio", "Fecha Final"}));
 
         }
 
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -327,6 +382,7 @@ public class Evento_modificar extends javax.swing.JFrame {
     private javax.swing.JButton btnmostrar;
     private javax.swing.JButton btnvolver;
     private javax.swing.JTextField codigotxt;
+    private javax.swing.JTextArea descripciontxt;
     private com.toedter.calendar.JDateChooser fechaf;
     private com.toedter.calendar.JDateChooser fechai;
     private javax.swing.JTextField idextxt;
@@ -339,8 +395,7 @@ public class Evento_modificar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nombretxt;
+    private javax.swing.JTable tablaevento;
     // End of variables declaration//GEN-END:variables
 }
