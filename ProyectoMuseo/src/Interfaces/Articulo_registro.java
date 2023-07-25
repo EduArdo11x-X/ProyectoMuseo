@@ -5,6 +5,15 @@
  */
 package Interfaces;
 
+import static Interfaces.Exposicion_registro.cerrarBD;
+import static Interfaces.Usuario_registro.direccionBD;
+import clases.Articulo;
+import clases.Usuario;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EDU
@@ -18,6 +27,91 @@ public class Articulo_registro extends javax.swing.JFrame {
         initComponents();
     }
 
+    String cod_articulo = "";
+    String nombre = "";
+    String descripcion = "";
+    int existencia = 0;
+    int exis_max = 0;
+    int exis_min = 0;
+    double precio = 0;
+
+    public static String direccionBD = ("C:\\Users\\usuario\\OneDrive\\Documentos\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yapi");
+
+    public void cargarDatos(ObjectContainer BaseD) {
+
+        Articulo Exbuscar = new Articulo(null, null, null, 0, 0, 0, 0);
+        ObjectSet result = BaseD.get(Exbuscar);
+        mostrarDatos(result);
+    }
+
+    public void mostrarDatos(ObjectSet result) {
+        String matrizArticulo[][] = new String[result.size()][7];
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El articulo no existe");
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Articulo miArticulo = new Articulo();
+            miArticulo = (Articulo) result.get(i);
+            matrizArticulo[i][0] = miArticulo.getCod_articulo();
+            matrizArticulo[i][1] = miArticulo.getNombre();
+            matrizArticulo[i][2] = miArticulo.getDescripcion();
+            matrizArticulo[i][3] = String.valueOf(miArticulo.getExistencia());
+            matrizArticulo[i][4] = String.valueOf(miArticulo.getExis_max());
+            matrizArticulo[i][5] = String.valueOf(miArticulo.getExis_min());
+            matrizArticulo[i][6] = String.valueOf(miArticulo.getPrecio());
+
+            tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(matrizArticulo, new String[]{"CODIGO", "NOMBRE", "DESCRIPCION", "EXITENCIA", "EXISTENCIA MAXIMA", "EXITENCIA MINIMA", "PRECIO"}));
+
+        }
+
+    }
+
+    public void asignarVariables(ObjectContainer BaseD) {
+        cod_articulo = txtCodigo.getText();
+        nombre = txtNombre.getText();
+        descripcion = txtDescripcion.getText();
+        existencia = Integer.parseInt(txtExitencia.getText());
+        exis_max = Integer.parseInt(txtExis_Max.getText());
+        exis_min = Integer.parseInt(txtExi_min.getText());
+        precio = Double.parseDouble(txtPr3ecio.getText());
+
+    }
+
+    public void limpiarDatos() {
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtDescripcion.setText("");
+        txtExitencia.setText("");
+        txtExis_Max.setText("");
+        txtExi_min.setText("");
+        txtPr3ecio.setText("");
+    }
+
+    public static int comprobarArticulo(ObjectContainer BaseD, String cod_articulo) {
+        Articulo Exbuscar = new Articulo(cod_articulo, null, null, 0, 0, 0, 0);
+        ObjectSet result = BaseD.get(Exbuscar);
+        return result.size();
+
+    }
+
+    public void crearArticulo(ObjectContainer BaseD) {
+        asignarVariables(BaseD);
+        if (comprobarArticulo(BaseD, cod_articulo) == 0) {
+            Articulo Exnuevo = new Articulo(cod_articulo, nombre, descripcion, existencia, exis_max, exis_min, precio);
+            BaseD.set(Exnuevo);
+            JOptionPane.showMessageDialog(null, "Registrado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Artticulo ya registrado");
+
+        }
+    }
+
+    public static void Cerrar_BD(ObjectContainer BaseD) {
+
+        BaseD.close();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +121,212 @@ public class Articulo_registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDescripcion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtExitencia = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtExis_Max = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtExi_min = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtPr3ecio = new javax.swing.JTextField();
+        botonGuar = new javax.swing.JButton();
+        botonMostrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaArticulos = new javax.swing.JTable();
+        botonRegresar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("REGISTRO ARTICULOS ");
+
+        jLabel2.setText("Codigo:");
+
+        jLabel3.setText("Nombre:");
+
+        jLabel4.setText("Descripcion:");
+
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Existencia:");
+
+        jLabel6.setText("Existencia Maxima:");
+
+        jLabel7.setText("Existencia Minima:");
+
+        jLabel8.setText("Precio:");
+
+        botonGuar.setText("Guardar");
+        botonGuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuarActionPerformed(evt);
+            }
+        });
+
+        botonMostrar.setText("Cargar Datos");
+        botonMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarActionPerformed(evt);
+            }
+        });
+
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaArticulos);
+
+        botonRegresar.setText("Regresar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPr3ecio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtExi_min))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtExis_Max))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtExitencia))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtNombre))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtCodigo))
+                                .addComponent(jLabel4)
+                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botonGuar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonMostrar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(414, 414, 414)
+                        .addComponent(botonRegresar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtExitencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))
+                            .addComponent(txtExis_Max, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtExi_min, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtPr3ecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonGuar)
+                            .addComponent(botonMostrar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(botonRegresar)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void botonGuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuarActionPerformed
+        // TODO add your handling code here:
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        crearArticulo(BaseD);
+        cerrarBD(BaseD);
+    }//GEN-LAST:event_botonGuarActionPerformed
+
+    private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
+        // TODO add your handling code here:
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        cargarDatos(BaseD);
+        cerrarBD(BaseD);
+    }//GEN-LAST:event_botonMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +364,26 @@ public class Articulo_registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonGuar;
+    private javax.swing.JButton botonMostrar;
+    private javax.swing.JButton botonRegresar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaArticulos;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtExi_min;
+    private javax.swing.JTextField txtExis_Max;
+    private javax.swing.JTextField txtExitencia;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPr3ecio;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,12 +43,8 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         codigotxt = new javax.swing.JTextField();
         nombretxt = new javax.swing.JTextField();
-        finicio = new com.toedter.calendar.JDateChooser();
-        ffinal = new com.toedter.calendar.JDateChooser();
         guardarbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         exposiciontbl = new javax.swing.JTable();
@@ -56,6 +52,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         descripciontxt = new javax.swing.JTextArea();
         mostrarTabla = new javax.swing.JButton();
         buscarExposicion = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,24 +66,17 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
         jLabel3.setText("Descripcion:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 175, -1, -1));
-
-        jLabel4.setText("Fecha inicio:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        jLabel5.setText("Fecha final:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
         jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 174, -1));
         jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 118, 174, -1));
-        jPanel1.add(finicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 216, -1));
-        jPanel1.add(ffinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 217, -1));
 
+        guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarbtnActionPerformed(evt);
             }
         });
-        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,7 +91,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(exposiciontbl);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 380, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 380, 340));
 
         descripciontxt.setColumns(20);
         descripciontxt.setRows(5);
@@ -109,13 +99,14 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
+        mostrarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTabla.setText("Mostrar Datos");
         mostrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarTablaActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
 
         buscarExposicion.setText("Cargar Datos");
         buscarExposicion.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +115,15 @@ public class Exposicion_modificar extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buscarExposicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,6 +158,15 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         cerrarBD(BaseD);
     }//GEN-LAST:event_buscarExposicionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+  this.dispose();
+        menuPrincipal ventaina = new  menuPrincipal();
+        ventaina.setVisible(true);
+
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
         String CodigoEx;
@@ -169,7 +178,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "La Exposicion no existe en la base de datos");
 
             } else {
-                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null, null, null);
+                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null );
                 ObjectSet result = BaseD.get(Exbuscar);
                 for (int i = 0; i < result.size(); i++) {
                     Exposicion Miexposicion = new Exposicion();
@@ -177,8 +186,6 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
                     nombretxt.setText(Miexposicion.getNombre_exposicion());
                     descripciontxt.setText(Miexposicion.getDescripcion_exposicion());
-                    finicio.setDate(Miexposicion.getFecha_inicio());
-                    ffinal.setDate(Miexposicion.getFecha_fin());
 
 //                    if(ValidarCampos(Base D)){
 //                    guardarbtn.setEnabled(true);
@@ -194,22 +201,20 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
     public void modificarExposicion(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        Exposicion Emodi = new Exposicion(cod_exposicion, null, null, null, null);
+        Exposicion Emodi = new Exposicion(cod_exposicion, null, null );
         ObjectSet result = BaseD.get(Emodi);
         Exposicion Emodificar = (Exposicion) result.next();
 
         Emodificar.setNombre_exposicion(nombre_exposicion);
         Emodificar.setDescripcion_exposicion(descripcion_exposicion);
-        Emodificar.setFecha_inicio(fecha_inicio);
-        Emodificar.setFecha_fin(fecha_fin);
 
         BaseD.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "El estudiante fue modificado exitosamente");
+        JOptionPane.showMessageDialog(null, "La exposicion fue modificado exitosamente");
         limpiarDatos();
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null );
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -223,8 +228,6 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         cod_exposicion = codigotxt.getText();
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
-        fecha_inicio = finicio.getDate();
-        fecha_fin = ffinal.getDate();
     }
 
     public void limpiarDatos() {
@@ -238,12 +241,12 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     
      public void cargarTabla(ObjectContainer BaseD){
         
-        Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
     public void mostrarDatos(ObjectSet result) {
-        String matrizExposicion[][] = new String[result.size()][5];
+        String matrizExposicion[][] = new String[result.size()][3];
         if(result.size() == 0){
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
@@ -254,62 +257,26 @@ public class Exposicion_modificar extends javax.swing.JFrame {
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            matrizExposicion[i][3] = String.valueOf(miExposicion.getFecha_inicio());
-            matrizExposicion[i][4] = String.valueOf(miExposicion.getFecha_fin());
             
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion", "Fecha inicio", "Fecha final"}));
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
 
     }
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Exposicion_modificar().setVisible(true);
-            }
-        });
-    }
-
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarExposicion;
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
-    private com.toedter.calendar.JDateChooser ffinal;
-    private com.toedter.calendar.JDateChooser finicio;
     private javax.swing.JButton guardarbtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

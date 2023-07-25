@@ -19,12 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
 
-  
     public Exposicion_buscar_eliminar() {
         initComponents();
     }
-    
-     public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+
+    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,6 +38,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         exposiciontbl = new javax.swing.JTable();
         Buscarbtn = new javax.swing.JButton();
+        btnvolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,40 +75,54 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        btnvolver.setText("Volver");
+        btnvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Buscarbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(eliminarbtn)))
-                .addGap(21, 21, 21))
+                        .addComponent(btnvolver)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Buscarbtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(eliminarbtn)))
+                        .addGap(21, 21, 21))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addComponent(btnvolver)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eliminarbtn)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Buscarbtn)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buscarbtn))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -131,38 +145,45 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-ObjectContainer BaseD = Db4o.openFile(direccionBD);  
-eliminarExposicion(BaseD);
-cerrarBD(BaseD);        // TODO add your handling code here:
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        eliminarExposicion(BaseD);
+        cerrarBD(BaseD);        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void BuscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarbtnActionPerformed
 
-ObjectContainer BaseD = Db4o.openFile(direccionBD);  
-filtro(BaseD);
-cerrarBD(BaseD);   
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        filtro(BaseD);
+        cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed
+
+    private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
+
+        this.dispose();
+        menuPrincipal ventaina = new menuPrincipal();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_btnvolverActionPerformed
 
     public void filtro(ObjectContainer BaseD) {
         if (filtrocmb.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Selección invalida");
         } else {
             if (filtrocmb.getSelectedIndex() == 1) {
-                Exposicion Exbuscar = new Exposicion(null, null, null, null, null);
+                Exposicion Exbuscar = new Exposicion(null, null, null );
                 ObjectSet result = BaseD.get(Exbuscar);
                 mostrarDatos(result);
 
             } else {
                 if (filtrocmb.getSelectedIndex() == 2) {
                     String codigoEx = JOptionPane.showInputDialog("Ingrese el Codigo a consultar");
-                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null, null, null);
+                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null );
                     ObjectSet result = BaseD.get(Exbuscar);
                     mostrarDatos(result);
 
                 } else {
                     if (filtrocmb.getSelectedIndex() == 3) {
                         String nombreEx = JOptionPane.showInputDialog("Ingrese el nombre a consultar");
-                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null, null, null);
+                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null );
                         ObjectSet result = BaseD.get(Exbuscar);
                         mostrarDatos(result);
                     }
@@ -186,10 +207,8 @@ cerrarBD(BaseD);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            matrizExposicion[i][3] = String.valueOf(miExposicion.getFecha_inicio());
-            matrizExposicion[i][4] = String.valueOf(miExposicion.getFecha_fin());
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion", "Fecha inicio", "Fecha final"}));
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
 
@@ -201,7 +220,7 @@ cerrarBD(BaseD);
             JOptionPane.showMessageDialog(null, "Ingrese un Codigo");
         } else {
             String codigo = codigotxt.getText();
-            Exposicion ExEliminar = new Exposicion(codigo, null, null, null, null);
+            Exposicion ExEliminar = new Exposicion(codigo, null, null );
             ObjectSet result = BaseD.get(ExEliminar);
 
             if (comprobarExposicion(BaseD, codigo) == 0) {
@@ -210,7 +229,7 @@ cerrarBD(BaseD);
             } else {
                 Exposicion EliminarEx = (Exposicion) result.next();
                 BaseD.delete(EliminarEx);
-                JOptionPane.showMessageDialog(null, "El aula fue eliminada exitosamente");
+                JOptionPane.showMessageDialog(null, "La exposicion fue eliminada exitosamente");
             }
 
         }
@@ -221,7 +240,7 @@ cerrarBD(BaseD);
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -231,40 +250,10 @@ cerrarBD(BaseD);
         BaseD.close();
     }
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_buscar_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_buscar_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_buscar_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Exposicion_buscar_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Exposicion_buscar_eliminar().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscarbtn;
+    private javax.swing.JButton btnvolver;
     private javax.swing.JLabel codigotxt;
     private javax.swing.JButton eliminarbtn;
     private javax.swing.JTable exposiciontbl;

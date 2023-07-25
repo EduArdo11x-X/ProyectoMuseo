@@ -12,19 +12,24 @@ import java.util.Date;
  * @author EDU
  */
 public class Evento {
+
     private String id_evento;
     private String nombre_evento;
+    private String descripcion;
     private Date fecha_inicio;
     private Date fecha_final;
+    private String id_exposicion;
 
     public Evento() {
     }
 
-    public Evento(String id_evento, String nombre_evento, Date fecha_inicio, Date fecha_final) {
+    public Evento(String id_evento, String nombre_evento, String descripcion, Date fecha_inicio, Date fecha_final, String id_exposicion) {
         this.id_evento = id_evento;
         this.nombre_evento = nombre_evento;
+        this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
+        this.id_exposicion = id_exposicion;
     }
 
     public String getId_evento() {
@@ -43,6 +48,14 @@ public class Evento {
         this.nombre_evento = nombre_evento;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Date getFecha_inicio() {
         return fecha_inicio;
     }
@@ -59,10 +72,18 @@ public class Evento {
         this.fecha_final = fecha_final;
     }
 
+    public String getId_exposicion() {
+        return id_exposicion;
+    }
+
+    public void setId_exposicion(String id_exposicion) {
+        this.id_exposicion = id_exposicion;
+    }
+
     @Override
     public String toString() {
-        return "Evento{" + "id_evento=" + id_evento + ", nombre_evento=" + nombre_evento + ", fecha_inicio=" + fecha_inicio + ", fecha_final=" + fecha_final + '}';
+        return "Evento{" + "id_evento=" + id_evento + ", nombre_evento=" + nombre_evento + ", descripcion=" + descripcion + ", fecha_inicio=" + fecha_inicio + ", fecha_final=" + fecha_final + ", id_exposicion=" + id_exposicion + '}';
     }
-    
-    
+
+   
 }
