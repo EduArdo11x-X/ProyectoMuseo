@@ -103,12 +103,27 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu1.setText("USUARIOS");
 
         ingresarU.setText("INGRESAR ");
+        ingresarU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ingresarUMouseClicked(evt);
+            }
+        });
         jMenu1.add(ingresarU);
 
         modificarU.setText("MODIFICAR");
+        modificarU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarUMouseClicked(evt);
+            }
+        });
         jMenu1.add(modificarU);
 
         eliminarU.setText("BUSCAR - ELIMINAR");
+        eliminarU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarUMouseClicked(evt);
+            }
+        });
         jMenu1.add(eliminarU);
 
         jMenuBar1.add(jMenu1);
@@ -116,12 +131,27 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("ARTICULOS");
 
         ingresarA.setText("INGRESAR ");
+        ingresarA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ingresarAMouseClicked(evt);
+            }
+        });
         jMenu2.add(ingresarA);
 
         modificarA.setText("MODIFICAR");
+        modificarA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarAMouseClicked(evt);
+            }
+        });
         jMenu2.add(modificarA);
 
         eliminarA.setText("BUSCAR - ELIMINAR");
+        eliminarA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarAMouseClicked(evt);
+            }
+        });
         jMenu2.add(eliminarA);
 
         jMenuBar1.add(jMenu2);
@@ -162,12 +192,27 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("ESCULTURAS");
 
         ingresarES.setText("INGRESAR ");
+        ingresarES.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ingresarESMouseClicked(evt);
+            }
+        });
         jMenu4.add(ingresarES);
 
         modificarES.setText("MODIFICAR");
+        modificarES.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarESMouseClicked(evt);
+            }
+        });
         jMenu4.add(modificarES);
 
         eliminarES.setText("BUSCAR - ELIMINAR");
+        eliminarES.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarESMouseClicked(evt);
+            }
+        });
         jMenu4.add(eliminarES);
 
         jMenuBar1.add(jMenu4);
@@ -216,12 +261,30 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu6.setText("EVENTOS");
 
         ingresarEVE.setText("INGRESAR ");
+        ingresarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ingresarEVEMouseClicked(evt);
+            }
+        });
         jMenu6.add(ingresarEVE);
 
         modificarEVE.setText("MODIFICAR");
+        modificarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarEVEMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarEVEMouseEntered(evt);
+            }
+        });
         jMenu6.add(modificarEVE);
 
         eliminarEVE.setText("BUSCAR - ELIMINAR");
+        eliminarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarEVEMouseClicked(evt);
+            }
+        });
         jMenu6.add(eliminarEVE);
 
         jMenuBar1.add(jMenu6);
@@ -293,15 +356,100 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarEXMouseClicked
 
     private void eliminarEXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEXMouseClicked
-      this.dispose();
+        this.dispose();
         Exposicion_buscar_eliminar eliminarExposicion = new Exposicion_buscar_eliminar();
         eliminarExposicion.setVisible(true);
-        
+
     }//GEN-LAST:event_eliminarEXMouseClicked
 
     private void ingresarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ingresarPActionPerformed
+
+    private void ingresarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarUMouseClicked
+        this.dispose();
+        Usuario_registro registroUsuario = new Usuario_registro();
+        registroUsuario.setVisible(true);
+    }//GEN-LAST:event_ingresarUMouseClicked
+
+    private void modificarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarUMouseClicked
+
+        this.dispose();
+        Usuario_modificar modificarUsuario = new Usuario_modificar();
+        modificarUsuario.setVisible(true);
+    }//GEN-LAST:event_modificarUMouseClicked
+
+    private void eliminarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarUMouseClicked
+        this.dispose();
+        Usuario_buscar_eliminar eliminarUsuario = new Usuario_buscar_eliminar();
+        eliminarUsuario.setVisible(true);
+
+    }//GEN-LAST:event_eliminarUMouseClicked
+
+    private void ingresarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarAMouseClicked
+        this.dispose();
+        Articulo_registro registroArticulo = new Articulo_registro();
+        registroArticulo.setVisible(true);
+    }//GEN-LAST:event_ingresarAMouseClicked
+
+    private void modificarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarAMouseClicked
+        this.dispose();
+        Articulo_modificar modificarArticulo = new Articulo_modificar();
+        modificarArticulo.setVisible(true);
+    }//GEN-LAST:event_modificarAMouseClicked
+
+    private void eliminarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarAMouseClicked
+
+        this.dispose();
+        Articulo_buscar_eliminar eliminarArticulo = new Articulo_buscar_eliminar();
+        eliminarArticulo.setVisible(true);
+    }//GEN-LAST:event_eliminarAMouseClicked
+
+    private void ingresarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarESMouseClicked
+        this.dispose();
+        Escultura_registro registroEscultura = new Escultura_registro();
+        registroEscultura.setVisible(true);
+
+
+    }//GEN-LAST:event_ingresarESMouseClicked
+
+    private void modificarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarESMouseClicked
+
+        this.dispose();
+        Escultura_modificar modificarEscultura = new Escultura_modificar();
+        modificarEscultura.setVisible(true);
+
+    }//GEN-LAST:event_modificarESMouseClicked
+
+    private void eliminarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarESMouseClicked
+        this.dispose();
+        Escultura_buscar_eliminar eliminarEscultura = new Escultura_buscar_eliminar();
+        eliminarEscultura.setVisible(true);
+    }//GEN-LAST:event_eliminarESMouseClicked
+
+    private void ingresarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarEVEMouseClicked
+
+        this.dispose();
+        Evento_registro registroEvento = new Evento_registro();
+        registroEvento.setVisible(true);
+    }//GEN-LAST:event_ingresarEVEMouseClicked
+
+    private void modificarEVEMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEVEMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarEVEMouseEntered
+
+    private void modificarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEVEMouseClicked
+        this.dispose();
+        Evento_modificar modificarEvento = new Evento_modificar();
+        modificarEvento.setVisible(true);
+    }//GEN-LAST:event_modificarEVEMouseClicked
+
+    private void eliminarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEVEMouseClicked
+        this.dispose();
+        Evento_buscar_eliminar eliminarEvento = new Evento_buscar_eliminar();
+        eliminarEvento.setVisible(true);
+
+    }//GEN-LAST:event_eliminarEVEMouseClicked
 
     /**
      * @param args the command line arguments
