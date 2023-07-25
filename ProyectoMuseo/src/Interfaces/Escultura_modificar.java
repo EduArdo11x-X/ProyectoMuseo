@@ -46,14 +46,14 @@ public class Escultura_modificar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
 
-            if (EAux.comproparescultura(BaseD, codigo) == 0) {
+            if (EAux.comproparescultura(BaseD, CODIGOAux) == 0) {
 
                 JOptionPane.showMessageDialog(null, "La escultura no existe en la base de datos");
                 limpiarDatos();
 
             } else {
 
-                Escultura Ebuscar = new Escultura(null, 0, 0, codigo, null, null, null);
+                Escultura Ebuscar = new Escultura(null, 0, 0, CODIGOAux, null, null, null);
 
                 ObjectSet result = BaseD.get(Ebuscar);
                 for (int i = 0; i < result.size(); i++) {
@@ -137,11 +137,11 @@ public class Escultura_modificar extends javax.swing.JFrame {
         return result.size();
     }
 
-    public static void Modificar_Escultura(ObjectContainer BaseD) {
+    public  void Modificar_Escultura(ObjectContainer BaseD) {
 
         JOptionPane.showMessageDialog(null, "Existen campos vacios");
         //LimpiarCamposdeTexto();
-        Escultura Emodi = new Escultura(txtcodigo.getText(), 0,0,  null, null, null,null);
+        Escultura Emodi = new Escultura(null, 0,0,  null, null, null,null);
         ObjectSet result = BaseD.get(Emodi);
         Escultura Emodificar = (Escultura) result.next();
         Emodificar.setCodigo(txtcodigo.getText());
@@ -157,7 +157,7 @@ public class Escultura_modificar extends javax.swing.JFrame {
 
     }
 
-    private void Cerrar_BD(ObjectContainer BaseD) {
+    public static void Cerrar_BD(ObjectContainer BaseD) {
         BaseD.close();
     }
 
