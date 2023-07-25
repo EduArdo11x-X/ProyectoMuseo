@@ -69,7 +69,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbregistro);
 
         jLabel2.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
-        jLabel2.setText("filtro");
+        jLabel2.setText("Filtro:");
 
         cmbopciones.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         cmbopciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "Codigo escultura", "Nombre", "Fecha de creacion", "peso", "altura", " ", " ", " " }));
@@ -114,6 +114,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
         jLabel1.setText("MODIFICAR Y ELIMINAR ESCULTURA");
 
         jLabel4.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
@@ -131,30 +132,31 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bttnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(256, 256, 256))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2)
-                        .addGap(25, 25, 25)
-                        .addComponent(cmbopciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(bttnbuscar)
-                        .addGap(232, 232, 232)
-                        .addComponent(jLabel3)
-                        .addGap(46, 46, 46)
-                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(bttneliminar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))))
+                        .addGap(70, 70, 70))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bttnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(151, 151, 151)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel2)
+                                .addGap(25, 25, 25)
+                                .addComponent(cmbopciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(bttnbuscar)
+                                .addGap(232, 232, 232)
+                                .addComponent(jLabel3)
+                                .addGap(46, 46, 46)
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(bttneliminar)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

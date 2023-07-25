@@ -10,6 +10,7 @@ import clases.Pintura;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,23 +49,34 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         jTFid = new javax.swing.JTextField();
         eliminarbtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setForeground(new java.awt.Color(153, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Seleccione un campo para buscar la Pintura");
+        jLabel1.setFont(new java.awt.Font("Raanana", 3, 14)); // NOI18N
+        jLabel1.setText("Seleccione un campo para buscar la Articulo:");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Raanana", 3, 14)); // NOI18N
         jLabel2.setText("Filtro");
 
-        buscarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        buscarbtn.setText("BUSCAR");
+        buscarbtn.setBackground(new java.awt.Color(255, 204, 153));
+        buscarbtn.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        buscarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
+        buscarbtn.setText("Buscar");
+        buscarbtn.setBorder(null);
+        buscarbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarbtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarbtnMouseExited(evt);
+            }
+        });
         buscarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarbtnActionPerformed(evt);
@@ -99,96 +111,110 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Consultar y Eliminar Pintura");
+        jLabel3.setFont(new java.awt.Font("Raanana", 3, 14)); // NOI18N
+        jLabel3.setText("Consultar y Eliminar Articulo");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Ingrese el ID de la asignatura a eliminar");
+        jLabel4.setFont(new java.awt.Font("Raanana", 3, 14)); // NOI18N
+        jLabel4.setText("Ingrese el codigo del articulo a eliminar:");
 
-        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("ID:");
+        jLabel5.setFont(new java.awt.Font("Raanana", 3, 14)); // NOI18N
+        jLabel5.setText("Codigo:");
         jLabel5.setToolTipText("ID asignatura");
 
         jTFid.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jTFid.setToolTipText("Ingresar el ID  de la asignatura a eliminar");
 
-        eliminarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        eliminarbtn.setText("ELIMINAR");
+        eliminarbtn.setBackground(new java.awt.Color(255, 204, 153));
+        eliminarbtn.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        eliminarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/eliminar.png"))); // NOI18N
+        eliminarbtn.setText("Eliminar");
+        eliminarbtn.setBorder(null);
         eliminarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarbtnActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 204, 153));
+        jButton1.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         jButton1.setText("Volver");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarbtn)
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(eliminarbtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel3)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(140, 140, 140)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eliminarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 29, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarbtn)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarbtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(buscarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(eliminarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,6 +252,16 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         menuPrincipal ventaina = new  menuPrincipal();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buscarbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarbtnMouseEntered
+       
+        buscarbtn.setBackground(Color.black);
+        
+    }//GEN-LAST:event_buscarbtnMouseEntered
+
+    private void buscarbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarbtnMouseExited
+      buscarbtn.setBackground(new Color(255,204,153)); 
+    }//GEN-LAST:event_buscarbtnMouseExited
 
     
     public void Filtro(ObjectContainer basep) {
@@ -318,6 +354,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFid;

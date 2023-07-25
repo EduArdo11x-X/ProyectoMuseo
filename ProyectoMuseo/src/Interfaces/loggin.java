@@ -56,7 +56,7 @@ public class loggin extends javax.swing.JFrame {
         bg.add(nombreempresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 280, -1));
 
         city.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/ImagenMuseo.jpeg"))); // NOI18N
-        bg.add(city, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 290, 500));
+        bg.add(city, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 290, 500));
 
         iniciarsesion.setFont(new java.awt.Font("Copperplate", 1, 24)); // NOI18N
         iniciarsesion.setText("INICIAR SESION");
@@ -66,12 +66,12 @@ public class loggin extends javax.swing.JFrame {
         usuario.setText("USUARIO");
         bg.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
-        separador.setBackground(new java.awt.Color(0, 0, 0));
         separador.setForeground(new java.awt.Color(187, 187, 187));
         bg.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 360, 10));
 
+        usuariotxt.setBackground(new java.awt.Color(51, 51, 51));
         usuariotxt.setFont(new java.awt.Font("Courier", 0, 13)); // NOI18N
-        usuariotxt.setForeground(new java.awt.Color(204, 204, 204));
+        usuariotxt.setForeground(new java.awt.Color(255, 255, 255));
         usuariotxt.setText("Ingrese su nombre de usuario");
         usuariotxt.setBorder(null);
         usuariotxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,10 +90,11 @@ public class loggin extends javax.swing.JFrame {
         txtcontrasena.setText("CONTRASEÑA");
         bg.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
-        separador2.setBackground(new java.awt.Color(0, 0, 0));
         separador2.setForeground(new java.awt.Color(187, 187, 187));
         bg.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 360, 10));
 
+        passtxt.setBackground(new java.awt.Color(51, 51, 51));
+        passtxt.setForeground(new java.awt.Color(255, 255, 255));
         passtxt.setText("********");
         passtxt.setBorder(null);
         passtxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +104,8 @@ public class loggin extends javax.swing.JFrame {
         });
         bg.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 360, 30));
 
-        entrarbtn.setBackground(new java.awt.Color(255, 255, 255));
+        entrarbtn.setBackground(new java.awt.Color(51, 51, 51));
+        entrarbtn.setForeground(new java.awt.Color(255, 255, 255));
         entrarbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarbtnMouseClicked(evt);
@@ -118,7 +120,7 @@ public class loggin extends javax.swing.JFrame {
 
         entrartxt.setBackground(new java.awt.Color(0, 0, 0));
         entrartxt.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
-        entrartxt.setForeground(new java.awt.Color(0, 0, 0));
+        entrartxt.setForeground(new java.awt.Color(255, 255, 255));
         entrartxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         entrartxt.setText("ENTRAR");
         entrartxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,6 +223,7 @@ public class loggin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 804, Short.MAX_VALUE)
                 .addContainerGap())
         );

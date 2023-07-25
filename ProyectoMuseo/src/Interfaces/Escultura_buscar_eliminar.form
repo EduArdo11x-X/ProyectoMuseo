@@ -45,32 +45,35 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="bttnregresar" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="266" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="cmbopciones" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="bttnbuscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="txtcodigo" min="-2" pref="112" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="bttneliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="239" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="bttnregresar" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="266" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="cmbopciones" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="bttnbuscar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="txtcodigo" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="bttneliminar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -194,7 +197,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="2"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="filtro"/>
+            <Property name="text" type="java.lang.String" value="Filtro:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbopciones">
@@ -279,6 +282,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MODIFICAR Y ELIMINAR ESCULTURA"/>
           </Properties>
