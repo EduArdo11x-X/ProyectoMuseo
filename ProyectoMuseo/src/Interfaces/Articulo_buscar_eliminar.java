@@ -5,6 +5,14 @@
  */
 package Interfaces;
 
+import clases.Articulo;
+import clases.Pintura;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author EDU
@@ -27,27 +35,287 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        buscarbtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaArticulos = new javax.swing.JTable();
+        jCBfiltro = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTFid = new javax.swing.JTextField();
+        eliminarbtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Seleccione un campo para buscar la Pintura");
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Filtro");
+
+        buscarbtn.setText("BUSCAR");
+        buscarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarbtnActionPerformed(evt);
+            }
+        });
+
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaArticulos);
+
+        jCBfiltro.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jCBfiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "ID Pintura", " ", " " }));
+        jCBfiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBfiltroActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Consultar y Eliminar Pintura");
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Ingrese el ID de la asignatura a eliminar");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("ID:");
+        jLabel5.setToolTipText("ID asignatura");
+
+        jTFid.setToolTipText("Ingresar el ID  de la asignatura a eliminar");
+
+        eliminarbtn.setText("ELIMINAR");
+        eliminarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarbtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarbtn)
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(eliminarbtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel3)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarbtn)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminarbtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void buscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarbtnActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        Filtro(BaseD);
+        Cerrar_BD(BaseD);
+    }//GEN-LAST:event_buscarbtnActionPerformed
+
+    private void jCBfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBfiltroActionPerformed
+
+    }//GEN-LAST:event_jCBfiltroActionPerformed
+
+    private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        Eliminar_Articulo(BaseD);
+        Cerrar_BD(BaseD);
+    }//GEN-LAST:event_eliminarbtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        menuPrincipal ventaina = new  menuPrincipal();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    public void Filtro(ObjectContainer basep) {
+
+        if (jCBfiltro.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion");
+        } else {
+
+            if (jCBfiltro.getSelectedIndex() == 1) {
+                Articulo Abuscar = new Articulo(null, null, null, 0, 0, 0,0);
+                ObjectSet result = basep.get(Abuscar);
+                mostrarDatos(result);
+
+            } else {
+                if (jCBfiltro.getSelectedIndex() == 2) {
+                    String codigoAriculo = JOptionPane.showInputDialog("Ingrese el ID a consultar");
+                    Articulo Abuscar = new Articulo(codigoAriculo,null, null, 0, 0, 0, 0);
+                    ObjectSet result = basep.get(Abuscar);
+                    mostrarDatos(result);
+
+                }
+            }
+        }
+
+        //Borrar la eleccion y ponerla al inicio
+        jCBfiltro.setSelectedIndex(0);
+    }
+
+      public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) tablaArticulos.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El articulo no existe");
+        } else {
+            while (result.hasNext()) {
+                clases.Articulo miArticulo = (clases.Articulo) result.next();
+                Object[] fila = {
+                    miArticulo.getCod_articulo(),
+                    miArticulo.getNombre(),
+                    miArticulo.getDescripcion(),
+                    String.valueOf(miArticulo.getExistencia()),
+                    String.valueOf(miArticulo.getExis_max()),
+                    String.valueOf(miArticulo.getExis_min()),
+                    String.valueOf(miArticulo.getPrecio()),
+                   
+                };
+                model.addRow(fila);
+            }
+        }
+    }
+     public void Eliminar_Articulo(ObjectContainer basep) {
+        Articulo_registro Ainterfaz = new Articulo_registro();
+        if (jTFid.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo");
+        } else {
+
+            String codigoA = jTFid.getText();
+            Articulo Abuscar = new Articulo(codigoA, null, null, 0, 0, 0,0);
+            ObjectSet result = basep.get(Abuscar);
+
+            if (Articulo_registro.comprobarArticulo(basep, codigoA) == 0) {
+                JOptionPane.showMessageDialog(null, "El Articulo no existe en la base de datos");
+
+            } else {
+                Articulo ArticuloElim = (Articulo) result.next();
+                basep.delete(ArticuloElim);
+                JOptionPane.showMessageDialog(null, "El articulo fue anulada exitosamente");
+            }
+
+        }
+
+        //Borrar el campo de texto
+        jTFid.setText("");
+    }
+     
+      public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
+    }
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarbtn;
+    private javax.swing.JButton eliminarbtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jCBfiltro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTFid;
+    private javax.swing.JTable tablaArticulos;
     // End of variables declaration//GEN-END:variables
 }
