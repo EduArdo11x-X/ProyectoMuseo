@@ -43,17 +43,25 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setText("Codigo:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("Nombre:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel3.setText("Descripcion:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 174, -1));
+
+        nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 174, -1));
 
+        guardarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +71,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
+        exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -79,11 +88,13 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 380, 340));
 
         descripciontxt.setColumns(20);
+        descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
 
+        Mostrar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         Mostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         Mostrar.setText("Mostrar Datos");
         Mostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +104,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jPanel1.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
+        btnvolver.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         btnvolver.setText("Volver");
         btnvolver.addActionListener(new java.awt.event.ActionListener() {

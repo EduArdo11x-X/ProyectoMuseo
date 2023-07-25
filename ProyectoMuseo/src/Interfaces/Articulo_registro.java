@@ -145,28 +145,50 @@ public class Articulo_registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel1.setText("REGISTRO ARTICULOS ");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel2.setText("Codigo:");
 
+        txtCodigo.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
+        txtNombre.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel4.setText("Descripcion:");
 
+        txtDescripcion.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel5.setText("Existencia:");
 
+        txtExitencia.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel6.setText("Existencia Maxima:");
 
+        txtExis_Max.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel7.setText("Existencia Minima:");
 
+        txtExi_min.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel8.setText("Precio:");
 
+        txtPr3ecio.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        botonGuar.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         botonGuar.setText("Guardar");
         botonGuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +196,7 @@ public class Articulo_registro extends javax.swing.JFrame {
             }
         });
 
+        botonMostrar.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         botonMostrar.setText("Cargar Datos");
         botonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +204,7 @@ public class Articulo_registro extends javax.swing.JFrame {
             }
         });
 
+        tablaArticulos.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -194,6 +218,7 @@ public class Articulo_registro extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaArticulos);
 
+        botonRegresar.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         botonRegresar.setText("Regresar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -236,7 +261,7 @@ public class Articulo_registro extends javax.swing.JFrame {
                                 .addComponent(botonGuar)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonMostrar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(414, 414, 414)
@@ -291,7 +316,7 @@ public class Articulo_registro extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(botonRegresar)
                 .addContainerGap())
         );

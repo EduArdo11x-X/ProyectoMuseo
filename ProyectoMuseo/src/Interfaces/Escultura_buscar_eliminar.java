@@ -46,6 +46,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tbregistro.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         tbregistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -67,9 +68,10 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbregistro);
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         jLabel2.setText("filtro");
 
-        cmbopciones.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        cmbopciones.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         cmbopciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "Codigo escultura", "Nombre", "Fecha de creacion", "peso", "altura", " ", " ", " " }));
         cmbopciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +79,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        bttnbuscar.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         bttnbuscar.setText("BUSCAR");
         bttnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,14 +87,17 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         jLabel3.setText("codigo");
 
+        txtcodigo.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         txtcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodigoActionPerformed(evt);
             }
         });
 
+        bttnregresar.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         bttnregresar.setText("REGRESAR");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +105,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        bttneliminar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttneliminar.setText("ELIMINAR");
         bttneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,13 +113,14 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         jLabel1.setText("MODIFICAR Y ELIMINAR ESCULTURA");
 
-        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 3, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("SELECCIONES UN CAMPO PARA BUSCAR ESCULTURA");
 
-        jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 3, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
         jLabel5.setText("ID DE ESCULTURA A ELIMINAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -211,28 +211,38 @@ public void limpiarDatos() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setText("MODIFICAR  ESCULTURA");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("CODIGO ARTE");
 
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel3.setText("NOMBRE");
 
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel4.setText("DESCRIPCION");
 
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel5.setText("FECHA DE CREACION");
 
+        jLabel6.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel6.setText("MATERIAL");
 
+        jLabel7.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel7.setText("PESO");
 
+        jLabel8.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel8.setText("ALTURA");
 
+        txtcodigo.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodigoActionPerformed(evt);
             }
         });
 
+        txtnombre.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
@@ -240,15 +250,20 @@ public void limpiarDatos() {
         });
 
         txtarea.setColumns(20);
+        txtarea.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtarea.setRows(5);
         jScrollPane1.setViewportView(txtarea);
 
+        txtpeso.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtpeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpesoActionPerformed(evt);
             }
         });
 
+        txtaltura.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        CmbBxmaterial.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         CmbBxmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEDRA", "MADERA", "METAL", "CERAMICA", "VIDRIO", " " }));
         CmbBxmaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +271,7 @@ public void limpiarDatos() {
             }
         });
 
+        tblmodescult.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tblmodescult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -277,6 +293,7 @@ public void limpiarDatos() {
         });
         jScrollPane2.setViewportView(tblmodescult);
 
+        bttnmodificar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttnmodificar.setText("MODIFICAR");
         bttnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +301,7 @@ public void limpiarDatos() {
             }
         });
 
+        bttnregresar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttnregresar.setText("REGRESAR");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +309,7 @@ public void limpiarDatos() {
             }
         });
 
+        bttnbuscar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttnbuscar.setText("BUSCAR");
         bttnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

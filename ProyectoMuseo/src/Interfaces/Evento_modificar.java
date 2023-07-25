@@ -67,16 +67,26 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setText("Codigo Evento:");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("Nombre del evento:");
 
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel3.setText("Descripcion del evento:");
 
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel4.setText("Fecha inicio:");
 
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel5.setText("Fecha final:");
 
+        codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        tablaevento.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tablaevento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -90,12 +100,17 @@ public class Evento_modificar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaevento);
 
+        jLabel6.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel6.setText("Id exposicion:");
 
+        idextxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
         descripciontxt.setColumns(20);
+        descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
+        btnguardar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
         btnguardar.setText("GUARDAR");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +119,7 @@ public class Evento_modificar extends javax.swing.JFrame {
             }
         });
 
+        btnmostrar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btnmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         btnmostrar.setText("MOSTRAR DATOS");
         btnmostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +128,11 @@ public class Evento_modificar extends javax.swing.JFrame {
             }
         });
 
+        btnvolver.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         btnvolver.setText("VOLVER");
 
+        btncargar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btncargar.setText("CARGAR DATOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

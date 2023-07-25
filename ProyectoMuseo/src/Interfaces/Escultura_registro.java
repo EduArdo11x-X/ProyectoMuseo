@@ -136,23 +136,34 @@ public class Escultura_registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
         jLabel1.setText("REGISTRO DE ESCULTURA");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("CODIGO ARTE");
 
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel3.setText("NOMBRE");
 
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel4.setText("DESCRIPCION");
 
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel5.setText("FECHA DE CREACION");
 
+        jLabel6.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel6.setText("MATERIAL");
 
+        jLabel7.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel7.setText("PESO");
 
+        jLabel8.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel8.setText("ALTURA");
 
+        txtcodigo.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        txtnombre.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
@@ -160,11 +171,18 @@ public class Escultura_registro extends javax.swing.JFrame {
         });
 
         txtarea.setColumns(20);
+        txtarea.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtarea.setRows(5);
         jScrollPane1.setViewportView(txtarea);
 
+        CmbBxmaterial.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         CmbBxmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEDRA", "MADERA", "METAL", "CERAMICA", "VIDRIO", " " }));
 
+        txtpeso.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        txtaltura.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        tbescultura.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tbescultura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -186,6 +204,7 @@ public class Escultura_registro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbescultura);
 
+        bttnguardar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttnguardar.setText("GUARDAR");
         bttnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +212,7 @@ public class Escultura_registro extends javax.swing.JFrame {
             }
         });
 
+        bttnmostrar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         bttnmostrar.setText("MOSTRAR DATOS");
         bttnmostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

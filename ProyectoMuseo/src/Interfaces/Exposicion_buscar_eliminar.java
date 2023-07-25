@@ -42,10 +42,15 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setText("Filtro:");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("ID:");
 
+        codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+
+        eliminarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         eliminarbtn.setText("Eliminar");
         eliminarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,8 +58,10 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        filtrocmb.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         filtrocmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Ver todos", "Codigo", "Nombre", " " }));
 
+        exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -68,6 +75,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(exposiciontbl);
 
+        Buscarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         Buscarbtn.setText("Buscar");
         Buscarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +83,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        btnvolver.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         btnvolver.setText("Volver");
         btnvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +110,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
                                 .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Buscarbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)

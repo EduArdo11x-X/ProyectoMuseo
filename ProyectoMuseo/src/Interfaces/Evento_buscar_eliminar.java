@@ -52,10 +52,13 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setText("Filtro:");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setText("Codigo:");
 
+        eliminarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         eliminarbtn.setText("Eliminar");
         eliminarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +66,10 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        filtrocmb.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         filtrocmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Ver todos", "Codigo", "Nombre", " " }));
 
+        tablaevento.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tablaevento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,6 +83,7 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaevento);
 
+        Buscarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         Buscarbtn.setText("Buscar");
         Buscarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

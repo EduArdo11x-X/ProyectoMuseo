@@ -174,35 +174,38 @@ public class Pintura_modificar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Pintura");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Codigo Pintura:");
 
         cod_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        cod_pintura.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre Pintura:");
 
         nom_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        nom_pintura.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Fecha de creacion:");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Descripcion Pintura:");
 
         desc_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        desc_pintura.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         desc_pintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desc_pinturaActionPerformed(evt);
@@ -210,19 +213,22 @@ public class Pintura_modificar extends javax.swing.JFrame {
         });
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Tipo Pintura:");
 
         tipo_pint.setBackground(new java.awt.Color(255, 255, 255));
+        tipo_pint.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estilo Pintura");
 
         esti_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        esti_pintura.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
 
+        jButton2.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jButton2.setText("BUSCAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +236,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
             }
         });
 
+        jtableregistro.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -248,6 +255,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtableregistro);
 
+        Modificarjb.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         Modificarjb.setText("Guardar");
         Modificarjb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +263,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,7 +317,7 @@ public class Pintura_modificar extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(381, 381, 381)
                                 .addComponent(jLabel1)))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(317, 317, 317)

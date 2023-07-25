@@ -180,28 +180,50 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel1.setText("REGISTRO ARTICULOS ");
 
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel2.setText("Codigo:");
 
+        txtCodigo.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
+        txtNombre.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel4.setText("Descripcion:");
 
+        txtDescripcion.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel5.setText("Existencia:");
 
+        txtExitencia.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel6.setText("Existencia Maxima:");
 
+        txtExis_Max.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel7.setText("Existencia Minima:");
 
+        txtExi_min.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jLabel8.setText("Precio:");
 
+        txtPrecio.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
+
+        botonGuar.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         botonGuar.setText("Guardar");
         botonGuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,8 +244,10 @@ public class Articulo_modificar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaArticulos);
 
+        botonRegresar.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         botonRegresar.setText("Regresar");
 
+        jButton1.setFont(new java.awt.Font("Raanana", 0, 18)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,7 +295,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
                             .addComponent(botonGuar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(414, 414, 414)

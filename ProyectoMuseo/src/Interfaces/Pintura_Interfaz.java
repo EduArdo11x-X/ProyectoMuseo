@@ -78,35 +78,38 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ingreso Pintura");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Codigo Pintura:");
 
         cod_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        cod_pintura.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre Pintura:");
 
         nom_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        nom_pintura.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Fecha de creacion:");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Descripcion Pintura:");
 
         desc_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        desc_pintura.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         desc_pintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desc_pinturaActionPerformed(evt);
@@ -114,19 +117,22 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         });
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Tipo Pintura:");
 
         tipo_pint.setBackground(new java.awt.Color(255, 255, 255));
+        tipo_pint.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estilo Pintura");
 
         esti_pintura.setBackground(new java.awt.Color(255, 255, 255));
+        esti_pintura.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jButton1.setText("INGRESAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +140,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
             }
         });
 
+        jtableregistro.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -152,6 +159,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtableregistro);
 
+        eliminar.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         eliminar.setText("ELIMINAR");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +167,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnvolver.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
         btnvolver.setText("VOLVER");
         btnvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +226,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                                 .addGap(34, 34, 34)
                                 .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(236, 236, 236)))
-                        .addGap(0, 135, Short.MAX_VALUE)))
+                        .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,7 +263,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 

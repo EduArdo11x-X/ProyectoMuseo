@@ -54,15 +54,16 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Seleccione un campo para buscar la Pintura");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Filtro");
 
+        buscarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         buscarbtn.setText("BUSCAR");
         buscarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +71,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        tablaArticulos.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -88,7 +90,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaArticulos);
 
-        jCBfiltro.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jCBfiltro.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jCBfiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "ID Pintura", " ", " " }));
         jCBfiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,22 +99,24 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Consultar y Eliminar Pintura");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Ingrese el ID de la asignatura a eliminar");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("ID:");
         jLabel5.setToolTipText("ID asignatura");
 
+        jTFid.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jTFid.setToolTipText("Ingresar el ID  de la asignatura a eliminar");
 
+        eliminarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         eliminarbtn.setText("ELIMINAR");
         eliminarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +124,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
