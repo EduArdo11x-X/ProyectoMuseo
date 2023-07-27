@@ -363,16 +363,6 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
 
     
 
-    /**
-     * @param args the command line arguments
-     */
-    
-
-
-    private void desc_pinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc_pinturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_desc_pinturaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
         crearUsuario(BaseD);
@@ -391,6 +381,16 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         menuPrincipal ventaina = new  menuPrincipal();
         ventaina.setVisible(true);   
     }//GEN-LAST:event_btnvolverActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
+
+
+    private void desc_pinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc_pinturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desc_pinturaActionPerformed
 
     /**
      * @param args the command line arguments
