@@ -323,6 +323,11 @@ public class Articulo_modificar extends javax.swing.JFrame {
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
         botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -565,6 +570,12 @@ txtCodigo.setText("");
         cargarDatos(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btncargarActionPerformed
+
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+this.setVisible(false);
+menuPrincipal miMenu= new menuPrincipal();
+miMenu.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     
     /**

@@ -78,27 +78,42 @@ public class menuPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inicio.setBackground(new java.awt.Color(215, 205, 176));
         inicio.setPreferredSize(new java.awt.Dimension(500, 700));
-        inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Palatino", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("MUSEO MODERNO DE CUENCA");
-        inicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 590, 70));
 
         logotipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Logotipo.png"))); // NOI18N
         logotipo.setText("jLabel2");
-        inicio.add(logotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 250, 240));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Fondo.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        inicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
 
-        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
+        javax.swing.GroupLayout inicioLayout = new javax.swing.GroupLayout(inicio);
+        inicio.setLayout(inicioLayout);
+        inicioLayout.setHorizontalGroup(
+            inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inicioLayout.createSequentialGroup()
+                .addGap(270, 270, 270)
+                .addComponent(logotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(inicioLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        inicioLayout.setVerticalGroup(
+            inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inicioLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(logotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         jMenu1.setText("USUARIOS");
 
@@ -131,25 +146,25 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("ARTICULOS");
 
         ingresarA.setText("INGRESAR ");
-        ingresarA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarAMouseClicked(evt);
+        ingresarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarAActionPerformed(evt);
             }
         });
         jMenu2.add(ingresarA);
 
         modificarA.setText("MODIFICAR");
-        modificarA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarAMouseClicked(evt);
+        modificarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarAActionPerformed(evt);
             }
         });
         jMenu2.add(modificarA);
 
         eliminarA.setText("BUSCAR - ELIMINAR");
-        eliminarA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarAMouseClicked(evt);
+        eliminarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAActionPerformed(evt);
             }
         });
         jMenu2.add(eliminarA);
@@ -159,11 +174,6 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("PINTURA");
 
         ingresarP.setText("INGRESAR ");
-        ingresarP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarPMouseClicked(evt);
-            }
-        });
         ingresarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingresarPActionPerformed(evt);
@@ -172,17 +182,17 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu3.add(ingresarP);
 
         modificarP.setText("MODIFICAR");
-        modificarP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarPMouseClicked(evt);
+        modificarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPActionPerformed(evt);
             }
         });
         jMenu3.add(modificarP);
 
         eliminarP.setText("BUSCAR - ELIMINAR");
-        eliminarP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarPMouseClicked(evt);
+        eliminarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPActionPerformed(evt);
             }
         });
         jMenu3.add(eliminarP);
@@ -192,25 +202,25 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("ESCULTURAS");
 
         ingresarES.setText("INGRESAR ");
-        ingresarES.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarESMouseClicked(evt);
+        ingresarES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarESActionPerformed(evt);
             }
         });
         jMenu4.add(ingresarES);
 
         modificarES.setText("MODIFICAR");
-        modificarES.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarESMouseClicked(evt);
+        modificarES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarESActionPerformed(evt);
             }
         });
         jMenu4.add(modificarES);
 
         eliminarES.setText("BUSCAR - ELIMINAR");
-        eliminarES.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarESMouseClicked(evt);
+        eliminarES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarESActionPerformed(evt);
             }
         });
         jMenu4.add(eliminarES);
@@ -220,12 +230,27 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu5.setText("SALAS");
 
         ingresarSA.setText("INGRESAR ");
+        ingresarSA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarSAActionPerformed(evt);
+            }
+        });
         jMenu5.add(ingresarSA);
 
         modificarSA.setText("MODIFICAR");
+        modificarSA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarSAActionPerformed(evt);
+            }
+        });
         jMenu5.add(modificarSA);
 
         eliminarSA.setText("BUSCAR - ELIMINAR");
+        eliminarSA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarSAActionPerformed(evt);
+            }
+        });
         jMenu5.add(eliminarSA);
 
         jMenuBar1.add(jMenu5);
@@ -233,25 +258,25 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu9.setText("EXPOSICIONES");
 
         ingresarEX.setText("INGRESAR ");
-        ingresarEX.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarEXMouseClicked(evt);
+        ingresarEX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarEXActionPerformed(evt);
             }
         });
         jMenu9.add(ingresarEX);
 
         modificarEX.setText("MODIFICAR");
-        modificarEX.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarEXMouseClicked(evt);
+        modificarEX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEXActionPerformed(evt);
             }
         });
         jMenu9.add(modificarEX);
 
         eliminarEX.setText("BUSCAR - ELIMINAR");
-        eliminarEX.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarEXMouseClicked(evt);
+        eliminarEX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEXActionPerformed(evt);
             }
         });
         jMenu9.add(eliminarEX);
@@ -261,28 +286,25 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu6.setText("EVENTOS");
 
         ingresarEVE.setText("INGRESAR ");
-        ingresarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarEVEMouseClicked(evt);
+        ingresarEVE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarEVEActionPerformed(evt);
             }
         });
         jMenu6.add(ingresarEVE);
 
         modificarEVE.setText("MODIFICAR");
-        modificarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarEVEMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                modificarEVEMouseEntered(evt);
+        modificarEVE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEVEActionPerformed(evt);
             }
         });
         jMenu6.add(modificarEVE);
 
         eliminarEVE.setText("BUSCAR - ELIMINAR");
-        eliminarEVE.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarEVEMouseClicked(evt);
+        eliminarEVE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEVEActionPerformed(evt);
             }
         });
         jMenu6.add(eliminarEVE);
@@ -317,53 +339,25 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ingresarPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarPMouseClicked
-
-        this.dispose();
-        Pintura_Interfaz ingresarPintura = new Pintura_Interfaz();
-        ingresarPintura.setVisible(true);
-
-    }//GEN-LAST:event_ingresarPMouseClicked
-
-    private void modificarPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarPMouseClicked
-        this.dispose();
-        Pintura_modificar modificarPintura = new Pintura_modificar();
-        modificarPintura.setVisible(true);
-    }//GEN-LAST:event_modificarPMouseClicked
-
-    private void eliminarPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarPMouseClicked
-        this.dispose();
-        Pintura_buscar_modificar eliminarPintura = new Pintura_buscar_modificar();
-        eliminarPintura.setVisible(true);
-
-    }//GEN-LAST:event_eliminarPMouseClicked
-
-    private void ingresarEXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarEXMouseClicked
-        this.dispose();
-        Exposicion_registro ingresarExposicion = new Exposicion_registro();
-        ingresarExposicion.setVisible(true);
-    }//GEN-LAST:event_ingresarEXMouseClicked
-
-
-    private void modificarEXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEXMouseClicked
-
-        this.dispose();
-        Exposicion_modificar modificarExposicion = new Exposicion_modificar();
-        modificarExposicion.setVisible(true);
-    }//GEN-LAST:event_modificarEXMouseClicked
-
-    private void eliminarEXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEXMouseClicked
-        this.dispose();
-        Exposicion_buscar_eliminar eliminarExposicion = new Exposicion_buscar_eliminar();
-        eliminarExposicion.setVisible(true);
-
-    }//GEN-LAST:event_eliminarEXMouseClicked
 
     private void ingresarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarPActionPerformed
-        // TODO add your handling code here:
+this.dispose();
+        Pintura_Interfaz ingresarPintura = new Pintura_Interfaz();
+        ingresarPintura.setVisible(true);
     }//GEN-LAST:event_ingresarPActionPerformed
 
     private void ingresarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarUMouseClicked
@@ -374,9 +368,9 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void modificarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarUMouseClicked
 
-        this.dispose();
-        Usuario_modificar modificarUsuario = new Usuario_modificar();
-        modificarUsuario.setVisible(true);
+//        this.dispose();
+//        Usuario_modificar modificarUsuario = new Usuario_modificar();
+//        modificarUsuario.setVisible(true);
     }//GEN-LAST:event_modificarUMouseClicked
 
     private void eliminarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarUMouseClicked
@@ -386,70 +380,133 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_eliminarUMouseClicked
 
-    private void ingresarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarAMouseClicked
+    private void ingresarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarAActionPerformed
         this.dispose();
         Articulo_registro registroArticulo = new Articulo_registro();
         registroArticulo.setVisible(true);
-    }//GEN-LAST:event_ingresarAMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_ingresarAActionPerformed
 
-    private void modificarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarAMouseClicked
-        this.dispose();
+    
+    
+    
+    
+    private void modificarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarAActionPerformed
+      this.dispose();
         Articulo_modificar modificarArticulo = new Articulo_modificar();
         modificarArticulo.setVisible(true);
-    }//GEN-LAST:event_modificarAMouseClicked
+    }//GEN-LAST:event_modificarAActionPerformed
 
-    private void eliminarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarAMouseClicked
-
-        this.dispose();
+    private void eliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAActionPerformed
+ this.dispose();
         Articulo_buscar_eliminar eliminarArticulo = new Articulo_buscar_eliminar();
         eliminarArticulo.setVisible(true);
-    }//GEN-LAST:event_eliminarAMouseClicked
+    }//GEN-LAST:event_eliminarAActionPerformed
 
-    private void ingresarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarESMouseClicked
-        this.dispose();
+    private void modificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPActionPerformed
+this.dispose();
+        Pintura_modificar modificarPintura = new Pintura_modificar();
+        modificarPintura.setVisible(true);    }//GEN-LAST:event_modificarPActionPerformed
+
+    private void eliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPActionPerformed
+this.dispose();
+        Pintura_buscar_modificar eliminarPintura = new Pintura_buscar_modificar();
+        eliminarPintura.setVisible(true);
+
+    }//GEN-LAST:event_eliminarPActionPerformed
+
+    
+    
+    
+    
+    private void ingresarESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarESActionPerformed
+
+this.dispose();
         Escultura_registro registroEscultura = new Escultura_registro();
         registroEscultura.setVisible(true);
+    }//GEN-LAST:event_ingresarESActionPerformed
 
-
-    }//GEN-LAST:event_ingresarESMouseClicked
-
-    private void modificarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarESMouseClicked
-
-        this.dispose();
+    private void modificarESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarESActionPerformed
+   this.dispose();
         Escultura_modificar modificarEscultura = new Escultura_modificar();
         modificarEscultura.setVisible(true);
+    }//GEN-LAST:event_modificarESActionPerformed
 
-    }//GEN-LAST:event_modificarESMouseClicked
-
-    private void eliminarESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarESMouseClicked
-        this.dispose();
+    private void eliminarESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarESActionPerformed
+ this.dispose();
         Escultura_buscar_eliminar eliminarEscultura = new Escultura_buscar_eliminar();
         eliminarEscultura.setVisible(true);
-    }//GEN-LAST:event_eliminarESMouseClicked
 
-    private void ingresarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarEVEMouseClicked
 
+    }//GEN-LAST:event_eliminarESActionPerformed
+
+    private void ingresarSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarSAActionPerformed
         this.dispose();
+        Sala_registro ventana1 = new Sala_registro();
+        ventana1.setVisible(true);
+    }//GEN-LAST:event_ingresarSAActionPerformed
+
+    private void modificarSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSAActionPerformed
+
+this.dispose();
+        Sala_modificar ventana1 = new Sala_modificar();
+        ventana1.setVisible(true);
+    }//GEN-LAST:event_modificarSAActionPerformed
+
+    private void eliminarSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarSAActionPerformed
+
+
+this.dispose();
+        Sala_buscar_eliminar ventana1 = new Sala_buscar_eliminar();
+        ventana1.setVisible(true);
+    }//GEN-LAST:event_eliminarSAActionPerformed
+
+    
+    
+    
+    private void ingresarEXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEXActionPerformed
+ this.dispose();
+        Exposicion_registro ingresarExposicion = new Exposicion_registro();
+        ingresarExposicion.setVisible(true);    }//GEN-LAST:event_ingresarEXActionPerformed
+
+    private void modificarEXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEXActionPerformed
+      this.dispose();
+        Exposicion_modificar modificarExposicion = new Exposicion_modificar();
+        modificarExposicion.setVisible(true);
+    }//GEN-LAST:event_modificarEXActionPerformed
+
+    private void eliminarEXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEXActionPerformed
+ this.dispose();
+        Exposicion_buscar_eliminar eliminarExposicion = new Exposicion_buscar_eliminar();
+        eliminarExposicion.setVisible(true);
+    }//GEN-LAST:event_eliminarEXActionPerformed
+
+    
+    
+    
+    
+    
+    
+    private void ingresarEVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEVEActionPerformed
+this.dispose();
         Evento_registro registroEvento = new Evento_registro();
         registroEvento.setVisible(true);
-    }//GEN-LAST:event_ingresarEVEMouseClicked
 
-    private void modificarEVEMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEVEMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarEVEMouseEntered
+    }//GEN-LAST:event_ingresarEVEActionPerformed
 
-    private void modificarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEVEMouseClicked
-        this.dispose();
+    private void modificarEVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEVEActionPerformed
+this.dispose();
         Evento_modificar modificarEvento = new Evento_modificar();
-        modificarEvento.setVisible(true);
-    }//GEN-LAST:event_modificarEVEMouseClicked
+        modificarEvento.setVisible(true);       
+    }//GEN-LAST:event_modificarEVEActionPerformed
 
-    private void eliminarEVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEVEMouseClicked
-        this.dispose();
+    private void eliminarEVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEVEActionPerformed
+  this.dispose();
         Evento_buscar_eliminar eliminarEvento = new Evento_buscar_eliminar();
-        eliminarEvento.setVisible(true);
-
-    }//GEN-LAST:event_eliminarEVEMouseClicked
+        eliminarEvento.setVisible(true);      
+    }//GEN-LAST:event_eliminarEVEActionPerformed
 
     /**
      * @param args the command line arguments
