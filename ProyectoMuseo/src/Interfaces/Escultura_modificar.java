@@ -317,7 +317,6 @@ public void limpiarDatos() {
 
         bttnmodificar.setBackground(new java.awt.Color(0, 0, 0));
         bttnmodificar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        bttnmodificar.setForeground(new java.awt.Color(255, 255, 255));
         bttnmodificar.setText("MODIFICAR");
         bttnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,7 +326,6 @@ public void limpiarDatos() {
 
         bttnregresar.setBackground(new java.awt.Color(0, 0, 0));
         bttnregresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        bttnregresar.setForeground(new java.awt.Color(255, 255, 255));
         bttnregresar.setText("REGRESAR");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,7 +478,7 @@ public void limpiarDatos() {
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
         this.dispose();
-        Exposicion_registro ventana = new Exposicion_registro();
+        menuPrincipal ventana = new menuPrincipal();
         ventana.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
@@ -502,14 +500,14 @@ public void limpiarDatos() {
 
     private void bttnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnmodificarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(Escultura_registro.direccionBD);
         Modificar_Escultura(BaseD);
         Cerrar_BD(BaseD);
         txtcodigo.setEditable(true);
     }//GEN-LAST:event_bttnmodificarActionPerformed
 
     private void bttnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(Escultura_registro.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed
