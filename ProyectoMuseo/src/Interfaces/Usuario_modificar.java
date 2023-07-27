@@ -52,7 +52,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese la cedula: ");
         } else {
 
-            if (EAux.cargarDatos(BaseD ,auxced) == 0) {
+            if (comprobarUsuario(BaseD ,auxced) == 0) {
 
                 JOptionPane.showMessageDialog(null, "El usuario existe en la base de datos");
                 limpiarDatos();
@@ -71,7 +71,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
                     txtCedula.setText(miE.getCedula());
                     txtNombre.setText(miE.getNombre());
                     txtApellido.setText(miE.getApellido());
-                    txtTelefono.setText(miE.getNum_telefono());
+                    txtTelefono.setText(String.valueOf(miE.getNum_telefono()));
                     txtCorreo.setText(miE.getCorreo());
                     txtProvi.setText(miE.getProvincia());
                     txtCiudad.setText(miE.getCiudad());
@@ -591,16 +591,16 @@ public class Usuario_modificar extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
-        crearUsuario(BaseD);
-        Cerrarv_BD(BaseD);
+//        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+//        crearUsuario(BaseD);
+//        Cerrarv_BD(BaseD);
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void CargardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargardatosActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
-        cargarDatos(BaseD);
-        Cerrarv_BD(BaseD);
+//        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+//        cargarDatos(BaseD);
+//        Cerrarv_BD(BaseD);
     }//GEN-LAST:event_CargardatosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

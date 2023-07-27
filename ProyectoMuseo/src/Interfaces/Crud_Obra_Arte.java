@@ -31,28 +31,28 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
 
     }
 
-    public void asignarVariables(ObjectContainer BaseD) {
-
-       nombre = txtnombre.getText();
-     codigo = txtcodigo.getText();
-    descripcion = txtarea.getText();
-     fecha_creacion;
-    }
-
-    public void limpiarDatos() {
-
-    }
-
-    public void comproparobra(ObjectContainer BaseD, String codigo) {
-
-    }
-
-    public void cerrarBD(Object Container 
-    
-
-    BaseD){
-        
-    }
+//    public void asignarVariables(ObjectContainer BaseD) {
+//
+//       nombre = txtnombre.getText();
+//     codigo = txtcodigo.getText();
+//    descripcion = txtarea.getText();
+//     fecha_creacion;
+//    }
+//
+//    public void limpiarDatos() {
+//
+//    }
+//
+//    public void comproparobra(ObjectContainer BaseD, String codigo) {
+//
+//    }
+//
+//    public void cerrarBD(Object Container 
+//    
+//
+//    BaseD){
+//        
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -275,13 +275,13 @@ public class Crud_Obra_Arte extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void bttnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregistrarActionPerformed
-        int filas = tbobrasarte.getRowCount();
-        for (int j = filas - 1; j >= 0; j--) { // Vaciar la tabla
-            modelo.removeRow(j);
-        }
-        //asignacionVariables();
-        crearPersona();
-        //LlenarTabla();
+//        int filas = tbobrasarte.getRowCount();
+//        for (int j = filas - 1; j >= 0; j--) { // Vaciar la tabla
+//            modelo.removeRow(j);
+//        }
+//        //asignacionVariables();
+//        crearPersona();
+//        //LlenarTabla();
     }//GEN-LAST:event_bttnregistrarActionPerformed
 
     private void bttnmostrardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnmostrardActionPerformed
