@@ -42,32 +42,25 @@ public class loggin extends javax.swing.JFrame {
         setResizable(false);
 
         bg.setBackground(new java.awt.Color(0, 0, 0));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         log.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Logotipo.png"))); // NOI18N
         log.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bg.add(log, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 250, 230));
 
         nombreempresa.setBackground(new java.awt.Color(0, 0, 0));
         nombreempresa.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
         nombreempresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreempresa.setText("MUSEO MODERNO DE CUENCA");
-        bg.add(nombreempresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 280, -1));
 
         city.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/ImagenMuseo.jpeg"))); // NOI18N
-        bg.add(city, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 290, 500));
 
         iniciarsesion.setFont(new java.awt.Font("Copperplate", 1, 24)); // NOI18N
         iniciarsesion.setText("INICIAR SESION");
-        bg.add(iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         usuario.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
         usuario.setText("USUARIO");
-        bg.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         separador.setForeground(new java.awt.Color(187, 187, 187));
-        bg.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 360, 10));
 
         usuariotxt.setBackground(new java.awt.Color(51, 51, 51));
         usuariotxt.setFont(new java.awt.Font("Courier", 0, 13)); // NOI18N
@@ -84,14 +77,11 @@ public class loggin extends javax.swing.JFrame {
                 usuariotxtActionPerformed(evt);
             }
         });
-        bg.add(usuariotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 360, 30));
 
         txtcontrasena.setFont(new java.awt.Font("Copperplate", 1, 18)); // NOI18N
         txtcontrasena.setText("CONTRASEÑA");
-        bg.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         separador2.setForeground(new java.awt.Color(187, 187, 187));
-        bg.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 360, 10));
 
         passtxt.setBackground(new java.awt.Color(51, 51, 51));
         passtxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +92,6 @@ public class loggin extends javax.swing.JFrame {
                 passtxtMousePressed(evt);
             }
         });
-        bg.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 360, 30));
 
         entrarbtn.setBackground(new java.awt.Color(51, 51, 51));
         entrarbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,8 +135,6 @@ public class loggin extends javax.swing.JFrame {
             entrarbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(entrartxt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
-
-        bg.add(entrarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 130, 50));
 
         cabecera.setBackground(new java.awt.Color(0, 0, 0));
         cabecera.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -206,17 +193,88 @@ public class loggin extends javax.swing.JFrame {
             .addComponent(exitbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        bg.add(cabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
-
         jLabel1.setFont(new java.awt.Font("Courier", 1, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("EduardoM2A");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Courier", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("pooM2A");
-        bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iniciarsesion)
+                    .addComponent(usuario)
+                    .addComponent(txtcontrasena)
+                    .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entrarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(130, 130, 130)
+                .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(420, 420, 420)
+                .addComponent(jLabel2))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(550, 550, 550)
+                .addComponent(log, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(520, 520, 520)
+                .addComponent(nombreempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(420, 420, 420)
+                .addComponent(jLabel1))
+            .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(iniciarsesion)
+                .addGap(34, 34, 34)
+                .addComponent(usuario)
+                .addGap(71, 71, 71)
+                .addComponent(txtcontrasena)
+                .addGap(41, 41, 41)
+                .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(entrarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(330, 330, 330)
+                .addComponent(jLabel2))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(log, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(nombreempresa))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addComponent(jLabel1))
+            .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
