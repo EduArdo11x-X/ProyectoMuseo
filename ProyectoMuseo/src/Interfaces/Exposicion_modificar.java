@@ -52,39 +52,50 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         descripciontxt = new javax.swing.JTextArea();
         mostrarTabla = new javax.swing.JButton();
         buscarExposicion = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Codigo:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 74, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 122, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 175, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 174, -1));
+        jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 174, -1));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 118, 174, -1));
+        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 174, -1));
 
-        guardarbtn.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1) 2.png"))); // NOI18N
+        guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        guardarbtn.setForeground(new java.awt.Color(255, 255, 255));
+        guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
+        guardarbtn.setBorder(null);
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarbtnActionPerformed(evt);
             }
         });
-        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -100,43 +111,87 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(exposiciontbl);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 380, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 380, 240));
 
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
-        mostrarTabla.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
+        mostrarTabla.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        mostrarTabla.setForeground(new java.awt.Color(255, 255, 255));
         mostrarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTabla.setText("Mostrar Datos");
+        mostrarTabla.setBorder(null);
         mostrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarTablaActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
+        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, -1, -1));
 
-        buscarExposicion.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        buscarExposicion.setBackground(new java.awt.Color(0, 11, 13));
+        buscarExposicion.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        buscarExposicion.setForeground(new java.awt.Color(255, 255, 255));
+        buscarExposicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         buscarExposicion.setText("Cargar Datos");
+        buscarExposicion.setBorder(null);
         buscarExposicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarExposicionActionPerformed(evt);
             }
         });
-        jPanel1.add(buscarExposicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+        jPanel1.add(buscarExposicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 11, 13));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
+        jLabel7.setText(" Modificar Exposicion ");
+
+        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
+        botonRegresar.setText("Regresar");
+        botonRegresar.setBorder(null);
+        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
+                .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(9, 9, 9))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 60));
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1120, 10));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 50, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,7 +201,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -170,15 +225,6 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         cargarDatos(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_buscarExposicionActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-  this.dispose();
-        menuPrincipal ventaina = new  menuPrincipal();
-        ventaina.setVisible(true);
-
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
@@ -281,18 +327,22 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonRegresar;
     private javax.swing.JButton buscarExposicion;
     private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
     private javax.swing.JButton guardarbtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton mostrarTabla;
     private javax.swing.JTextField nombretxt;
     // End of variables declaration//GEN-END:variables
