@@ -20,7 +20,7 @@ public class Usuario extends Persona{
         super();
     }
 
-    public Usuario(String nivel_conocimiento, String nivel_estudiol, String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
+    public Usuario(String nivel_conocimiento, String nivel_estudiol, String cedula, String nombre, String apellido, Date F_nacimiento, String num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
         super(cedula, nombre, apellido, F_nacimiento, num_telefono, genero, provincia, ciudad, calle, correo, contraseña);
         this.nivel_conocimiento = nivel_conocimiento;
         this.nivel_estudiol = nivel_estudiol;

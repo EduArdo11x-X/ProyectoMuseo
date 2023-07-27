@@ -364,7 +364,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearUsuario(BaseD);
 
         Cerrar_BD(BaseD);

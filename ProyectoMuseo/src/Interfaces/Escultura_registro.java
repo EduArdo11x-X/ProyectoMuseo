@@ -39,6 +39,7 @@ public class Escultura_registro extends javax.swing.JFrame {
               Escultura EscNuevo = new Escultura( material, peso, altura,  codigo,  nombre,  descripcion,  fecha_creacion);
               BaseD.set(EscNuevo);
              JOptionPane .showMessageDialog(null, "REGISTRADO CORRECTAMENTE");
+             
         }else{
              JOptionPane .showMessageDialog(null, "ESCULTURA NO REGISTRADA");
         }
@@ -133,6 +134,7 @@ public class Escultura_registro extends javax.swing.JFrame {
         tbescultura = new javax.swing.JTable();
         bttnguardar = new javax.swing.JButton();
         bttnmostrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -259,6 +261,14 @@ public class Escultura_registro extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,7 +284,7 @@ public class Escultura_registro extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(227, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -300,7 +310,9 @@ public class Escultura_registro extends javax.swing.JFrame {
                                     .addComponent(txtcodigo)))
                             .addComponent(CmbBxmaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtpeso)
-                            .addComponent(txtaltura)))
+                            .addComponent(txtaltura))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -314,8 +326,9 @@ public class Escultura_registro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -374,10 +387,16 @@ public class Escultura_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void bttnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnguardarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         creaescultura(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_bttnguardarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        menuPrincipal ventaina = new  menuPrincipal();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,6 +408,7 @@ public class Escultura_registro extends javax.swing.JFrame {
     private javax.swing.JButton bttnguardar;
     private javax.swing.JButton bttnmostrar;
     private com.toedter.calendar.JDateChooser calendario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

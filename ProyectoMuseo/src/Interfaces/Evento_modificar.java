@@ -6,7 +6,7 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-import static Interfaces.Exposicion_registro.direccionBD;
+
 import clases.Evento;
 import clases.Exposicion;
 import com.db4o.Db4o;
@@ -27,14 +27,13 @@ public class Evento_modificar extends javax.swing.JFrame {
     public Evento_modificar() {
         initComponents();
     }
-  String id_evento = "";
-     String nombre_evento = "";
-     String descripcion = "";
-     Date fecha_inicio;
-     Date fecha_final;
-     String id_exposicion = "";
-
-          public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+    String id_evento = "";
+    String nombre_evento = "";
+    String descripcion = "";
+    Date fecha_inicio;
+    Date fecha_final;
+    String id_exposicion = "";
+public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Base_proyecto\\proyecto.yap");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,6 +151,11 @@ public class Evento_modificar extends javax.swing.JFrame {
         btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         btncargar.setText("CARGAR DATOS");
         btncargar.setBorder(null);
+        btncargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncargarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(134, 153, 167));
 
@@ -310,26 +314,28 @@ public class Evento_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-     
-        
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);  
-modificarEvento(BaseD);
-cerrarBD(BaseD);
+
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        modificarEvento(BaseD);
+        cerrarBD(BaseD);
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
- ObjectContainer BaseD = Db4o.openFile(direccionBD);  
-cargarTabla(BaseD);
-cerrarBD(BaseD);
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        cargarTabla(BaseD);
+        cerrarBD(BaseD);
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        menuPrincipal miMenu = new menuPrincipal();
+        miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
-    
+    private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncargarActionPerformed
+
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
         btnguardar.setEnabled(false);
@@ -342,7 +348,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
                 JOptionPane.showMessageDialog(null, "El evento no existe en la base de datos");
 
             } else {
-                Evento Evbuscar = new Evento(CodigoEv, null, null , null, null, null);
+                Evento Evbuscar = new Evento(CodigoEv, null, null, null, null, null);
                 ObjectSet result = BaseD.get(Evbuscar);
                 for (int i = 0; i < result.size(); i++) {
                     Evento Mievento = new Evento();
@@ -355,7 +361,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
                     fechaf.setDate(Mievento.getFecha_final());
 
 //                    if(ValidarCampos(Base D)){
-                 btnguardar.setEnabled(true);
+                    btnguardar.setEnabled(true);
 //                    
 //                }
                     codigotxt.setEnabled(false);
@@ -368,7 +374,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
 
     public void modificarEvento(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        Evento Evmodi = new Evento(id_evento, null, null , null, null, null);
+        Evento Evmodi = new Evento(id_evento, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evmodi);
         Evento Evmodificar = (Evento) result.next();
 
@@ -383,7 +389,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
         limpiarDatos();
     }
 
-   public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
+    public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
         Evento Evbuscar = new Evento(codigo, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evbuscar);
         return result.size();
@@ -394,40 +400,40 @@ miMenu.setVisible(true);        // TODO add your handling code here:
         BaseD.close();
     }
 
-     public void asignarVariables(ObjectContainer BaseD) {
-          id_evento = codigotxt.getText();
-      nombre_evento = nombretxt.getText();
-      
-      descripcion = descripciontxt.getText();
-      
-      fecha_inicio = fechai.getDate();
-      
-      fecha_final = fechaf.getDate();
-      
-      id_exposicion = idextxt.getText();
+    public void asignarVariables(ObjectContainer BaseD) {
+        id_evento = codigotxt.getText();
+        nombre_evento = nombretxt.getText();
+
+        descripcion = descripciontxt.getText();
+
+        fecha_inicio = fechai.getDate();
+
+        fecha_final = fechaf.getDate();
+
+        id_exposicion = idextxt.getText();
     }
 
     public void limpiarDatos() {
         codigotxt.setText("");
         nombretxt.setText("");
         descripciontxt.setText("");
-idextxt.setText("");
+        idextxt.setText("");
     }
-    
+
     //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA
-    
-     public void cargarTabla(ObjectContainer BaseD){
-        
+    public void cargarTabla(ObjectContainer BaseD) {
+
         Evento Evbuscar = new Evento(null, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evbuscar);
         mostrarDatos(result);
     }
+
     public void mostrarDatos(ObjectSet result) {
         String matrizEvento[][] = new String[result.size()][6];
-        if(result.size() == 0){
+        if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
-        
+
         for (int i = 0; i < result.size(); i++) {
             Evento miEvento = new Evento();
             miEvento = (Evento) result.get(i);
@@ -438,13 +444,13 @@ idextxt.setText("");
             matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());
             matrizEvento[i][5] = String.valueOf(miEvento.getFecha_final());
 
-            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo","Id Exposicion", "Nombre", "Descripcion","Fehca inicio", "Fecha Final"}));
+            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo", "Id Exposicion", "Nombre", "Descripcion", "Fehca inicio", "Fecha Final"}));
 
         }
 
     }
 
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton btncargar;

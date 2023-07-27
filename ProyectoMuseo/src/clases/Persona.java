@@ -17,7 +17,7 @@ public class Persona {
     private String nombre;
     private String apellido;
     private Date F_nacimiento;
-    private int num_telefono;
+    private String num_telefono;
     private char genero;
     private String provincia;
     private String ciudad;
@@ -28,7 +28,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
+    public Persona(String cedula, String nombre, String apellido, Date F_nacimiento, String num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -74,11 +74,11 @@ public class Persona {
         this.F_nacimiento = F_nacimiento;
     }
 
-    public int getNum_telefono() {
+    public String getNum_telefono() {
         return num_telefono;
     }
 
-    public void setNum_telefono(int num_telefono) {
+    public void setNum_telefono(String num_telefono) {
         this.num_telefono = num_telefono;
     }
 

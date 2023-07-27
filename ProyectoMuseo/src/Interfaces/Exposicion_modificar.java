@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import static Interfaces.Exposicion_registro.direccionBD;
+
 import clases.Exposicion;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -28,7 +28,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     public Exposicion_modificar() {
         initComponents();
     }
-    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -274,20 +274,20 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         modificarExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_guardarbtnActionPerformed
 
     private void mostrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarTabla(BaseD);
         cerrarBD(BaseD);
 
     }//GEN-LAST:event_mostrarTablaActionPerformed
 
     private void buscarExposicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarExposicionActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarDatos(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_buscarExposicionActionPerformed

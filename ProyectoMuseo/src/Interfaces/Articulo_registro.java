@@ -501,7 +501,7 @@ public class Articulo_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void botonGuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Evento_registro.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearArticulo(BaseD);
         Cerrar_BD(BaseD);
         

@@ -30,7 +30,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     String nombre = "";
     String apellido = "";
     Date fechaNac;
-    int telefono =0;
+    String telefono ;
     String correo = "";
     String provincia = "";
     String cuidad = "";
@@ -59,7 +59,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
 
             } else {
 
-                Usuario Ebuscar = new Usuario(null, null,auxced, null, null, null, 0, '\u0000', null, null, null, null, null);
+                Usuario Ebuscar = new Usuario(null, null,auxced, null, null, null, null, '\u0000', null, null, null, null, null);
 
                 ObjectSet result = BaseD.get(Ebuscar);
                 for (int i = 0; i < result.size(); i++) {
@@ -109,7 +109,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
      
      public void cargarDatos(ObjectContainer BaseD) {
 
-        Usuario Exbuscar = new Usuario(null, null, null, null, null, null, 0, '\u0000', null, null, null, null, null);
+        Usuario Exbuscar = new Usuario(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
@@ -119,7 +119,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
         fechaNac = fechaN.getDate();
-        telefono = Integer.parseInt(txtTelefono.getText());
+        telefono = txtTelefono.getText();
         correo = txtCorreo.getText();
         provincia = txtProvi.getText();
         cuidad = txtCiudad.getText();
@@ -140,7 +140,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     }
 
     public static int comprobarUsuario(ObjectContainer BaseD, String cedula) {
-        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, 0, '\u0000', null, null, null, null, null);
+        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 

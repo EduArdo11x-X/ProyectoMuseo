@@ -383,14 +383,14 @@ public class Pintura_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_desc_pinturaActionPerformed
 
     private void ModificarjbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarjbActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Modificar_pintura(BaseD);
         Cerrar_BD(BaseD);
         cod_pintura.setEditable(true);
     }//GEN-LAST:event_ModificarjbActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_jButton2ActionPerformed

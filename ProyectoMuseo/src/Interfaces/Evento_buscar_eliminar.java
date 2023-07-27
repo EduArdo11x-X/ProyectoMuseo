@@ -278,14 +278,14 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         eliminarEvento(BaseD);
         cerrarBD(BaseD);        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void BuscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarbtnActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         filtro(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed

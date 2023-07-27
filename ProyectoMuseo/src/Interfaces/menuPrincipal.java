@@ -21,6 +21,8 @@ public class menuPrincipal extends javax.swing.JFrame {
     public menuPrincipal() {
         initComponents();
     }
+        public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Base_proyecto\\proyecto.yap");
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +85,6 @@ public class menuPrincipal extends javax.swing.JFrame {
         inicio.setPreferredSize(new java.awt.Dimension(500, 700));
 
         jLabel1.setFont(new java.awt.Font("Palatino", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("MUSEO MODERNO DE CUENCA");
 
@@ -123,6 +124,11 @@ public class menuPrincipal extends javax.swing.JFrame {
                 ingresarUMouseClicked(evt);
             }
         });
+        ingresarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarUActionPerformed(evt);
+            }
+        });
         jMenu1.add(ingresarU);
 
         modificarU.setText("MODIFICAR");
@@ -131,12 +137,22 @@ public class menuPrincipal extends javax.swing.JFrame {
                 modificarUMouseClicked(evt);
             }
         });
+        modificarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarUActionPerformed(evt);
+            }
+        });
         jMenu1.add(modificarU);
 
         eliminarU.setText("BUSCAR - ELIMINAR");
         eliminarU.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminarUMouseClicked(evt);
+            }
+        });
+        eliminarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarUActionPerformed(evt);
             }
         });
         jMenu1.add(eliminarU);
@@ -327,12 +343,22 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu8.setText("ADMINISTRADORES");
 
         ingresarAD.setText("INGRESAR ");
+        ingresarAD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarADActionPerformed(evt);
+            }
+        });
         jMenu8.add(ingresarAD);
 
         modificarAD.setText("MODIFICAR");
         jMenu8.add(modificarAD);
 
         eliminarAD.setText("BUSCAR - ELIMINAR");
+        eliminarAD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarADActionPerformed(evt);
+            }
+        });
         jMenu8.add(eliminarAD);
 
         jMenuBar1.add(jMenu8);
@@ -507,6 +533,36 @@ this.dispose();
         Evento_buscar_eliminar eliminarEvento = new Evento_buscar_eliminar();
         eliminarEvento.setVisible(true);      
     }//GEN-LAST:event_eliminarEVEActionPerformed
+
+    private void ingresarADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarADActionPerformed
+this.dispose();
+        Admi_registroT eliminarEvento = new Admi_registroT();
+        eliminarEvento.setVisible(true);          }//GEN-LAST:event_ingresarADActionPerformed
+
+    private void eliminarADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarADActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Admi_buscar_eliminarT eliminarEvento = new Admi_buscar_eliminarT();
+        eliminarEvento.setVisible(true);     
+        
+        
+    }//GEN-LAST:event_eliminarADActionPerformed
+
+    private void ingresarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarUActionPerformed
+       this.dispose();
+        Usuario_registro eliminarEvento = new Usuario_registro();
+        eliminarEvento.setVisible(true);  
+    }//GEN-LAST:event_ingresarUActionPerformed
+
+    private void modificarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUActionPerformed
+this.dispose();
+        Usuario_modificar eliminarEvento = new Usuario_modificar();
+        eliminarEvento.setVisible(true);      }//GEN-LAST:event_modificarUActionPerformed
+
+    private void eliminarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUActionPerformed
+this.dispose();
+        Usuario_buscar_eliminar eliminarEvento = new Usuario_buscar_eliminar();
+        eliminarEvento.setVisible(true);     }//GEN-LAST:event_eliminarUActionPerformed
 
     /**
      * @param args the command line arguments

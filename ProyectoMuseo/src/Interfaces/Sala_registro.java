@@ -52,7 +52,7 @@ public class Sala_registro extends javax.swing.JFrame {
             BaseD.set(miUsuario);
             JOptionPane.showMessageDialog(null, "Sala Creado");
 
-            ObjectSet result = BaseD.queryByExample(new clases.Pintura());
+            ObjectSet result = BaseD.queryByExample(new clases.Sala());
             mostrarDatos(result);
             LimpiarCampos();
         } else {
@@ -284,7 +284,7 @@ public class Sala_registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearSala(BaseD);
 
         Cerrar_BD(BaseD);

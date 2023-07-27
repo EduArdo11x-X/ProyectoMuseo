@@ -207,7 +207,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_buttonActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Filtro(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_buscar_buttonActionPerformed
@@ -217,7 +217,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBfiltroActionPerformed
 
     private void eliminar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_buttonActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Eliminar_pintura(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_eliminar_buttonActionPerformed

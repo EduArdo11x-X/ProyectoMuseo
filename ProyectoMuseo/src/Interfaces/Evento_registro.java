@@ -302,7 +302,7 @@ public class Evento_registro extends javax.swing.JFrame {
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnguardarActionPerformed

@@ -6,7 +6,7 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-import static Interfaces.Exposicion_registro.direccionBD;
+
 import clases.Exposicion;
 import clases.Usuario;
 import com.db4o.Db4o;
@@ -36,7 +36,7 @@ public class Usuario_registro extends javax.swing.JFrame {
     String nombre = "";
     String apellido = "";
     Date fechaNac;
-    int telefono =0;
+    String telefono;
     String correo = "";
     String provincia = "";
     String cuidad = "";
@@ -48,7 +48,7 @@ public class Usuario_registro extends javax.swing.JFrame {
 
     public void cargarDatos(ObjectContainer BaseD) {
 
-        Usuario Exbuscar = new Usuario(null, null, null, null, null, null, 0, '\u0000', null, null, null, null, null);
+        Usuario Exbuscar = new Usuario(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
@@ -84,7 +84,7 @@ public class Usuario_registro extends javax.swing.JFrame {
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
         fechaNac = fechaN.getDate();
-        telefono = Integer.parseInt(txtTelefono.getText());
+        telefono = txtTelefono.getText();
         correo = txtCorreo.getText();
         provincia = txtProvi.getText();
         cuidad = txtCiudad.getText();
@@ -105,7 +105,7 @@ public class Usuario_registro extends javax.swing.JFrame {
     }
 
     public static int comprobarUsuario(ObjectContainer BaseD, String cedula) {
-        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, 0, '\u0000', null, null, null, null, null);
+        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -333,6 +333,11 @@ public class Usuario_registro extends javax.swing.JFrame {
         botonElimi.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         botonElimi.setForeground(new java.awt.Color(255, 255, 255));
         botonElimi.setText("Eliminar");
+        botonElimi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonElimiActionPerformed(evt);
+            }
+        });
 
         botonModificar.setBackground(new java.awt.Color(0, 11, 13));
         botonModificar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -564,7 +569,7 @@ public class Usuario_registro extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearUsuario(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_GuardarActionPerformed
@@ -575,7 +580,7 @@ public class Usuario_registro extends javax.swing.JFrame {
 
     private void CargardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargardatosActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarDatos(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_CargardatosActionPerformed
@@ -587,6 +592,10 @@ public class Usuario_registro extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void botonElimiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonElimiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonElimiActionPerformed
 
     /**
      * @param args the command line arguments

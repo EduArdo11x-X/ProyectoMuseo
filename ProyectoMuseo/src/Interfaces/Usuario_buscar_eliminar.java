@@ -36,14 +36,14 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         } else {
 
             if (jComboBox1.getSelectedIndex() == 1) {
-                Usuario Abuscar = new Usuario(null, null, null, null, null, null, 0, '\u0000', null, null, null, null, null);
+                Usuario Abuscar = new Usuario(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
                 ObjectSet result = BaseD.get(Abuscar);
                 mostrarDatos(result);
 
             } else {
                 if (jComboBox1.getSelectedIndex() == 2) {
                     String cedula = JOptionPane.showInputDialog("Ingrese el ID a consultar");
-                    Usuario Abuscar = new Usuario(null, null, cedula, null, null, null, 0, '\u0000', null, null, null, null, null);
+                    Usuario Abuscar = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
                     ObjectSet result = BaseD.get(Abuscar);
                     mostrarDatos(result);
 
@@ -89,7 +89,7 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         } else {
 
             String IDA = jTextField1.getText();
-            Usuario Abuscar = new Usuario(null, null, IDA, null, null, null, 0, '\u0000', null, null, null, null, null);
+            Usuario Abuscar = new Usuario(null, null, IDA, null, null, null, null, '\u0000', null, null, null, null, null);
             ObjectSet result = BaseD.get(Abuscar);
 
             if (Ainterfaz.comprobarUsuario(BaseD, IDA) == 0) {

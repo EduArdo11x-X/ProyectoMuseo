@@ -19,7 +19,7 @@ private String titulo_universitario;
     public Administrador() {
     }
 
-    public Administrador(double sueldo, int años_experiencia, String titulo_universitario, String cedula, String nombre, String apellido, Date F_nacimiento, int num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
+    public Administrador(double sueldo, int años_experiencia, String titulo_universitario, String cedula, String nombre, String apellido, Date F_nacimiento, String num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
         super(cedula, nombre, apellido, F_nacimiento, num_telefono, genero, provincia, ciudad, calle, correo, contraseña);
         this.sueldo = sueldo;
         this.años_experiencia = años_experiencia;

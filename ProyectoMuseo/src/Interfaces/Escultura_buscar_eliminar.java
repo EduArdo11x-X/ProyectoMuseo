@@ -270,13 +270,13 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
     private void bttneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttneliminarActionPerformed
         
-         ObjectContainer BaseD = Db4o.openFile(direccionBD);
+         ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Eliminar_Escultura(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttneliminarActionPerformed
 
     private void bttnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Buscar_esculturaID(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed

@@ -15,7 +15,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
     Date fecha_inicio;
     Date fecha_fin;
     
-     public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+     
 
     public Exposicion_registro() {
         initComponents();
@@ -234,13 +234,13 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         crearExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_guardarbtnActionPerformed
 
     private void mostrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarTabla(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_mostrarTablaActionPerformed

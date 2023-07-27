@@ -549,7 +549,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_botonGuarActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-         ObjectContainer BaseD = Db4o.openFile(Evento_registro.direccionBD);
+         ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btnbuscarActionPerformed
@@ -566,7 +566,7 @@ txtCodigo.setText("");
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(Evento_registro.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarDatos(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btncargarActionPerformed

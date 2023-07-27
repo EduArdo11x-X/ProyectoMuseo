@@ -6,7 +6,7 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-import static Interfaces.Exposicion_registro.direccionBD;
+
 import clases.Exposicion;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -23,7 +23,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -285,7 +285,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
 
     private void BuscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarbtnActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         filtro(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed
@@ -295,7 +295,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_codigotxt1ActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         eliminarExposicion(BaseD);
         cerrarBD(BaseD);        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarbtnActionPerformed

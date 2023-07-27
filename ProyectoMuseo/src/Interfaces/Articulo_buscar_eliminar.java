@@ -297,7 +297,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Filtro(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_buscarbtnActionPerformed
@@ -307,7 +307,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBfiltroActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Eliminar_Articulo(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_eliminarbtnActionPerformed
