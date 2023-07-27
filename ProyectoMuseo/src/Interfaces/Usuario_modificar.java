@@ -37,8 +37,9 @@ public class Usuario_modificar extends javax.swing.JFrame {
     String calle = "";
     String nivel_conoci = "";
     char genero;
+    String direccion = "";
     
-     public void buscar(ObjectContainer BaseD) {//cargardatos
+     public  void buscar(ObjectContainer BaseD) {//cargardatos
 
         botonBuscar.setEnabled(false);
         String auxced;
@@ -51,10 +52,10 @@ public class Usuario_modificar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese la cedula: ");
         } else {
 
-            if (EAux.cargarDatos(BaseD, auxced) == 0) {
+            if (EAux.cargarDatos(BaseD ,auxced) == 0) {
 
-                JOptionPane.showMessageDialog(null, "La pintura no existe en la base de datos");
-                LimpiarCamposdeTexto();
+                JOptionPane.showMessageDialog(null, "El usuario existe en la base de datos");
+                limpiarDatos();
 
             } else {
 
@@ -63,28 +64,160 @@ public class Usuario_modificar extends javax.swing.JFrame {
                 ObjectSet result = BaseD.get(Ebuscar);
                 for (int i = 0; i < result.size(); i++) {
 
-                    Pintura miE = new Pintura();
+                    Usuario miE = new Usuario();
 
-                    miE = (Pintura) result.get(i);
+                    miE = (Usuario) result.get(i);
 
-                    cod_pintura.setText(miE.getCodigo());
-                    tipo_pint.setText(miE.getTipo());
-                    nom_pintura.setText(miE.getNombre());
-                    esti_pintura.setText(miE.getEstilo());
-                    desc_pintura.setText(miE.getDescripcion());
-                    fechaN.setDate((miE.getFecha_creacion()));
+                    txtCedula.setText(miE.getCedula());
+                    txtNombre.setText(miE.getNombre());
+                    txtApellido.setText(miE.getApellido());
+                    txtTelefono.setText(miE.getNum_telefono());
+                    txtCorreo.setText(miE.getCorreo());
+                    txtProvi.setText(miE.getProvincia());
+                    txtCiudad.setText(miE.getCiudad());
+                    txtNivel.setText(miE.getNivel_conocimiento());
+                    fechaN.setDate((miE.getF_nacimiento()));
 
-                    Modificarjb.setEnabled(true);
+                    bttnmodifi.setEnabled(true);
+                    
                     //Hacer editable los campos de texto
                     mostrarDatos(result);
-                    HabilitarCampos_deTexto();
-                    cod_pintura.setEditable(false);
+                    HabilitarCampos();
+                    txtCedula.setEnabled(false);
+                    
                 }
 
             }
 
         }
     }
+     
+     private void HabilitarCampos() {
+
+         txtCedula.setEditable(true);
+         txtNombre.setEditable(true);
+         txtApellido.setEditable(true);
+         txtTelefono.setEditable(true);
+         txtCorreo.setEditable(true);
+         txtProvi.setEditable(true);
+         txtCiudad.setEditable(true);
+         txtNivel.setEditable(true);
+         //fechaN;
+       
+
+    }
+     
+     public void cargarDatos(ObjectContainer BaseD) {
+
+        Usuario Exbuscar = new Usuario(null, null, null, null, null, null, 0, '\u0000', null, null, null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        mostrarDatos(result);
+    }
+     
+      public void asignarVariables(ObjectContainer BaseD) {
+        cedula = txtCedula.getText();
+        nombre = txtNombre.getText();
+        apellido = txtApellido.getText();
+        fechaNac = fechaN.getDate();
+        telefono = Integer.parseInt(txtTelefono.getText());
+        correo = txtCorreo.getText();
+        provincia = txtProvi.getText();
+        cuidad = txtCiudad.getText();
+        calle = txtxCalle.getText();
+        nivel_conoci = txtNivel.getText();
+    }
+
+    public void limpiarDatos() {
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtProvi.setText("");
+        txtCiudad.setText("");
+        txtxCalle.setText("");
+        txtNivel.setText("");
+    }
+
+    public static int comprobarUsuario(ObjectContainer BaseD, String cedula) {
+        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, 0, '\u0000', null, null, null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        return result.size();
+
+    }
+
+      public void mostrarDatos(ObjectSet result) {
+        String matrizUsuario[][] = new String[result.size()][11];
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Usuario miUsuario = new Usuario();
+            miUsuario = (Usuario) result.get(i);
+            matrizUsuario[i][0] = miUsuario.getCedula();
+            matrizUsuario[i][1] = miUsuario.getNombre();
+            matrizUsuario[i][2] = miUsuario.getApellido();
+            matrizUsuario[i][3] = String.valueOf(miUsuario.getNum_telefono());
+            //matrizUsuario[i][4] = String.valueOf(miExposicion.getFecha_fin());
+            matrizUsuario[i][5] = miUsuario.getCorreo();
+            matrizUsuario[i][6] = miUsuario.getProvincia();
+            matrizUsuario[i][7] = miUsuario.getCiudad();
+            matrizUsuario[i][8] = miUsuario.getCalle();
+            matrizUsuario[i][9] = miUsuario.getNivel_conocimiento();
+
+            tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(matrizUsuario, new String[]{"Cedula", "Nombre", "Apellido", "Telefono", "Genero", "Correo Electronico", "Provincia", "Ciudad", "Calle", "Nivel de conocimiento"}));
+
+        }
+
+    }
+      
+      public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+
+        if (txtCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(cedula)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre ");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre)) {
+                JOptionPane.showMessageDialog(this, "nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        
+
+        if (txtCorreo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el correo ");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(correo)) {
+                JOptionPane.showMessageDialog(this, "correo invalido");
+                ban_confirmar = false;
+            }
+        }
+        
+       
+
+        return ban_confirmar;
+    }
+      public static void Cerrarv_BD(ObjectContainer BaseD) {
+
+        BaseD.close();
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,23 +260,49 @@ public class Usuario_modificar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         botonBuscar = new javax.swing.JButton();
+        txtdireccion = new javax.swing.JTextField();
+        bttnmodifi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setText("Modificar Usuario");
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Correo:");
 
+        txtCorreo.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Direcion:");
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Provincia:");
 
+        txtProvi.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cuidad:");
 
+        txtCiudad.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Calle:");
 
+        txtxCalle.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Nivel conocimiento:");
 
+        txtNivel.setBackground(new java.awt.Color(134, 153, 167));
         txtNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNivelActionPerformed(evt);
@@ -157,8 +316,12 @@ public class Usuario_modificar extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cedula:");
 
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Genero:");
 
         Cargardatos.setText("Cargar Datos");
@@ -181,7 +344,12 @@ public class Usuario_modificar extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaUsuario);
 
+        jButton2.setBackground(new java.awt.Color(0, 11, 13));
+        jButton2.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         jButton2.setText("Regresar");
+        jButton2.setMaximumSize(new java.awt.Dimension(121, 33));
+        jButton2.setMinimumSize(new java.awt.Dimension(129, 31));
+        jButton2.setPreferredSize(new java.awt.Dimension(129, 31));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -190,15 +358,31 @@ public class Usuario_modificar extends javax.swing.JFrame {
 
         rdhombre.setText("Hombre");
 
+        txtCedula.setBackground(new java.awt.Color(134, 153, 167));
+
         rdmujer.setText("Mujer");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
 
+        txtNombre.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellido:");
 
+        txtApellido.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha de nacimiento:");
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefono:");
+
+        txtTelefono.setBackground(new java.awt.Color(134, 153, 167));
 
         botonBuscar.setText("Buscar");
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,33 +391,42 @@ public class Usuario_modificar extends javax.swing.JFrame {
             }
         });
 
+        txtdireccion.setText("jTextField1");
+
+        bttnmodifi.setText("Modificar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(263, 263, 263))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(209, 209, 209)
+                        .addComponent(Guardar)
+                        .addGap(55, 55, 55)
+                        .addComponent(Cargardatos)
+                        .addGap(47, 47, 47)
+                        .addComponent(bttnmodifi))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Guardar)
-                                .addGap(55, 55, 55)
-                                .addComponent(Cargardatos))
-                            .addComponent(botonBuscar))))
-                .addContainerGap(194, Short.MAX_VALUE))
+                            .addComponent(botonBuscar)
+                            .addComponent(jLabel1))))
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -301,16 +494,19 @@ public class Usuario_modificar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addGap(7, 7, 7)
+                .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
-                    .addComponent(Cargardatos))
+                    .addComponent(Cargardatos)
+                    .addComponent(bttnmodifi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton2)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -397,14 +593,14 @@ public class Usuario_modificar extends javax.swing.JFrame {
         // TODO add your handling code here:
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
         crearUsuario(BaseD);
-        cerrarBD(BaseD);
+        Cerrarv_BD(BaseD);
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void CargardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargardatosActionPerformed
         // TODO add your handling code here:
         ObjectContainer BaseD = Db4o.openFile(direccionBD);
         cargarDatos(BaseD);
-        cerrarBD(BaseD);
+        Cerrarv_BD(BaseD);
     }//GEN-LAST:event_CargardatosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -412,7 +608,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
@@ -424,6 +620,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     private javax.swing.JButton Cargardatos;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton bttnmodifi;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -452,6 +649,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtProvi;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtxCalle;
     // End of variables declaration//GEN-END:variables
 }
