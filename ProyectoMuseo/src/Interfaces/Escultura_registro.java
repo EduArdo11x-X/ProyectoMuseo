@@ -136,33 +136,62 @@ public class Escultura_registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setToolTipText("");
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REGISTRO DE ESCULTURA");
+        jLabel1.setToolTipText("");
 
-        jLabel2.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CODIGO ARTE");
+        jLabel2.setToolTipText("");
 
-        jLabel3.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("NOMBRE");
+        jLabel3.setToolTipText("");
 
-        jLabel4.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DESCRIPCION");
+        jLabel4.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("FECHA DE CREACION");
+        jLabel5.setToolTipText("");
 
-        jLabel6.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("MATERIAL");
+        jLabel6.setToolTipText("");
 
-        jLabel7.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("PESO");
+        jLabel7.setToolTipText("");
 
-        jLabel8.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ALTURA");
+        jLabel8.setToolTipText("");
 
+        txtcodigo.setBackground(new java.awt.Color(134, 153, 167));
         txtcodigo.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
 
+        txtnombre.setBackground(new java.awt.Color(134, 153, 167));
         txtnombre.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,18 +199,23 @@ public class Escultura_registro extends javax.swing.JFrame {
             }
         });
 
+        txtarea.setBackground(new java.awt.Color(134, 153, 167));
         txtarea.setColumns(20);
         txtarea.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         txtarea.setRows(5);
         jScrollPane1.setViewportView(txtarea);
 
+        CmbBxmaterial.setBackground(new java.awt.Color(134, 153, 167));
         CmbBxmaterial.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         CmbBxmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEDRA", "MADERA", "METAL", "CERAMICA", "VIDRIO", " " }));
 
+        txtpeso.setBackground(new java.awt.Color(134, 153, 167));
         txtpeso.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
 
+        txtaltura.setBackground(new java.awt.Color(134, 153, 167));
         txtaltura.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
 
+        tbescultura.setBackground(new java.awt.Color(134, 153, 167));
         tbescultura.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         tbescultura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,16 +238,22 @@ public class Escultura_registro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbescultura);
 
-        bttnguardar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        bttnguardar.setBackground(new java.awt.Color(0, 0, 0));
+        bttnguardar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        bttnguardar.setForeground(new java.awt.Color(255, 255, 255));
         bttnguardar.setText("GUARDAR");
+        bttnguardar.setToolTipText("");
         bttnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnguardarActionPerformed(evt);
             }
         });
 
-        bttnmostrar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        bttnmostrar.setBackground(new java.awt.Color(0, 0, 0));
+        bttnmostrar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        bttnmostrar.setForeground(new java.awt.Color(255, 255, 255));
         bttnmostrar.setText("MOSTRAR DATOS");
+        bttnmostrar.setToolTipText("");
         bttnmostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnmostrarActionPerformed(evt);
@@ -243,14 +283,13 @@ public class Escultura_registro extends javax.swing.JFrame {
                     .addComponent(txtpeso)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(CmbBxmaterial, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(CmbBxmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -263,21 +302,21 @@ public class Escultura_registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,9 +346,9 @@ public class Escultura_registro extends javax.swing.JFrame {
                             .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(305, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(557, 557, 557)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bttnmostrar)
                             .addComponent(bttnguardar))

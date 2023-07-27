@@ -141,7 +141,6 @@ public class Usuario_registro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -173,6 +172,9 @@ public class Usuario_registro extends javax.swing.JFrame {
         rdmujer = new javax.swing.JRadioButton();
         botonElimi = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,36 +191,90 @@ public class Usuario_registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Registro Usuario");
+        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cedula:");
 
+        txtCedula.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
 
+        txtNombre.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellido:");
 
+        txtApellido.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha de nacimiento:");
 
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefono:");
 
+        txtTelefono.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Correo:");
 
+        txtCorreo.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Direcion:");
 
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Provincia:");
 
+        txtProvi.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cuidad:");
 
+        txtCiudad.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Calle:");
 
+        txtxCalle.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel13.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Nivel conocimiento:");
 
+        txtNivel.setBackground(new java.awt.Color(134, 153, 167));
         txtNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNivelActionPerformed(evt);
             }
         });
 
+        Guardar.setBackground(new java.awt.Color(0, 11, 13));
+        Guardar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,8 +282,14 @@ public class Usuario_registro extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel14.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Genero:");
 
+        Cargardatos.setBackground(new java.awt.Color(0, 11, 13));
+        Cargardatos.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        Cargardatos.setForeground(new java.awt.Color(255, 255, 255));
         Cargardatos.setText("Cargar Datos");
         Cargardatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +297,7 @@ public class Usuario_registro extends javax.swing.JFrame {
             }
         });
 
+        tablaUsuario.setBackground(new java.awt.Color(134, 153, 167));
         tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -248,6 +311,9 @@ public class Usuario_registro extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaUsuario);
 
+        jButton2.setBackground(new java.awt.Color(0, 11, 13));
+        jButton2.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,20 +321,59 @@ public class Usuario_registro extends javax.swing.JFrame {
             }
         });
 
+        rdhombre.setBackground(new java.awt.Color(134, 153, 167));
         buttonGroup1.add(rdhombre);
         rdhombre.setText("Hombre");
 
+        rdmujer.setBackground(new java.awt.Color(134, 153, 167));
         buttonGroup1.add(rdmujer);
         rdmujer.setText("Mujer");
 
+        botonElimi.setBackground(new java.awt.Color(0, 11, 13));
+        botonElimi.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        botonElimi.setForeground(new java.awt.Color(255, 255, 255));
         botonElimi.setText("Eliminar");
 
+        botonModificar.setBackground(new java.awt.Color(0, 11, 13));
+        botonModificar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(255, 255, 255));
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarActionPerformed(evt);
             }
         });
+
+        jTextField1.setBackground(new java.awt.Color(134, 153, 167));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
+        jLabel1.setText("Registro Usuario");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1)
+                .addContainerGap(647, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -277,17 +382,14 @@ public class Usuario_registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel7)
                         .addGap(6, 6, 6)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(99, 99, 99)
                         .addComponent(jLabel13)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -314,16 +416,14 @@ public class Usuario_registro extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtxCalle, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(txtCiudad)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(157, 157, 157)
-                                .addComponent(jLabel10)
-                                .addGap(6, 6, 6)
+                                .addGap(283, 283, 283)
                                 .addComponent(txtProvi, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -351,20 +451,27 @@ public class Usuario_registro extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(156, 156, 156)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addGap(6, 6, 6)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCorreo))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)
+                        .addGap(498, 498, 498)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -375,19 +482,19 @@ public class Usuario_registro extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtProvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel10))))
+                            .addComponent(jLabel10)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -439,9 +546,7 @@ public class Usuario_registro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 67, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,6 +584,10 @@ public class Usuario_registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonModificarActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -506,9 +615,11 @@ public class Usuario_registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdhombre;
     private javax.swing.JRadioButton rdmujer;
     private javax.swing.JTable tablaUsuario;

@@ -37,6 +37,15 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -64,15 +73,13 @@
                       <Component id="txtpeso" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="CmbBxmaterial" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtnombre" min="-2" pref="166" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtcodigo" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                                      </Group>
+                              <Component id="CmbBxmaterial" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtnombre" min="-2" pref="166" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtcodigo" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="txtaltura" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
@@ -91,13 +98,13 @@
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="249" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="598" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="293" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -107,11 +114,11 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -148,10 +155,10 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="101" max="-2" attributes="0"/>
-                          <EmptySpace pref="305" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="557" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="bttnmostrar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="bttnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,73 +173,129 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="REGISTRO DE ESCULTURA"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CODIGO ARTE"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="NOMBRE"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="DESCRIPCION"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="FECHA DE CREACION"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MATERIAL"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="PESO"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ALTURA"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtcodigo">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a7" green="99" red="86" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="0"/>
             </Property>
@@ -240,6 +303,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtnombre">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a7" green="99" red="86" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="0"/>
             </Property>
@@ -257,6 +323,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txtarea">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a7" green="99" red="86" type="rgb"/>
+                </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Raanana" size="14" style="0"/>
@@ -270,6 +339,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="CmbBxmaterial">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a7" green="99" red="86" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="0"/>
             </Property>
@@ -290,6 +362,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtpeso">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a7" green="99" red="86" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="0"/>
             </Property>
@@ -297,6 +372,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtaltura">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a7" green="99" red="86" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Raanana" size="14" style="0"/>
             </Property>
@@ -311,6 +389,9 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tbescultura">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a7" green="99" red="86" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Raanana" size="14" style="0"/>
                 </Property>
@@ -373,10 +454,17 @@
         </Container>
         <Component class="javax.swing.JButton" name="bttnguardar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="GUARDAR"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnguardarActionPerformed"/>
@@ -384,10 +472,17 @@
         </Component>
         <Component class="javax.swing.JButton" name="bttnmostrar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Raanana" size="14" style="0"/>
+              <Font name="Courier New" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MOSTRAR DATOS"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnmostrarActionPerformed"/>
