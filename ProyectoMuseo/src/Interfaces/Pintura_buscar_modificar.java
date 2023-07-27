@@ -100,7 +100,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
-        jLabel4.setText("Ingrese el ID de la asignatura a eliminar");
+        jLabel4.setText("Ingrese el ID de la Pintura a eliminar");
 
         jLabel5.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
         jLabel5.setText("ID:");
@@ -140,7 +140,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
+                .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
