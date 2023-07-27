@@ -5,10 +5,10 @@
  */
 package Interfaces;
 
-/**
- *
- * @author EDU
- */
+import com.db4o.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Sala_modificar extends javax.swing.JFrame {
 
     /**
@@ -16,6 +16,114 @@ public class Sala_modificar extends javax.swing.JFrame {
      */
     public Sala_modificar() {
         initComponents();
+    }
+
+    String codigo_sala;
+    String Nombre_sala;
+    int capcidad_sala;
+    String tamatica_sala;
+
+    public void buscar(ObjectContainer basep) {//cargardatos
+
+        Modificarjb.setEnabled(false);
+        String IDAux;
+        IDAux = cod_sala.getText();
+
+        Sala_registro EAux = new Sala_registro();
+
+        if (cod_sala.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Ingrese un ID");
+        } else {
+
+            if (EAux.verificar(basep, IDAux) == 0) {
+
+                JOptionPane.showMessageDialog(null, "La pintura no existe en la base de datos");
+                LimpiarCamposdeTexto();
+
+            } else {
+
+                clases.Sala Ebuscar = new clases.Sala(codigo_sala, null, 0, null);
+
+                ObjectSet result = basep.get(Ebuscar);
+                for (int i = 0; i < result.size(); i++) {
+
+                    clases.Sala miE = new clases.Sala();
+
+                    miE = (clases.Sala) result.get(i);
+
+                    cod_sala.setText(miE.getCodigo());
+                    nom_sala.setText(miE.getNombre());
+                    capacidad_sala.setValue(miE.getCapacidad());
+                    tematica_sala.setText(miE.getTematica());
+
+                    Modificarjb.setEnabled(true);
+                    //Hacer editable los campos de texto
+                    mostrarDatos(result);
+                    HabilitarCampos_deTexto();
+                    cod_sala.setEditable(false);
+                }
+
+            }
+
+        }
+    }
+
+    public void LimpiarCamposdeTexto() {
+
+        nom_sala.setText("");
+        capacidad_sala.setValue(0);
+        tematica_sala.setText("");
+        cod_sala.setText("");
+
+    }
+
+    public void HabilitarCampos_deTexto() {
+        nom_sala.setEditable(true);
+        tematica_sala.setEditable(true);
+
+    }
+
+    public void Modificar_Sala(ObjectContainer basep) {
+
+        clases.Sala Emodi = new clases.Sala(cod_sala.getText(), null, 0, null);
+        ObjectSet result = basep.get(Emodi);
+        clases.Sala Emodificar = (clases.Sala) result.next();
+        Emodificar.setNombre(nom_sala.getText());
+        Emodificar.setCapacidad((int) capacidad_sala.getValue());
+        Emodificar.setTematica(tematica_sala.getText());
+        ;
+        basep.set(Emodificar);
+        JOptionPane.showMessageDialog(null, "La sala fue modificado exitosamente");
+
+        mostrarDatos(result);
+        LimpiarCamposdeTexto();
+    }
+
+    public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) jtableregistro.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "La sala no existe");
+        } else {
+            while (result.hasNext()) {
+                clases.Sala misala = (clases.Sala) result.next();
+                Object[] fila = {
+                    misala.getCodigo(),
+                    misala.getNombre(),
+                    misala.getCapacidad(),
+                    misala.getTematica()
+
+                };
+                model.addRow(fila);
+            }
+        }
+    }
+
+    public static void Cerrar_BD(ObjectContainer basep) {
+
+        basep.close();
     }
 
     /**
@@ -27,21 +135,205 @@ public class Sala_modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cod_sala = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        nom_sala = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tematica_sala = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtableregistro = new javax.swing.JTable();
+        btnvolver = new javax.swing.JButton();
+        capacidad_sala = new javax.swing.JSpinner();
+        Modificarjb = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Ingreso Sala");
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Codigo Sala:");
+
+        cod_sala.setBackground(new java.awt.Color(255, 255, 255));
+        cod_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Nombre Sala:");
+
+        nom_sala.setBackground(new java.awt.Color(255, 255, 255));
+        nom_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Capacidad Sala:");
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Tematica Sala:");
+
+        tematica_sala.setBackground(new java.awt.Color(255, 255, 255));
+        tematica_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+
+        jtableregistro.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo Sala", "Nombre Sala", "Capacidad Sala", "Tematica  Sala"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jtableregistro);
+
+        btnvolver.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        btnvolver.setText("VOLVER");
+        btnvolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvolverActionPerformed(evt);
+            }
+        });
+
+        Modificarjb.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
+        Modificarjb.setText("Guardar");
+        Modificarjb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarjbActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
+        jButton2.setText("BUSCAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nom_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cod_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton2)))
+                                .addGap(56, 56, 56)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tematica_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(capacidad_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(328, 328, 328)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(252, 252, 252)
+                .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cod_sala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(capacidad_sala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tematica_sala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nom_sala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
+        this.dispose();
+        menuPrincipal ventaina = new menuPrincipal();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_btnvolverActionPerformed
+
+    private void ModificarjbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarjbActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        Modificar_Sala(BaseD);
+        Cerrar_BD(BaseD);
+        cod_sala.setEditable(true);
+    }//GEN-LAST:event_ModificarjbActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(Pintura_Interfaz.direccionBD);
+        buscar(BaseD);
+        Cerrar_BD(BaseD);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +371,20 @@ public class Sala_modificar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Modificarjb;
+    private javax.swing.JButton btnvolver;
+    private javax.swing.JSpinner capacidad_sala;
+    private javax.swing.JTextField cod_sala;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jtableregistro;
+    private javax.swing.JTextField nom_sala;
+    private javax.swing.JTextField tematica_sala;
     // End of variables declaration//GEN-END:variables
 }
