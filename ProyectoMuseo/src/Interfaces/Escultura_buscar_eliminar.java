@@ -87,7 +87,8 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
-        bttnbuscar.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
+        bttnbuscar.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        bttnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         bttnbuscar.setText("BUSCAR");
         bttnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +99,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("codigo");
+        jLabel3.setText("Codigo");
 
         txtcodigo.setBackground(new java.awt.Color(134, 153, 167));
         txtcodigo.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
@@ -110,7 +111,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
         bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
         bttnregresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        bttnregresar.setForeground(new java.awt.Color(255, 255, 255));
+        bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1 2.png"))); // NOI18N
         bttnregresar.setText("REGRESAR");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +119,8 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
-        bttneliminar.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        bttneliminar.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        bttneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/basura.png"))); // NOI18N
         bttneliminar.setText("ELIMINAR");
         bttneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +128,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Raanana", 2, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("SELECCIONES UN CAMPO PARA BUSCAR ESCULTURA");
         jLabel4.setToolTipText("");
@@ -179,17 +181,17 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
                         .addComponent(cmbopciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(bttnbuscar)
-                        .addGap(177, 177, 177)
+                        .addGap(128, 128, 128)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(bttneliminar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(29, Short.MAX_VALUE))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(bttnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -207,16 +209,12 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
                             .addComponent(bttnbuscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                                .addComponent(bttneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(47, 47, 47)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(bttnregresar)
