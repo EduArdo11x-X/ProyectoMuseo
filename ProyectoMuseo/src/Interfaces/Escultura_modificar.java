@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import static Interfaces.Articulo_modificar.Cerrar_BD;
 import static Interfaces.Pintura_modificar.Cerrar_BD;
 import clases.Escultura;
 import com.db4o.Db4o;
@@ -12,6 +13,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,7 +33,7 @@ public class Escultura_modificar extends javax.swing.JFrame {
 
     public Escultura_modificar() {
         initComponents();
-         bttnmodificar.setEnabled(false);
+        bttnmodificar.setEnabled(false);
     }
 
     private void buscar(ObjectContainer BaseD) {
@@ -61,7 +63,7 @@ public class Escultura_modificar extends javax.swing.JFrame {
                     Escultura miE = new Escultura();
 
                     miE = (Escultura) result.get(i);
-                    
+
                     txtcodigo.setText(miE.getCodigo());
                     txtnombre.setText(miE.getNombre());
                     txtarea.setText(miE.getDescripcion());
@@ -75,10 +77,10 @@ public class Escultura_modificar extends javax.swing.JFrame {
                             j = CmbBxmaterial.getItemCount();
                         }
                     }
-                    
-                if (validarCampos(BaseD)) {
-                    bttnmodificar.setEnabled(true);
-                }
+
+                    if (validarCampos(BaseD)) {
+                        bttnmodificar.setEnabled(true);
+                    }
                     HabilitarCampos();
                     txtcodigo.setEditable(false);
                 }
@@ -87,8 +89,8 @@ public class Escultura_modificar extends javax.swing.JFrame {
         }
 
     }
-    
-      public void asignarVariables(ObjectContainer BaseD) {
+
+    public void asignarVariables(ObjectContainer BaseD) {
 
         material = CmbBxmaterial.getSelectedItem().toString();
         peso = Double.parseDouble(txtpeso.getText());
@@ -99,9 +101,8 @@ public class Escultura_modificar extends javax.swing.JFrame {
         fecha_creacion = calendario.getDate();
 
     }
-    
-    
-     public boolean validarCampos(ObjectContainer basep) {
+
+    public boolean validarCampos(ObjectContainer basep) {
         Validaciones miValidaciones = new Validaciones();
         asignarVariables(basep);
         boolean ban_confirmar = true;
@@ -137,11 +138,19 @@ public class Escultura_modificar extends javax.swing.JFrame {
         return result.size();
     }
 
-    public  void Modificar_Escultura(ObjectContainer BaseD) {
+    public void cargarDatos(ObjectContainer BaseD) {
+
+        Escultura EscBuscar = new Escultura(null, 0, 0, codigo, null, null, null);
+
+        ObjectSet result = BaseD.get(EscBuscar);
+        mostrarDatos(result);
+    }
+
+    public void Modificar_Escultura(ObjectContainer BaseD) {
 
         JOptionPane.showMessageDialog(null, "Existen campos vacios");
         //LimpiarCamposdeTexto();
-        Escultura Emodi = new Escultura(null, 0,0,  null, null, null,null);
+        Escultura Emodi = new Escultura(null, 0, 0, null, null, null, null);
         ObjectSet result = BaseD.get(Emodi);
         Escultura Emodificar = (Escultura) result.next();
         Emodificar.setCodigo(txtcodigo.getText());
@@ -149,8 +158,7 @@ public class Escultura_modificar extends javax.swing.JFrame {
         Emodificar.setDescripcion(txtarea.getText());
         Emodificar.setFecha_creacion(calendario.getDate());
         Emodificar.setMaterial(CmbBxmaterial.getSelectedItem().toString());
-        
-     
+
         BaseD.set(Emodificar);
         JOptionPane.showMessageDialog(null, "El Usuario modificado exitosamente");
         limpiarDatos();
@@ -161,11 +169,32 @@ public class Escultura_modificar extends javax.swing.JFrame {
         BaseD.close();
     }
 
-public void limpiarDatos() {
+    public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) tblmodescult.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "La escultura no existe");
+        } else {
+            while (result.hasNext()) {
+                clases.Escultura miEscultura = (clases.Escultura) result.next();
+                Object[] fila = {
+                    miEscultura.getCodigo(),
+                    miEscultura.getNombre(),
+                    miEscultura.getDescripcion(),
+                    miEscultura.getFecha_creacion(),
+                    miEscultura.getAltura(),
+                    miEscultura.getPeso(),};
+                model.addRow(fila);
+            }
+        }
+    }
+
+    public void limpiarDatos() {
 
         CmbBxmaterial.setSelectedItem("");
         txtpeso.setText("");
-       txtaltura.setText("");
+        txtaltura.setText("");
         txtcodigo.setText("");
         txtnombre.setText("");
         txtarea.setText("");
@@ -209,12 +238,14 @@ public void limpiarDatos() {
         bttnbuscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bttncargar_datos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(200, 150));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
@@ -365,16 +396,15 @@ public void limpiarDatos() {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jButton1.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttncargar_datos.setText("CARGAR DATOS");
+        bttncargar_datos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttncargar_datosActionPerformed(evt);
             }
         });
 
@@ -394,7 +424,6 @@ public void limpiarDatos() {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(108, 108, 108)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtaltura, javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,40 +433,36 @@ public void limpiarDatos() {
                             .addComponent(txtcodigo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(144, 144, 144)
-                        .addComponent(bttnbuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(bttnregresar)
-                .addGap(234, 234, 234)
-                .addComponent(bttnmodificar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(bttnbuscar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 59, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bttnregresar)
+                        .addGap(164, 164, 164)
+                        .addComponent(bttnmodificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttncargar_datos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bttnbuscar))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnbuscar))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
@@ -468,11 +493,12 @@ public void limpiarDatos() {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttnmodificar)
-                    .addComponent(bttnregresar))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(bttnregresar)
+                    .addComponent(bttncargar_datos))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -483,9 +509,7 @@ public void limpiarDatos() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -515,7 +539,7 @@ public void limpiarDatos() {
 
     private void bttnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnmodificarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(Escultura_registro.direccionBD);
         Modificar_Escultura(BaseD);
         Cerrar_BD(BaseD);
         txtcodigo.setEditable(true);
@@ -527,24 +551,25 @@ public void limpiarDatos() {
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        menuPrincipal ventaina = new  menuPrincipal();
-        ventaina.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bttncargar_datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttncargar_datosActionPerformed
+
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        cargarDatos(BaseD);
+        Cerrar_BD(BaseD);
+
+    }//GEN-LAST:event_bttncargar_datosActionPerformed
 
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmbBxmaterial;
     private javax.swing.JButton bttnbuscar;
+    private javax.swing.JButton bttncargar_datos;
     private javax.swing.JButton bttnmodificar;
     private javax.swing.JButton bttnregresar;
     private com.toedter.calendar.JDateChooser calendario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
