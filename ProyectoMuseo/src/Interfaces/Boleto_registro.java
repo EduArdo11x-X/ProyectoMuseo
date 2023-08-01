@@ -5,6 +5,9 @@
  */
 package Interfaces;
 
+import clases.Boleto;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EDU
@@ -27,26 +30,333 @@ public class Boleto_registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_numcuenta = new javax.swing.JTextField();
+        txt_entradas = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+
+        jPanel2.setBackground(new java.awt.Color(102, 102, 0));
+        jPanel2.setForeground(new java.awt.Color(51, 51, 0));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("COMPRAR BOLETO");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(21, 21, 21))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Ingrese el numero de entradas :");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Ingrese su numero de cuenta:");
+
+        txt_numcuenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numcuentaKeyTyped(evt);
+            }
+        });
+
+        txt_entradas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_entradasKeyTyped(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setText("Compar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(102, 0, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton2.setText("Cancelar ");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("Tomar en cuenta:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("> El precio es fijo para cualquier persona es de $2 dolares");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setText("> Solo se puede compar un maximo de 10 entradas");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(59, 59, 59)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_numcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_entradas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jButton1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_numcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_entradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(21, 21, 21))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void txt_numcuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numcuentaKeyTyped
+        // TODO add your handling code here:
+        // Obtiene el texto actual del campo de texto
+        String numeroCuenta = txt_numcuenta.getText();
+
+        // Verifica si el carácter ingresado es un dígito
+        char caracter = evt.getKeyChar();
+        if (!Character.isDigit(caracter)) {
+            // Si no es un dígito, consume el evento (no se mostrará en el campo de texto)
+            evt.consume();
+            return;
+        }
+
+        // Verifica la longitud del número de cuenta
+        if (numeroCuenta.length() >= 10) {
+            // Si ya se ingresaron 10 dígitos, consume el evento (no se mostrará en el campo de texto)
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_numcuentaKeyTyped
+
+    private void txt_entradasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_entradasKeyTyped
+        // TODO add your handling code here:
+        String textoIngresado = txt_entradas.getText();
+
+        // Verifica si el carácter ingresado es un dígito
+        char caracter = evt.getKeyChar();
+        if (!Character.isDigit(caracter)) {
+            // Si no es un dígito, consume el evento (no se mostrará en el campo de texto)
+            evt.consume();
+            return;
+        }
+
+        // Verifica si el número de entradas es mayor a 10
+        if (textoIngresado.length() >= 2) {
+            evt.consume(); // Consumir el evento si se intenta ingresar más de 2 caracteres
+            return;
+        }
+
+        // Obtiene el valor numérico del texto actual en el campo de texto
+        int valorIngresado = Integer.parseInt(textoIngresado + caracter);
+
+        // Verifica si el valor está dentro del rango [1, 10]
+        if (valorIngresado < 1 || valorIngresado > 10) {
+            evt.consume(); // Consumir el evento si el valor está fuera del rango
+        }
+    }//GEN-LAST:event_txt_entradasKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//   
+//        String numEntradasText = txt_entradas.getText();
+//        String numCuenta = txt_numcuenta.getText();
+//
+//// Verificar que los campos no estén vacíos
+//        if (numEntradasText.isEmpty() || numCuenta.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Por favor ingrese todos los campos.");
+//            return;
+//        }
+//
+//        int numEntradas = Integer.parseInt(numEntradasText);
+//
+//// Verificar si el número de cuenta ha alcanzado el límite de 10 boletos
+//        if (Boleto.haAlcanzadoLimite(numCuenta, numEntradas)) {
+//            JOptionPane.showMessageDialog(this, "No se pueden vender más de 10 boletos para el número de cuenta " + numCuenta);
+//            return;
+//        }
+//
+//// Verificar si ya se han vendido los 50 boletos para el día
+//        if (Boleto.getEntradasVendidasHoy() >= Boleto.getMaxEntradasPorDia()) {
+//            JOptionPane.showMessageDialog(this, "No hay más boletos disponibles para hoy.");
+//            return;
+//        }
+//
+//// Crear el boleto
+//        Boleto boleto = Boleto.crearBoleto(numEntradas, numCuenta);
+//
+//// Verificar si el boleto se creó con éxito y mostrar el mensaje correspondiente
+////        if (boleto != null) {
+////            // El boleto se creó con éxito, aquí puedes mostrar un mensaje o actualizar la interfaz para indicar la venta exitosa.
+////            JOptionPane.showMessageDialog(this, "Compra de boleto Exitoso:\n" + boleto.toString());
+////           
+////        } else {
+////            // Mostrar un mensaje de que no se pueden vender más entradas hoy.
+////            JOptionPane.showMessageDialog(this, "Error");
+////        }
+//        if (boleto != null) {
+//            // El boleto se creó con éxito, aquí puedes mostrar un mensaje o actualizar la interfaz para indicar la venta exitosa.
+//            JOptionPane.showMessageDialog(this, "Compra de boleto Exitoso:\n" + boleto.toString());
+//
+//            // Abrir la interfaz mostrar_info y mostrar la información del boleto creado
+//            Info_boleto infoVentana = new Info_boleto();
+//            infoVentana.mostrarInformacion(boleto);
+//            infoVentana.setVisible(true);
+//        } else {
+//            // Mostrar un mensaje de que no se pueden vender más entradas hoy.
+//            JOptionPane.showMessageDialog(this, "Error");
+//        }
+//// Obtener la cantidad de boletos restantes para el número de cuenta ingresado
+//        int boletosRestantesPorCuenta = Boleto.getMaxEntradasPorDia() - Boleto.getEntradasVendidasHoy();
+//
+//        if (boletosRestantesPorCuenta == 0) {
+//            // Mostrar mensaje indicando que no hay más boletos disponibles para el día.
+//            JOptionPane.showMessageDialog(this, "Boletos disponibles para el dia: " + ": 0");
+//        } else {
+//            // Mostrar mensaje con la cantidad de boletos restantes para el número de cuenta.
+//            JOptionPane.showMessageDialog(this, "Boletos disponibles:  " + boletosRestantesPorCuenta);
+//        }
+        String numEntradasText = txt_entradas.getText();
+        String numCuenta = txt_numcuenta.getText();
+
+        // Verificar que los campos no estén vacíos
+        if (numEntradasText.isEmpty() || numCuenta.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese todos los campos.");
+            return;
+        }
+
+        int numEntradas = Integer.parseInt(numEntradasText);
+
+        // Verificar si el número de cuenta ha alcanzado el límite de 10 boletos
+        if (Boleto.haAlcanzadoLimite(numCuenta, numEntradas)) {
+            JOptionPane.showMessageDialog(this, "No se pueden vender más de 10 boletos para el número de cuenta " + numCuenta);
+            return;
+        }
+
+        // Verificar si ya se han vendido los 50 boletos para el día
+        if (Boleto.getEntradasVendidasHoy() >= Boleto.getMaxEntradasPorDia()) {
+            JOptionPane.showMessageDialog(this, "No hay más boletos disponibles para hoy.");
+            return;
+        }
+
+        // Crear el boleto
+        Boleto boleto = Boleto.crearBoleto(numEntradas, numCuenta);
+
+        if (boleto != null) {
+            // El boleto se creó con éxito, aquí puedes mostrar un mensaje o actualizar la interfaz para indicar la venta exitosa.
+            JOptionPane.showMessageDialog(this, "Compra de boleto Exitoso:\n" + boleto.toString());
+
+            // Abrir la interfaz mostrar_info y mostrar la información del boleto creado
+            Info_boleto infoVentana = new Info_boleto();
+            infoVentana.mostrarInformacion(boleto); // Mostrar información en la interfaz Info_boleto
+            infoVentana.setVisible(true);
+        } else {
+            // Mostrar un mensaje de que no se pueden vender más entradas hoy.
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+
+        // Obtener la cantidad de boletos restantes para el número de cuenta ingresado
+        int boletosRestantesPorCuenta = Boleto.getMaxEntradasPorDia() - Boleto.getEntradasVendidasHoy();
+
+        if (boletosRestantesPorCuenta == 0) {
+            // Mostrar mensaje indicando que no hay más boletos disponibles para el día.
+            JOptionPane.showMessageDialog(this, "Boletos disponibles para el dia: " + ": 0");
+        } else {
+            // Mostrar mensaje con la cantidad de boletos restantes para el número de cuenta.
+            JOptionPane.showMessageDialog(this, "Boletos disponibles:  " + boletosRestantesPorCuenta);
+        }
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -57,16 +367,28 @@ public class Boleto_registro extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Boleto_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Boleto_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Boleto_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Boleto_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Boleto_registro.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Boleto_registro.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Boleto_registro.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Boleto_registro.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -79,5 +401,17 @@ public class Boleto_registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txt_entradas;
+    private javax.swing.JTextField txt_numcuenta;
     // End of variables declaration//GEN-END:variables
 }

@@ -290,6 +290,7 @@ public class Admi_registroT extends javax.swing.JFrame {
         Registrar.setBackground(new java.awt.Color(0, 0, 102));
         Registrar.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         Registrar.setForeground(new java.awt.Color(255, 255, 255));
+        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado.png"))); // NOI18N
         Registrar.setText("Registrarse");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
