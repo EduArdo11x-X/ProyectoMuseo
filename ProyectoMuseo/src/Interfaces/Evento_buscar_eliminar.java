@@ -335,14 +335,14 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     public void mostrarDatos(ObjectSet result) {
         String matrizEvento[][] = new String[result.size()][6];
         if(result.size() == 0){
-            JOptionPane.showMessageDialog(null, "La exposicion no existe");
+            JOptionPane.showMessageDialog(null, "No hay eventos existentes");
         }
         
         for (int i = 0; i < result.size(); i++) {
             Evento miEvento = new Evento();
             miEvento = (Evento) result.get(i);
             matrizEvento[i][0] = miEvento.getId_evento();
-            matrizEvento[i][1] = miEvento.getId_evento();
+            matrizEvento[i][1] = miEvento.getId_exposicion();
             matrizEvento[i][2] = miEvento.getNombre_evento();
             matrizEvento[i][3] = miEvento.getDescripcion();
             matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());

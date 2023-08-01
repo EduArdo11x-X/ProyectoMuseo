@@ -21,7 +21,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     public menuPrincipal() {
         initComponents();
     }
-        public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Base_proyecto\\proyecto.yap");
+        public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
 
 
     /**

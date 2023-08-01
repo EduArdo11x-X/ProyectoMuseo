@@ -53,6 +53,8 @@ public class Exposicion {
     public String toString() {
         return "Exposicion{" + "cod_exposicion=" + cod_exposicion + ", nombre_exposicion=" + nombre_exposicion + ", descripcion_exposicion=" + descripcion_exposicion + '}';
     }
+    
+   
 
     
     

@@ -26,15 +26,14 @@ public class Evento_registro extends javax.swing.JFrame {
         initComponents();
     }
 
-    
-     String id_evento = "";
-     String nombre_evento = "";
-     String descripcion = "";
-     Date fecha_inicio;
-     Date fecha_final;
-     String id_exposicion = "";
+    String id_evento = "";
+    String nombre_evento = "";
+    String descripcion = "";
+    Date fecha_inicio;
+    Date fecha_final;
+    String id_exposicion = "";
 
-          public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -314,29 +313,29 @@ public class Evento_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        menuPrincipal miMenu = new menuPrincipal();
+        miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
-   public void asignarVariables(ObjectContainer BaseD) {
-          id_evento = codigotxt.getText();
-      nombre_evento = nombretxt.getText();
-      
-      descripcion = descripciontxt.getText();
-      
-      fecha_inicio = fechai.getDate();
-      
-      fecha_final = fechaf.getDate();
-      
-      id_exposicion = idextxt.getText();
+    public void asignarVariables(ObjectContainer BaseD) {
+        id_evento = codigotxt.getText();
+        nombre_evento = nombretxt.getText();
+
+        descripcion = descripciontxt.getText();
+
+        fecha_inicio = fechai.getDate();
+
+        fecha_final = fechaf.getDate();
+
+        id_exposicion = idextxt.getText();
     }
 
     public void limpiarDatos() {
         codigotxt.setText("");
         nombretxt.setText("");
         descripciontxt.setText("");
-idextxt.setText("");
+        idextxt.setText("");
     }
 
     public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
@@ -346,56 +345,66 @@ idextxt.setText("");
 
     }
 
-    public void crearEvento(ObjectContainer BaseD) {
-asignarVariables(BaseD);
-if(comprobarEvento(BaseD , id_evento) == 0){
-    if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) == 0){
-    Evento Evnuevo = new Evento( id_evento,  nombre_evento,  descripcion , fecha_inicio, fecha_final, id_exposicion ); 
-   BaseD.set(Evnuevo);
-   JOptionPane.showMessageDialog(null, "Registrado correctamente");
-    }else{
-        JOptionPane.showMessageDialog(null, "Exposicion no existe");
-    }
-}else{
-       JOptionPane.showMessageDialog(null, "Evento ya existe");
+    public static int comprobarExposicionEvento(ObjectContainer BaseD, String codigo) {
+        Evento Evbuscar = new Evento(null, null, null, null, null, codigo);
+        ObjectSet result = BaseD.get(Evbuscar);
+        return result.size();
 
-}
     }
-    
-      public void cargarTabla(ObjectContainer BaseD){
-        
+
+    public void crearEvento(ObjectContainer BaseD) {
+        asignarVariables(BaseD);
+        if (comprobarEvento(BaseD, id_evento) == 0) {
+            if (comprobarExposicionEvento(BaseD, id_exposicion) == 0) {
+                if (Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0) {
+                    Evento Evnuevo = new Evento(id_evento, nombre_evento, descripcion, fecha_inicio, fecha_final, id_exposicion);
+                    BaseD.set(Evnuevo);
+                    JOptionPane.showMessageDialog(null, "Registrado correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Exposicion no existe");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Exposicion ya existe en el evento");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Evento ya existe");
+
+        }
+    }
+
+    public void cargarTabla(ObjectContainer BaseD) {
+
         Evento Evbuscar = new Evento(null, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evbuscar);
         mostrarDatos(result);
     }
+
     public void mostrarDatos(ObjectSet result) {
         String matrizEvento[][] = new String[result.size()][6];
-        if(result.size() == 0){
-            JOptionPane.showMessageDialog(null, "La exposicion no existe");
+        if (result.size() == 0) {
+            JOptionPane.showMessageDialog(null, "No existe ningun evento registrado aun");
         }
-        
+
         for (int i = 0; i < result.size(); i++) {
             Evento miEvento = new Evento();
             miEvento = (Evento) result.get(i);
             matrizEvento[i][0] = miEvento.getId_evento();
-            matrizEvento[i][1] = miEvento.getId_evento();
+            matrizEvento[i][1] = miEvento.getId_exposicion();
             matrizEvento[i][2] = miEvento.getNombre_evento();
             matrizEvento[i][3] = miEvento.getDescripcion();
             matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());
             matrizEvento[i][5] = String.valueOf(miEvento.getFecha_final());
 
-            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo","Id Exposicion", "Nombre", "Descripcion","Fehca inicio", "Fecha Final"}));
+            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo", "Id Exposicion", "Nombre", "Descripcion", "Fehca inicio", "Fecha Final"}));
 
         }
 
     }
 
     public static void cerrarBD(ObjectContainer BaseD) {
-BaseD.close();
+        BaseD.close();
     }
 
-   
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegresar;
