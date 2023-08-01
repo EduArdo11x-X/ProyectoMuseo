@@ -14,11 +14,10 @@ public class Exposicion_registro extends javax.swing.JFrame {
     String descripcion_exposicion = "";
     Date fecha_inicio;
     Date fecha_fin;
-    
-     
 
     public Exposicion_registro() {
         initComponents();
+      ;
     }
 
     @SuppressWarnings("unchecked")
@@ -26,10 +25,8 @@ public class Exposicion_registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        codigotxt = new javax.swing.JTextField();
         nombretxt = new javax.swing.JTextField();
         guardarbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -47,10 +44,6 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Codigo:");
-
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
@@ -59,9 +52,18 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
 
-        codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.setToolTipText("");
+        nombretxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nombretxtFocusLost(evt);
+            }
+        });
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
 
         guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
         guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -92,6 +94,11 @@ public class Exposicion_registro extends javax.swing.JFrame {
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
+        descripciontxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripciontxtKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(descripciontxt);
 
         mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
@@ -171,10 +178,6 @@ public class Exposicion_registro extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(16, 16, 16)
-                                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(16, 16, 16)
                                 .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,11 +199,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
+                        .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -246,30 +245,57 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarTablaActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        menuPrincipal miMenu = new menuPrincipal();
+        miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
+//VALIDACIONES
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+       int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
 
-    public void cargarTabla(ObjectContainer BaseD){
-        
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_descripciontxtKeyTyped
+
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void nombretxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombretxtFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtFocusLost
+
+    public void cargarTabla(ObjectContainer BaseD) {
+
         Exposicion Exbuscar = new Exposicion(null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
+
     public void mostrarDatos(ObjectSet result) {
         String matrizExposicion[][] = new String[result.size()][3];
-        if(result.size() == 0){
+        if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
-        
+
         for (int i = 0; i < result.size(); i++) {
             Exposicion miExposicion = new Exposicion();
             miExposicion = (Exposicion) result.get(i);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            
 
             exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
@@ -278,49 +304,109 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     }
 
     public void asignarVariables(ObjectContainer BaseD) {
-        cod_exposicion = codigotxt.getText();
+        
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
     }
 
     public void limpiarDatos() {
-        codigotxt.setText("");
         nombretxt.setText("");
         descripciontxt.setText("");
 
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
+        
         Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
     }
+    
+     public void geneCodi(ObjectSet result) {
+        for (int i = 0; i < result.size(); i++) {
+            Exposicion miExposicion = new Exposicion();
+            miExposicion = (Exposicion) result.get(i);
+            cod_exposicion = generarCodigo(i);
+         
+        }
+
+    }
+     public String generarCodigo(int c){
+        String cod_exposicion= "";
+        int cantidad = nombretxt.getText().length();
+        
+        if(cantidad > 0){
+            
+            cod_exposicion+= "EXPOSICION-000" + c;
+        }else{
+            cod_exposicion+= "EXPOSICION-000" + c;
+        }
+        
+        return cod_exposicion;
+    }
 
     public void crearExposicion(ObjectContainer BaseD) {
-asignarVariables(BaseD);
-if(comprobarExposicion(BaseD , cod_exposicion) == 0){
-    Exposicion Exnuevo = new Exposicion( cod_exposicion,  nombre_exposicion,  descripcion_exposicion ); 
-   BaseD.set(Exnuevo);
-   JOptionPane.showMessageDialog(null, "Registrado correctamente");
-}else{
-       JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
+        Exposicion Exbuscar = new Exposicion(null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        geneCodi(result);
+        asignarVariables(BaseD);
+         
+        if(camposVacios() == true){
+            habilitarBoton();
+        if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
+            Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
+            BaseD.set(Exnuevo);
+            JOptionPane.showMessageDialog(null, "Registrado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
 
-}
+        }
+        }
+    }
+    
+    public void habilitarBoton(){
+        guardarbtn.setEnabled(true);
+    }
+
+    public  boolean camposVacios() {
+
+        boolean validado = false;
+        boolean c, n;
+
+        if (descripciontxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una descripcion");
+            c = false;
+        } else {
+            c = true;
+        }
+
+        if (nombretxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre");
+            n = false;
+        } else {
+            n = true;
+        }
+        if (c == true && n == true) {
+            validado = true;
+        }
+        
+        
+
+        return validado;
+        
     }
 
     public static void cerrarBD(ObjectContainer BaseD) {
-BaseD.close();
+        BaseD.close();
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegresar;
-    private javax.swing.JTextField codigotxt;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
     private javax.swing.JButton guardarbtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

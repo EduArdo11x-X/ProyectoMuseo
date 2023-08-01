@@ -377,7 +377,7 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
         Evento Evmodi = new Evento(id_evento, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evmodi);
         Evento Evmodificar = (Evento) result.next();
-
+if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
         Evmodificar.setNombre_evento(nombre_evento);
         Evmodificar.setDescripcion(descripcion);
         Evmodificar.setId_exposicion(id_exposicion);
@@ -387,7 +387,14 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
         BaseD.set(Evmodificar);
         JOptionPane.showMessageDialog(null, "El evento fue modificado exitosamente");
         limpiarDatos();
-    }
+    
+    }else{
+    JOptionPane.showMessageDialog(null, "No existe esa exposicion registrada en el sistema");
+}
+    
+    
+    
+}
 
     public static int comprobarEvento(ObjectContainer BaseD, String codigo) {
         Evento Evbuscar = new Evento(codigo, null, null, null, null, null);
@@ -438,7 +445,7 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
             Evento miEvento = new Evento();
             miEvento = (Evento) result.get(i);
             matrizEvento[i][0] = miEvento.getId_evento();
-            matrizEvento[i][1] = miEvento.getId_evento();
+            matrizEvento[i][1] = miEvento.getId_exposicion();
             matrizEvento[i][2] = miEvento.getNombre_evento();
             matrizEvento[i][3] = miEvento.getDescripcion();
             matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());

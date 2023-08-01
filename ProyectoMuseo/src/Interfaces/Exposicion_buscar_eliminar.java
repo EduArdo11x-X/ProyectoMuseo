@@ -30,7 +30,6 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        codigotxt = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         exposiciontbl = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
@@ -43,7 +42,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         botonRegresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        codigotxt1 = new javax.swing.JTextField();
+        codigotxt = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         eliminarbtn = new javax.swing.JButton();
@@ -52,8 +51,6 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
-
-        codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
 
         exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,7 +85,6 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
 
         filtrocmb.setBackground(new java.awt.Color(134, 153, 167));
         filtrocmb.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        filtrocmb.setForeground(new java.awt.Color(0, 0, 0));
         filtrocmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Ver todos", "Codigo", "Nombre", " " }));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -99,7 +95,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Seleccione un campo para buscar el Evento:");
+        jLabel1.setText("Seleccione un campo para buscar el Exposicion:");
 
         jPanel2.setBackground(new java.awt.Color(134, 153, 167));
 
@@ -107,7 +103,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 11, 13));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
-        jLabel7.setText(" BUSCAR Y ELIMINAR EVENTOS ");
+        jLabel7.setText(" BUSCAR Y ELIMINAR EXPOSICION ");
 
         botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
         botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -147,18 +143,16 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Ingrese el codigo del Evento a eliminar:");
+        jLabel4.setText("Ingrese el codigo del exposicion a eliminar:");
 
-        codigotxt1.setBackground(new java.awt.Color(134, 153, 167));
-        codigotxt1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        codigotxt1.setForeground(new java.awt.Color(0, 0, 0));
-        codigotxt1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        codigotxt1.setText("Ingrese el codigo del ");
-        codigotxt1.setToolTipText("");
-        codigotxt1.setBorder(null);
-        codigotxt1.addActionListener(new java.awt.event.ActionListener() {
+        codigotxt.setBackground(new java.awt.Color(134, 153, 167));
+        codigotxt.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        codigotxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        codigotxt.setToolTipText("Ingrese el codigo del ");
+        codigotxt.setBorder(null);
+        codigotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigotxt1ActionPerformed(evt);
+                codigotxtActionPerformed(evt);
             }
         });
 
@@ -188,33 +182,12 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addGap(4, 4, 4)
-                .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Buscarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(501, 501, 501)
-                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(830, 830, 830)
                 .addComponent(eliminarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(560, 560, 560)
-                .addComponent(codigotxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(500, 500, 500)
                 .addComponent(jLabel5))
@@ -223,6 +196,25 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(4, 4, 4)
+                        .addComponent(filtrocmb, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Buscarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,28 +234,27 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jLabel4)
-                        .addGap(32, 32, 32)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(eliminarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(codigotxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(eliminarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel5)))))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,9 +281,9 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
         cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed
 
-    private void codigotxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigotxt1ActionPerformed
+    private void codigotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigotxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codigotxt1ActionPerformed
+    }//GEN-LAST:event_codigotxtActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
         ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
@@ -396,8 +387,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscarbtn;
     private javax.swing.JButton botonRegresar;
-    private javax.swing.JLabel codigotxt;
-    private javax.swing.JTextField codigotxt1;
+    private javax.swing.JTextField codigotxt;
     private javax.swing.JButton eliminarbtn;
     private javax.swing.JTable exposiciontbl;
     private javax.swing.JComboBox<String> filtrocmb;

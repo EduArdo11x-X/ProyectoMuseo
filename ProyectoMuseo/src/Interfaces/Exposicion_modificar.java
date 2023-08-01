@@ -27,6 +27,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
     public Exposicion_modificar() {
         initComponents();
+        guardarbtn.setEnabled(false);
     }
  
 
@@ -77,6 +78,11 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
 
         guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
         guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -107,6 +113,11 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
+        descripciontxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripciontxtKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(descripciontxt);
 
         mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
@@ -298,6 +309,29 @@ menuPrincipal miMenu= new menuPrincipal();
 miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+             int aux = evt.getKeyChar();
+    boolean espacio = aux ==32;
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 97 && aux <= 122||aux >= 48 && aux <= 57 || espacio;
+        
+                if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+        evt.consume();    
+        }    
+              
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_descripciontxtKeyTyped
+
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
                 guardarbtn.setEnabled(false);
@@ -335,6 +369,8 @@ miMenu.setVisible(true);        // TODO add your handling code here:
         Exposicion Emodi = new Exposicion(cod_exposicion, null, null );
         ObjectSet result = BaseD.get(Emodi);
         Exposicion Emodificar = (Exposicion) result.next();
+        
+        if(camposVacios() == true){
 
         Emodificar.setNombre_exposicion(nombre_exposicion);
         Emodificar.setDescripcion_exposicion(descripcion_exposicion);
@@ -342,6 +378,33 @@ miMenu.setVisible(true);        // TODO add your handling code here:
         BaseD.set(Emodificar);
         JOptionPane.showMessageDialog(null, "La exposicion fue modificado exitosamente");
         limpiarDatos();
+        }
+    }
+     public  boolean camposVacios() {
+
+        boolean validado = false;
+        boolean c, n;
+
+        if (descripciontxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una descripcion");
+            c = false;
+        } else {
+            c = true;
+        }
+
+        if (nombretxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre");
+            n = false;
+        } else {
+            n = true;
+        }
+        
+        if (c == true && n == true) {
+            validado = true;
+            guardarbtn.setEnabled(true);
+        }
+
+        return validado;
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
