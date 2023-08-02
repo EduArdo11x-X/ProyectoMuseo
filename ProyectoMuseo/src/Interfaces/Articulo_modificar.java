@@ -26,15 +26,15 @@ public class Articulo_modificar extends javax.swing.JFrame {
     public Articulo_modificar() {
         initComponents();
     }
-    
-     public void cargarDatos(ObjectContainer BaseD) {
+
+    public void cargarDatos(ObjectContainer BaseD) {
 
         Articulo Exbuscar = new Articulo(null, null, null, 0, 0, 0, 0);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
 
-        public void buscar(ObjectContainer basep) {//cargardatos
+    public void buscar(ObjectContainer basep) {//cargardatos
 
         botonGuar.setEnabled(false);
         String IDAux;
@@ -54,7 +54,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
             } else {
 
-                Articulo Abuscar = new Articulo(IDAux, null, null, 0, 0, 0,0);
+                Articulo Abuscar = new Articulo(IDAux, null, null, 0, 0, 0, 0);
 
                 ObjectSet result = basep.get(Abuscar);
                 for (int i = 0; i < result.size(); i++) {
@@ -99,13 +99,13 @@ public class Articulo_modificar extends javax.swing.JFrame {
         txtCodigo.setEditable(true);
         txtNombre.setEditable(true);
         txtDescripcion.setEditable(true);
-            txtPrecio.setEditable(true);
+        txtPrecio.setEditable(true);
 
     }
 
     public void Modificar_Articulo(ObjectContainer basep) {
 
-        Articulo Amodi = new Articulo(txtCodigo.getText(),null, null, 0, 0, 0, 0);
+        Articulo Amodi = new Articulo(txtCodigo.getText(), null, null, 0, 0, 0, 0);
         ObjectSet result = basep.get(Amodi);
         Articulo Amodificar = (Articulo) result.next();
         Amodificar.setNombre(txtNombre.getText());
@@ -114,7 +114,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
         Amodificar.setExis_max(Integer.parseInt(txtExis_Max.getValue().toString()));
         Amodificar.setExis_min(Integer.parseInt(txtExi_min.getValue().toString()));
         Amodificar.setPrecio(Double.parseDouble(txtPrecio.getText()));
-        
+
         basep.set(Amodificar);
         JOptionPane.showMessageDialog(null, "El articulo fue modificado exitosamente");
 
@@ -143,9 +143,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
                     String.valueOf(miArticulo.getExistencia()),
                     String.valueOf(miArticulo.getExis_max()),
                     String.valueOf(miArticulo.getExis_min()),
-                    String.valueOf(miArticulo.getPrecio()),
-                   
-                };
+                    String.valueOf(miArticulo.getPrecio()),};
                 model.addRow(fila);
             }
         }
@@ -198,7 +196,6 @@ public class Articulo_modificar extends javax.swing.JFrame {
         txtCodigo.setBackground(new java.awt.Color(134, 153, 167));
         txtCodigo.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         txtCodigo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCodigo.setText("Ingrese el codigo del articulo");
         txtCodigo.setToolTipText("");
         txtCodigo.setBorder(null);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -219,10 +216,14 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
         txtNombre.setBackground(new java.awt.Color(134, 153, 167));
         txtNombre.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
-        txtNombre.setText("Ingrese el nombre del articulo");
         txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombreMouseClicked(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
 
@@ -233,10 +234,14 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
         txtDescripcion.setBackground(new java.awt.Color(134, 153, 167));
         txtDescripcion.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
-        txtDescripcion.setText("Ingrese una descripcion del articulo");
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
+            }
+        });
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
             }
         });
 
@@ -263,7 +268,11 @@ public class Articulo_modificar extends javax.swing.JFrame {
         txtPrecio.setBackground(new java.awt.Color(134, 153, 167));
         txtPrecio.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(0, 11, 13));
-        txtPrecio.setText("Ingrese el precio");
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
 
         botonGuar.setBackground(new java.awt.Color(0, 11, 13));
         botonGuar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -549,7 +558,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_botonGuarActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-         ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btnbuscarActionPerformed
@@ -559,9 +568,9 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
-if(txtCodigo.getText().equals("Ingrese el codigo del articulo")){
-txtCodigo.setText("");
-}// TODO add your handling code here:
+        if (txtCodigo.getText().equals("Ingrese el codigo del articulo")) {
+            txtCodigo.setText("");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
@@ -572,16 +581,46 @@ txtCodigo.setText("");
     }//GEN-LAST:event_btncargarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        menuPrincipal miMenu = new menuPrincipal();
+        miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
-    
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        int aux = evt.getKeyChar();
+        boolean decimal = aux >= 48 && aux <= 57 || aux >= 46 && aux <= 54 || aux == 44;
+        if (!decimal) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDescripcionKeyTyped
+
     /**
      * @param args the command line arguments
      */
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuar;
     private javax.swing.JButton botonRegresar;

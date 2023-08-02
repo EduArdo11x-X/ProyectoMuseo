@@ -310,26 +310,25 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
-             int aux = evt.getKeyChar();
-    boolean espacio = aux ==32;
-        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 97 && aux <= 122||aux >= 48 && aux <= 57 || espacio;
+      int aux = evt.getKeyChar();
+  boolean espacio = aux ==32;
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 97 && aux <= 122 || espacio ;
         
                 if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
         evt.consume();    
-        }    
-              
+        }  
     }//GEN-LAST:event_nombretxtKeyTyped
 
     private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
 int aux = evt.getKeyChar();
-        boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
-
-        if (!Letras) {
+  boolean espacio = aux ==32;
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 97 && aux <= 122 || espacio ;
+        
+                if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
-        }        // TODO add your handling code here:
+        evt.consume();    
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_descripciontxtKeyTyped
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.

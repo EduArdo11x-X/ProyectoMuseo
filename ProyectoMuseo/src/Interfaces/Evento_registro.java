@@ -65,12 +65,20 @@ public class Evento_registro extends javax.swing.JFrame {
         botonRegresar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        exposiciontbl = new javax.swing.JTable();
+        mostrarTablaEx = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,10 +115,20 @@ public class Evento_registro extends javax.swing.JFrame {
         jLabel6.setText("Id exposicion:");
 
         idextxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        idextxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idextxtKeyTyped(evt);
+            }
+        });
 
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
+        descripciontxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripciontxtKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(descripciontxt);
 
         btnguardar.setBackground(new java.awt.Color(0, 11, 13));
@@ -182,6 +200,32 @@ public class Evento_registro extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(exposiciontbl);
+
+        mostrarTablaEx.setBackground(new java.awt.Color(0, 11, 13));
+        mostrarTablaEx.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        mostrarTablaEx.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarTablaEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
+        mostrarTablaEx.setText("Registro Exposiciones");
+        mostrarTablaEx.setBorder(null);
+        mostrarTablaEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarTablaExActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,12 +256,18 @@ public class Evento_registro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fechaf, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fechai, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(76, 76, 76)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnmostrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnmostrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mostrarTablaEx))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,36 +275,50 @@ public class Evento_registro extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(idextxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(fechai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(fechaf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addComponent(btnguardar)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(idextxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(fechai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(fechaf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(41, 41, 41)
-                                .addComponent(btnguardar))
-                            .addComponent(btnmostrar)))))
+                                .addGap(8, 8, 8)
+                                .addComponent(mostrarTablaEx)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(115, 115, 115))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnmostrar)
+                                .addGap(137, 137, 137))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,6 +356,47 @@ public class Evento_registro extends javax.swing.JFrame {
         miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_descripciontxtKeyTyped
+
+    private void idextxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idextxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 48 && aux <= 57 || aux == 45;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_idextxtKeyTyped
+
+    private void mostrarTablaExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaExActionPerformed
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        cargarTablaExposicion(BaseD);
+        cerrarBD(BaseD);
+    }//GEN-LAST:event_mostrarTablaExActionPerformed
+
+    
+    
+    
     //ASIGNACION DE VARIABLES
     public void asignarVariables(ObjectContainer BaseD) {
         nombre_evento = nombretxt.getText();
@@ -305,6 +410,7 @@ public class Evento_registro extends javax.swing.JFrame {
         id_exposicion = idextxt.getText();
     }
 //LIMPIAR LO0S CAMPOS DE TEXTO
+
     public void limpiarDatos() {
         nombretxt.setText("");
         descripciontxt.setText("");
@@ -318,20 +424,48 @@ public class Evento_registro extends javax.swing.JFrame {
         return result.size();
 
     }
+    
+    
+    //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
+   public void geneCodi(ObjectSet result) {
+        for (int i = 0; i < result.size(); i++) {
+            Evento miEvento = new Evento();
+            miEvento = (Evento) result.get(i);
+            id_evento = nombreCodigo(i);
 
-   
+        }
+
+    }
+
+    public String nombreCodigo(int c) {
+        String id_evento = "";
+        int cantidad = nombretxt.getText().length();
+
+        if (cantidad > 0) {
+
+            id_evento += "EVENTO-000" + c;
+        } else {
+            id_evento += "EVENTO-000" + c;
+        }
+
+        return id_evento;
+    }
+
 //METODO PARA CREAR EL EVENTO
     public void crearEvento(ObjectContainer BaseD) {
+        Evento Evbuscar = new Evento(null, null, null,null,null,null);
+        ObjectSet result = BaseD.get(Evbuscar);
+        geneCodi(result);
         asignarVariables(BaseD);
         if (comprobarEvento(BaseD, id_evento) == 0) {
-                if (Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0) {
-                    Evento Evnuevo = new Evento(id_evento, nombre_evento, descripcion, fecha_inicio, fecha_final, id_exposicion);
-                    BaseD.set(Evnuevo);
-                    JOptionPane.showMessageDialog(null, "Registrado correctamente");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Exposicion no existe");
-                }
-            
+            if (Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0) {
+                Evento Evnuevo = new Evento(id_evento, nombre_evento, descripcion, fecha_inicio, fecha_final, id_exposicion);
+                BaseD.set(Evnuevo);
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Exposicion no existe");
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Evento ya existe");
 
@@ -367,6 +501,33 @@ public class Evento_registro extends javax.swing.JFrame {
         }
 
     }
+    
+    //TABLA DE EXPOSICIONES
+     public void cargarTablaExposicion(ObjectContainer BaseD){
+        
+        Exposicion Exbuscar = new Exposicion(null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        mostrarDatos(result);
+    }
+    public void mostrarDatosExposicion(ObjectSet result) {
+        String matrizExposicion[][] = new String[result.size()][3];
+        if(result.size() == 0){
+            JOptionPane.showMessageDialog(null, "La exposicion no existe");
+        }
+        
+        for (int i = 0; i < result.size(); i++) {
+            Exposicion miExposicion = new Exposicion();
+            miExposicion = (Exposicion) result.get(i);
+            matrizExposicion[i][0] = miExposicion.getCod_exposicion();
+            matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
+            matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
+            
+
+            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
+
+        }
+
+    }
 
     public static void cerrarBD(ObjectContainer BaseD) {
         BaseD.close();
@@ -378,6 +539,7 @@ public class Evento_registro extends javax.swing.JFrame {
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnmostrar;
     private javax.swing.JTextArea descripciontxt;
+    private javax.swing.JTable exposiciontbl;
     private com.toedter.calendar.JDateChooser fechaf;
     private com.toedter.calendar.JDateChooser fechai;
     private javax.swing.JTextField idextxt;
@@ -391,8 +553,10 @@ public class Evento_registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JButton mostrarTablaEx;
     private javax.swing.JTextField nombretxt;
     private javax.swing.JTable tablaevento;
     // End of variables declaration//GEN-END:variables
