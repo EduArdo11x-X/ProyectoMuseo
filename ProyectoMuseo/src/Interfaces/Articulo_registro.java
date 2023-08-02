@@ -68,7 +68,6 @@ public class Articulo_registro extends javax.swing.JFrame {
     }
 
     public void asignarVariables(ObjectContainer BaseD) {
-        cod_articulo = txtCodigo.getText();
         nombre = txtNombre.getText();
         descripcion = txtDescripcion.getText();
         existencia = Integer.parseInt(txtExitencia.getValue().toString());
@@ -79,7 +78,6 @@ public class Articulo_registro extends javax.swing.JFrame {
     }
 
     public void limpiarDatos() {
-        txtCodigo.setText("");
         txtNombre.setText("");
         txtDescripcion.setText("");
         txtExitencia.setValue(0);
@@ -95,7 +93,35 @@ public class Articulo_registro extends javax.swing.JFrame {
 
     }
 
+      //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
+   public void geneCodi(ObjectSet result) {
+        for (int i = 0; i < result.size(); i++) {
+            Articulo miArticulo = new Articulo();
+            miArticulo = (Articulo) result.get(i);
+            cod_articulo = nombreCodigo(i);
+
+        }
+
+    }
+
+    public String nombreCodigo(int c) {
+        String cod_articulo = "";
+        int cantidad = txtNombre.getText().length();
+
+        if (cantidad > 0) {
+
+            cod_articulo += "ARTICULO-000" + c;
+        } else {
+            cod_articulo += "ARTICULO-000" + c;
+        }
+
+        return cod_articulo;
+    }
+
     public void crearArticulo(ObjectContainer BaseD) {
+        Articulo Artbuscar = new Articulo(null, null, null,0,0,0,0);
+        ObjectSet result = BaseD.get(Artbuscar);
+        geneCodi(result);
         asignarVariables(BaseD);
         if (comprobarArticulo(BaseD, cod_articulo) == 0) {
             Articulo Exnuevo = new Articulo(cod_articulo, nombre, descripcion, existencia, exis_max, exis_min, precio);
@@ -122,8 +148,6 @@ public class Articulo_registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtCodigo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -142,7 +166,6 @@ public class Articulo_registro extends javax.swing.JFrame {
         botonRegresar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         txtExi_min = new javax.swing.JSpinner();
@@ -155,23 +178,6 @@ public class Articulo_registro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        txtCodigo.setBackground(new java.awt.Color(134, 153, 167));
-        txtCodigo.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
-        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCodigo.setText("Ingrese el codigo del articulo");
-        txtCodigo.setToolTipText("");
-        txtCodigo.setBorder(null);
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Codigo:");
-
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,10 +185,14 @@ public class Articulo_registro extends javax.swing.JFrame {
 
         txtNombre.setBackground(new java.awt.Color(134, 153, 167));
         txtNombre.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
-        txtNombre.setText("Ingrese el nombre del articulo");
         txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombreMouseClicked(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
 
@@ -193,10 +203,14 @@ public class Articulo_registro extends javax.swing.JFrame {
 
         txtDescripcion.setBackground(new java.awt.Color(134, 153, 167));
         txtDescripcion.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
-        txtDescripcion.setText("Ingrese una descripcion del articulo");
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
+            }
+        });
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
             }
         });
 
@@ -223,7 +237,11 @@ public class Articulo_registro extends javax.swing.JFrame {
         txtPrecio.setBackground(new java.awt.Color(134, 153, 167));
         txtPrecio.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(0, 11, 13));
-        txtPrecio.setText("Ingrese el precio");
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
 
         botonGuar.setBackground(new java.awt.Color(0, 11, 13));
         botonGuar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -303,8 +321,6 @@ public class Articulo_registro extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
@@ -350,14 +366,8 @@ public class Articulo_registro extends javax.swing.JFrame {
                 .addGap(240, 240, 240)
                 .addComponent(txtExis_Max, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(540, 540, 540)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -394,9 +404,6 @@ public class Articulo_registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2))
             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -422,14 +429,8 @@ public class Articulo_registro extends javax.swing.JFrame {
                         .addGap(335, 335, 335)
                         .addComponent(txtExis_Max, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -466,9 +467,6 @@ public class Articulo_registro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(425, 425, 425)
                         .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -486,14 +484,8 @@ public class Articulo_registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
-        if(txtCodigo.getText().equals("Ingrese el codigo del articulo")){
-            txtCodigo.setText("");
-        }// TODO add your handling code here:
+        
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
@@ -520,6 +512,37 @@ menuPrincipal miMenu= new menuPrincipal();
 miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDescripcionKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+int aux = evt.getKeyChar();
+        boolean decimal = aux >= 48 && aux <= 57|| aux >= 46 && aux <= 54||aux == 44;
+        if (!decimal) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+        evt.consume();           
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -530,7 +553,6 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     private javax.swing.JButton botonMostrar;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -543,11 +565,9 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable tablaArticulos;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JSpinner txtExi_min;
     private javax.swing.JSpinner txtExis_Max;

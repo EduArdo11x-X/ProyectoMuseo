@@ -17,7 +17,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
     public Exposicion_registro() {
         initComponents();
-      ;
+        ;
     }
 
     @SuppressWarnings("unchecked")
@@ -251,9 +251,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegresarActionPerformed
 //VALIDACIONES
     private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
-       int aux = evt.getKeyChar();
+        int aux = evt.getKeyChar();
         boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
 
         if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
@@ -264,13 +264,12 @@ public class Exposicion_registro extends javax.swing.JFrame {
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
         int aux = evt.getKeyChar();
         boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
 
         if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
             evt.consume();
         }
-
     }//GEN-LAST:event_nombretxtKeyTyped
 
     private void nombretxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombretxtFocusLost
@@ -304,7 +303,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }
 
     public void asignarVariables(ObjectContainer BaseD) {
-        
+
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
     }
@@ -316,33 +315,35 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        
+
         Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
     }
-    
-     public void geneCodi(ObjectSet result) {
+
+    //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
+    public void geneCodi(ObjectSet result) {
         for (int i = 0; i < result.size(); i++) {
             Exposicion miExposicion = new Exposicion();
             miExposicion = (Exposicion) result.get(i);
-            cod_exposicion = generarCodigo(i);
-         
+            cod_exposicion = nombreCodigo(i);
+
         }
 
     }
-     public String generarCodigo(int c){
-        String cod_exposicion= "";
+
+    public String nombreCodigo(int c) {
+        String cod_exposicion = "";
         int cantidad = nombretxt.getText().length();
-        
-        if(cantidad > 0){
-            
-            cod_exposicion+= "EXPOSICION-000" + c;
-        }else{
-            cod_exposicion+= "EXPOSICION-000" + c;
+
+        if (cantidad > 0) {
+
+            cod_exposicion += "EXPOSICION-000" + c;
+        } else {
+            cod_exposicion += "EXPOSICION-000" + c;
         }
-        
+
         return cod_exposicion;
     }
 
@@ -351,25 +352,25 @@ public class Exposicion_registro extends javax.swing.JFrame {
         ObjectSet result = BaseD.get(Exbuscar);
         geneCodi(result);
         asignarVariables(BaseD);
-         
-        if(camposVacios() == true){
-            habilitarBoton();
-        if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
-            Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
-            BaseD.set(Exnuevo);
-            JOptionPane.showMessageDialog(null, "Registrado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
 
-        }
+        if (camposVacios() == true) {
+            habilitarBoton();
+            if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
+                Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
+                BaseD.set(Exnuevo);
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
+
+            }
         }
     }
-    
-    public void habilitarBoton(){
+
+    public void habilitarBoton() {
         guardarbtn.setEnabled(true);
     }
 
-    public  boolean camposVacios() {
+    public boolean camposVacios() {
 
         boolean validado = false;
         boolean c, n;
@@ -390,11 +391,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
         if (c == true && n == true) {
             validado = true;
         }
-        
-        
 
         return validado;
-        
+
     }
 
     public static void cerrarBD(ObjectContainer BaseD) {

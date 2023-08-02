@@ -73,6 +73,11 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,10 +120,20 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
         jLabel6.setText("Id exposicion:");
 
         idextxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        idextxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idextxtKeyTyped(evt);
+            }
+        });
 
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
+        descripciontxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripciontxtKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(descripciontxt);
 
         btnguardar.setBackground(new java.awt.Color(0, 11, 13));
@@ -335,6 +350,38 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btncargarActionPerformed
+
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+ int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }              // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+ int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }              // TODO add your handling code here:
+    }//GEN-LAST:event_descripciontxtKeyTyped
+
+    private void idextxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idextxtKeyTyped
+int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 48 && aux <= 57 || aux == 45;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_idextxtKeyTyped
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {

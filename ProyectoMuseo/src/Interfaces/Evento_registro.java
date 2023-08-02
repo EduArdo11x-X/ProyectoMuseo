@@ -71,6 +71,11 @@ public class Evento_registro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 11, 13));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,10 +112,20 @@ public class Evento_registro extends javax.swing.JFrame {
         jLabel6.setText("Id exposicion:");
 
         idextxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        idextxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idextxtKeyTyped(evt);
+            }
+        });
 
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
+        descripciontxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripciontxtKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(descripciontxt);
 
         btnguardar.setBackground(new java.awt.Color(0, 11, 13));
@@ -292,6 +307,41 @@ public class Evento_registro extends javax.swing.JFrame {
         miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_descripciontxtKeyTyped
+
+    private void idextxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idextxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 48 && aux <= 57 || aux == 45;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }
+    }//GEN-LAST:event_idextxtKeyTyped
+
+    
+    
+    
     //ASIGNACION DE VARIABLES
     public void asignarVariables(ObjectContainer BaseD) {
         nombre_evento = nombretxt.getText();
@@ -305,6 +355,7 @@ public class Evento_registro extends javax.swing.JFrame {
         id_exposicion = idextxt.getText();
     }
 //LIMPIAR LO0S CAMPOS DE TEXTO
+
     public void limpiarDatos() {
         nombretxt.setText("");
         descripciontxt.setText("");
@@ -318,20 +369,48 @@ public class Evento_registro extends javax.swing.JFrame {
         return result.size();
 
     }
+    
+    
+    //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
+   public void geneCodi(ObjectSet result) {
+        for (int i = 0; i < result.size(); i++) {
+            Evento miEvento = new Evento();
+            miEvento = (Evento) result.get(i);
+            id_evento = nombreCodigo(i);
 
-   
+        }
+
+    }
+
+    public String nombreCodigo(int c) {
+        String id_evento = "";
+        int cantidad = nombretxt.getText().length();
+
+        if (cantidad > 0) {
+
+            id_evento += "EVENTO-000" + c;
+        } else {
+            id_evento += "EVENTO-000" + c;
+        }
+
+        return id_evento;
+    }
+
 //METODO PARA CREAR EL EVENTO
     public void crearEvento(ObjectContainer BaseD) {
+        Evento Evbuscar = new Evento(null, null, null,null,null,null);
+        ObjectSet result = BaseD.get(Evbuscar);
+        geneCodi(result);
         asignarVariables(BaseD);
         if (comprobarEvento(BaseD, id_evento) == 0) {
-                if (Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0) {
-                    Evento Evnuevo = new Evento(id_evento, nombre_evento, descripcion, fecha_inicio, fecha_final, id_exposicion);
-                    BaseD.set(Evnuevo);
-                    JOptionPane.showMessageDialog(null, "Registrado correctamente");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Exposicion no existe");
-                }
-            
+            if (Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0) {
+                Evento Evnuevo = new Evento(id_evento, nombre_evento, descripcion, fecha_inicio, fecha_final, id_exposicion);
+                BaseD.set(Evnuevo);
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Exposicion no existe");
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Evento ya existe");
 
