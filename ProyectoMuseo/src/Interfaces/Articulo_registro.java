@@ -6,7 +6,14 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-//import static Interfaces.Usuario_registro.direccionBD;
+import static Interfaces.MENU_ADM.direccionBD;
+import clases.Articulo;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import javax.swing.JOptionPane;
+
+
 import clases.Articulo;
 import clases.Usuario;
 import com.db4o.Db4o;
@@ -35,7 +42,7 @@ public class Articulo_registro extends javax.swing.JFrame {
     int exis_min = 0;
     double precio = 0;
 
-    public static String direccionBD = ("C:\\Users\\usuario\\OneDrive\\Documentos\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yapi");
+//    public static String direccionBD = ("C:\\Users\\usuario\\OneDrive\\Documentos\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yapi");
 
     public void cargarDatos(ObjectContainer BaseD) {
 
