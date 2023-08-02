@@ -284,7 +284,7 @@ public class Sala_registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearSala(BaseD);
 
         Cerrar_BD(BaseD);
@@ -298,11 +298,11 @@ public class Sala_registro extends javax.swing.JFrame {
 
     private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
         this.dispose();
-        menuPrincipal ventaina = new menuPrincipal();
+        MENU_ADM ventaina = new MENU_ADM();
         ventaina.setVisible(true);
     }//GEN-LAST:event_btnvolverActionPerformed
 
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnvolver;
     private javax.swing.JButton btnvolver1;

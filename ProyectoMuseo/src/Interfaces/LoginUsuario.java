@@ -147,7 +147,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         buscar_usuario(BaseD);
         Cerrar_BD(BaseD);
 

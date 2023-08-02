@@ -111,6 +111,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
         bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
         bttnregresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        bttnregresar.setForeground(new java.awt.Color(204, 204, 204));
         bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1 2.png"))); // NOI18N
         bttnregresar.setText("REGRESAR");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
@@ -238,10 +239,9 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
-      
-           this.dispose();
-        Escultura_registro ventana = new  Escultura_registro();
-        ventana.setVisible(true);
+       this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
     private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
@@ -270,13 +270,13 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
     private void bttneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttneliminarActionPerformed
         
-         ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+         ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Eliminar_Escultura(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttneliminarActionPerformed
 
     private void bttnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Buscar_esculturaID(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed

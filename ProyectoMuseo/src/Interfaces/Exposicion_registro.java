@@ -188,20 +188,20 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_guardarbtnActionPerformed
 
     private void mostrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarTabla(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_mostrarTablaActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.setVisible(false);
-        menuPrincipal miMenu = new menuPrincipal();
+        MENU_ADM miMenu = new MENU_ADM();
         miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 //VALIDACIONES

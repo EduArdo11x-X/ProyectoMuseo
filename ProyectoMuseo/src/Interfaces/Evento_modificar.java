@@ -378,25 +378,25 @@ public class Evento_modificar extends javax.swing.JFrame {
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.setVisible(false);
-        menuPrincipal miMenu = new menuPrincipal();
+        MENU_ADM miMenu = new MENU_ADM();
         miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
-  ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+  ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarDatos(BaseD);
         cerrarBD(BaseD);      
     }//GEN-LAST:event_btncargarActionPerformed
 
     private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarTablaEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         modificarEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -434,7 +434,7 @@ public class Evento_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_nombretxtKeyTyped
 
     private void mostrarTablaExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaExActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarTablaExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_mostrarTablaExActionPerformed

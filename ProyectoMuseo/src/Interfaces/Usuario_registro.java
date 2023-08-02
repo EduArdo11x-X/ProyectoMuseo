@@ -152,6 +152,7 @@ public class Usuario_registro extends javax.swing.JFrame {
         txtxCalle = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         txtProvi = new javax.swing.JComboBox<>();
         txtCiudad = new javax.swing.JComboBox<>();
         txtNivel = new javax.swing.JComboBox<>();
@@ -285,6 +286,13 @@ public class Usuario_registro extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel1.setText("Registro Usuario");
 
+        jButton1.setText("ADM");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -292,13 +300,17 @@ public class Usuario_registro extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1)
-                .addContainerGap(647, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(16, 16, 16))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -489,7 +501,7 @@ public class Usuario_registro extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearUsuario(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_GuardarActionPerformed
@@ -502,6 +514,13 @@ public class Usuario_registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtxCalleActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -511,6 +530,7 @@ public class Usuario_registro extends javax.swing.JFrame {
     private javax.swing.JButton Guardar;
     private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser fechaN;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

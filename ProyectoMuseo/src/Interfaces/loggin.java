@@ -323,8 +323,8 @@ public class loggin extends javax.swing.JFrame {
     String contra = "Museo";
     if(usuariotxt.getText().equals(usuarioIng)&& passtxt.getText().equals(contra)){
 this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);
+//menuPrincipal miMenu= new menuPrincipal();
+//miMenu.setVisible(true);
 }else{
     JOptionPane.showMessageDialog(this, "Datos incorrectos");
 }

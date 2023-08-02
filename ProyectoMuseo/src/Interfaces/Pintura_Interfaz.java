@@ -364,7 +364,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearUsuario(BaseD);
 
         Cerrar_BD(BaseD);
@@ -377,9 +377,9 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
-     this.dispose();
-        menuPrincipal ventaina = new  menuPrincipal();
-        ventaina.setVisible(true);   
+      this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true); 
     }//GEN-LAST:event_btnvolverActionPerformed
 
     /**

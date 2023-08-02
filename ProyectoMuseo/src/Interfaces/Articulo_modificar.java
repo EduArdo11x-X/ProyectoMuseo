@@ -553,14 +553,14 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void botonGuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Modificar_Articulo(BaseD);
         Cerrar_BD(BaseD);
         txtCodigo.setEditable(true);
     }//GEN-LAST:event_botonGuarActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btnbuscarActionPerformed
@@ -577,15 +577,15 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarDatos(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_btncargarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        this.setVisible(false);
-        menuPrincipal miMenu = new menuPrincipal();
-        miMenu.setVisible(true);        // TODO add your handling code here:
+          this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped

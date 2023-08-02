@@ -276,7 +276,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
 
     private void BuscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarbtnActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         filtro(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed
@@ -286,14 +286,14 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_codigotxtActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         eliminarExposicion(BaseD);
         cerrarBD(BaseD);        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
 this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
+MENU_ADM miMenu= new MENU_ADM();
 miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 

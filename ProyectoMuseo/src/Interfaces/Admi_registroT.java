@@ -425,7 +425,7 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
 
 //        ObjectContainer Baseprincipal = Db4o.openFile("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crear_adm(BaseD);
         Cerrar_BD(BaseD);
 
@@ -459,7 +459,7 @@ public class Admi_registroT extends javax.swing.JFrame {
             return;
         }
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Administrador adminBuscado = buscarAdministrador(BaseD, cedulaBuscar);
 
         if (adminBuscado == null) {
@@ -499,7 +499,7 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Abrir la base de datos
         String cedulaBuscar = txtcedula.getText(); // Suponiendo que cedulaBuscar es el identificador único del administrador.
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Administrador adminBuscado = buscarAdministrador(BaseD, cedulaBuscar);
 
         if (adminBuscado == null) {
@@ -549,7 +549,7 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
          ObjectContainer baseDatos = null;
-        baseDatos = Db4o.openFile(menuPrincipal.direccionBD);
+        baseDatos = Db4o.openFile(MENU_ADM.direccionBD);
         ObjectSet<Administrador> veterinarios = baseDatos.queryByExample(Administrador.class);
         mostrarDatos(veterinarios);
         baseDatos.close();

@@ -345,20 +345,20 @@ public class Evento_registro extends javax.swing.JFrame {
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarTabla(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.setVisible(false);
-        menuPrincipal miMenu = new menuPrincipal();
+        MENU_ADM miMenu = new MENU_ADM();
         miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
@@ -396,7 +396,7 @@ public class Evento_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_idextxtKeyTyped
 
     private void mostrarTablaExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaExActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarTablaExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_mostrarTablaExActionPerformed

@@ -6,7 +6,7 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-import static Interfaces.Usuario_registro.direccionBD;
+//import static Interfaces.Usuario_registro.direccionBD;
 import clases.Articulo;
 import clases.Usuario;
 import com.db4o.Db4o;
@@ -487,7 +487,7 @@ public class Articulo_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void botonGuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crearArticulo(BaseD);
         Cerrar_BD(BaseD);
         
@@ -501,9 +501,9 @@ public class Articulo_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+   this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
