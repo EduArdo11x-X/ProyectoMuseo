@@ -117,6 +117,8 @@ public class Articulo_modificar extends javax.swing.JFrame {
 
         basep.set(Amodificar);
         JOptionPane.showMessageDialog(null, "El articulo fue modificado exitosamente");
+        
+         txtCodigo.setEditable(true);
 
         mostrarDatos(result);
         LimpiarCamposdeTexto();
@@ -551,7 +553,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void botonGuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(Evento_registro.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         Modificar_Articulo(BaseD);
         Cerrar_BD(BaseD);
         txtCodigo.setEditable(true);

@@ -33,7 +33,6 @@ public class Evento_modificar extends javax.swing.JFrame {
     Date fecha_inicio;
     Date fecha_final;
     String id_exposicion = "";
-public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Base_proyecto\\proyecto.yap");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +72,7 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -218,9 +217,6 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -387,18 +383,20 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
-        // TODO add your handling code here:
+  ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        cargarDatos(BaseD);
+        cerrarBD(BaseD);      
     }//GEN-LAST:event_btncargarActionPerformed
 
     private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         cargarTablaEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
         modificarEvento(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -479,9 +477,11 @@ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\
 
     public void modificarEvento(ObjectContainer BaseD) {
         asignarVariables(BaseD);
+        
         Evento Evmodi = new Evento(id_evento, null, null, null, null, null);
         ObjectSet result = BaseD.get(Evmodi);
         Evento Evmodificar = (Evento) result.next();
+        if(camposVacios()== true){
 if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
         Evmodificar.setNombre_evento(nombre_evento);
         Evmodificar.setDescripcion(descripcion);
@@ -492,10 +492,13 @@ if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
         BaseD.set(Evmodificar);
         JOptionPane.showMessageDialog(null, "El evento fue modificado exitosamente");
         limpiarDatos();
+         codigotxt.setEnabled(true);
+        
     
     }else{
     JOptionPane.showMessageDialog(null, "No existe esa exposicion registrada en el sistema");
 }
+        }
     
     
     
@@ -562,13 +565,13 @@ if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
 
     }
     
-      //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA DE EXPOSICIONES
+     // LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA DE EXPOSICIONES
     
      public void cargarTablaExposicion(ObjectContainer BaseD){
         
         Exposicion Exbuscar = new Exposicion(null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
-        mostrarDatos(result);
+        mostrarDatosExposicion(result);
     }
     public void mostrarDatosExposicion(ObjectSet result) {
         String matrizExposicion[][] = new String[result.size()][3];
@@ -587,6 +590,41 @@ if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
             exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
+
+    }
+    
+    public boolean camposVacios() {
+
+        boolean validado = false;
+        boolean c, n, a;
+
+        if (descripciontxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una descripcion");
+            c = false;
+        } else {
+            c = true;
+        }
+
+        if (nombretxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre");
+            n = false;
+        } else {
+            n = true;
+        }
+        
+         if (idextxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un Id de exposicion");
+            a = false;
+        } else {
+            a = true;
+        }
+         
+         
+        if (c == true && n == true && a == true) {
+            validado = true;
+        }
+
+        return validado;
 
     }
 
