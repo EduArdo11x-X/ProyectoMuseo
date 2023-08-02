@@ -6,7 +6,6 @@ package Interfaces;
 
 import static Interfaces.Admi_registroT.direccionBD;
 import clases.Administrador;
-import clases.Boleto;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -18,14 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASUS TUF
  */
-public class mostar_registros_boletos extends javax.swing.JFrame {
+public class Admi_eliminar extends javax.swing.JFrame {
 
     /**
      * Creates new form adm_info_artista
      */
-    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Base_proyecto\\proyecto.yap");
-
-    public mostar_registros_boletos() {
+    public Admi_eliminar() {
         initComponents();
     }
 
@@ -44,11 +41,12 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txt_numcuenta = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableregistro_adm = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +56,17 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("BUSQUEDA Y REGISTRO DE BOLETOS");
+        jLabel1.setText("Buscar y Eliminar Administradores");
 
         jButton1.setBackground(new java.awt.Color(0, 204, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 102));
         jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,18 +75,21 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton1)
-                .addGap(214, 214, 214)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jButton2.setBackground(new java.awt.Color(51, 0, 102));
@@ -98,23 +104,24 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel2.setText("Lista de compras:");
+        jLabel2.setText("Desea buscar algun administrador?");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Ingresa su Nro de Cuenta Bancaria:");
+        jLabel3.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel3.setText("Ingresa su cedula:");
 
-        jtableregistro_adm.setBackground(new java.awt.Color(0, 0, 102));
+        jtableregistro_adm.setBackground(new java.awt.Color(204, 255, 204));
         jtableregistro_adm.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jtableregistro_adm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cod_boleto", "Nro Cuenta", "Fecha", "Precio"
+                "CEDULA", "NOMBRE", "APELLIDO", "NACIMIENTO", "TELEFONO", "SEXO", "PROVINCIA", "CIUDAD", "CALLE", "CORREO", "CONTRASEÑA", "SUELDO", "AÑOS EXPERIENCIA", "TITULO "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,6 +140,11 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(102, 0, 0));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(204, 204, 204));
+        jButton4.setText("ELIMINAR");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,38 +153,42 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(37, 37, 37)
-                                .addComponent(txt_numcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))))
+                                .addComponent(jButton2)
+                                .addGap(70, 70, 70)
+                                .addComponent(jButton3))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_numcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(1, 1, 1)
                 .addComponent(jLabel2)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(13, 13, 13)
+                .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,62 +204,89 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void buscarPorCedulax(String num_cuenta) {
+public void buscarPorCedula(String cedula) {
         DefaultTableModel model = (DefaultTableModel) jtableregistro_adm.getModel();
         int rowCount = model.getRowCount();
         boolean encontrado = false;
 
         for (int i = 0; i < rowCount; i++) {
-            String numCuentaTabla = model.getValueAt(i, 1).toString(); // Obtener el valor de la columna "Nro Cuenta"
-            if (numCuentaTabla.equals(num_cuenta)) {
-                jtableregistro_adm.getSelectionModel().setSelectionInterval(i, i);
-                jtableregistro_adm.setSelectionBackground(Color.GREEN);
+            String cedulaTabla = model.getValueAt(i, 0).toString();
+            if (cedulaTabla.equals(cedula)) {
+                jtableregistro_adm.getSelectionModel().setSelectionInterval(i, i); 
+                jtableregistro_adm.setSelectionBackground(Color.GREEN); 
                 encontrado = true;
                 break;
             }
         }
 
         if (!encontrado) {
-            JOptionPane.showMessageDialog(null, "No se encontró ningún boleto con ese número de cuenta.");
+            JOptionPane.showMessageDialog(null, "No se encontró ningún administrador con esa cédula.");
         }
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String num_cuenta = txt_numcuenta.getText();
-
-        // Llamar a la función de búsqueda por número de cuenta
-        buscarPorCedulax(num_cuenta);
-
+         
+        String cedulaBuscada = txtcedula.getText();
+        buscarPorCedula(cedulaBuscada);
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ObjectContainer baseDatos = null;
         baseDatos = Db4o.openFile(direccionBD);
-        ObjectSet<Boleto> admp = baseDatos.queryByExample(Boleto.class);
-        mostrarDatos(admp);
+        ObjectSet<Administrador> adm = baseDatos.queryByExample(Administrador.class);
+        mostrarDatos(adm);
         baseDatos.close();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void mostrarDatos(ObjectSet result) {
         DefaultTableModel model = (DefaultTableModel) jtableregistro_adm.getModel();
         model.setRowCount(0); // Limpiar la tabla
 
         if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "No existe registros");
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
         } else {
             while (result.hasNext()) {
-                clases.Boleto mi_adm = (clases.Boleto) result.next();
+                clases.Administrador mi_adm = (clases.Administrador) result.next();
 
                 Object[] fila = {
-                    mi_adm.getCodigo(),
-                    mi_adm.getNum_cuenta(),
-                    mi_adm.getFecha_compra(),
-                    mi_adm.getPrecio(),};
-
+                    mi_adm.getCedula(),
+                    mi_adm.getNombre(),
+                    mi_adm.getApellido(),
+                    String.valueOf(mi_adm.getF_nacimiento()),
+                    mi_adm.getNum_telefono(),
+                    mi_adm.getGenero(),
+                    mi_adm.getProvincia(),
+                    mi_adm.getCiudad(),
+                    mi_adm.getCalle(),
+                    mi_adm.getCorreo(),
+                    mi_adm.getContraseña(),
+                    mi_adm.getSueldo(),
+                    mi_adm.getAños_experiencia(),
+                    mi_adm.getTitulo_universitario(),};
                 model.addRow(fila);
             }
         }
     }
+//  public void MostrarDatosN() {
+//        String[][] Matriz = new String[Registro_artista.listapersonas.size()][12];
+//        for (int i = 0; i < Registro_artista.listapersonas.size(); i++) {
+//            Artista naci = Registro_artista.listapersonas.get(i);
+//            Matriz[i][0] = naci.getCodigo();
+//            Matriz[i][1] = naci.getNombre_nacioanlidad();
+//        }
+//        tablanacionalidades.setModel(new javax.swing.table.DefaultTableModel(
+//                Matriz, new String[]{
+//                    "CODIGO", "NOMBRE NACIOANLIDAD",}
+//        ));
+//    }
 
     /**
      * @param args the command line arguments
@@ -262,13 +305,13 @@ public void buscarPorCedulax(String num_cuenta) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mostar_registros_boletos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admi_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mostar_registros_boletos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admi_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mostar_registros_boletos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admi_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mostar_registros_boletos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admi_eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -278,7 +321,7 @@ public void buscarPorCedulax(String num_cuenta) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mostar_registros_boletos().setVisible(true);
+                new Admi_eliminar().setVisible(true);
             }
         });
     }
@@ -287,6 +330,7 @@ public void buscarPorCedulax(String num_cuenta) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -294,6 +338,6 @@ public void buscarPorCedulax(String num_cuenta) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtableregistro_adm;
-    private javax.swing.JTextField txt_numcuenta;
+    private javax.swing.JTextField txtcedula;
     // End of variables declaration//GEN-END:variables
 }
