@@ -313,17 +313,11 @@ public class Articulo_registro extends javax.swing.JFrame {
                         .addComponent(botonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(9, 9, 9))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
 
         txtExi_min.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 0), new java.awt.Color(51, 255, 255), new java.awt.Color(153, 0, 0), new java.awt.Color(102, 0, 102)));
 
