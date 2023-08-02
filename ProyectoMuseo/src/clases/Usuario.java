@@ -16,8 +16,9 @@ public class Usuario extends Persona{
     private String nivel_conocimiento;
     private String nivel_estudiol;
 
-    public Usuario() {
-        super();
+    public Usuario(String nivel_conocimiento, String nivel_estudiol) {
+        this.nivel_conocimiento = nivel_conocimiento;
+        this.nivel_estudiol = nivel_estudiol;
     }
 
     public Usuario(String nivel_conocimiento, String nivel_estudiol, String cedula, String nombre, String apellido, Date F_nacimiento, String num_telefono, char genero, String provincia, String ciudad, String calle, String correo, String contraseña) {
@@ -25,6 +26,11 @@ public class Usuario extends Persona{
         this.nivel_conocimiento = nivel_conocimiento;
         this.nivel_estudiol = nivel_estudiol;
     }
+
+    public Usuario() {
+    }
+
+   
 
     public String getNivel_conocimiento() {
         return nivel_conocimiento;
