@@ -6,7 +6,6 @@
 package Interfaces;
 
 import static Interfaces.Exposicion_registro.cerrarBD;
-import static Interfaces.Usuario_registro.direccionBD;
 import clases.Articulo;
 import clases.Usuario;
 import com.db4o.Db4o;
