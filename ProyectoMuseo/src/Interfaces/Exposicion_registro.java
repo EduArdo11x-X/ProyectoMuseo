@@ -17,7 +17,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
     public Exposicion_registro() {
         initComponents();
-      ;
+        ;
     }
 
     @SuppressWarnings("unchecked")
@@ -42,15 +42,16 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setBackground(java.awt.SystemColor.textHighlight);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         nombretxt.setToolTipText("");
@@ -64,18 +65,22 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 nombretxtKeyTyped(evt);
             }
         });
+        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 174, -1));
 
-        guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        guardarbtn.setBackground(new java.awt.Color(204, 204, 0));
         guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        guardarbtn.setForeground(new java.awt.Color(255, 255, 255));
         guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
         guardarbtn.setBorder(null);
+        guardarbtn.setContentAreaFilled(false);
+        guardarbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardarbtn.setOpaque(true);
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarbtnActionPerformed(evt);
             }
         });
+        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 309, 140, 40));
 
         exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -91,6 +96,8 @@ public class Exposicion_registro extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(exposiciontbl);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 81, 380, 240));
+
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         descripciontxt.setRows(5);
@@ -101,27 +108,30 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(descripciontxt);
 
-        mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+
+        mostrarTabla.setBackground(new java.awt.Color(204, 204, 0));
         mostrarTabla.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        mostrarTabla.setForeground(new java.awt.Color(255, 255, 255));
         mostrarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTabla.setText("Mostrar Datos");
+        mostrarTabla.setAutoscrolls(true);
         mostrarTabla.setBorder(null);
         mostrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarTablaActionPerformed(evt);
             }
         });
+        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(803, 88, 200, 40));
 
-        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
 
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setBackground(new java.awt.Color(255, 51, 51));
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 11, 13));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
-        jLabel7.setText(" Modificar Exposicion ");
+        jLabel7.setText(" Registrar Exposicion ");
 
-        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setBackground(java.awt.SystemColor.textHighlight);
         botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
@@ -140,89 +150,34 @@ public class Exposicion_registro extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                 .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(9, 9, 9))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap()
+                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 60));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 60, 1530, 10));
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1120, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(16, 16, 16)
-                                .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(guardarbtn))))
-                .addGap(106, 106, 106)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addComponent(mostrarTabla))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(guardarbtn))
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(mostrarTabla))))
-        );
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 60, 11, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,9 +206,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegresarActionPerformed
 //VALIDACIONES
     private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
-       int aux = evt.getKeyChar();
+        int aux = evt.getKeyChar();
         boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
 
         if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
@@ -264,13 +219,12 @@ public class Exposicion_registro extends javax.swing.JFrame {
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
         int aux = evt.getKeyChar();
         boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
 
         if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
             evt.consume();
         }
-
     }//GEN-LAST:event_nombretxtKeyTyped
 
     private void nombretxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombretxtFocusLost
@@ -304,7 +258,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }
 
     public void asignarVariables(ObjectContainer BaseD) {
-        
+
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
     }
@@ -316,33 +270,35 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        
+
         Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
     }
-    
-     public void geneCodi(ObjectSet result) {
+
+    //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
+    public void geneCodi(ObjectSet result) {
         for (int i = 0; i < result.size(); i++) {
             Exposicion miExposicion = new Exposicion();
             miExposicion = (Exposicion) result.get(i);
-            cod_exposicion = generarCodigo(i);
-         
+            cod_exposicion = nombreCodigo(i);
+
         }
 
     }
-     public String generarCodigo(int c){
-        String cod_exposicion= "";
+
+    public String nombreCodigo(int c) {
+        String cod_exposicion = "";
         int cantidad = nombretxt.getText().length();
-        
-        if(cantidad > 0){
-            
-            cod_exposicion+= "EXPOSICION-000" + c;
-        }else{
-            cod_exposicion+= "EXPOSICION-000" + c;
+
+        if (cantidad > 0) {
+
+            cod_exposicion += "EXPOSICION-000" + c;
+        } else {
+            cod_exposicion += "EXPOSICION-000" + c;
         }
-        
+
         return cod_exposicion;
     }
 
@@ -351,25 +307,25 @@ public class Exposicion_registro extends javax.swing.JFrame {
         ObjectSet result = BaseD.get(Exbuscar);
         geneCodi(result);
         asignarVariables(BaseD);
-         
-        if(camposVacios() == true){
-            habilitarBoton();
-        if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
-            Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
-            BaseD.set(Exnuevo);
-            JOptionPane.showMessageDialog(null, "Registrado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
 
-        }
+        if (camposVacios() == true) {
+            habilitarBoton();
+            if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
+                Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
+                BaseD.set(Exnuevo);
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Exposicion ya registrado");
+
+            }
         }
     }
-    
-    public void habilitarBoton(){
+
+    public void habilitarBoton() {
         guardarbtn.setEnabled(true);
     }
 
-    public  boolean camposVacios() {
+    public boolean camposVacios() {
 
         boolean validado = false;
         boolean c, n;
@@ -390,11 +346,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
         if (c == true && n == true) {
             validado = true;
         }
-        
-        
 
         return validado;
-        
+
     }
 
     public static void cerrarBD(ObjectContainer BaseD) {

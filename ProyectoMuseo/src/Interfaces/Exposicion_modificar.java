@@ -5,7 +5,6 @@
  */
 package Interfaces;
 
-
 import clases.Exposicion;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -29,7 +28,6 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         initComponents();
         guardarbtn.setEnabled(false);
     }
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +59,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,9 +185,6 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -210,25 +205,27 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(guardarbtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(buscarExposicion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(520, 520, 520)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(480, 480, 480)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarExposicion)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(10, 10, 10)
                 .addComponent(mostrarTabla))
         );
@@ -248,10 +245,9 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                         .addComponent(guardarbtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(buscarExposicion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(codigotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buscarExposicion)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jLabel3))
@@ -304,39 +300,38 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarExposicionActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        menuPrincipal miMenu = new menuPrincipal();
+        miMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
-             int aux = evt.getKeyChar();
-    boolean espacio = aux ==32;
-        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 97 && aux <= 122||aux >= 48 && aux <= 57 || espacio;
-        
-                if (!Letras) {
-            System.out.println("esta digitando " + evt.getKeyChar());
-        evt.consume();    
-        }    
-              
-    }//GEN-LAST:event_nombretxtKeyTyped
-
-    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
-int aux = evt.getKeyChar();
+        int aux = evt.getKeyChar();
         boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || aux >= 48 && aux <= 57 || espacio;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
 
         if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
             evt.consume();
-        }        // TODO add your handling code here:
+        }
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void descripciontxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripciontxtKeyTyped
+        int aux = evt.getKeyChar();
+        boolean espacio = aux == 32;
+        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
+
+        if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+            evt.consume();
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_descripciontxtKeyTyped
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {
-                guardarbtn.setEnabled(false);
-                String CodigoEx;
-             CodigoEx = codigotxt.getText();
+        guardarbtn.setEnabled(false);
+        String CodigoEx;
+        CodigoEx = codigotxt.getText();
         if (codigotxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
@@ -344,7 +339,7 @@ int aux = evt.getKeyChar();
                 JOptionPane.showMessageDialog(null, "La Exposicion no existe en la base de datos");
 
             } else {
-                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null );
+                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null);
                 ObjectSet result = BaseD.get(Exbuscar);
                 for (int i = 0; i < result.size(); i++) {
                     Exposicion Miexposicion = new Exposicion();
@@ -366,21 +361,22 @@ int aux = evt.getKeyChar();
 
     public void modificarExposicion(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        Exposicion Emodi = new Exposicion(cod_exposicion, null, null );
+        Exposicion Emodi = new Exposicion(cod_exposicion, null, null);
         ObjectSet result = BaseD.get(Emodi);
         Exposicion Emodificar = (Exposicion) result.next();
-        
-        if(camposVacios() == true){
 
-        Emodificar.setNombre_exposicion(nombre_exposicion);
-        Emodificar.setDescripcion_exposicion(descripcion_exposicion);
+        if (camposVacios() == true) {
 
-        BaseD.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "La exposicion fue modificado exitosamente");
-        limpiarDatos();
+            Emodificar.setNombre_exposicion(nombre_exposicion);
+            Emodificar.setDescripcion_exposicion(descripcion_exposicion);
+
+            BaseD.set(Emodificar);
+            JOptionPane.showMessageDialog(null, "La exposicion fue modificado exitosamente");
+            limpiarDatos();
         }
     }
-     public  boolean camposVacios() {
+
+    public boolean camposVacios() {
 
         boolean validado = false;
         boolean c, n;
@@ -398,7 +394,7 @@ int aux = evt.getKeyChar();
         } else {
             n = true;
         }
-        
+
         if (c == true && n == true) {
             validado = true;
             guardarbtn.setEnabled(true);
@@ -408,7 +404,7 @@ int aux = evt.getKeyChar();
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null );
+        Exposicion Exbuscar = new Exposicion(codigo, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -430,37 +426,35 @@ int aux = evt.getKeyChar();
         descripciontxt.setText("");
 
     }
-    
+
     //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA
-    
-     public void cargarTabla(ObjectContainer BaseD){
-        
+    public void cargarTabla(ObjectContainer BaseD) {
+
         Exposicion Exbuscar = new Exposicion(null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
+
     public void mostrarDatos(ObjectSet result) {
         String matrizExposicion[][] = new String[result.size()][3];
-        if(result.size() == 0){
+        if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "La exposicion no existe");
         }
-        
+
         for (int i = 0; i < result.size(); i++) {
             Exposicion miExposicion = new Exposicion();
             miExposicion = (Exposicion) result.get(i);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
-            
 
             exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
 
         }
 
     }
-    
 
-  
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton buscarExposicion;
