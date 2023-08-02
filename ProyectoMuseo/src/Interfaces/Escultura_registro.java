@@ -18,6 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class Escultura_registro extends javax.swing.JFrame {
 
+    public Escultura_registro() {
+        initComponents();
+    }
     String material = "";
     double peso = 0;
     double altura = 0;
@@ -25,23 +28,17 @@ public class Escultura_registro extends javax.swing.JFrame {
     String nombre = "";
     String descripcion = "";
     Date fecha_creacion;
+    public static String direccionBD = ("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\Avance del proyecto\\guia.yap");
 
-     public static String direccionBD = ("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\Avance del proyecto\\guia.yap");
-    
-    public Escultura_registro() {
-        initComponents();
-    }
-
-    
     public void creaescultura(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        if(comproparescultura(BaseD,codigo)==0){
-              Escultura EscNuevo = new Escultura( material, peso, altura,  codigo,  nombre,  descripcion,  fecha_creacion);
-              BaseD.set(EscNuevo);
-             JOptionPane .showMessageDialog(null, "REGISTRADO CORRECTAMENTE");
-             
-        }else{
-             JOptionPane .showMessageDialog(null, "ESCULTURA NO REGISTRADA");
+        if (comproparescultura(BaseD, codigo) == 0) {
+            Escultura EscNuevo = new Escultura(material, peso, altura, codigo, nombre, descripcion, fecha_creacion);
+            BaseD.set(EscNuevo);
+            JOptionPane.showMessageDialog(null, "REGISTRADO CORRECTAMENTE");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "ESCULTURA NO REGISTRADA");
         }
 
     }
@@ -53,68 +50,69 @@ public class Escultura_registro extends javax.swing.JFrame {
         altura = Double.parseDouble(txtaltura.getText());
         codigo = txtcodigo.getText();
         nombre = txtnombre.getText();
-        descripcion = txtarea.getText();
+        descripcion = txtdescripcion.getText();
         fecha_creacion = calendario.getDate();
 
     }
-    public void cargar_Datos(ObjectContainer BaseD){
-         Escultura EscBuscar = new Escultura(null, 0, 0,null, null,null, null);
-   
-        ObjectSet result =BaseD.get(EscBuscar);
+
+    public void cargar_Datos(ObjectContainer BaseD) {
+        Escultura EscBuscar = new Escultura(null, 0, 0, null, null, null, null);
+
+        ObjectSet result = BaseD.get(EscBuscar);
         mostrar_Datos(result);
-        
+
     }
-    public void mostrar_Datos(ObjectSet result){
-        String matrizEscultura [][]= new String[result.size()][7];
-        if(result.size()==0){
+
+    public void mostrar_Datos(ObjectSet result) {
+        String matrizEscultura[][] = new String[result.size()][7];
+        if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "ESCULTURA NO EXISTE");
         }
-        for(int i = 0;i < result.size();i++){
+        for (int i = 0; i < result.size(); i++) {
             Escultura miescultura = new Escultura();
             miescultura = (Escultura) result.get(i);
             matrizEscultura[i][0] = miescultura.getCodigo();
-             matrizEscultura[i][1] = miescultura.getNombre();
-             matrizEscultura[i][2] = miescultura.getDescripcion();
-             matrizEscultura[i][3] = miescultura.getMaterial();
-             matrizEscultura[i][4] = String.valueOf(miescultura.getPeso());
-             matrizEscultura[i][5] = String.valueOf(miescultura.getAltura());
-             matrizEscultura[i][6] = String.valueOf(miescultura.getFecha_creacion());
-            
-             
-             tbescultura.setModel(new javax.swing.table.DefaultTableModel(matrizEscultura, new String[]{"codigo","nombre","descrpcion","material","peso","fecha_creacion"}));        }
-        
+            matrizEscultura[i][1] = miescultura.getNombre();
+            matrizEscultura[i][2] = miescultura.getDescripcion();
+            matrizEscultura[i][3] = miescultura.getMaterial();
+            matrizEscultura[i][4] = String.valueOf(miescultura.getPeso());
+            matrizEscultura[i][5] = String.valueOf(miescultura.getAltura());
+            matrizEscultura[i][6] = String.valueOf(miescultura.getFecha_creacion());
+
+            tbescultura.setModel(new javax.swing.table.DefaultTableModel(matrizEscultura, new String[]{"codigo", "nombre", "descrpcion", "material", "peso", "fecha_creacion"}));
+        }
+
     }
 
     public void limpiarDatos() {
 
         CmbBxmaterial.setSelectedItem("");
         txtpeso.setText("");
-       txtaltura.setText("");
+        txtaltura.setText("");
         txtcodigo.setText("");
         txtnombre.setText("");
-        txtarea.setText("");
+        txtdescripcion.setText("");
 
     }
 
     public static int comproparescultura(ObjectContainer BaseD, String codigo) {
 
-        Escultura EscBuscar = new Escultura(null, 0, 0,codigo, null,null, null);
-   
-        ObjectSet result =BaseD.get(EscBuscar);
+        Escultura EscBuscar = new Escultura(null, 0, 0, codigo, null, null, null);
+
+        ObjectSet result = BaseD.get(EscBuscar);
         return result.size();
     }
 
-    public void cerrarBD(ObjectContainer BaseD){
+    public void cerrarBD(ObjectContainer BaseD) {
         BaseD.close();
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -124,8 +122,6 @@ public class Escultura_registro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtarea = new javax.swing.JTextArea();
         calendario = new com.toedter.calendar.JDateChooser();
         CmbBxmaterial = new javax.swing.JComboBox<>();
         txtpeso = new javax.swing.JTextField();
@@ -134,19 +130,22 @@ public class Escultura_registro extends javax.swing.JFrame {
         tbescultura = new javax.swing.JTable();
         bttnguardar = new javax.swing.JButton();
         bttnmostrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtdescripcion = new javax.swing.JTextField();
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setToolTipText("");
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRO DE ESCULTURA");
-        jLabel1.setToolTipText("");
+        jPanel1.setMaximumSize(new java.awt.Dimension(32766, 32767));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1199, 635));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
@@ -200,12 +199,6 @@ public class Escultura_registro extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-
-        txtarea.setBackground(new java.awt.Color(134, 153, 167));
-        txtarea.setColumns(20);
-        txtarea.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
-        txtarea.setRows(5);
-        jScrollPane1.setViewportView(txtarea);
 
         CmbBxmaterial.setBackground(new java.awt.Color(134, 153, 167));
         CmbBxmaterial.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -261,6 +254,15 @@ public class Escultura_registro extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 11, 13));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
+        jLabel1.setText("REGISTRO DE ESCULTURA");
+        jLabel1.setToolTipText("");
+
         jButton1.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -269,115 +271,158 @@ public class Escultura_registro extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+
+        txtdescripcion.setBackground(new java.awt.Color(134, 153, 167));
+        txtdescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdescripcionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(bttnguardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttnmostrar)
-                .addGap(92, 92, 92))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel6)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel5)))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calendario, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel2)))
+                                    .addComponent(jLabel7))
+                                .addGap(85, 85, 85)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                    .addComponent(txtnombre)
-                                    .addComponent(txtcodigo)))
-                            .addComponent(CmbBxmaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtpeso)
-                            .addComponent(txtaltura))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(calendario, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                    .addComponent(CmbBxmaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtpeso)
+                                    .addComponent(txtaltura)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                            .addComponent(txtcodigo)
+                                            .addComponent(txtnombre)))))
+                            .addComponent(jLabel8)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(39, 39, 39)
+                        .addComponent(bttnguardar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttnmostrar)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(CmbBxmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttnmostrar)
-                    .addComponent(bttnguardar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(CmbBxmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(3, 3, 3)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(bttnmostrar))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bttnguardar)))
+                        .addContainerGap(26, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnmostrarActionPerformed
-          ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(direccionBD);
         cargar_Datos(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_bttnmostrarActionPerformed
@@ -394,14 +439,17 @@ public class Escultura_registro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        menuPrincipal ventaina = new  menuPrincipal();
+        menuPrincipal ventaina = new menuPrincipal();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtdescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescripcionActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmbBxmaterial;
@@ -418,12 +466,15 @@ public class Escultura_registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable tbescultura;
     private javax.swing.JTextField txtaltura;
-    private javax.swing.JTextArea txtarea;
     private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtpeso;
     // End of variables declaration//GEN-END:variables
