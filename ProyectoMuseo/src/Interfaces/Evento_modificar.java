@@ -569,7 +569,7 @@ if(Exposicion_registro.comprobarExposicion(BaseD, id_exposicion) != 0){
     
      public void cargarTablaExposicion(ObjectContainer BaseD){
         
-        Exposicion Exbuscar = new Exposicion(null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null,null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatosExposicion(result);
     }

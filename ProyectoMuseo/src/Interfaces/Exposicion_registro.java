@@ -1,10 +1,24 @@
 package Interfaces;
 
 import clases.Exposicion;
+import clases.ImageTableCellRenderer;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Exposicion_registro extends javax.swing.JFrame {
@@ -14,6 +28,8 @@ public class Exposicion_registro extends javax.swing.JFrame {
     String descripcion_exposicion = "";
     Date fecha_inicio;
     Date fecha_fin;
+    byte[] foto;
+    int longitudBytes;
 
     public Exposicion_registro() {
         initComponents();
@@ -39,6 +55,8 @@ public class Exposicion_registro extends javax.swing.JFrame {
         botonRegresar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        fotolbl = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +65,11 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel3.setText("Descripcion:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         nombretxt.setToolTipText("");
@@ -65,7 +83,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 nombretxtKeyTyped(evt);
             }
         });
-        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 174, -1));
+        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 174, -1));
 
         guardarbtn.setBackground(new java.awt.Color(204, 204, 0));
         guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -80,7 +98,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 guardarbtnActionPerformed(evt);
             }
         });
-        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 309, 140, 40));
+        jPanel1.add(guardarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 140, 40));
 
         exposiciontbl.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,7 +114,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(exposiciontbl);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 81, 380, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 81, 590, 360));
 
         descripciontxt.setColumns(20);
         descripciontxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -108,7 +126,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(descripciontxt);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
 
         mostrarTabla.setBackground(new java.awt.Color(204, 204, 0));
         mostrarTabla.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -121,7 +139,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 mostrarTablaActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(803, 88, 200, 40));
+        jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 200, 40));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 0));
 
@@ -171,6 +189,24 @@ public class Exposicion_registro extends javax.swing.JFrame {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 60, 11, 410));
 
+        fotolbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fotolbl.setText("FOTO");
+        fotolbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fotolbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fotolblMouseClicked(evt);
+            }
+        });
+        jPanel1.add(fotolbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 210, 130));
+
+        jButton1.setText("VER GALERIA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, 150, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,7 +217,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -231,34 +269,146 @@ public class Exposicion_registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombretxtFocusLost
 
+    private void fotolblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotolblMouseClicked
+         JFileChooser se = new JFileChooser();
+    se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    int estado = se.showOpenDialog(null);
+    if (estado == JFileChooser.APPROVE_OPTION) {
+        try {
+            File archivo = se.getSelectedFile();
+            this.longitudBytes = (int) archivo.length();
+
+            // Leer la imagen seleccionada como bytes
+            byte[] buffer = new byte[this.longitudBytes];
+            try (FileInputStream fis = new FileInputStream(archivo)) {
+                fis.read(buffer);
+            }
+
+            // Mostrar la imagen en el JLabel
+            Image icono = ImageIO.read(archivo).getScaledInstance(fotolbl.getWidth(), fotolbl.getHeight(), Image.SCALE_DEFAULT);
+            fotolbl.setIcon(new ImageIcon(icono));
+            fotolbl.updateUI();
+
+            // Asignar los bytes de la imagen a la variable "foto"
+            foto = buffer;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    }//GEN-LAST:event_fotolblMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
+        cargargaleria(BaseD);
+        cerrarBD(BaseD);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    
+    public void cargargaleria(ObjectContainer BaseD) {
+
+        Exposicion Exbuscar = new Exposicion(null, null, null, null);
+        ObjectSet result = BaseD.get(Exbuscar);
+        galeriamostrar(result);
+    }
+
+    public void galeriamostrar(ObjectSet result) {
+    // Tu código existente para llenar la tabla
+
+    // Crear una lista para almacenar todas las exposiciones
+    List<Exposicion> exposiciones = new ArrayList<>();
+
+    for (int i = 0; i < result.size(); i++) {
+        Exposicion miExposicion = (Exposicion) result.get(i);
+        exposiciones.add(miExposicion);
+    }
+
+    // Mostrar la nueva ventana con todas las imágenes
+    GaleriaExposiciones ventanaImagenes = new GaleriaExposiciones(exposiciones);
+    ventanaImagenes.setVisible(true);
+}
+
+    private byte[] obtenerBytesImagen() {
+    JFileChooser se = new JFileChooser();
+    se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    int estado = se.showOpenDialog(null);
+    if (estado == JFileChooser.APPROVE_OPTION) {
+        try {
+            File archivo = se.getSelectedFile();
+            this.longitudBytes = (int) archivo.length();
+
+            // Leer la imagen seleccionada como bytes
+            byte[] buffer = new byte[this.longitudBytes];
+            try (FileInputStream fis = new FileInputStream(archivo)) {
+                fis.read(buffer);
+            }
+
+            // Mostrar la imagen en un JLabel (opcional, solo para visualización)
+            Image icono = ImageIO.read(archivo).getScaledInstance(fotolbl.getWidth(), fotolbl.getHeight(), Image.SCALE_DEFAULT);
+            fotolbl.setIcon(new ImageIcon(icono));
+            fotolbl.updateUI();
+
+            return buffer;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    return null;
+}
+
+// Método que invoca obtenerBytesImagen() y asigna el arreglo de bytes a la variable "foto"
+public void seleccionarImagen() {
+    foto = obtenerBytesImagen();
+}
+
+    
+
     public void cargarTabla(ObjectContainer BaseD) {
 
-        Exposicion Exbuscar = new Exposicion(null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
 
-    public void mostrarDatos(ObjectSet result) {
-        String matrizExposicion[][] = new String[result.size()][3];
-        if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "La exposicion no existe");
-        }
-
+    
+public void mostrarDatos(ObjectSet result) {
+    Object[][] matrizExposicion = new Object[result.size()][4];
+    if (result.size() == 0) {
+        JOptionPane.showMessageDialog(null, "La exposicion no existe");
+    } else {
         for (int i = 0; i < result.size(); i++) {
-            Exposicion miExposicion = new Exposicion();
-            miExposicion = (Exposicion) result.get(i);
+            Exposicion miExposicion = (Exposicion) result.get(i);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
-
+            // Convertir el arreglo de bytes (foto) a un ImageIcon
+            byte[] fotoBytes = miExposicion.getFoto();
+            if (fotoBytes != null) {
+                ImageIcon icono = new ImageIcon(fotoBytes);
+                matrizExposicion[i][3] = icono;
+            } else {
+                matrizExposicion[i][3] = null;
+            }
         }
 
+        // Configurar el modelo de la tabla con los datos y títulos de columna
+        exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
+            matrizExposicion,
+            new String[]{"Codigo", "Nombre", "Descripcion", "Foto"}
+        ));
+
+        // Asignar el renderer personalizado a la columna de la foto (columna 3)
+        exposiciontbl.getColumnModel().getColumn(3).setCellRenderer(new ImageTableCellRenderer());
     }
+}
+
 
     public void asignarVariables(ObjectContainer BaseD) {
-
+seleccionarImagen();
         nombre_exposicion = nombretxt.getText();
         descripcion_exposicion = descripciontxt.getText();
     }
@@ -271,7 +421,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
 
-        Exposicion Exbuscar = new Exposicion(codigo, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -303,7 +453,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
     }
 
     public void crearExposicion(ObjectContainer BaseD) {
-        Exposicion Exbuscar = new Exposicion(null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         geneCodi(result);
         asignarVariables(BaseD);
@@ -311,7 +461,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         if (camposVacios() == true) {
             habilitarBoton();
             if (comprobarExposicion(BaseD, cod_exposicion) == 0) {
-                Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion);
+                Exposicion Exnuevo = new Exposicion(cod_exposicion, nombre_exposicion, descripcion_exposicion, foto);
                 BaseD.set(Exnuevo);
                 JOptionPane.showMessageDialog(null, "Registrado correctamente");
             } else {
@@ -360,7 +510,9 @@ public class Exposicion_registro extends javax.swing.JFrame {
     private javax.swing.JButton botonRegresar;
     private javax.swing.JTextArea descripciontxt;
     private javax.swing.JTable exposiciontbl;
+    private javax.swing.JLabel fotolbl;
     private javax.swing.JButton guardarbtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

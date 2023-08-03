@@ -339,7 +339,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "La Exposicion no existe en la base de datos");
 
             } else {
-                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null);
+                Exposicion Exbuscar = new Exposicion(CodigoEx, null, null,null);
                 ObjectSet result = BaseD.get(Exbuscar);
                 for (int i = 0; i < result.size(); i++) {
                     Exposicion Miexposicion = new Exposicion();
@@ -361,7 +361,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
 
     public void modificarExposicion(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-        Exposicion Emodi = new Exposicion(cod_exposicion, null, null);
+        Exposicion Emodi = new Exposicion(cod_exposicion, null, null,null);
         ObjectSet result = BaseD.get(Emodi);
         Exposicion Emodificar = (Exposicion) result.next();
 
@@ -404,7 +404,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null,null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 
@@ -430,7 +430,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA
     public void cargarTabla(ObjectContainer BaseD) {
 
-        Exposicion Exbuscar = new Exposicion(null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null,null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }

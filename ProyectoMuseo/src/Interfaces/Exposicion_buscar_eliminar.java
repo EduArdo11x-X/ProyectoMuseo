@@ -302,21 +302,21 @@ miMenu.setVisible(true);        // TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Selección invalida");
         } else {
             if (filtrocmb.getSelectedIndex() == 1) {
-                Exposicion Exbuscar = new Exposicion(null, null, null );
+                Exposicion Exbuscar = new Exposicion(null, null, null,null );
                 ObjectSet result = BaseD.get(Exbuscar);
                 mostrarDatos(result);
 
             } else {
                 if (filtrocmb.getSelectedIndex() == 2) {
                     String codigoEx = JOptionPane.showInputDialog("Ingrese el Codigo a consultar");
-                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null );
+                    Exposicion Exbuscar = new Exposicion(codigoEx, null, null,null );
                     ObjectSet result = BaseD.get(Exbuscar);
                     mostrarDatos(result);
 
                 } else {
                     if (filtrocmb.getSelectedIndex() == 3) {
                         String nombreEx = JOptionPane.showInputDialog("Ingrese el nombre a consultar");
-                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null );
+                        Exposicion Exbuscar = new Exposicion(null, nombreEx, null,null );
                         ObjectSet result = BaseD.get(Exbuscar);
                         mostrarDatos(result);
                     }
@@ -353,7 +353,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Ingrese un Codigo");
         } else {
             String codigo = codigotxt.getText();
-            Exposicion ExEliminar = new Exposicion(codigo, null, null );
+            Exposicion ExEliminar = new Exposicion(codigo, null, null,null );
             ObjectSet result = BaseD.get(ExEliminar);
 
             if (comprobarExposicion(BaseD, codigo) == 0) {
@@ -373,7 +373,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     }
 
     public static int comprobarExposicion(ObjectContainer BaseD, String codigo) {
-        Exposicion Exbuscar = new Exposicion(codigo, null, null);
+        Exposicion Exbuscar = new Exposicion(codigo, null, null,null);
         ObjectSet result = BaseD.get(Exbuscar);
         return result.size();
 

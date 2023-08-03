@@ -514,7 +514,7 @@ public class Evento_registro extends javax.swing.JFrame {
     //TABLA DE EXPOSICIONES
      public void cargarTablaExposicion(ObjectContainer BaseD){
         
-        Exposicion Exbuscar = new Exposicion(null, null, null);
+        Exposicion Exbuscar = new Exposicion(null, null, null,null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatosExposicion(result);
     }
