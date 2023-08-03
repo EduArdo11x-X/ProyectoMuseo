@@ -297,7 +297,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Filtro(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_buscarbtnActionPerformed
@@ -307,7 +307,7 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBfiltroActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Eliminar_Articulo(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_eliminarbtnActionPerformed
@@ -327,9 +327,9 @@ public class Articulo_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFidActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+   this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     

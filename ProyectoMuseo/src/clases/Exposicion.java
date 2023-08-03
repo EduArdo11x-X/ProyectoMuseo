@@ -5,6 +5,7 @@
  */
 package clases;
 
+import java.io.FileInputStream;
 import java.util.Date;
 
 /**
@@ -12,17 +13,21 @@ import java.util.Date;
  * @author EDU
  */
 public class Exposicion {
+    
     private String cod_exposicion;
     private String nombre_exposicion;
     private String descripcion_exposicion;
+private byte[] foto;
+
 
     public Exposicion() {
     }
 
-    public Exposicion(String cod_exposicion, String nombre_exposicion, String descripcion_exposicion) {
+    public Exposicion(String cod_exposicion, String nombre_exposicion, String descripcion_exposicion, byte[] foto) {
         this.cod_exposicion = cod_exposicion;
         this.nombre_exposicion = nombre_exposicion;
         this.descripcion_exposicion = descripcion_exposicion;
+        this.foto = foto;
     }
 
     public String getCod_exposicion() {
@@ -49,14 +54,16 @@ public class Exposicion {
         this.descripcion_exposicion = descripcion_exposicion;
     }
 
-    @Override
-    public String toString() {
-        return "Exposicion{" + "cod_exposicion=" + cod_exposicion + ", nombre_exposicion=" + nombre_exposicion + ", descripcion_exposicion=" + descripcion_exposicion + '}';
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
     
-   
-
     
+
     
     
 }

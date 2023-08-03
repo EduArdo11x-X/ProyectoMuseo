@@ -547,9 +547,9 @@ public class Escultura_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
-        this.dispose();
-        menuPrincipal ventana = new menuPrincipal();
-        ventana.setVisible(true);
+        this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
     private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
@@ -577,14 +577,14 @@ public class Escultura_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnmodificarActionPerformed
 
     private void bttnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         buscar(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed
 
     private void bttncargar_datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttncargar_datosActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarDatos(BaseD);
         Cerrar_BD(BaseD);
 

@@ -125,7 +125,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/MiniLogotipo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,7 +207,7 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_buttonActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Filtro(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_buscar_buttonActionPerformed
@@ -217,14 +217,14 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBfiltroActionPerformed
 
     private void eliminar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_buttonActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Eliminar_pintura(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_eliminar_buttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        menuPrincipal ventaina = new  menuPrincipal();
+       this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

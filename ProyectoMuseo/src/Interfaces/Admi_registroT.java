@@ -148,6 +148,11 @@ public class Admi_registroT extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -420,7 +425,7 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
 
 //        ObjectContainer Baseprincipal = Db4o.openFile("C:\\Users\\ASUS TUF\\OneDrive\\Imágenes\\Base_ProyectoMuseo\\base_MUSEO.yap");
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         crear_adm(BaseD);
         Cerrar_BD(BaseD);
 
@@ -454,7 +459,7 @@ public class Admi_registroT extends javax.swing.JFrame {
             return;
         }
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Administrador adminBuscado = buscarAdministrador(BaseD, cedulaBuscar);
 
         if (adminBuscado == null) {
@@ -494,7 +499,7 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Abrir la base de datos
         String cedulaBuscar = txtcedula.getText(); // Suponiendo que cedulaBuscar es el identificador único del administrador.
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Administrador adminBuscado = buscarAdministrador(BaseD, cedulaBuscar);
 
         if (adminBuscado == null) {
@@ -544,11 +549,18 @@ public class Admi_registroT extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
          ObjectContainer baseDatos = null;
-        baseDatos = Db4o.openFile(menuPrincipal.direccionBD);
+        baseDatos = Db4o.openFile(MENU_ADM.direccionBD);
         ObjectSet<Administrador> veterinarios = baseDatos.queryByExample(Administrador.class);
         mostrarDatos(veterinarios);
         baseDatos.close();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+           this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void asignarVariables(ObjectContainer BaseD) {
 
         cedula_adm = txtcedula.getText();

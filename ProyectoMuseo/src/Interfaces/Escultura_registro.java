@@ -432,15 +432,15 @@ public class Escultura_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void bttnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnguardarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         creaescultura(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_bttnguardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        menuPrincipal ventaina = new menuPrincipal();
-        ventaina.setVisible(true);
+        this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtdescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripcionActionPerformed

@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+
 import static Interfaces.Escultura_registro.direccionBD;
 import clases.Escultura;
 import com.db4o.Db4o;
@@ -19,9 +20,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
+   
     public Escultura_buscar_eliminar() {
         initComponents();
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,12 +38,13 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         bttnbuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
+        bttnregresar = new javax.swing.JButton();
         bttneliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        bttnregresar = new javax.swing.JButton();
+        bttnregresar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +112,17 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
+        bttnregresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        bttnregresar.setForeground(new java.awt.Color(204, 204, 204));
+        bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1 2.png"))); // NOI18N
+        bttnregresar.setText("REGRESAR");
+        bttnregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnregresarActionPerformed(evt);
+            }
+        });
+
         bttneliminar.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         bttneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/basura.png"))); // NOI18N
         bttneliminar.setText("ELIMINAR");
@@ -135,11 +150,11 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         jLabel1.setText("MODIFICAR Y ELIMINAR ESCULTURA");
         jLabel1.setToolTipText("");
 
-        bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
-        bttnregresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1 2.png"))); // NOI18N
-        bttnregresar.setText("REGRESAR");
-        bttnregresar.addActionListener(new java.awt.event.ActionListener() {
+        bttnregresar1.setBackground(new java.awt.Color(0, 11, 13));
+        bttnregresar1.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        bttnregresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1 2.png"))); // NOI18N
+        bttnregresar1.setText("REGRESAR");
+        bttnregresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnregresarActionPerformed(evt);
             }
@@ -152,14 +167,14 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttnregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttnregresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bttnregresar)
+                .addComponent(bttnregresar1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -232,10 +247,9 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
-
-        this.setVisible(false);
-        menuPrincipal miMenu = new menuPrincipal();
-        miMenu.setVisible(true);
+       this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
     private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
@@ -244,7 +258,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
     private void cmbopcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbopcionesActionPerformed
 
-        if (cmbopciones.getSelectedIndex() == 0) {
+         if (cmbopciones.getSelectedIndex() == 0) {
             //deshabilitarParametros();
         } else {
             if (cmbopciones.getSelectedIndex() == 1) {
@@ -259,23 +273,23 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
                 }
             }
         }
-
+            
     }//GEN-LAST:event_cmbopcionesActionPerformed
 
     private void bttneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttneliminarActionPerformed
-
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        
+         ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Eliminar_Escultura(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttneliminarActionPerformed
 
     private void bttnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnbuscarActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         Buscar_esculturaID(BaseD);
         Cerrar_BD(BaseD);
     }//GEN-LAST:event_bttnbuscarActionPerformed
 
-    public void Buscar_esculturaID(ObjectContainer basep) {
+     public void Buscar_esculturaID(ObjectContainer basep) {
 
         if (cmbopciones.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Selección invalida");
@@ -283,7 +297,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         } else {
             if (cmbopciones.getSelectedIndex() == 1) {
 
-                Escultura Ebuscar = new Escultura(null, 0, 0, null, null, null, null);
+                Escultura Ebuscar = new Escultura(null, 0, 0,null, null,null, null);
 
                 ObjectSet result = basep.get(Ebuscar);
                 MostrarDatos(result);
@@ -292,20 +306,21 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
                     String IDAux = JOptionPane.showInputDialog("Ingrese el ID a consultar");
 
-                    Escultura Ebuscar = new Escultura(IDAux, 0, 0, null, null, null, null);
+                    Escultura Ebuscar = new Escultura(IDAux, 0, 0,null, null,null, null);
 
                     ObjectSet result = basep.get(Ebuscar);
                     MostrarDatos(result);
 
                 } else {
                     if (cmbopciones.getSelectedIndex() == 3) {
+                        
+                        String IDAux = JOptionPane.showInputDialog("Ingrese el ID a consultar");
 
-                        String PesAux = JOptionPane.showInputDialog("Ingrese el peso a consultar");
+                    Escultura Ebuscar = new Escultura( IDAux, 0, 0,null, null,null, null);
 
-                        Escultura Ebuscar = new Escultura(PesAux, 0, 0, null, null, null, null);
-
-                        ObjectSet result = basep.get(Ebuscar);
-                        MostrarDatos(result);
+                    ObjectSet result = basep.get(Ebuscar);
+                    MostrarDatos(result);
+                      
 
                     }
                 }
@@ -317,26 +332,26 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
     }
 
     public void MostrarDatos(ObjectSet result) {
-        String matrizEscultura[][] = new String[result.size()][7];
-        if (result.size() == 0) {
+        String matrizEscultura [][]= new String[result.size()][7];
+        if(result.size()==0){
             JOptionPane.showMessageDialog(null, "ESCULTURA NO EXISTE");
         }
-        for (int i = 0; i < result.size(); i++) {
+        for(int i = 0;i < result.size();i++){
             Escultura miescultura = new Escultura();
             miescultura = (Escultura) result.get(i);
             matrizEscultura[i][0] = miescultura.getCodigo();
-            matrizEscultura[i][1] = miescultura.getNombre();
-            matrizEscultura[i][2] = miescultura.getDescripcion();
-            matrizEscultura[i][3] = miescultura.getMaterial();
-            matrizEscultura[i][4] = String.valueOf(miescultura.getPeso());
-            matrizEscultura[i][5] = String.valueOf(miescultura.getAltura());
-            matrizEscultura[i][6] = String.valueOf(miescultura.getFecha_creacion());
-
-            tbregistro.setModel(new javax.swing.table.DefaultTableModel(matrizEscultura, new String[]{"codigo", "nombre", "descrpcion", "material", "peso", "fecha_creacion"}));
-        }
-
+             matrizEscultura[i][1] = miescultura.getNombre();
+             matrizEscultura[i][2] = miescultura.getDescripcion();
+             matrizEscultura[i][3] = miescultura.getMaterial();
+             matrizEscultura[i][4] = String.valueOf(miescultura.getPeso());
+             matrizEscultura[i][5] = String.valueOf(miescultura.getAltura());
+             matrizEscultura[i][6] = String.valueOf(miescultura.getFecha_creacion());
+            
+             
+             tbregistro.setModel(new javax.swing.table.DefaultTableModel(matrizEscultura, new String[]{"codigo","nombre","descrpcion","material","peso","fecha_creacion"}));        }
+        
     }
-
+    
     public void Eliminar_Escultura(ObjectContainer basep) {
 
         Escultura_registro Einterfaz = new Escultura_registro();
@@ -346,7 +361,7 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         } else {
 
             String IDE = txtcodigo.getText();
-            Escultura Eeliminar = new Escultura(IDE, 0, 0, null, null, null, null);
+            Escultura Eeliminar = new Escultura(IDE, 0, 0,null, null,null, null);
             ObjectSet result = basep.get(Eeliminar);
 
             if (Einterfaz.comproparescultura(basep, IDE) == 0) {
@@ -365,12 +380,11 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
         //Borrar el campo de texto
         txtcodigo.setText("");
     }
+      public static int comproparescultura(ObjectContainer BaseD, String codigo) {
 
-    public static int comproparescultura(ObjectContainer BaseD, String codigo) {
-
-        Escultura EscBuscar = new Escultura(null, 0, 0, codigo, null, null, null);
-
-        ObjectSet result = BaseD.get(EscBuscar);
+        Escultura EscBuscar = new Escultura(null, 0, 0,codigo, null,null, null);
+   
+        ObjectSet result =BaseD.get(EscBuscar);
         return result.size();
     }
 
@@ -378,16 +392,18 @@ public class Escultura_buscar_eliminar extends javax.swing.JFrame {
 
         basep.close();
 
-    }
-
+      }
+    
     /**
      * @param args the command line arguments
      */
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnbuscar;
     private javax.swing.JButton bttneliminar;
     private javax.swing.JButton bttnregresar;
+    private javax.swing.JButton bttnregresar1;
     private javax.swing.JComboBox<String> cmbopciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

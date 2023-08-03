@@ -14,7 +14,6 @@ import com.db4o.ObjectSet;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author EDU
@@ -28,7 +27,7 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         initComponents();
     }
 
-              public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -278,14 +277,14 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         eliminarEvento(BaseD);
         cerrarBD(BaseD);        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void BuscarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarbtnActionPerformed
 
-        ObjectContainer BaseD = Db4o.openFile(menuPrincipal.direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         filtro(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_BuscarbtnActionPerformed
@@ -295,34 +294,33 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_codigotxtActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-this.setVisible(false);
-menuPrincipal miMenu= new menuPrincipal();
-miMenu.setVisible(true);        // TODO add your handling code here:
+        this.dispose();
+        MENU_ADM ventaina = new  MENU_ADM();
+        ventaina.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
-
 
     public void filtro(ObjectContainer BaseD) {
         if (filtrocmb.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Selección invalida");
         } else {
             if (filtrocmb.getSelectedIndex() == 1) {
-                Evento Evbuscar = new Evento(null, null, null , null, null, null);
+                Evento Evbuscar = new Evento(null, null, null, null, null, null);
                 ObjectSet result = BaseD.get(Evbuscar);
                 mostrarDatos(result);
 
             } else {
                 if (filtrocmb.getSelectedIndex() == 2) {
                     String codigoEv = JOptionPane.showInputDialog("Ingrese el Codigo a consultar");
-                    Evento Evbuscar = new Evento(codigoEv, null, null , null, null, null);
-                ObjectSet result = BaseD.get(Evbuscar);
-                mostrarDatos(result);
+                    Evento Evbuscar = new Evento(codigoEv, null, null, null, null, null);
+                    ObjectSet result = BaseD.get(Evbuscar);
+                    mostrarDatos(result);
 
                 } else {
                     if (filtrocmb.getSelectedIndex() == 3) {
                         String nombreEv = JOptionPane.showInputDialog("Ingrese el nombre a consultar");
-                       Evento Evbuscar = new Evento(null, nombreEv, null , null, null, null);
-                ObjectSet result = BaseD.get(Evbuscar);
-                mostrarDatos(result);
+                        Evento Evbuscar = new Evento(null, nombreEv, null, null, null, null);
+                        ObjectSet result = BaseD.get(Evbuscar);
+                        mostrarDatos(result);
                     }
 
                 }
@@ -334,10 +332,10 @@ miMenu.setVisible(true);        // TODO add your handling code here:
 
     public void mostrarDatos(ObjectSet result) {
         String matrizEvento[][] = new String[result.size()][6];
-        if(result.size() == 0){
+        if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "No hay eventos existentes");
         }
-        
+
         for (int i = 0; i < result.size(); i++) {
             Evento miEvento = new Evento();
             miEvento = (Evento) result.get(i);
@@ -348,18 +346,19 @@ miMenu.setVisible(true);        // TODO add your handling code here:
             matrizEvento[i][4] = String.valueOf(miEvento.getFecha_inicio());
             matrizEvento[i][5] = String.valueOf(miEvento.getFecha_final());
 
-            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo","Id Exposicion", "Nombre", "Descripcion","Fehca inicio", "Fecha Final"}));
+            tablaevento.setModel(new javax.swing.table.DefaultTableModel(matrizEvento, new String[]{"Codigo", "Id Exposicion", "Nombre", "Descripcion", "Fehca inicio", "Fecha Final"}));
 
         }
 
     }
+
     public void eliminarEvento(ObjectContainer BaseD) {
 
         if (codigotxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un Codigo");
         } else {
             String codigo = codigotxt.getText();
-            Evento EvEliminar = new Evento(codigo, null, null, null, null, null );
+            Evento EvEliminar = new Evento(codigo, null, null, null, null, null);
             ObjectSet result = BaseD.get(EvEliminar);
 
             if (comprobarEvento(BaseD, codigo) == 0) {
@@ -388,7 +387,7 @@ miMenu.setVisible(true);        // TODO add your handling code here:
     public static void cerrarBD(ObjectContainer BaseD) {
         BaseD.close();
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscarbtn;
