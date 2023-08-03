@@ -61,7 +61,8 @@ private byte[] foto;
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+
+   
     
 
     
