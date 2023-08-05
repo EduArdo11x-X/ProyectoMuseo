@@ -23,6 +23,8 @@ public class guardia_registro extends javax.swing.JFrame {
      */
     public guardia_registro() {
         initComponents();
+        botones.add(jRadioButton1);
+        botones.add(jRadioButton2);
     }
 
     String Cedula_per_guar = "";
@@ -31,6 +33,7 @@ public class guardia_registro extends javax.swing.JFrame {
     String apellido_adm = "";
     String email_adm = "";
     char sexo_adm = ' ';
+    
     Date fechaTexto_adm;
     String telefono_adm = "";
     String provincia_adm = "";
@@ -56,7 +59,17 @@ public class guardia_registro extends javax.swing.JFrame {
         Cedula_per_guar = Ced_Taquillero.getText();
         nombre_adm = nom_taquillero.getText();
         apellido_adm = ape_tequillero.getText();
-        //sexo_adm
+
+        
+
+        if (jRadioButton1.isSelected()) {
+            sexo_adm = 'M';
+        } else if (jRadioButton2.isSelected()) {
+            sexo_adm = 'F';
+        } else {
+            // Manejo en caso de que no se haya seleccionado ningún género
+            sexo_adm = ' '; // Otra opción aquí dependiendo de tu lógica
+        }
         telefono_adm = cel_taquillero.getText();
         fechaTexto_adm = fechaNa.getDate();
         email_adm = Correo_taquillero.getText();
@@ -97,7 +110,7 @@ public class guardia_registro extends javax.swing.JFrame {
         }
     }
 
-      public static boolean comprobarCedula(ObjectContainer BaseD, String Cedula_per_guar) {
+    public static boolean comprobarCedula(ObjectContainer BaseD, String Cedula_per_guar) {
         Query query = BaseD.query();
         query.constrain(Persona.class);
         query.descend("cedula").constrain(Cedula_per_guar).equal();
@@ -127,6 +140,7 @@ public class guardia_registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -156,6 +170,8 @@ public class guardia_registro extends javax.swing.JFrame {
         combo_cuidad = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtcalle = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,7 +211,9 @@ public class guardia_registro extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel15.setText("Disponibilidad:");
 
-        jButton1.setText("INGRESAR");
+        jButton1.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
+        jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -204,7 +222,9 @@ public class guardia_registro extends javax.swing.JFrame {
 
         chxSi.setText("Si");
 
-        jButton2.setText("REGRESAR");
+        jButton2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
+        jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -234,6 +254,15 @@ public class guardia_registro extends javax.swing.JFrame {
                 txtcalleActionPerformed(evt);
             }
         });
+
+        jRadioButton1.setText("Hombre");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setText("Mujer");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -280,7 +309,11 @@ public class guardia_registro extends javax.swing.JFrame {
                                                 .addComponent(Correo_taquillero, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                                                 .addComponent(combo_provincia, 0, 1, Short.MAX_VALUE)
                                                 .addComponent(combo_cuidad)
-                                                .addComponent(txtcalle))))
+                                                .addComponent(txtcalle))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton2))))
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,8 +326,8 @@ public class guardia_registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(años_experienca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chxSi)
-                            .addComponent(txtid_guardia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtid_guardia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chxSi, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -338,8 +371,11 @@ public class guardia_registro extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(fechaNa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cel_taquillero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -396,6 +432,10 @@ public class guardia_registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcalleActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -436,6 +476,7 @@ public class guardia_registro extends javax.swing.JFrame {
     private javax.swing.JTextField Correo_taquillero;
     private javax.swing.JTextField ape_tequillero;
     private javax.swing.JTextField años_experienca;
+    private javax.swing.ButtonGroup botones;
     private javax.swing.JTextField cel_taquillero;
     private javax.swing.JCheckBox chxSi;
     private javax.swing.JTextField combo_cuidad;
@@ -458,6 +499,8 @@ public class guardia_registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField nom_taquillero;
     private javax.swing.JTextField txtcalle;
     private javax.swing.JTextField txtid_guardia;

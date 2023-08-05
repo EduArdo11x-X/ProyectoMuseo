@@ -21,8 +21,10 @@ public class guardia_modificar extends javax.swing.JFrame {
      */
     public guardia_modificar() {
         initComponents();
+        botones.add(jRadioButton1);
+        botones.add(jRadioButton2);
     }
-    
+
     String Cedula_per_guar = "";
     String id_guardia = "";
     String nombre_adm = "";
@@ -36,7 +38,7 @@ public class guardia_modificar extends javax.swing.JFrame {
     String calle_adm = "";
     int años_expreriencia_guar;
     boolean disponibilidad_guar;
-    
+
     public void LimpiarCampos() {
 
         Ced_Taquillero.setText("");
@@ -49,8 +51,7 @@ public class guardia_modificar extends javax.swing.JFrame {
         txtcalle.setText("");
 
     }
-    
-    
+
     public void buscar(ObjectContainer basep) {//cargardatos
 
         Modificarjb.setEnabled(false);
@@ -71,7 +72,7 @@ public class guardia_modificar extends javax.swing.JFrame {
 
             } else {
 
-            Guardia Ebuscar = new Guardia(IDAux, 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
+                Guardia Ebuscar = new Guardia(IDAux, 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
 
                 ObjectSet result = basep.get(Ebuscar);
                 for (int i = 0; i < result.size(); i++) {
@@ -82,21 +83,24 @@ public class guardia_modificar extends javax.swing.JFrame {
 
                     Ced_Taquillero.setText(miE.getCedula());
                     nom_taquillero.setText(miE.getNombre());
-                    ape_tequillero.setText(miE.getApellido());                    
+                    ape_tequillero.setText(miE.getApellido());
                     cel_taquillero.setText(miE.getNum_telefono());
                     fechaNa.setDate((miE.getF_nacimiento()));
+                    if (miE.getGenero() == 'M') {
+                        jRadioButton1.setSelected(true);
+                    } else if (miE.getGenero() == 'F') {
+                        jRadioButton2.setSelected(true);
+                    }
                     Correo_taquillero.setText(miE.getCorreo());
                     combo_provincia.setSelectedItem(miE.getProvincia());
                     combo_cuidad.setText(miE.getCiudad());
                     txtid_guardia.setText(miE.getId_guardia());
-                    txtcalle.setText(miE.getCalle());                   
+                    txtcalle.setText(miE.getCalle());
                     años_experienca.setText(String.valueOf(miE.getAnios_experiencia()));
-                    
-                    
 
                     Modificarjb.setEnabled(true);
                     //Hacer editable los campos de texto
-                  
+
                     HabilitarCampos_deTexto();
                     txtid_guardia.setEditable(false);
                     Ced_Taquillero.setEditable(false);
@@ -107,26 +111,23 @@ public class guardia_modificar extends javax.swing.JFrame {
 
         }
     }
-    
-     public void HabilitarCampos_deTexto() {
+
+    public void HabilitarCampos_deTexto() {
         nom_taquillero.setEditable(true);
-        ape_tequillero.setEditable(true);  
+        ape_tequillero.setEditable(true);
         cel_taquillero.setEditable(true);
         Correo_taquillero.setEditable(true);
         años_experienca.setEditable(true);
-        
-        
 
     }
-     
-     public void Modificar_pintura(ObjectContainer basep) {
-         
 
-       Guardia Emodi = new Guardia(txtid_guardia.getText(), 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
+    public void Modificar_pintura(ObjectContainer basep) {
+
+        Guardia Emodi = new Guardia(txtid_guardia.getText(), 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = basep.get(Emodi);
         Guardia Emodificar = (Guardia) result.next();
         Emodificar.setNombre(nom_taquillero.getText());
-        Emodificar.setApellido(ape_tequillero.getText());       
+        Emodificar.setApellido(ape_tequillero.getText());
         Emodificar.setNum_telefono(cel_taquillero.getText());
         Emodificar.setF_nacimiento(fechaNa.getDate());
         Emodificar.setCorreo(Correo_taquillero.getText());
@@ -135,14 +136,15 @@ public class guardia_modificar extends javax.swing.JFrame {
         Emodificar.setProvincia((String) combo_provincia.getSelectedItem());
         Emodificar.setCiudad(combo_cuidad.getText());
         Emodificar.setCalle(txtcalle.getText());
-        
-        //Emodificar.setGenero((String) Genero_combobox.getSelectedItem());
-        
+        if (jRadioButton1.isSelected()) {
+            Emodificar.setGenero('M');
+        } else if (jRadioButton2.isSelected()) {
+            Emodificar.setGenero('F');
+        }
         ;
         basep.set(Emodificar);
         JOptionPane.showMessageDialog(null, "El guardia fue modificado exitosamente");
 
-        
         LimpiarCampos();
     }
 
@@ -150,7 +152,6 @@ public class guardia_modificar extends javax.swing.JFrame {
 
         basep.close();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,6 +162,7 @@ public class guardia_modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -191,6 +193,8 @@ public class guardia_modificar extends javax.swing.JFrame {
         txtcalle = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         Modificarjb = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,7 +236,9 @@ public class guardia_modificar extends javax.swing.JFrame {
 
         chxSi.setText("Si");
 
-        jButton2.setText("REGRESAR");
+        jButton2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
+        jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -263,6 +269,8 @@ public class guardia_modificar extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/buscar.png"))); // NOI18N
         jButton3.setText("BUSCAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,12 +278,23 @@ public class guardia_modificar extends javax.swing.JFrame {
             }
         });
 
+        Modificarjb.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        Modificarjb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         Modificarjb.setText("Guardar");
         Modificarjb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarjbActionPerformed(evt);
             }
         });
+
+        jRadioButton1.setText("Hombre");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setText("Mujer");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -303,7 +322,11 @@ public class guardia_modificar extends javax.swing.JFrame {
                                         .addComponent(Correo_taquillero)
                                         .addComponent(combo_provincia, 0, 172, Short.MAX_VALUE)
                                         .addComponent(combo_cuidad)
-                                        .addComponent(txtcalle))))
+                                        .addComponent(txtcalle))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jRadioButton2))))
                             .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(314, 314, 314)
@@ -313,7 +336,6 @@ public class guardia_modificar extends javax.swing.JFrame {
                                 .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel13)
@@ -329,8 +351,11 @@ public class guardia_modificar extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(txtid_guardia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButton3)))))))
-                        .addContainerGap(31, Short.MAX_VALUE))
+                                                .addComponent(jButton3))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,7 +384,7 @@ public class guardia_modificar extends javax.swing.JFrame {
                             .addComponent(Ced_Taquillero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(txtid_guardia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -375,8 +400,11 @@ public class guardia_modificar extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(fechaNa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cel_taquillero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -440,6 +468,10 @@ public class guardia_modificar extends javax.swing.JFrame {
         txtid_guardia.setEditable(true);
     }//GEN-LAST:event_ModificarjbActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -482,6 +514,7 @@ public class guardia_modificar extends javax.swing.JFrame {
     private javax.swing.JButton Modificarjb;
     private javax.swing.JTextField ape_tequillero;
     private javax.swing.JTextField años_experienca;
+    private javax.swing.ButtonGroup botones;
     private javax.swing.JTextField cel_taquillero;
     private javax.swing.JCheckBox chxSi;
     private javax.swing.JTextField combo_cuidad;
@@ -504,6 +537,8 @@ public class guardia_modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField nom_taquillero;
     private javax.swing.JTextField txtcalle;
     private javax.swing.JTextField txtid_guardia;

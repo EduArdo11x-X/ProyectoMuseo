@@ -24,6 +24,8 @@ public class artista_registrar extends javax.swing.JFrame {
      */
     public artista_registrar() {
         initComponents();
+        botones.add(jRadioButton1);
+        botones.add(jRadioButton2);
     }
     
     String Cedula_per_art = "";
@@ -59,13 +61,20 @@ public class artista_registrar extends javax.swing.JFrame {
         Cedula_per_art = Ced_Taquillero.getText();
         nombre_adm = nom_taquillero.getText();
         apellido_adm = ape_tequillero.getText();
-        //sexo_adm
+         if (jRadioButton1.isSelected()) {
+            sexo_adm = 'M';
+        } else if (jRadioButton2.isSelected()) {
+            sexo_adm = 'F';
+        } else {
+            // Manejo en caso de que no se haya seleccionado ningún género
+            sexo_adm = ' '; // Otra opción aquí dependiendo de tu lógica
+        }
         telefono_adm = cel_taquillero.getText();
         fechaTexto_adm = fechaNa.getDate();
         email_adm = Correo_taquillero.getText();
         id_Artista = txtid_guardia.getText();
         Habilidades =habilidades_artista.getText();
-        // Corregir la asignación de años_expreriencia_guar
+       
         
         nom_artistico = nom_artistico_txt.getText();
         provincia_adm = combo_provincia.getSelectedItem().toString();
@@ -132,6 +141,7 @@ public class artista_registrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -161,6 +171,8 @@ public class artista_registrar extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtcalle = new javax.swing.JTextField();
         nom_artistico_txt = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -238,6 +250,15 @@ public class artista_registrar extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton1.setText("Hombre");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setText("Mujer");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -283,7 +304,11 @@ public class artista_registrar extends javax.swing.JFrame {
                                                 .addComponent(Correo_taquillero, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                                                 .addComponent(combo_provincia, 0, 1, Short.MAX_VALUE)
                                                 .addComponent(combo_cuidad)
-                                                .addComponent(txtcalle))))
+                                                .addComponent(txtcalle))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton2))))
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,8 +371,11 @@ public class artista_registrar extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(fechaNa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cel_taquillero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -404,6 +432,10 @@ public class artista_registrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcalleActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,6 +475,7 @@ public class artista_registrar extends javax.swing.JFrame {
     private javax.swing.JTextField Ced_Taquillero;
     private javax.swing.JTextField Correo_taquillero;
     private javax.swing.JTextField ape_tequillero;
+    private javax.swing.ButtonGroup botones;
     private javax.swing.JTextField cel_taquillero;
     private javax.swing.JTextField combo_cuidad;
     private javax.swing.JComboBox<String> combo_provincia;
@@ -465,6 +498,8 @@ public class artista_registrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField nom_artistico_txt;
     private javax.swing.JTextField nom_taquillero;
     private javax.swing.JTextField txtcalle;
