@@ -988,7 +988,7 @@ public class MENU_ADM extends javax.swing.JFrame {
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 241, Short.MAX_VALUE)
                             .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(81, 81, 81)
                         .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1374,21 +1374,21 @@ public class MENU_ADM extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Escultura_registro ventaina = new Escultura_registro();
+        Escultura_Regist ventaina = new Escultura_Regist();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
          this.dispose();
-        Escultura_modificar ventaina = new Escultura_modificar();
+        Escultura_Modificar1 ventaina = new Escultura_Modificar1();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
          this.dispose();
-       Escultura_buscar_eliminar ventaina = new Escultura_buscar_eliminar();
+       Escultura_Buscar_Elimi1 ventaina = new Escultura_Buscar_Elimi1();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton16ActionPerformed
 
