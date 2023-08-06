@@ -17,7 +17,7 @@ public class Exposicion {
     private String cod_exposicion;
     private String nombre_exposicion;
     private String descripcion_exposicion;
-private byte[] foto;
+    private byte[] foto;
 
 
     public Exposicion() {

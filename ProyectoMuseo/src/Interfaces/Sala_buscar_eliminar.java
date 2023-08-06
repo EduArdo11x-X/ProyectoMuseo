@@ -71,7 +71,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
     }
      
      public void Eliminar_pintura(ObjectContainer basep) {
-        Pintura_Interfaz Ainterfaz = new Pintura_Interfaz();
+        Sala_registro Ainterfaz = new Sala_registro();
         if (jTFid.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un ID");
         } else {

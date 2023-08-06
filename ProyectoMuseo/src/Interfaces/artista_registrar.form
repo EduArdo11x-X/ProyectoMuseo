@@ -364,6 +364,9 @@
         <Component class="com.toedter.calendar.JDateChooser" name="fechaNa">
         </Component>
         <Component class="javax.swing.JTextField" name="txtid_guardia">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ejemplo: AS-1234"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="habilidades_artista">
         </Component>

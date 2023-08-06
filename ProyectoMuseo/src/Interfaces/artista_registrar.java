@@ -124,6 +124,93 @@ public class artista_registrar extends javax.swing.JFrame {
         ObjectSet result = query.execute();
         return !result.isEmpty();
     }
+    
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+        
+        if (Ced_Taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(Cedula_per_art)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+        
+        if (txtid_guardia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(id_Artista)) {
+                JOptionPane.showMessageDialog(this, "ID invalido");
+                ban_confirmar = false;
+            }
+        }
+
+       
+        if (nom_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre_adm)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (ape_tequillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido_adm)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
+                ban_confirmar = false;
+            }
+        }
+        
+         if (Correo_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(email_adm)) {
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+         
+         if (txtcalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle_adm)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+         }
+         
+         if (cel_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(telefono_adm)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+         
+         if (combo_cuidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la contraseña por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(ciudad_adm)) {
+                JOptionPane.showMessageDialog(this, "Contraseña invalida");
+                ban_confirmar = false;
+            }
+        }
+          return ban_confirmar;
+    }
 
     public static void Cerrar_BD(ObjectContainer basep) {
 
@@ -221,6 +308,8 @@ public class artista_registrar extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Nombre Artistico");
+
+        txtid_guardia.setToolTipText("Ejemplo: AS-1234");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         jButton1.setText("Ingresar");

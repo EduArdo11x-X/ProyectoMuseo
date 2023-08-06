@@ -5,7 +5,10 @@
  */
 package Interfaces;
 
+import clases.Artista;
+import clases.Pintura;
 import com.db4o.*;
+import com.db4o.query.Query;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -56,6 +59,8 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         btnvolver = new javax.swing.JButton();
         tipo_pint = new javax.swing.JComboBox<>();
         esti_pintura = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        cod_artista = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,6 +140,12 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
 
         esti_pintura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Pintura del Trecento ", "Arte Bizantino", "Pintura flamenca ", "Renacimiento", "Academicismo", "Prerrafaelismo", "Impresionismo", "Expresionismo", " ", "Pintura del Trecento (Il Giotto)", "Arte Bizantino (Mosaico y pintura antes de la crisis iconoclasta)", "Pintura flamenca (Jan van Eyck)", "Renacimiento", "Academicismo", "Prerrafaelismo", "Impresionismo", "Expresionismo", "Postimpresionismo", "Luminismo", "Fauvismo", "Realismo americano", "Cubismo", "Modernismo", "Surrealismo", "Abstracción lírica" }));
 
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        jLabel8.setText("Codigo Artista");
+
+        cod_artista.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,18 +177,21 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                                 .addGap(117, 117, 117)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(esti_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tipo_pint, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(80, 80, 80)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(desc_pintura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel7)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(desc_pintura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(esti_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipo_pint, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cod_artista))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,7 +219,11 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
                         .addGap(49, 49, 49)
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(cod_artista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(desc_pintura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
@@ -235,8 +253,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     String descripcion_pintura = "";
     String tipos_pintura = "";
     String estilos_pintura = "";
-
-   
+    String id_artista = "";
 
     public void LimpiarCampos() {
 
@@ -256,30 +273,51 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         descripcion_pintura = desc_pintura.getText();
         tipos_pintura = (String) tipo_pint.getSelectedItem();
         estilos_pintura = (String) esti_pintura.getSelectedItem();
+        id_artista = cod_artista.getText();
 
     }
 
     public void crearUsuario(ObjectContainer BaseD) {
         asignarVariables(BaseD);
-       if (validarCampos(BaseD)) {
-        if (verificar(BaseD, cod_arte_pintura) == 0) {
-            clases.Pintura miUsuario = new clases.Pintura(estilos_pintura, tipos_pintura, cod_arte_pintura, nombre_pintura, descripcion_pintura, fecha_creacion_pintura);
+        if (validarCampos(BaseD)) {
+            boolean error = false;
+            if (verificar(BaseD, cod_arte_pintura)) {
+                error = true;
+                JOptionPane.showMessageDialog(null, "La Pintura ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                cod_pintura.setText("");
+            }
 
-            BaseD.set(miUsuario);
-            JOptionPane.showMessageDialog(null, "Pintura Creada");
-            LimpiarCampos();
-        } else {
-            JOptionPane.showMessageDialog(null, "La Pintura ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            if (comprobarart(BaseD, id_artista) == 0) {
+                error = true;
+                JOptionPane.showMessageDialog(null, "No existe ningun Artista con este codigo");
+            }
+
+            if (!error) {
+                clases.Pintura miUsuario = new clases.Pintura(estilos_pintura, tipos_pintura, id_artista, cod_arte_pintura, nombre_pintura, descripcion_pintura, fecha_creacion_pintura);
+
+                BaseD.set(miUsuario);
+                JOptionPane.showMessageDialog(null, "Pintura Creada");
+                LimpiarCampos();
+
+            }
         }
-       }
     }
 
-    public static int verificar(ObjectContainer BaseD, String cod_arte_pintura) {
-        clases.Pintura buscarUsuario = new clases.Pintura(null, null, cod_arte_pintura, null, null, null);
-        ObjectSet resul = BaseD.queryByExample(buscarUsuario);
-        return resul.size();
+    public static boolean verificar(ObjectContainer BaseD, String cod_arte_pintura) {
+        Query query = BaseD.query();
+        query.constrain(Pintura.class);
+        query.descend("codigo").constrain(cod_arte_pintura).equal();
+        ObjectSet result = query.execute();
+        return !result.isEmpty();
     }
-    
+
+    public static int comprobarart(ObjectContainer basep, String Id_artista) {
+
+        ObjectSet result = basep.get(new Artista(Id_artista, null, null));
+        return result.size();
+    }
+
     public boolean validarCampos(ObjectContainer basep) {
         Validaciones miValidaciones = new Validaciones();
         asignarVariables(basep);
@@ -296,7 +334,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
         }
 
         if (nom_pintura.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nombre de la Sala");
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre de la pintura por favor");
             ban_confirmar = false;
         } else {
             if (!miValidaciones.validarNomApe(nombre_pintura)) {
@@ -305,17 +343,16 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
             }
         }
         if (desc_pintura.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese la tematica de la Sala");
+            JOptionPane.showMessageDialog(this, "Ingrese la descripcion de la pintura");
             ban_confirmar = false;
         } else {
             if (!miValidaciones.validardescripcion(descripcion_pintura)) {
-                JOptionPane.showMessageDialog(this, "Tematica invalido");
+                JOptionPane.showMessageDialog(this, "Descripcion invalido");
                 ban_confirmar = false;
             }
         }
         return ban_confirmar;
     }
-
 
     public static void Cerrar_BD(ObjectContainer basep) {
 
@@ -350,6 +387,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnvolver;
+    private javax.swing.JTextField cod_artista;
     private javax.swing.JTextField cod_pintura;
     private javax.swing.JTextField desc_pintura;
     private javax.swing.JComboBox<String> esti_pintura;
@@ -362,6 +400,7 @@ public class Pintura_Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

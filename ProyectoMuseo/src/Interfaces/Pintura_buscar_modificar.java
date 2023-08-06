@@ -74,11 +74,11 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
+                "Codigo", "Nombre", "ID Artista", "Fecha", "Descripcion", "Tipo", "Estilo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -239,14 +239,14 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
         } else {
 
             if (jCBfiltro.getSelectedIndex() == 1) {
-                Pintura Abuscar = new Pintura(null, null, null, null, null, null);
+                Pintura Abuscar = new Pintura(null, null,null, null, null, null, null);
                 ObjectSet result = basep.get(Abuscar);
                 mostrarDatos(result);
 
             } else {
                 if (jCBfiltro.getSelectedIndex() == 2) {
                     String cod_arte_pintura = JOptionPane.showInputDialog("Ingrese el ID a consultar");
-                    Pintura Abuscar = new Pintura(null, null, cod_arte_pintura, null, null, null);
+                    Pintura Abuscar = new Pintura(null, null,null, cod_arte_pintura, null, null, null);
                     ObjectSet result = basep.get(Abuscar);
                     mostrarDatos(result);
 
@@ -263,13 +263,14 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
         model.setRowCount(0); // Limpiar la tabla
 
         if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "El usuario no existe");
+            JOptionPane.showMessageDialog(null, "La pintura no existe");
         } else {
             while (result.hasNext()) {
                 clases.Pintura mipintura = (clases.Pintura) result.next();
                 Object[] fila = {
                     mipintura.getCodigo(),
                     mipintura.getNombre(),
+                    mipintura.getId_artista(),
                     String.valueOf(mipintura.getFecha_creacion()),
                     mipintura.getDescripcion(),
                     mipintura.getTipo(),
@@ -287,10 +288,10 @@ public class Pintura_buscar_modificar extends javax.swing.JFrame {
         } else {
 
             String IDA = jTFid.getText();
-            Pintura Abuscar = new Pintura(null, null, IDA, null, null, null);
+            Pintura Abuscar = new Pintura(null, null,null, IDA, null, null, null);
             ObjectSet result = basep.get(Abuscar);
 
-            if (Ainterfaz.verificar(basep, IDA) == 0) {
+            if (Ainterfaz.verificar(basep, IDA)) {
                 JOptionPane.showMessageDialog(null, "La Pintura no existe en la base de datos");
 
             } else {

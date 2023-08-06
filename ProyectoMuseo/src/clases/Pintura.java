@@ -16,15 +16,25 @@ public class Pintura extends ObrArte{
 
    private String estilo;
    private String tipo;
+    private String Id_artista;
 
-    public Pintura() {
+    public Pintura(String estilo, String tipo, String Id_artista) {
+        this.estilo = estilo;
+        this.tipo = tipo;
+        this.Id_artista = Id_artista;
     }
 
-    public Pintura(String estilo, String tipo, String codigo, String nombre, String descripcion, Date fecha_creacion) {
+    public Pintura(String estilo, String tipo, String Id_artista, String codigo, String nombre, String descripcion, Date fecha_creacion) {
         super(codigo, nombre, descripcion, fecha_creacion);
         this.estilo = estilo;
         this.tipo = tipo;
+        this.Id_artista = Id_artista;
     }
+
+    public Pintura() {
+    }
+    
+    
 
     public String getEstilo() {
         return estilo;
@@ -42,10 +52,20 @@ public class Pintura extends ObrArte{
         this.tipo = tipo;
     }
 
+    public String getId_artista() {
+        return Id_artista;
+    }
+
+    public void setId_artista(String Id_artista) {
+        this.Id_artista = Id_artista;
+    }
+
     @Override
     public String toString() {
-        return "Pintura{" + "estilo=" + estilo + ", tipo=" + tipo + '}';
+        return "Pintura{" + "estilo=" + estilo + ", tipo=" + tipo + ", Id_artista=" + Id_artista + '}';
     }
+
+    
    
    
 }
