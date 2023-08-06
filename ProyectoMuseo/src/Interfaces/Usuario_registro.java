@@ -29,10 +29,10 @@ public class Usuario_registro extends javax.swing.JFrame {
      */
     public Usuario_registro() {
         initComponents();
+        botones.add(jRadioButton1);
+        botones.add(jRadioButton2);
 
     }
-    
-    
 
     String idUsuario = "";
     String cedula = "";
@@ -47,20 +47,14 @@ public class Usuario_registro extends javax.swing.JFrame {
     String nivel_conoci = "";
     String nivel_estudios = "";
     String contraseña = "";
-    char genero;
-
-   
+    char sexo_adm = ' ';
 
     public void cargarDatos(ObjectContainer BaseD) {
 
         Usuario Exbuscar = new Usuario(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
-        
-    }
-    
-   
 
-    
+    }
 
     public void asignarVariables(ObjectContainer BaseD) {
         cedula = txtCedula.getText();
@@ -68,6 +62,14 @@ public class Usuario_registro extends javax.swing.JFrame {
         apellido = txtApellido.getText();
         fechaNac = fechaN.getDate();
         telefono = txtTelefono.getText();
+        if (jRadioButton1.isSelected()) {
+            sexo_adm = 'M';
+        } else if (jRadioButton2.isSelected()) {
+            sexo_adm = 'F';
+        } else {
+            // Manejo en caso de que no se haya seleccionado ningún género
+            sexo_adm = ' '; // Otra opción aquí dependiendo de tu lógica
+        }
         correo = txtCorreo.getText();
         provincia = (String) txtProvi.getSelectedItem();
         cuidad = (String) txtCiudad.getSelectedItem();
@@ -100,14 +102,99 @@ public class Usuario_registro extends javax.swing.JFrame {
 
     public void crearUsuario(ObjectContainer BaseD) {
         asignarVariables(BaseD);
+        if (validarCampos(BaseD)) {
         if (comprobarUsuario(BaseD, cedula) == 0) {
-            Usuario Exnuevo = new Usuario( nivel_conoci, nivel_estudios, cedula, nombre, apellido, fechaNac, telefono, genero, provincia, cuidad, calle, correo, contraseña);
+            Usuario Exnuevo = new Usuario(nivel_conoci, nivel_estudios, cedula, nombre, apellido, fechaNac, telefono, sexo_adm, provincia, cuidad, calle, correo, contraseña);
             BaseD.set(Exnuevo);
             JOptionPane.showMessageDialog(null, "Registrado correctamente");
         } else {
             JOptionPane.showMessageDialog(null, "Usuario ya registrado");
 
         }
+        }
+    }
+    
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+        
+        if (txtCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(cedula)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+       
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
+                ban_confirmar = false;
+            }
+        }
+        
+         if (txtCorreo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(correo)) {
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+         
+         if (txtxCalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+         }
+         
+         if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(telefono)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+         
+         if (txtApellido1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la contraseña por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(contraseña)) {
+                JOptionPane.showMessageDialog(this, "Contraseña invalida");
+                ban_confirmar = false;
+            }
+        }
+         
+         
+         
+         
+         
+         
+        return ban_confirmar;
     }
 
     public static void Cerrar_BD(ObjectContainer BaseD) {
@@ -124,7 +211,7 @@ public class Usuario_registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        botones = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -147,8 +234,8 @@ public class Usuario_registro extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         fechaN = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
-        rdhombre = new javax.swing.JRadioButton();
-        rdmujer = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         txtxCalle = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -242,6 +329,7 @@ public class Usuario_registro extends javax.swing.JFrame {
         Guardar.setBackground(new java.awt.Color(0, 11, 13));
         Guardar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         Guardar.setForeground(new java.awt.Color(255, 255, 255));
+        Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +345,7 @@ public class Usuario_registro extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 11, 13));
         jButton2.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,13 +353,13 @@ public class Usuario_registro extends javax.swing.JFrame {
             }
         });
 
-        rdhombre.setBackground(new java.awt.Color(134, 153, 167));
-        buttonGroup1.add(rdhombre);
-        rdhombre.setText("Hombre");
+        jRadioButton1.setBackground(new java.awt.Color(134, 153, 167));
+        botones.add(jRadioButton1);
+        jRadioButton1.setText("Hombre");
 
-        rdmujer.setBackground(new java.awt.Color(134, 153, 167));
-        buttonGroup1.add(rdmujer);
-        rdmujer.setText("Mujer");
+        jRadioButton2.setBackground(new java.awt.Color(134, 153, 167));
+        botones.add(jRadioButton2);
+        jRadioButton2.setText("Mujer");
 
         txtxCalle.setBackground(new java.awt.Color(134, 153, 167));
         txtxCalle.addActionListener(new java.awt.event.ActionListener() {
@@ -400,9 +489,9 @@ public class Usuario_registro extends javax.swing.JFrame {
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rdhombre)
+                                        .addComponent(jRadioButton1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rdmujer, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(347, 347, 347))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -475,8 +564,8 @@ public class Usuario_registro extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdhombre)
-                    .addComponent(rdmujer)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
                     .addComponent(jLabel14))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -524,11 +613,10 @@ public class Usuario_registro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup botones;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -549,10 +637,10 @@ public class Usuario_registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JRadioButton rdhombre;
-    private javax.swing.JRadioButton rdmujer;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtApellido1;
     private javax.swing.JTextField txtCedula;

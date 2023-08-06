@@ -230,7 +230,10 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="DialogInput" size="18" style="1"/>
+              <Font name="DialogInput" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Guardia"/>
           </Properties>
@@ -240,6 +243,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cedula:"/>
           </Properties>
         </Component>
@@ -247,6 +253,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre;"/>
           </Properties>
@@ -256,6 +265,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Apellidos:"/>
           </Properties>
         </Component>
@@ -263,6 +275,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Genero:"/>
           </Properties>
@@ -272,6 +287,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Celular:"/>
           </Properties>
         </Component>
@@ -279,6 +297,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha Nacimiento:"/>
           </Properties>
@@ -288,6 +309,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Correo:"/>
           </Properties>
         </Component>
@@ -295,6 +319,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ID Guardia:"/>
           </Properties>
@@ -304,6 +331,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="A&#xf1;os Expreriencia:"/>
           </Properties>
         </Component>
@@ -311,6 +341,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Disponibilidad:"/>
           </Properties>
@@ -367,10 +400,10 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Variable" size="18" style="1"/>
+              <Font name="DialogInput" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="0" red="0" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Provincia:"/>
           </Properties>
@@ -378,34 +411,35 @@
         <Component class="javax.swing.JComboBox" name="combo_provincia">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="24">
-                <StringItem index="0" value="Azuay"/>
-                <StringItem index="1" value="Bol&#xed;var"/>
-                <StringItem index="2" value="Ca&#xf1;ar"/>
-                <StringItem index="3" value="Carchi"/>
-                <StringItem index="4" value="Chimborazo"/>
-                <StringItem index="5" value="Cotopaxi"/>
-                <StringItem index="6" value="El Oro"/>
-                <StringItem index="7" value="Esmeraldas"/>
-                <StringItem index="8" value="Gal&#xe1;pagos"/>
-                <StringItem index="9" value="Guayas"/>
-                <StringItem index="10" value="Imbabura"/>
-                <StringItem index="11" value="Loja"/>
-                <StringItem index="12" value="Los R&#xed;os"/>
-                <StringItem index="13" value="Manab&#xed;"/>
-                <StringItem index="14" value="Morona-Santiago"/>
-                <StringItem index="15" value="Napo"/>
-                <StringItem index="16" value="Orellana"/>
-                <StringItem index="17" value="Pastaza"/>
-                <StringItem index="18" value="Pichincha"/>
-                <StringItem index="19" value="Santa Elena"/>
-                <StringItem index="20" value="Santo Domingo de los Ts&#xe1;chilas"/>
-                <StringItem index="21" value="Sucumb&#xed;os"/>
-                <StringItem index="22" value="Tungurahua"/>
-                <StringItem index="23" value="Zamora-Chinchipe"/>
+              <StringArray count="25">
+                <StringItem index="0" value="Selecione una opcion"/>
+                <StringItem index="1" value="Azuay"/>
+                <StringItem index="2" value="Bol&#xed;var"/>
+                <StringItem index="3" value="Ca&#xf1;ar"/>
+                <StringItem index="4" value="Carchi"/>
+                <StringItem index="5" value="Chimborazo"/>
+                <StringItem index="6" value="Cotopaxi"/>
+                <StringItem index="7" value="El Oro"/>
+                <StringItem index="8" value="Esmeraldas"/>
+                <StringItem index="9" value="Gal&#xe1;pagos"/>
+                <StringItem index="10" value="Guayas"/>
+                <StringItem index="11" value="Imbabura"/>
+                <StringItem index="12" value="Loja"/>
+                <StringItem index="13" value="Los R&#xed;os"/>
+                <StringItem index="14" value="Manab&#xed;"/>
+                <StringItem index="15" value="Morona-Santiago"/>
+                <StringItem index="16" value="Napo"/>
+                <StringItem index="17" value="Orellana"/>
+                <StringItem index="18" value="Pastaza"/>
+                <StringItem index="19" value="Pichincha"/>
+                <StringItem index="20" value="Santa Elena"/>
+                <StringItem index="21" value="Santo Domingo de los Ts&#xe1;chilas"/>
+                <StringItem index="22" value="Sucumb&#xed;os"/>
+                <StringItem index="23" value="Tungurahua"/>
+                <StringItem index="24" value="Zamora-Chinchipe"/>
               </StringArray>
             </Property>
           </Properties>
@@ -416,10 +450,10 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Historic" size="18" style="1"/>
+              <Font name="DialogInput" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="0" red="0" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ciudad:"/>
           </Properties>
@@ -427,17 +461,17 @@
         <Component class="javax.swing.JTextField" name="combo_cuidad">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Historic" size="18" style="1"/>
+              <Font name="DialogInput" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="0" red="0" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Direccion:"/>
           </Properties>
@@ -445,7 +479,7 @@
         <Component class="javax.swing.JTextField" name="txtcalle">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Events>

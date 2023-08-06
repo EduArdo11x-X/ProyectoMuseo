@@ -31,6 +31,24 @@ class Validaciones {
         }
         return ban;
     }
+    
+    public boolean validardireccion(String cadena) {
+        cadena = cadena.trim();
+        boolean ban = false;
+        if (cadena.matches("[[A-Za-z]\\s]*{10,150}")) {
+            ban = true;
+        }
+        return ban;
+    }
+    
+    public boolean validardescripcion(String cadena) {
+        cadena = cadena.trim();
+        boolean ban = false;
+        if (cadena.matches("[[A-Za-z]\\s]*{150}")) {
+            ban = true;
+        }
+        return ban;
+    }
      public boolean validarFecha(String cadena) {
         cadena = cadena.trim();
         boolean ban = false;

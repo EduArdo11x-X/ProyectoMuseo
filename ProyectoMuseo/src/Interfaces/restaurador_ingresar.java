@@ -48,8 +48,10 @@ public class restaurador_ingresar extends javax.swing.JFrame {
         cel_taquillero.setText("");
         Correo_taquillero.setText("");
         combo_cuidad.setText("");
-        combo_provincia.setSelectedItem("");
+        combo_provincia.setSelectedItem(0);
         txtcalle.setText("");
+        años_experienca.setText("");
+        fechaNa.setDate(null);
 
     }
 

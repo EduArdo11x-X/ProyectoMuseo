@@ -59,7 +59,7 @@ public class Sala_modificar extends javax.swing.JFrame {
 
                     Modificarjb.setEnabled(true);
                     //Hacer editable los campos de texto
-                    mostrarDatos(result);
+
                     HabilitarCampos_deTexto();
                     cod_sala.setEditable(false);
                 }
@@ -67,6 +67,51 @@ public class Sala_modificar extends javax.swing.JFrame {
             }
 
         }
+    }
+
+    public void asignarVariables(ObjectContainer BaseD) {
+
+        codigo_sala = cod_sala.getText();
+        Nombre_sala = nom_sala.getText();
+        tamatica_sala = tematica_sala.getText();
+        capcidad_sala = (Integer) capacidad_sala.getValue();
+
+    }
+
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+
+        if (cod_sala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(codigo_sala)) {
+                JOptionPane.showMessageDialog(this, "ID invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (nom_sala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre de la Sala");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(Nombre_sala)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (tematica_sala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la tematica de la Sala");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(tamatica_sala)) {
+                JOptionPane.showMessageDialog(this, "Tematica invalido");
+                ban_confirmar = false;
+            }
+        }
+        return ban_confirmar;
     }
 
     public void LimpiarCamposdeTexto() {
@@ -85,38 +130,21 @@ public class Sala_modificar extends javax.swing.JFrame {
     }
 
     public void Modificar_Sala(ObjectContainer basep) {
+        asignarVariables(basep);
+        if (validarCampos(basep)) {
 
-        clases.Sala Emodi = new clases.Sala(cod_sala.getText(), null, 0, null);
-        ObjectSet result = basep.get(Emodi);
-        clases.Sala Emodificar = (clases.Sala) result.next();
-        Emodificar.setNombre(nom_sala.getText());
-        Emodificar.setCapacidad((int) capacidad_sala.getValue());
-        Emodificar.setTematica(tematica_sala.getText());
-        ;
-        basep.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "La sala fue modificado exitosamente");
+            clases.Sala Emodi = new clases.Sala(cod_sala.getText(), null, 0, null);
+            ObjectSet result = basep.get(Emodi);
+            clases.Sala Emodificar = (clases.Sala) result.next();
+            if (validarCampos(basep)) {
+                Emodificar.setNombre(nom_sala.getText());
+                Emodificar.setCapacidad((int) capacidad_sala.getValue());
+                Emodificar.setTematica(tematica_sala.getText());
+                ;
+                basep.set(Emodificar);
+                JOptionPane.showMessageDialog(null, "La sala fue modificado exitosamente");
 
-        mostrarDatos(result);
-        LimpiarCamposdeTexto();
-    }
-
-    public void mostrarDatos(ObjectSet result) {
-        DefaultTableModel model = (DefaultTableModel) jtableregistro.getModel();
-        model.setRowCount(0); // Limpiar la tabla
-
-        if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "La sala no existe");
-        } else {
-            while (result.hasNext()) {
-                clases.Sala misala = (clases.Sala) result.next();
-                Object[] fila = {
-                    misala.getCodigo(),
-                    misala.getNombre(),
-                    misala.getCapacidad(),
-                    misala.getTematica()
-
-                };
-                model.addRow(fila);
+                LimpiarCamposdeTexto();
             }
         }
     }
@@ -144,8 +172,6 @@ public class Sala_modificar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tematica_sala = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtableregistro = new javax.swing.JTable();
         btnvolver = new javax.swing.JButton();
         capacidad_sala = new javax.swing.JSpinner();
         Modificarjb = new javax.swing.JButton();
@@ -156,59 +182,33 @@ public class Sala_modificar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
         jLabel1.setText("Ingreso Sala");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel2.setText("Codigo Sala:");
 
-        cod_sala.setBackground(new java.awt.Color(255, 255, 255));
         cod_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel3.setText("Nombre Sala:");
 
-        nom_sala.setBackground(new java.awt.Color(255, 255, 255));
         nom_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel6.setText("Capacidad Sala:");
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel7.setText("Tematica Sala:");
 
-        tematica_sala.setBackground(new java.awt.Color(255, 255, 255));
         tematica_sala.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
 
-        jtableregistro.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
-        jtableregistro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo Sala", "Nombre Sala", "Capacidad Sala", "Tematica  Sala"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jtableregistro);
-
         btnvolver.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        btnvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         btnvolver.setText("VOLVER");
         btnvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +217,7 @@ public class Sala_modificar extends javax.swing.JFrame {
         });
 
         Modificarjb.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
+        Modificarjb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         Modificarjb.setText("Guardar");
         Modificarjb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +226,7 @@ public class Sala_modificar extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Raanana", 1, 16)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/buscar.png"))); // NOI18N
         jButton2.setText("BUSCAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,41 +241,34 @@ public class Sala_modificar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nom_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nom_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(cod_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2)))
-                                .addGap(56, 56, 56)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6))
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tematica_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(capacidad_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(328, 328, 328)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(cod_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2)))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(capacidad_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tematica_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(328, 328, 328)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,9 +292,7 @@ public class Sala_modificar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Modificarjb, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,8 +310,8 @@ public class Sala_modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvolverActionPerformed
-      this.dispose();
-        MENU_ADM ventaina = new  MENU_ADM();
+        this.dispose();
+        MENU_ADM ventaina = new MENU_ADM();
         ventaina.setVisible(true);
     }//GEN-LAST:event_btnvolverActionPerformed
 
@@ -339,7 +332,6 @@ public class Sala_modificar extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Modificarjb;
     private javax.swing.JButton btnvolver;
@@ -352,8 +344,6 @@ public class Sala_modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtableregistro;
     private javax.swing.JTextField nom_sala;
     private javax.swing.JTextField tematica_sala;
     // End of variables declaration//GEN-END:variables

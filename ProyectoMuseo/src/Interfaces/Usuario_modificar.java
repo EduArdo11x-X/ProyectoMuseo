@@ -25,6 +25,8 @@ public class Usuario_modificar extends javax.swing.JFrame {
      */
     public Usuario_modificar() {
         initComponents();
+        botones.add(jRadioButton1);
+        botones.add(jRadioButton2);
     }
 
     String idUsuario = "";
@@ -40,7 +42,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     String nivel_conoci = "";
     String nivel_estudios = "";
     String contraseña = "";
-    char genero;
+    char sexo_adm = ' ';
 
     public void buscar(ObjectContainer BaseD) {//cargardatos
 
@@ -78,6 +80,11 @@ public class Usuario_modificar extends javax.swing.JFrame {
                     txtCorreo.setText(miE.getCorreo());
                     txtProvi.setSelectedItem(miE.getProvincia());
                     txtCiudad.setSelectedItem(miE.getCiudad());
+                    if (miE.getGenero() == 'M') {
+                        jRadioButton1.setSelected(true);
+                    } else if (miE.getGenero() == 'F') {
+                        jRadioButton2.setSelected(true);
+                    }
                     txtxCalle.setText(miE.getCalle());
                     txtNivel.setSelectedItem(miE.getNivel_conocimiento());
                     fechaN.setDate((miE.getF_nacimiento()));
@@ -195,49 +202,98 @@ public class Usuario_modificar extends javax.swing.JFrame {
         }
 
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nombre ");
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
             ban_confirmar = false;
         } else {
             if (!miValidaciones.validarNomApe(nombre)) {
-                JOptionPane.showMessageDialog(this, "nombre invalido");
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
                 ban_confirmar = false;
             }
         }
 
         if (txtCorreo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el correo ");
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
             ban_confirmar = false;
         } else {
             if (!miValidaciones.validarCorreo(correo)) {
-                JOptionPane.showMessageDialog(this, "correo invalido");
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtxCalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(telefono)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtApellido1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la contraseña por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(contraseña)) {
+                JOptionPane.showMessageDialog(this, "Contraseña invalida");
                 ban_confirmar = false;
             }
         }
 
         return ban_confirmar;
     }
-    
+
     public void Modificar_usuario(ObjectContainer basep) {
+        asignarVariables(basep);
+        if (validarCampos(basep)) {
 
-        Usuario Emodi = new Usuario(null, null, txtCedula.getText(), null, null, null, null, '\u0000', null, null, null, null, null);
-        ObjectSet result = basep.get(Emodi);
-        Usuario Emodificar = (Usuario) result.next();
-        Emodificar.setNombre(txtNombre.getText());
-        Emodificar.setApellido(txtApellido.getText());
-        Emodificar.setProvincia((String) txtProvi.getSelectedItem());
-        Emodificar.setCiudad((String) txtCiudad.getSelectedItem());
-        Emodificar.setCorreo(txtCorreo.getText());
-        Emodificar.setCalle(txtxCalle.getText());
-        Emodificar.setNum_telefono(txtTelefono.getText());
-        Emodificar.setF_nacimiento(fechaN.getDate());
-        Emodificar.setNivel_conocimiento((String) txtNivel.getSelectedItem());
-        Emodificar.setNivel_estudiol((String) jComboBox1.getSelectedItem());
-        ;
-        basep.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "La pintura fue modificado exitosamente");
+            Usuario Emodi = new Usuario(null, null, txtCedula.getText(), null, null, null, null, '\u0000', null, null, null, null, null);
+            ObjectSet result = basep.get(Emodi);
+            Usuario Emodificar = (Usuario) result.next();
+            if (validarCampos(basep)) {
+                Emodificar.setNombre(txtNombre.getText());
+                Emodificar.setApellido(txtApellido.getText());
+                Emodificar.setProvincia((String) txtProvi.getSelectedItem());
+                Emodificar.setCiudad((String) txtCiudad.getSelectedItem());
+                Emodificar.setCorreo(txtCorreo.getText());
+                Emodificar.setCalle(txtxCalle.getText());
+                Emodificar.setNum_telefono(txtTelefono.getText());
+                Emodificar.setF_nacimiento(fechaN.getDate());
+                Emodificar.setNivel_conocimiento((String) txtNivel.getSelectedItem());
+                Emodificar.setNivel_estudiol((String) jComboBox1.getSelectedItem());
+                if (jRadioButton1.isSelected()) {
+                    Emodificar.setGenero('M');
+                } else if (jRadioButton2.isSelected()) {
+                    Emodificar.setGenero('F');
+                }
+                ;
+                basep.set(Emodificar);
+                JOptionPane.showMessageDialog(null, "La pintura fue modificado exitosamente");
 
-        mostrarDatos(result);
-        limpiarDatos();
+                mostrarDatos(result);
+                limpiarDatos();
+            }
+        }
     }
 
     public static void cerrarBD(ObjectContainer BaseD) {
@@ -253,6 +309,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
@@ -274,8 +331,8 @@ public class Usuario_modificar extends javax.swing.JFrame {
         Cargardatos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuario = new javax.swing.JTable();
-        rdhombre = new javax.swing.JRadioButton();
-        rdmujer = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         botonModificar = new javax.swing.JButton();
         txtxCalle = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -385,11 +442,11 @@ public class Usuario_modificar extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaUsuario);
 
-        rdhombre.setBackground(new java.awt.Color(134, 153, 167));
-        rdhombre.setText("Hombre");
+        jRadioButton1.setBackground(new java.awt.Color(134, 153, 167));
+        jRadioButton1.setText("Hombre");
 
-        rdmujer.setBackground(new java.awt.Color(134, 153, 167));
-        rdmujer.setText("Mujer");
+        jRadioButton2.setBackground(new java.awt.Color(134, 153, 167));
+        jRadioButton2.setText("Mujer");
 
         botonModificar.setBackground(new java.awt.Color(0, 11, 13));
         botonModificar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
@@ -545,9 +602,9 @@ public class Usuario_modificar extends javax.swing.JFrame {
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtxCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rdhombre)
+                                        .addComponent(jRadioButton1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rdmujer, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(59, 59, 59)
                         .addComponent(botonModificar)
                         .addGap(39, 39, 39)
@@ -623,8 +680,8 @@ public class Usuario_modificar extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdhombre)
-                    .addComponent(rdmujer)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
                     .addComponent(jLabel14))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -660,9 +717,8 @@ public class Usuario_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_CargardatosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
-        
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
@@ -670,7 +726,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
         Modificar_usuario(BaseD);
         Cerrar_BD(BaseD);
         txtCedula.setEditable(true);
- 
+
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void txtxCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtxCalleActionPerformed
@@ -701,6 +757,7 @@ public class Usuario_modificar extends javax.swing.JFrame {
     private javax.swing.JButton Cargardatos;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.ButtonGroup botones;
     private com.toedter.calendar.JDateChooser fechaN;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -721,9 +778,9 @@ public class Usuario_modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JRadioButton rdhombre;
-    private javax.swing.JRadioButton rdmujer;
     private javax.swing.JTable tablaUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellido1;

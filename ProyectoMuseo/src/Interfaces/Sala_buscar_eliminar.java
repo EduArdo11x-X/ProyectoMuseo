@@ -81,12 +81,12 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
             ObjectSet result = basep.get(Abuscar);
 
             if (Ainterfaz.verificar(basep, IDA) == 0) {
-                JOptionPane.showMessageDialog(null, "La Pintura no existe en la base de datos");
+                JOptionPane.showMessageDialog(null, "La Sala no existe en la base de datos");
 
             } else {
                 Sala AsignaturaElim = (Sala) result.next();
                 basep.delete(AsignaturaElim);
-                JOptionPane.showMessageDialog(null, "La Pintura fue anulada exitosamente");
+                JOptionPane.showMessageDialog(null, "La Sala fue anulada exitosamente");
             }
 
         }
@@ -137,6 +137,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
         jLabel2.setText("Filtro");
 
         buscar_button.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
+        buscar_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         buscar_button.setText("BUSCAR");
         buscar_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +165,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtableregistro);
 
         jCBfiltro.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
-        jCBfiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "ID Pintura", " ", " " }));
+        jCBfiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "ID Sala", " ", " " }));
         jCBfiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBfiltroActionPerformed(evt);
@@ -187,6 +188,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
         jTFid.setToolTipText("Ingresar el ID  de la asignatura a eliminar");
 
         eliminar_button.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
+        eliminar_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/eliminar.png"))); // NOI18N
         eliminar_button.setText("ELIMINAR");
         eliminar_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +197,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +229,7 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
