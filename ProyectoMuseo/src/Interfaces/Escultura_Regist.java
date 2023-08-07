@@ -64,9 +64,13 @@ public class Escultura_Regist extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(0, 0, 98));
+
+        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +80,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel8.setText("Registrar Exposicion");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -121,6 +126,11 @@ public class Escultura_Regist extends javax.swing.JFrame {
         jLabel7.setText("Altura");
 
         txtcodigo.setFont(new java.awt.Font("Raanana", 1, 14)); // NOI18N
+        txtcodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcodigoActionPerformed(evt);
+            }
+        });
         txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcodigoKeyTyped(evt);
@@ -161,7 +171,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
             }
         });
 
-        cmbmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEDRA", "MADERA", "METAL", "CERAMICA", "VIDRIO" }));
 
         tblescultura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +186,9 @@ public class Escultura_Regist extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblescultura);
 
-        mostrarTabla.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
+        mostrarTabla.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        mostrarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTabla.setText("Mostrar Datos");
         mostrarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +196,9 @@ public class Escultura_Regist extends javax.swing.JFrame {
             }
         });
 
-        guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
+        guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        guardarbtn.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1).png"))); // NOI18N
         guardarbtn.setText("GUARDAR");
         guardarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +293,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mostrarTabla))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(guardarbtn)
                 .addContainerGap())
         );
@@ -313,9 +327,9 @@ public class Escultura_Regist extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarbtnActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        this.setVisible(false);
-        MENU_ADM miMenu = new MENU_ADM();
-        miMenu.setVisible(true);
+        this.dispose();
+        MENU_ADM ventaina = new MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
@@ -349,37 +363,38 @@ public class Escultura_Regist extends javax.swing.JFrame {
     }//GEN-LAST:event_txtdescripcionKeyTyped
 
     private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
-        int aux = evt.getKeyChar();
-        boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
-
-        if (!Letras) {
+          int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
+        evt.consume();
         }  
     }//GEN-LAST:event_txtcodigoKeyTyped
 
     private void txtpesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesoKeyTyped
-        int aux = evt.getKeyChar();
-        boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
-
-        if (!Letras) {
+          int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
+        evt.consume();
         }  
     }//GEN-LAST:event_txtpesoKeyTyped
 
     private void txtalturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtalturaKeyTyped
-        int aux = evt.getKeyChar();
-        boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
-
-        if (!Letras) {
+          int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
+        evt.consume();
         }  
     }//GEN-LAST:event_txtalturaKeyTyped
+
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcodigoActionPerformed
 
     public void asignarVariables(ObjectContainer BaseD) {
         material = cmbmaterial.getSelectedItem().toString();

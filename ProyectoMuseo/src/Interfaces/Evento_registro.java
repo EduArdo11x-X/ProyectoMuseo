@@ -357,9 +357,9 @@ public class Evento_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmostrarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        this.setVisible(false);
-        MENU_ADM miMenu = new MENU_ADM();
-        miMenu.setVisible(true);        // TODO add your handling code here:
+        this.dispose();
+        MENU_ADM ventaina = new MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
