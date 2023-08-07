@@ -142,7 +142,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         });
         jPanel1.add(mostrarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 200, 40));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel2.setBackground(new java.awt.Color(248, 166, 54));
 
         jLabel7.setBackground(new java.awt.Color(255, 51, 51));
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
@@ -156,7 +156,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
-        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarActionPerformed(evt);

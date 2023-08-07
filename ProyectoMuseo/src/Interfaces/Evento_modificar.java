@@ -72,7 +72,7 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
+        jPanel1.setBackground(new java.awt.Color(250, 245, 202));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -82,23 +82,18 @@ public class Evento_modificar extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Codigo Evento:");
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre del evento:");
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion del evento:");
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha inicio:");
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha final:");
 
         codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -118,7 +113,6 @@ public class Evento_modificar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaevento);
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Id exposicion:");
 
         idextxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -140,9 +134,8 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         btnguardar.setBackground(new java.awt.Color(0, 11, 13));
         btnguardar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado.png"))); // NOI18N
-        btnguardar.setText("GUARDAR");
+        btnguardar.setText("Guardar");
         btnguardar.setBorder(null);
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +145,6 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         btnmostrar.setBackground(new java.awt.Color(0, 11, 13));
         btnmostrar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        btnmostrar.setForeground(new java.awt.Color(255, 255, 255));
         btnmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         btnmostrar.setText("MOSTRAR DATOS");
         btnmostrar.setBorder(null);
@@ -164,7 +156,6 @@ public class Evento_modificar extends javax.swing.JFrame {
 
         btncargar.setBackground(new java.awt.Color(0, 11, 13));
         btncargar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
-        btncargar.setForeground(new java.awt.Color(255, 255, 255));
         btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         btncargar.setText("CARGAR DATOS");
         btncargar.setBorder(null);
@@ -174,21 +165,21 @@ public class Evento_modificar extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+        jPanel2.setBackground(new java.awt.Color(248, 166, 54));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 11, 13));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel7.setText(" MODIFICAR EVENTOS ");
+        jLabel7.setToolTipText("");
 
         botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
-        botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
-        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarActionPerformed(evt);
@@ -214,7 +205,7 @@ public class Evento_modificar extends javax.swing.JFrame {
                         .addComponent(botonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(9, 9, 9))
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -234,8 +225,7 @@ public class Evento_modificar extends javax.swing.JFrame {
         jScrollPane3.setViewportView(exposiciontbl);
 
         mostrarTablaEx.setBackground(new java.awt.Color(0, 11, 13));
-        mostrarTablaEx.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        mostrarTablaEx.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarTablaEx.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         mostrarTablaEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTablaEx.setText("Registro Exposiciones");
         mostrarTablaEx.setBorder(null);
@@ -302,7 +292,7 @@ public class Evento_modificar extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +338,7 @@ public class Evento_modificar extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(18, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)

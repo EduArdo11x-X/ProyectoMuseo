@@ -75,7 +75,6 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
         filtrocmb.setBackground(new java.awt.Color(134, 153, 167));
         filtrocmb.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        filtrocmb.setForeground(new java.awt.Color(0, 0, 0));
         filtrocmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Ver todos", "Codigo", "Nombre", " " }));
 
         tablaevento.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
@@ -104,7 +103,7 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(134, 153, 167));
+        jPanel2.setBackground(new java.awt.Color(248, 166, 54));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
@@ -118,7 +117,7 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
-        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarActionPerformed(evt);
@@ -144,15 +143,10 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
                         .addComponent(botonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(9, 9, 9))
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
@@ -176,7 +170,6 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
         codigotxt.setBackground(new java.awt.Color(134, 153, 167));
         codigotxt.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        codigotxt.setForeground(new java.awt.Color(0, 0, 0));
         codigotxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         codigotxt.setText("Ingrese el codigo del ");
         codigotxt.setToolTipText("");
@@ -186,8 +179,6 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
                 codigotxtActionPerformed(evt);
             }
         });
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,8 +220,8 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,7 +250,7 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
