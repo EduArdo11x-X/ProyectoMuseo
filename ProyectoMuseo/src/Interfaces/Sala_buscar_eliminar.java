@@ -151,11 +151,11 @@ public class Sala_buscar_eliminar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Fecha", "Descripcion", "Tipo", "Estilo"
+                "Codigo", "Nombre", "Fecha", "Descripcion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

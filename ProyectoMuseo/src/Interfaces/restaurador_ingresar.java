@@ -80,27 +80,29 @@ public class restaurador_ingresar extends javax.swing.JFrame {
 
     public void crearGuardia(ObjectContainer BaseD) {
         asignarVariables(BaseD);
+        if (validarCampos(BaseD)) {
 
-        boolean error = false;
-        if (comprobarCedula(BaseD, Cedula_per_res)) {
-            error = true;
-            JOptionPane.showMessageDialog(this, "Ya existe un Guardia con esta cédula registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Ced_Taquillero.setText("");
-        }
-        if (comprobarID(BaseD, id_restaurador)) {
-            error = true;
-            JOptionPane.showMessageDialog(this, "Ya existe un Guardia con este ID registrado", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            txtid_guardia.setText("");
-        }
-        if (!error) {
-            Restaurador miUsuario = new Restaurador(id_restaurador, Habilidades, Cedula_per_res, nombre_adm, apellido_adm, fechaTexto_adm, telefono_adm, sexo_adm, provincia_adm, ciudad_adm, calle_adm, email_adm, null);
+            boolean error = false;
+            if (comprobarCedula(BaseD, Cedula_per_res)) {
+                error = true;
+                JOptionPane.showMessageDialog(this, "Ya existe un Restaurador con esta cédula registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Ced_Taquillero.setText("");
+            }
+            if (comprobarID(BaseD, id_restaurador)) {
+                error = true;
+                JOptionPane.showMessageDialog(this, "Ya existe un Restaurador con este ID registrado", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                txtid_guardia.setText("");
+            }
+            if (!error) {
+                Restaurador miUsuario = new Restaurador(id_restaurador, Habilidades, Cedula_per_res, nombre_adm, apellido_adm, fechaTexto_adm, telefono_adm, sexo_adm, provincia_adm, ciudad_adm, calle_adm, email_adm, null);
 
-            BaseD.store(miUsuario);
-            JOptionPane.showMessageDialog(null, "Guardia registrado correctamente");
+                BaseD.store(miUsuario);
+                JOptionPane.showMessageDialog(null, "Restaurador registrado correctamente");
 
-            LimpiarCampos();
+                LimpiarCampos();
+            }
         }
     }
 
@@ -118,6 +120,103 @@ public class restaurador_ingresar extends javax.swing.JFrame {
         query.descend("Id_restaurador").constrain(id_restaurador).equal();
         ObjectSet result = query.execute();
         return !result.isEmpty();
+    }
+
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+
+        if (Ced_Taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU CEDULA POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedulaEcuatoriana(Cedula_per_res)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDA");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtid_guardia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(id_restaurador)) {
+                JOptionPane.showMessageDialog(this, "ID invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (nom_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre_adm)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (ape_tequillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido_adm)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (Correo_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(email_adm)) {
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtcalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle_adm)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (cel_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU TELEFONO POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedula(telefono_adm)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+        if (combo_cuidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su ciudad por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(ciudad_adm)) {
+                JOptionPane.showMessageDialog(this, "Ciudad Invalida");
+                ban_confirmar = false;
+            }
+        }
+
+        if (años_experienca.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese sus habilidad por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(Habilidades)) {
+                JOptionPane.showMessageDialog(this, "Habilidad Invalida");
+                ban_confirmar = false;
+            }
+        }
+
+        return ban_confirmar;
     }
 
     public static void Cerrar_BD(ObjectContainer basep) {

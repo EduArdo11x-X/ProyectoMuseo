@@ -27,7 +27,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 //    C:\Users\ASUS TUF\OneDrive\Escritorio\Baseprueva
 //    public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\Base de datos\\PROYECTOFINAL.yap");
- public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Baseprueva\\PROYECTOFINAL.yap");
+ public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\ProyectoFinal\\PROYECTOFINALBASE.yap");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,9 +205,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(59, 59, 59)
                         .addComponent(jButton3)
-                        .addGap(52, 52, 52))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -231,9 +231,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addGap(31, 31, 31)))))
+                            .addComponent(jButton3))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

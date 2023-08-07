@@ -121,31 +121,151 @@ public class guardia_modificar extends javax.swing.JFrame {
 
     }
 
+    public void asignarVariables(ObjectContainer BaseD) {
+        Cedula_per_guar = Ced_Taquillero.getText();
+        nombre_adm = nom_taquillero.getText();
+        apellido_adm = ape_tequillero.getText();
+
+        if (jRadioButton1.isSelected()) {
+            sexo_adm = 'M';
+        } else if (jRadioButton2.isSelected()) {
+            sexo_adm = 'F';
+        } else {
+            // Manejo en caso de que no se haya seleccionado ningún género
+            sexo_adm = ' '; // Otra opción aquí dependiendo de tu lógica
+        }
+        telefono_adm = cel_taquillero.getText();
+        fechaTexto_adm = fechaNa.getDate();
+        email_adm = Correo_taquillero.getText();
+        id_guardia = txtid_guardia.getText();
+        disponibilidad_guar = chxSi.isSelected();
+        // Corregir la asignación de años_expreriencia_guar
+        String añosExperienciaStr = años_experienca.getText();
+        años_expreriencia_guar = !añosExperienciaStr.isEmpty() ? Integer.parseInt(añosExperienciaStr) : 0;
+        provincia_adm = combo_provincia.getSelectedItem().toString();
+        ciudad_adm = combo_cuidad.getText();
+        calle_adm = txtcalle.getText();
+
+    }
+
     public void Modificar_pintura(ObjectContainer basep) {
 
-        Guardia Emodi = new Guardia(txtid_guardia.getText(), 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
-        ObjectSet result = basep.get(Emodi);
-        Guardia Emodificar = (Guardia) result.next();
-        Emodificar.setNombre(nom_taquillero.getText());
-        Emodificar.setApellido(ape_tequillero.getText());
-        Emodificar.setNum_telefono(cel_taquillero.getText());
-        Emodificar.setF_nacimiento(fechaNa.getDate());
-        Emodificar.setCorreo(Correo_taquillero.getText());
-        Emodificar.setAnios_experiencia(Integer.parseInt(años_experienca.getText()));
-        Emodificar.setDisponibilidad(chxSi.isSelected());
-        Emodificar.setProvincia((String) combo_provincia.getSelectedItem());
-        Emodificar.setCiudad(combo_cuidad.getText());
-        Emodificar.setCalle(txtcalle.getText());
-        if (jRadioButton1.isSelected()) {
-            Emodificar.setGenero('M');
-        } else if (jRadioButton2.isSelected()) {
-            Emodificar.setGenero('F');
-        }
-        ;
-        basep.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "El guardia fue modificado exitosamente");
+        asignarVariables(basep);
+        if (validarCampos(basep)) {
 
-        LimpiarCampos();
+            Guardia Emodi = new Guardia(txtid_guardia.getText(), 0, false, null, null, null, null, null, '\u0000', null, null, null, null, null);
+            ObjectSet result = basep.get(Emodi);
+            Guardia Emodificar = (Guardia) result.next();
+            if (validarCampos(basep)) {
+                Emodificar.setNombre(nom_taquillero.getText());
+                Emodificar.setApellido(ape_tequillero.getText());
+                Emodificar.setNum_telefono(cel_taquillero.getText());
+                Emodificar.setF_nacimiento(fechaNa.getDate());
+                Emodificar.setCorreo(Correo_taquillero.getText());
+                Emodificar.setAnios_experiencia(Integer.parseInt(años_experienca.getText()));
+                Emodificar.setDisponibilidad(chxSi.isSelected());
+                Emodificar.setProvincia((String) combo_provincia.getSelectedItem());
+                Emodificar.setCiudad(combo_cuidad.getText());
+                Emodificar.setCalle(txtcalle.getText());
+                if (jRadioButton1.isSelected()) {
+                    Emodificar.setGenero('M');
+                } else if (jRadioButton2.isSelected()) {
+                    Emodificar.setGenero('F');
+                }
+                ;
+                basep.set(Emodificar);
+                JOptionPane.showMessageDialog(null, "El guardia fue modificado exitosamente");
+
+                LimpiarCampos();
+            }
+        }
+    }
+
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+
+        if (Ced_Taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU CEDULA POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedulaEcuatoriana(Cedula_per_guar)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDA");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtid_guardia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(id_guardia)) {
+                JOptionPane.showMessageDialog(this, "ID invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (nom_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre_adm)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (ape_tequillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido_adm)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (Correo_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(email_adm)) {
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtcalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle_adm)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (cel_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU TELEFONO POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedula(telefono_adm)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+        if (combo_cuidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su ciudad por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(ciudad_adm)) {
+                JOptionPane.showMessageDialog(this, "Ciudad Invalida");
+                ban_confirmar = false;
+            }
+        }
+
+        return ban_confirmar;
     }
 
     public static void Cerrar_BD(ObjectContainer basep) {

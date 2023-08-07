@@ -94,9 +94,9 @@ public class Usuario_registro extends javax.swing.JFrame {
     }
 
     public static int comprobarUsuario(ObjectContainer BaseD, String cedula) {
-        Usuario Exbuscar = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
-        ObjectSet result = BaseD.get(Exbuscar);
-        return result.size();
+        Usuario buscarUsuario = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
+        ObjectSet resul = BaseD.queryByExample(buscarUsuario);
+        return resul.size();
 
     }
 
@@ -595,7 +595,9 @@ public class Usuario_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtxCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtxCalleActionPerformed

@@ -26,7 +26,7 @@ public class restaurador_modificar extends javax.swing.JFrame {
         botones.add(jRadioButton1);
         botones.add(jRadioButton2);
     }
-    
+
     String Cedula_per_res = "";
     String id_restaurador = "";
     String nombre_adm = "";
@@ -39,8 +39,7 @@ public class restaurador_modificar extends javax.swing.JFrame {
     String ciudad_adm = "";
     String calle_adm = "";
     String Habilidades = "";
-    
-    
+
     public void LimpiarCampos() {
 
         Ced_Taquillero.setText("");
@@ -53,8 +52,7 @@ public class restaurador_modificar extends javax.swing.JFrame {
         txtcalle.setText("");
 
     }
-    
-    
+
     public void buscar(ObjectContainer basep) {//cargardatos
 
         Modificarjb.setEnabled(false);
@@ -75,7 +73,7 @@ public class restaurador_modificar extends javax.swing.JFrame {
 
             } else {
 
-            Restaurador Ebuscar = new Restaurador( null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
+                Restaurador Ebuscar = new Restaurador(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
 
                 ObjectSet result = basep.get(Ebuscar);
                 for (int i = 0; i < result.size(); i++) {
@@ -86,7 +84,7 @@ public class restaurador_modificar extends javax.swing.JFrame {
 
                     Ced_Taquillero.setText(miE.getCedula());
                     nom_taquillero.setText(miE.getNombre());
-                    ape_tequillero.setText(miE.getApellido());                    
+                    ape_tequillero.setText(miE.getApellido());
                     cel_taquillero.setText(miE.getNum_telefono());
                     fechaNa.setDate((miE.getF_nacimiento()));
                     if (miE.getGenero() == 'M') {
@@ -98,15 +96,12 @@ public class restaurador_modificar extends javax.swing.JFrame {
                     combo_provincia.setSelectedItem(miE.getProvincia());
                     combo_cuidad.setText(miE.getCiudad());
                     txtid_guardia.setText(miE.getId_restaurador());
-                    txtcalle.setText(miE.getCalle());                   
+                    txtcalle.setText(miE.getCalle());
                     habilidades_restaurador.setText(miE.getHabilidades());
-                    
-                    
-                    
 
                     Modificarjb.setEnabled(true);
                     //Hacer editable los campos de texto
-                  
+
                     HabilitarCampos_deTexto();
                     txtid_guardia.setEditable(false);
                     Ced_Taquillero.setEditable(false);
@@ -117,56 +112,172 @@ public class restaurador_modificar extends javax.swing.JFrame {
 
         }
     }
-    
+
     public void HabilitarCampos_deTexto() {
         nom_taquillero.setEditable(true);
-        ape_tequillero.setEditable(true);  
+        ape_tequillero.setEditable(true);
         cel_taquillero.setEditable(true);
         Correo_taquillero.setEditable(true);
-        
-        
-
     }
-     
-     public void Modificar_artista(ObjectContainer basep) {
-         
 
-       Restaurador Emodi = new Restaurador(txtid_guardia.getText(), null, null, null, null, null, null, '\u0000', null, null, null, null, null);
-        ObjectSet result = basep.get(Emodi);
-        Restaurador Emodificar = (Restaurador) result.next();
-        Emodificar.setNombre(nom_taquillero.getText());
-        Emodificar.setApellido(ape_tequillero.getText());       
-        Emodificar.setNum_telefono(cel_taquillero.getText());
-        Emodificar.setF_nacimiento(fechaNa.getDate());
-        Emodificar.setCorreo(Correo_taquillero.getText());      
-        Emodificar.setProvincia((String) combo_provincia.getSelectedItem());
-        Emodificar.setCiudad(combo_cuidad.getText());
-        Emodificar.setCalle(txtcalle.getText());
-        Emodificar.setHabilidades(habilidades_restaurador.getText());
-        
+    public void asignarVariables(ObjectContainer BaseD) {
+        Cedula_per_res = Ced_Taquillero.getText();
+        nombre_adm = nom_taquillero.getText();
+        apellido_adm = ape_tequillero.getText();
+
         if (jRadioButton1.isSelected()) {
-            Emodificar.setGenero('M');
+            sexo_adm = 'M';
         } else if (jRadioButton2.isSelected()) {
-            Emodificar.setGenero('F');
+            sexo_adm = 'F';
+        } else {
+            sexo_adm = ' '; // Otra opción aquí dependiendo de tu lógica
         }
-                
-        
-        //Emodificar.setGenero((String) Genero_combobox.getSelectedItem());
-        
-        ;
-        basep.set(Emodificar);
-        JOptionPane.showMessageDialog(null, "El Artista fue modificado exitosamente");
 
-        
-        LimpiarCampos();
+        telefono_adm = cel_taquillero.getText();
+        fechaTexto_adm = fechaNa.getDate();
+        email_adm = Correo_taquillero.getText();
+        id_restaurador = txtid_guardia.getText();
+        Habilidades = habilidades_restaurador.getText();
+        provincia_adm = combo_provincia.getSelectedItem().toString();
+        ciudad_adm = combo_cuidad.getText();
+        calle_adm = txtcalle.getText();
+    }
+
+    public void Modificar_artista(ObjectContainer basep) {
+
+        asignarVariables(basep);
+        if (validarCampos(basep)) {
+            Restaurador Emodi = new Restaurador(txtid_guardia.getText(), null, null, null, null, null, null, '\u0000', null, null, null, null, null);
+            ObjectSet result = basep.get(Emodi);
+            Restaurador Emodificar = (Restaurador) result.next();
+            if (validarCampos(basep)) {
+                Emodificar.setNombre(nom_taquillero.getText());
+                Emodificar.setApellido(ape_tequillero.getText());
+                Emodificar.setNum_telefono(cel_taquillero.getText());
+                Emodificar.setF_nacimiento(fechaNa.getDate());
+                Emodificar.setCorreo(Correo_taquillero.getText());
+                Emodificar.setProvincia((String) combo_provincia.getSelectedItem());
+                Emodificar.setCiudad(combo_cuidad.getText());
+                Emodificar.setCalle(txtcalle.getText());
+                Emodificar.setHabilidades(habilidades_restaurador.getText());
+
+                if (jRadioButton1.isSelected()) {
+                    Emodificar.setGenero('M');
+                } else if (jRadioButton2.isSelected()) {
+                    Emodificar.setGenero('F');
+                }
+                //Emodificar.setGenero((String) Genero_combobox.getSelectedItem());
+
+                ;
+                basep.set(Emodificar);
+                JOptionPane.showMessageDialog(null, "El Artista fue modificado exitosamente");
+
+                LimpiarCampos();
+            }
+        }
+    }
+
+    public boolean validarCampos(ObjectContainer basep) {
+        Validaciones miValidaciones = new Validaciones();
+        asignarVariables(basep);
+        boolean ban_confirmar = true;
+
+        if (Ced_Taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU CEDULA POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedulaEcuatoriana(Cedula_per_res)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDA");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtid_guardia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarid(id_restaurador)) {
+                JOptionPane.showMessageDialog(this, "ID invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (nom_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nombre_adm)) {
+                JOptionPane.showMessageDialog(this, "Nombre invalido");
+                ban_confirmar = false;
+            }
+        }
+        if (ape_tequillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su apellido por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(apellido_adm)) {
+                JOptionPane.showMessageDialog(this, "Apellido invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (Correo_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCorreo(email_adm)) {
+                JOptionPane.showMessageDialog(this, "Correo invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (txtcalle.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validardireccion(calle_adm)) {
+                JOptionPane.showMessageDialog(this, "Direccion invalido");
+                ban_confirmar = false;
+            }
+        }
+
+        if (cel_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU TELEFONO POR FAVOR");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarCedula(telefono_adm)) {
+                JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
+                ban_confirmar = false;
+            }
+        }
+
+        if (combo_cuidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su ciudad por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(ciudad_adm)) {
+                JOptionPane.showMessageDialog(this, "Ciudad Invalida");
+                ban_confirmar = false;
+            }
+        }
+
+        if (habilidades_restaurador.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese sus habilidad por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(Habilidades)) {
+                JOptionPane.showMessageDialog(this, "Habilidad Invalida");
+                ban_confirmar = false;
+            }
+        }
+
+        return ban_confirmar;
     }
 
     public static void Cerrar_BD(ObjectContainer basep) {
 
         basep.close();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

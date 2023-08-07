@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author EDU
- */
+ */ 
 public class Usuario_buscar_eliminar extends javax.swing.JFrame {
 
     /**
@@ -29,7 +29,7 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Filtro(ObjectContainer BaseD) {
+    public void Filtro(ObjectContainer basep) {
 
         if (jComboBox1.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion");
@@ -37,14 +37,14 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
 
             if (jComboBox1.getSelectedIndex() == 1) {
                 Usuario Abuscar = new Usuario(null, null, null, null, null, null, null, '\u0000', null, null, null, null, null);
-                ObjectSet result = BaseD.get(Abuscar);
+                ObjectSet result = basep.get(Abuscar);
                 mostrarDatos(result);
 
             } else {
                 if (jComboBox1.getSelectedIndex() == 2) {
                     String cedula = JOptionPane.showInputDialog("Ingrese el ID a consultar");
                     Usuario Abuscar = new Usuario(null, null, cedula, null, null, null, null, '\u0000', null, null, null, null, null);
-                    ObjectSet result = BaseD.get(Abuscar);
+                    ObjectSet result = basep.get(Abuscar);
                     mostrarDatos(result);
 
                 }
@@ -56,39 +56,38 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
     }
 
     public void mostrarDatos(ObjectSet result) {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); // Limpiar la tabla
-
+        String matrizUsuario[][] = new String[result.size()][12];
         if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "El usuario no existe");
-        } else {
-            while (result.hasNext()) {
-                clases.Usuario miUsuario = (clases.Usuario) result.next();
-                Object[] fila = {
-                    miUsuario.getCedula(),
-                    miUsuario.getNombre(),
-                    miUsuario.getApellido(),
-                    String.valueOf(miUsuario.getF_nacimiento()),
-                    miUsuario.getNum_telefono(),
-                    miUsuario.getGenero(),
-                    miUsuario.getCorreo(),
-                    miUsuario.getProvincia(),
-                    miUsuario.getCiudad(),
-                    miUsuario.getCalle(),
-                    miUsuario.getNivel_conocimiento()
-                };
-                model.addRow(fila);
-            }
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Usuario miUsuario = new Usuario();
+            miUsuario = (Usuario) result.get(i);
+            matrizUsuario[i][0] = miUsuario.getCedula();
+            matrizUsuario[i][1] = miUsuario.getNombre();
+            matrizUsuario[i][2] = miUsuario.getApellido();
+            matrizUsuario[i][3] = String.valueOf(miUsuario.getNum_telefono());
+            matrizUsuario[i][4] = String.valueOf(miUsuario.getF_nacimiento());
+            matrizUsuario[i][5] = String.valueOf(miUsuario.getGenero());
+            matrizUsuario[i][6] = miUsuario.getCorreo();
+            matrizUsuario[i][7] = miUsuario.getProvincia();
+            matrizUsuario[i][8] = miUsuario.getCiudad();
+            matrizUsuario[i][9] = miUsuario.getCalle();
+            matrizUsuario[i][10] = miUsuario.getNivel_conocimiento();
+            matrizUsuario[i][11] = miUsuario.getNivel_estudiol();
+
+            tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(matrizUsuario, new String[]{"Cedula", "Nombre", "Apellido", "Telefono", "Fecha Nacimiento", "Genero", "Correo Electronico", "Provincia", "Ciudad", "Direccion", "Nivel de conocimiento", "Nivel estudio"}));
         }
     }
 
     public void Eliminar_Usuario(ObjectContainer BaseD) {
         Usuario_registro Ainterfaz = new Usuario_registro();
-        if (jTextField1.getText().isEmpty()) {
+        if (jTFid.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese una Cedula");
         } else {
 
-            String IDA = jTextField1.getText();
+            String IDA = jTFid.getText();
             Usuario Abuscar = new Usuario(null, null, IDA, null, null, null, null, '\u0000', null, null, null, null, null);
             ObjectSet result = BaseD.get(Abuscar);
 
@@ -98,13 +97,13 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
             } else {
                 Usuario AsignaturaElim = (Usuario) result.next();
                 BaseD.delete(AsignaturaElim);
-                JOptionPane.showMessageDialog(null, "La Pintura fue anulada exitosamente");
+                JOptionPane.showMessageDialog(null, "El usuario fue anulado exitosamente");
             }
 
         }
 
         //Borrar el campo de texto
-        jTextField1.setText("");
+        jTFid.setText("");
     }
     
      public static void Cerrar_BD(ObjectContainer BaseD) {
@@ -124,17 +123,17 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         botonBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         botonElimi = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaUsuario = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTFid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,9 +145,6 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Filtro:");
-
-        jComboBox1.setBackground(new java.awt.Color(134, 153, 167));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         botonBuscar.setBackground(new java.awt.Color(0, 11, 13));
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,13 +162,6 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cedula:");
 
-        jTextField1.setBackground(new java.awt.Color(134, 153, 167));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         botonElimi.setBackground(new java.awt.Color(0, 11, 13));
         botonElimi.setForeground(new java.awt.Color(255, 255, 255));
         botonElimi.setText("Eliminar");
@@ -181,20 +170,6 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
                 botonElimiActionPerformed(evt);
             }
         });
-
-        jTable1.setBackground(new java.awt.Color(134, 153, 167));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         jPanel2.setBackground(new java.awt.Color(134, 153, 167));
 
@@ -218,7 +193,7 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107))
         );
@@ -232,10 +207,47 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        tablaUsuario.setBackground(new java.awt.Color(134, 153, 167));
+        tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaUsuario);
+
+        jComboBox1.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Ver todos", "ID Usuario", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jTFid.setFont(new java.awt.Font("Raanana", 1, 18)); // NOI18N
+        jTFid.setToolTipText("Ingresar el ID  de la asignatura a eliminar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,7 +255,7 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonBuscar))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
@@ -253,15 +265,10 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonElimi)))
                 .addGap(74, 74, 74))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,14 +281,14 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonElimi))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(botonElimi)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonBuscar)
+                    .addComponent(jTFid, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -300,20 +307,16 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(PaginaPrincipal.direccionBD);
-        Filtro(BaseD);
-        Cerrar_BD(BaseD);
+        ObjectContainer basep = Db4o.openFile(PaginaPrincipal.direccionBD);
+        Filtro(basep);
+        Cerrar_BD(basep);
     }//GEN-LAST:event_botonBuscarActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void botonElimiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonElimiActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(PaginaPrincipal.direccionBD);
-        Eliminar_Usuario(BaseD);
-        Cerrar_BD(BaseD);
+        ObjectContainer basep = Db4o.openFile(PaginaPrincipal.direccionBD);
+        Eliminar_Usuario(basep);
+        Cerrar_BD(basep);
     }//GEN-LAST:event_botonElimiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -322,6 +325,10 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
         MENU_ADM miMenu = new MENU_ADM();
         miMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,8 +346,8 @@ public class Usuario_buscar_eliminar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTFid;
+    private javax.swing.JTable tablaUsuario;
     // End of variables declaration//GEN-END:variables
 }

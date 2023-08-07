@@ -1,8 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  
+
+
+package Interfaces;
+
+
+
 
 import Interfaces.Mantenimiento_crud;
 import Interfaces.PaginaPrincipal;
@@ -13,10 +15,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.db4o.*;
-/**
- *
- * @author jose
- */
+
 public class Mantenimiento_modificar extends javax.swing.JFrame {
      String codigo_mantenimiento ="" ;
      String descripcion_mantenimiento="";
@@ -243,7 +242,9 @@ public class Mantenimiento_modificar extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
         
-
+this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
 
 
 

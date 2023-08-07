@@ -40,14 +40,14 @@ public class Articulo_modificar extends javax.swing.JFrame {
         String IDAux;
         IDAux = txtCodigo.getText();
 
-        Pintura_Interfaz EAux = new Pintura_Interfaz();
+        Articulo_registro EAux = new Articulo_registro();
 
         if (txtCodigo.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
 
-            if (EAux.verificar(basep, IDAux) == true) {
+            if (EAux.comprobarArticulo(basep, IDAux) == 0) {
 
                 JOptionPane.showMessageDialog(null, "El articulo no existe en la base de datos");
                 LimpiarCamposdeTexto();

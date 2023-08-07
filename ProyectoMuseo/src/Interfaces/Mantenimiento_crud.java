@@ -51,19 +51,18 @@ public class Mantenimiento_crud extends javax.swing.JFrame {
             }       
             if (comprobarRestaurador(basep,id_restaurador) == 0) {
                 error = true;
-                JOptionPane.showMessageDialog(null, "No existe ningun tecnico con este codigo registrado");
+                JOptionPane.showMessageDialog(null, "No existe ningun Restaurador con este codigo registrado");
             }       
             if (comprobarPintura(basep,codido_pintura) == 0 ) {
                 error = true;
-                JOptionPane.showMessageDialog(null, "No existe ningun juego con este codigo registrado");
-            }
-            
+                JOptionPane.showMessageDialog(null, "No existe ninguna Pintura con este codigo registrado");
+            }            
             if (!error) {
                 Mantenimiento crearM = new Mantenimiento (codigo_mantenimiento,descripcion_mantenimiento,Fecha_mantenimiento,id_restaurador,codido_pintura);
                 basep.set(crearM);
                 JOptionPane.showMessageDialog(null, "Mantenimiento registrado correctamente");
                 LimpiarCampos();
-        }           
+            }           
     }   
     public static int comprobarMantenimiento(ObjectContainer base, String codigo_mantenimiento) {
             Mantenimiento buscarM = new Mantenimiento(codigo_mantenimiento, null, null, null, null);
@@ -186,7 +185,9 @@ public class Mantenimiento_crud extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-
+this.setVisible(false);
+        MENU_ADM miMenu = new MENU_ADM();
+        miMenu.setVisible(true);
 
 
 

@@ -27,7 +27,7 @@ public class artista_registrar extends javax.swing.JFrame {
         botones.add(jRadioButton1);
         botones.add(jRadioButton2);
     }
-    
+
     String Cedula_per_art = "";
     String id_Artista = "";
     String nombre_adm = "";
@@ -41,9 +41,7 @@ public class artista_registrar extends javax.swing.JFrame {
     String calle_adm = "";
     String Habilidades = "";
     String nom_artistico = "";
-    
-    
-    
+
     public void LimpiarCampos() {
 
         Ced_Taquillero.setText("");
@@ -61,7 +59,7 @@ public class artista_registrar extends javax.swing.JFrame {
         Cedula_per_art = Ced_Taquillero.getText();
         nombre_adm = nom_taquillero.getText();
         apellido_adm = ape_tequillero.getText();
-         if (jRadioButton1.isSelected()) {
+        if (jRadioButton1.isSelected()) {
             sexo_adm = 'M';
         } else if (jRadioButton2.isSelected()) {
             sexo_adm = 'F';
@@ -73,43 +71,43 @@ public class artista_registrar extends javax.swing.JFrame {
         fechaTexto_adm = fechaNa.getDate();
         email_adm = Correo_taquillero.getText();
         id_Artista = txtid_guardia.getText();
-        Habilidades =habilidades_artista.getText();
-       
-        
+        Habilidades = habilidades_artista.getText();
+
         nom_artistico = nom_artistico_txt.getText();
         provincia_adm = combo_provincia.getSelectedItem().toString();
         ciudad_adm = combo_cuidad.getText();
         calle_adm = txtcalle.getText();
 
     }
-    
+
     public void crearGuardia(ObjectContainer BaseD) {
         asignarVariables(BaseD);
+        if (validarCampos(BaseD)) {
+            boolean error = false;
+            if (comprobarCedula(BaseD, Cedula_per_art)) {
+                error = true;
+                JOptionPane.showMessageDialog(this, "Ya existe un Artista con esta cédula registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Ced_Taquillero.setText("");
+            }
+            if (comprobarID(BaseD, id_Artista)) {
+                error = true;
+                JOptionPane.showMessageDialog(this, "Ya existe un Artista con este ID registrado", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                txtid_guardia.setText("");
+            }
+            if (!error) {
+                Artista miUsuario = new Artista(id_Artista, Habilidades, nom_artistico, Cedula_per_art, nombre_adm, apellido_adm, fechaTexto_adm, telefono_adm, sexo_adm, provincia_adm, ciudad_adm, calle_adm, email_adm, null);
 
-        boolean error = false;
-        if (comprobarCedula(BaseD, Cedula_per_art)) {
-            error = true;
-            JOptionPane.showMessageDialog(this, "Ya existe un Artista con esta cédula registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Ced_Taquillero.setText("");
-        }
-        if (comprobarID(BaseD, id_Artista)) {
-            error = true;
-            JOptionPane.showMessageDialog(this, "Ya existe un Artista con este ID registrado", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            txtid_guardia.setText("");
-        }
-        if (!error) {
-            Artista miUsuario = new Artista(id_Artista, Habilidades, nom_artistico, Cedula_per_art, nombre_adm, apellido_adm, fechaTexto_adm, telefono_adm, sexo_adm, provincia_adm, ciudad_adm, calle_adm, email_adm, null);
+                BaseD.store(miUsuario);
+                JOptionPane.showMessageDialog(null, "Artista registrado correctamente");
 
-            BaseD.store(miUsuario);
-            JOptionPane.showMessageDialog(null, "Artista registrado correctamente");
-
-            LimpiarCampos();
+                LimpiarCampos();
+            }
         }
     }
 
-      public static boolean comprobarCedula(ObjectContainer BaseD, String Cedula_per_art) {
+    public static boolean comprobarCedula(ObjectContainer BaseD, String Cedula_per_art) {
         Query query = BaseD.query();
         query.constrain(Persona.class);
         query.descend("cedula").constrain(Cedula_per_art).equal();
@@ -124,22 +122,22 @@ public class artista_registrar extends javax.swing.JFrame {
         ObjectSet result = query.execute();
         return !result.isEmpty();
     }
-    
+
     public boolean validarCampos(ObjectContainer basep) {
         Validaciones miValidaciones = new Validaciones();
         asignarVariables(basep);
         boolean ban_confirmar = true;
-        
+
         if (Ced_Taquillero.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            JOptionPane.showMessageDialog(this, "INGRESE SU CEDULA POR FAVOR");
             ban_confirmar = false;
         } else {
-            if (!miValidaciones.validarid(Cedula_per_art)) {
-                JOptionPane.showMessageDialog(this, "CEDULA INVALIDO");
+            if (!miValidaciones.validarCedulaEcuatoriana(Cedula_per_art)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDA");
                 ban_confirmar = false;
             }
         }
-        
+
         if (txtid_guardia.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese un ID");
             ban_confirmar = false;
@@ -150,7 +148,6 @@ public class artista_registrar extends javax.swing.JFrame {
             }
         }
 
-       
         if (nom_taquillero.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
             ban_confirmar = false;
@@ -169,8 +166,8 @@ public class artista_registrar extends javax.swing.JFrame {
                 ban_confirmar = false;
             }
         }
-        
-         if (Correo_taquillero.getText().isEmpty()) {
+
+        if (Correo_taquillero.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
             ban_confirmar = false;
         } else {
@@ -179,8 +176,8 @@ public class artista_registrar extends javax.swing.JFrame {
                 ban_confirmar = false;
             }
         }
-         
-         if (txtcalle.getText().isEmpty()) {
+
+        if (txtcalle.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
             ban_confirmar = false;
         } else {
@@ -188,36 +185,54 @@ public class artista_registrar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Direccion invalido");
                 ban_confirmar = false;
             }
-         }
-         
-         if (cel_taquillero.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+        }
+
+        if (cel_taquillero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU TELEFONO POR FAVOR");
             ban_confirmar = false;
         } else {
-            if (!miValidaciones.validarid(telefono_adm)) {
+            if (!miValidaciones.validarCedula(telefono_adm)) {
                 JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
                 ban_confirmar = false;
             }
         }
-         
-         if (combo_cuidad.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese la contraseña por favor");
+
+        if (combo_cuidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su ciudad por favor");
             ban_confirmar = false;
         } else {
             if (!miValidaciones.validarNomApe(ciudad_adm)) {
-                JOptionPane.showMessageDialog(this, "Contraseña invalida");
+                JOptionPane.showMessageDialog(this, "Ciudad Invalida");
                 ban_confirmar = false;
             }
         }
-          return ban_confirmar;
+        
+        if (habilidades_artista.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese las habilidades del artista");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(Habilidades)) {
+                JOptionPane.showMessageDialog(this, "Habilidades Invalida");
+                ban_confirmar = false;
+            }
+        }
+        
+        if (nom_artistico_txt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre artistico por favor");
+            ban_confirmar = false;
+        } else {
+            if (!miValidaciones.validarNomApe(nom_artistico)) {
+                JOptionPane.showMessageDialog(this, "Nombre Artistico Invalido");
+                ban_confirmar = false;
+            }
+        }
+        return ban_confirmar;
     }
 
     public static void Cerrar_BD(ObjectContainer basep) {
 
         basep.close();
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -340,14 +355,14 @@ public class artista_registrar extends javax.swing.JFrame {
         jLabel11.setText("Ciudad:");
 
         combo_cuidad.setBackground(new java.awt.Color(255, 255, 255));
-        combo_cuidad.setForeground(new java.awt.Color(255, 255, 255));
+        combo_cuidad.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel14.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Direccion:");
 
         txtcalle.setBackground(new java.awt.Color(255, 255, 255));
-        txtcalle.setForeground(new java.awt.Color(255, 255, 255));
+        txtcalle.setForeground(new java.awt.Color(0, 0, 0));
         txtcalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcalleActionPerformed(evt);
