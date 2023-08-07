@@ -104,16 +104,14 @@
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="M9" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="M8" max="32767" attributes="0"/>
-                              <Component id="M7" max="32767" attributes="0"/>
-                              <Component id="M3" max="32767" attributes="0"/>
-                              <Component id="M2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="M1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="M4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="M5" max="32767" attributes="0"/>
-                              <Component id="M6" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="M8" max="32767" attributes="0"/>
+                          <Component id="M7" max="32767" attributes="0"/>
+                          <Component id="M3" max="32767" attributes="0"/>
+                          <Component id="M2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="M1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="M4" alignment="1" max="32767" attributes="0"/>
+                          <Component id="M5" max="32767" attributes="0"/>
+                          <Component id="M6" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>

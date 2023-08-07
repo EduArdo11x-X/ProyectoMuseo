@@ -30,7 +30,7 @@ public class Articulo_registro extends javax.swing.JFrame {
     /**
      * Creates new form Articulo_registro
      */
-    public Articulo_registro() {
+      public Articulo_registro() {
         initComponents();
     }
 
@@ -42,7 +42,7 @@ public class Articulo_registro extends javax.swing.JFrame {
     int exis_min = 0;
     double precio = 0;
 
-//    public static String direccionBD = ("C:\\Users\\usuario\\OneDrive\\Documentos\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia.yapi");
+//    public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Baseprueva\\guia.yapi");
 
     public void cargarDatos(ObjectContainer BaseD) {
 
@@ -137,8 +137,8 @@ public class Articulo_registro extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Artticulo ya registrado");
 
-        }
-    }
+      }
+         }
 
     public static void Cerrar_BD(ObjectContainer BaseD) {
 
@@ -253,7 +253,6 @@ public class Articulo_registro extends javax.swing.JFrame {
         botonGuar.setBackground(new java.awt.Color(0, 11, 13));
         botonGuar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         botonGuar.setForeground(new java.awt.Color(255, 255, 255));
-        botonGuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado.png"))); // NOI18N
         botonGuar.setText("Guardar");
         botonGuar.setBorder(null);
         botonGuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -285,13 +284,11 @@ public class Articulo_registro extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 11, 13));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel1.setText("REGISTRO ARTICULOS ");
 
         botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
         botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
         botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -335,7 +332,6 @@ public class Articulo_registro extends javax.swing.JFrame {
         botonMostrar.setBackground(new java.awt.Color(0, 11, 13));
         botonMostrar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         botonMostrar.setForeground(new java.awt.Color(255, 255, 255));
-        botonMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         botonMostrar.setText("Cargar Datos");
         botonMostrar.setBorder(null);
         botonMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -502,7 +498,7 @@ public class Articulo_registro extends javax.swing.JFrame {
 
     private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
         // TODO add your handling code here:
-        ObjectContainer BaseD = Db4o.openFile(direccionBD);
+        ObjectContainer BaseD = Db4o.openFile(MENU_ADM.direccionBD);
         cargarDatos(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_botonMostrarActionPerformed

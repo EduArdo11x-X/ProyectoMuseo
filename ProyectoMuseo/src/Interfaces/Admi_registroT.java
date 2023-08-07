@@ -141,7 +141,6 @@ public class Admi_registroT extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS TUF\\Downloads\\gerente.png")); // NOI18N
         jLabel1.setText("REGISTRO DE ADM");
 
         jButton1.setBackground(new java.awt.Color(102, 0, 0));
@@ -295,7 +294,6 @@ public class Admi_registroT extends javax.swing.JFrame {
         Registrar.setBackground(new java.awt.Color(0, 0, 102));
         Registrar.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         Registrar.setForeground(new java.awt.Color(255, 255, 255));
-        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado.png"))); // NOI18N
         Registrar.setText("Registrarse");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

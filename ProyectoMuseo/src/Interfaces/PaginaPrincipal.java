@@ -17,9 +17,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public PaginaPrincipal() {
         initComponents();
     }
-    
-    public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\Base de datos\\PROYECTOFINAL.yap");
-
+//    C:\Users\ASUS TUF\OneDrive\Escritorio\Baseprueva
+//    public static String direccionBD = ("C:\\Users\\Lenovo\\Desktop\\Base de datos\\PROYECTOFINAL.yap");
+ public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Baseprueva\\PROYECTOFINAL.yap");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

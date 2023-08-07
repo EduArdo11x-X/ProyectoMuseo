@@ -47,7 +47,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
 
-            if (EAux.verificar(basep, IDAux) == 0) {
+            if (EAux.verificar(basep, IDAux) == true) {
 
                 JOptionPane.showMessageDialog(null, "El articulo no existe en la base de datos");
                 LimpiarCamposdeTexto();

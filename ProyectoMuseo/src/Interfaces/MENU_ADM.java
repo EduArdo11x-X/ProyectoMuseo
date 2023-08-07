@@ -13,8 +13,8 @@ public class MENU_ADM extends javax.swing.JFrame {
     /**
      * Creates new form MENU_ADM
      */
-    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
-
+//    public static String direccionBD = ("\\Users\\EDU\\Documents\\GitHub\\ProyectoMuseo\\ProyectoMuseo\\guia");
+public static String direccionBD = ("C:\\Users\\ASUS TUF\\OneDrive\\Escritorio\\Baseprueva\\PROYECTOFINAL.yap");
     public MENU_ADM() {
         initComponents();
     }

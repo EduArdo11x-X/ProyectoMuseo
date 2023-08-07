@@ -121,6 +121,11 @@ public class Boleto_registro extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 204, 204));
         jButton2.setText("Cancelar ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel7.setText("Detalles de compra:");
@@ -346,6 +351,13 @@ public class Boleto_registro extends javax.swing.JFrame {
         MENU_ADM ventaina = new  MENU_ADM();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+          this.dispose();
+        Tienda ventana = new Tienda();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 /**
  * @param args the command line arguments
