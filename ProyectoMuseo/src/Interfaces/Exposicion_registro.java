@@ -112,6 +112,7 @@ public class Exposicion_registro extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        exposiciontbl.setRowHeight(100);
         jScrollPane1.setViewportView(exposiciontbl);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 81, 590, 360));

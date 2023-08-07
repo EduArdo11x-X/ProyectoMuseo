@@ -66,6 +66,7 @@ public class Exposicion_buscar_eliminar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        exposiciontbl.setRowHeight(100);
         jScrollPane1.setViewportView(exposiciontbl);
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));

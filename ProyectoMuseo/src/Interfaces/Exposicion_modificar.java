@@ -108,6 +108,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        exposiciontbl.setRowHeight(100);
         jScrollPane1.setViewportView(exposiciontbl);
 
         descripciontxt.setColumns(20);
