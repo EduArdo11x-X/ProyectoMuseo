@@ -5,74 +5,126 @@
  */
 package Interfaces;
 
+import clases.Administrador;
+import clases.Artista;
+import clases.Guardia;
+import clases.Restaurador;
+import clases.Usuario;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
 
 public class ReporteGrafico extends javax.swing.JFrame {
 
-    int adm = 20;
-    int usu = 20;
-    int art = 20;
-    int guard = 20;
-    int rest = 20;
-    public ReporteGrafico() {
+      public ReporteGrafico() {
         initComponents();
-         DefaultPieDataset datos = new DefaultPieDataset();
-        datos.setValue("ADMINISTRADOR", adm);
-        datos.setValue("USUARIOS",usu);
-        datos.setValue("ARTISTAS",art);
-        datos.setValue("GUARDIAS", guard);
-        datos.setValue("RESTAURADOR", rest);
-        
+        DefaultPieDataset datos = new DefaultPieDataset();
+        obtenerDatosDesdeBD(datos);
+
         JFreeChart grafico_circular = ChartFactory.createPieChart("REPORTE DE PERSONAS", datos, true, true, false);
         ChartPanel panel = new ChartPanel(grafico_circular);
         panel.setMouseWheelEnabled(true);
         panel.setPreferredSize(new Dimension(543, 446));
-        
+
         jPanel1.setLayout(new BorderLayout());
         jPanel1.add(panel, BorderLayout.CENTER);
-        
+
         pack();
         repaint();
+        
+        actualizarGrafica();
+    }
+//    int adm = 20;
+//    int usu = 20;
+//    int art = 20;
+//    int guard = 20;
+//    int rest = 20;
+//    public ReporteGrafico() {
+//        initComponents();
+//         DefaultPieDataset datos = new DefaultPieDataset();
+//        datos.setValue("ADMINISTRADOR", adm);
+//        datos.setValue("USUARIOS",usu);
+//        datos.setValue("ARTISTAS",art);
+//        datos.setValue("GUARDIAS", guard);
+//        datos.setValue("RESTAURADOR", rest);
+//        
+//        JFreeChart grafico_circular = ChartFactory.createPieChart("REPORTE DE PERSONAS", datos, true, true, false);
+//        ChartPanel panel = new ChartPanel(grafico_circular);
+//        panel.setMouseWheelEnabled(true);
+//        panel.setPreferredSize(new Dimension(543, 446));
+//        
+//        jPanel1.setLayout(new BorderLayout());
+//        jPanel1.add(panel, BorderLayout.CENTER);
+//        
+//        pack();
+//        repaint();
+
+    private void actualizarGrafica() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+        obtenerDatosDesdeBD(datos);
+
+        // Obtiene el ChartPanel agregado previamente a jPanel1
+        ChartPanel chartPanel = (ChartPanel) jPanel1.getComponent(0);
+        JFreeChart grafico_circular = chartPanel.getChart();
+
+        // Obtiene el Plot (PiePlot) del gráfico circular
+        PiePlot plot = (PiePlot) grafico_circular.getPlot();
+
+        // Actualiza el dataset del gráfico reemplazando el dataset actual con el nuevo dataset
+        plot.setDataset(datos);
+
+        // Repintar la interfaz gráfica para reflejar los cambios
+        jPanel1.revalidate();
+        jPanel1.repaint();
     }
 
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+  
 
-        jPanel1 = new javax.swing.JPanel();
+    private void obtenerDatosDesdeBD(DefaultPieDataset dataset) {
+        ObjectContainer baseDatos = null;
+        try {
+            baseDatos = Db4o.openFile(PaginaPrincipal.direccionBD);
+            Map<String, Integer> registroCounts = obtenerRegistroCounts(baseDatos);
+            for (Map.Entry<String, Integer> entry : registroCounts.entrySet()) {
+                String clase = entry.getKey();
+                int count = entry.getValue();
+                dataset.setValue(clase, count);
+            }
+        } finally {
+            if (baseDatos != null) {
+                baseDatos.close();
+            }
+        }
+    }
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    private Map<String, Integer> obtenerRegistroCounts(ObjectContainer baseDatos) {
+        Map<String, Integer> registroCounts = new HashMap<>();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
+        // Consulta y cuenta los objetos de cada clase
+        registroCounts.put("Administrador", contarRegistros(baseDatos, Administrador.class));
+        registroCounts.put("Usuario", contarRegistros(baseDatos, Usuario.class));
+        registroCounts.put("Artista", contarRegistros(baseDatos, Artista.class));
+        registroCounts.put("Guardia", contarRegistros(baseDatos, Guardia.class));
+        registroCounts.put("Restaurador", contarRegistros(baseDatos, Restaurador.class));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        return registroCounts;
+    }
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+    private int contarRegistros(ObjectContainer baseDatos, Class<?> clase) {
+        ObjectSet<?> result = baseDatos.queryByExample(clase);
+        return result.size();
+    }
+
+                        
 
     /**
      * @param args the command line arguments
@@ -108,6 +160,40 @@ public class ReporteGrafico extends javax.swing.JFrame {
             }
         });
     }
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 828, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
