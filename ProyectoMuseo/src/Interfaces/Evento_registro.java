@@ -448,11 +448,11 @@ public class Evento_registro extends javax.swing.JFrame {
         String id_evento = "";
         int cantidad = nombretxt.getText().length();
 
-        if (cantidad > 0) {
+        if (cantidad >= 0) {
 
-            id_evento += "EVENTO-000" + c;
+            id_evento += "EV-000" + c;
         } else {
-            id_evento += "EVENTO-000" + c;
+            id_evento += "EV-000" + c;
         }
 
         return id_evento;

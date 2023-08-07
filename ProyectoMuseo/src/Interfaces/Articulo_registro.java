@@ -115,11 +115,11 @@ public class Articulo_registro extends javax.swing.JFrame {
         String cod_articulo = "";
         int cantidad = txtNombre.getText().length();
 
-        if (cantidad > 0) {
+        if (cantidad >= 0) {
 
-            cod_articulo += "ARTICULO-000" + c;
+            cod_articulo += "ART-000" + c;
         } else {
-            cod_articulo += "ARTICULO-000" + c;
+            cod_articulo += "ART-000" + c;
         }
 
         return cod_articulo;

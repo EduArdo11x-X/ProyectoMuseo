@@ -443,11 +443,11 @@ seleccionarImagen();
         String cod_exposicion = "";
         int cantidad = nombretxt.getText().length();
 
-        if (cantidad > 0) {
+        if (cantidad >= 0) {
 
-            cod_exposicion += "EXPOSICION-000" + c;
+            cod_exposicion += "EX-000" + c;
         } else {
-            cod_exposicion += "EXPOSICION-000" + c;
+            cod_exposicion += "EX-000" + c;
         }
 
         return cod_exposicion;
