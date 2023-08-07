@@ -6,11 +6,13 @@
 package Interfaces;
 
 import clases.Escultura;
-import clases.Evento;
-import clases.Exposicion;
+//import clases.Evento;
+//import clases.Exposicion;
+//import clases.Pintura;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.query.Query;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -424,7 +426,13 @@ public class Escultura_Regist extends javax.swing.JFrame {
         ObjectSet result = BaseD.get(EscBuscar);
         return result.size();
     }
-
+public static boolean verificar(ObjectContainer BaseD, String codigo) {
+        Query query = BaseD.query();
+        query.constrain(Escultura.class);
+        query.descend("codigo").constrain(codigo).equal();
+        ObjectSet result = query.execute();
+        return !result.isEmpty();
+    }
    
 
     //ALGORITMO PARA CREAR CODIGOS AUTOMATICOS
@@ -454,7 +462,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
 
 //METODO PARA CREAR EL EVENTO
     public void crearEscultura(ObjectContainer BaseD) {
-        Escultura Esbuscar = new Escultura(codigo, 0, 0, null, null, null, null);;
+        Escultura Esbuscar = new Escultura(codigo, 0, 0, null, null, null, null);
         ObjectSet result = BaseD.get(Esbuscar);
         geneCodi(result);
         asignarVariables(BaseD);
@@ -478,7 +486,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
     //CARGAR LA TABLA CON LOS DATOS QUE YA EXISTEN EN EL SISTEMA
     public void cargarTabla(ObjectContainer BaseD) {
 
-        Evento Evbuscar = new Evento(null, null, null, null, null, null);
+        Escultura Evbuscar = new Escultura(codigo, 0, 0, null, null, null, null);
         ObjectSet result = BaseD.get(Evbuscar);
         mostrarDatos(result);
     }

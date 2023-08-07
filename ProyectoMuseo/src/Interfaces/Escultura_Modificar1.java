@@ -373,10 +373,11 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
         bttonguardar.setEnabled(false);
         String CodigoEs;
         CodigoEs = txtcodigo.getText();
+        Escultura_Regist EAux =new Escultura_Regist();
         if (txtcodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo");
         } else {
-            if (comprobarEscultura(BaseD, CodigoEs) == 0) {
+            if (!EAux.verificar(BaseD, CodigoEs)) {
                 JOptionPane.showMessageDialog(null, "La Escultura no existe en la base de datos");
 
             } else {
