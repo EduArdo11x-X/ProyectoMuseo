@@ -22,6 +22,43 @@ class Validaciones {
         }
         return ban;
     }
+      
+      public boolean validarCedulaEcuatoriana(String cadena) {
+    cadena = cadena.trim();
+    boolean ban = false;
+    
+    // Verificar si la cadena tiene 10 dígitos
+    if (cadena.length() == 10) {
+        if (cadena.matches("[0-9]+")) {
+            // Obtener los primeros 9 dígitos
+            int[] digitos = new int[9];
+            for (int i = 0; i < 9; i++) {
+                digitos[i] = Character.getNumericValue(cadena.charAt(i));
+            }
+
+            // Aplicar el algoritmo para verificar la validez de la cédula
+            int suma = 0;
+            for (int i = 0; i < 9; i++) {
+                if (i % 2 == 0) {
+                    int resultado = digitos[i] * 2;
+                    if (resultado > 9) {
+                        resultado -= 9;
+                    }
+                    suma += resultado;
+                } else {
+                    suma += digitos[i];
+                }
+            }
+
+            int ultimoDigito = Character.getNumericValue(cadena.charAt(9));
+            int digitoVerificador = (10 - (suma % 10)) % 10;
+
+            ban = ultimoDigito == digitoVerificador;
+        }
+    }
+    
+    return ban;
+}
 
     public boolean validarNomApe(String cadena) {
         cadena = cadena.trim();

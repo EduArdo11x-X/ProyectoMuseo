@@ -103,33 +103,32 @@ public class Usuario_registro extends javax.swing.JFrame {
     public void crearUsuario(ObjectContainer BaseD) {
         asignarVariables(BaseD);
         if (validarCampos(BaseD)) {
-        if (comprobarUsuario(BaseD, cedula) == 0) {
-            Usuario Exnuevo = new Usuario(nivel_conoci, nivel_estudios, cedula, nombre, apellido, fechaNac, telefono, sexo_adm, provincia, cuidad, calle, correo, contraseña);
-            BaseD.set(Exnuevo);
-            JOptionPane.showMessageDialog(null, "Registrado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario ya registrado");
+            if (comprobarUsuario(BaseD, cedula) == 0) {
+                Usuario Exnuevo = new Usuario(nivel_conoci, nivel_estudios, cedula, nombre, apellido, fechaNac, telefono, sexo_adm, provincia, cuidad, calle, correo, contraseña);
+                BaseD.set(Exnuevo);
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ya registrado");
 
-        }
+            }
         }
     }
-    
-    public boolean validarCampos(ObjectContainer basep) {
+
+    public boolean validarCampos(ObjectContainer BaseD) {
         Validaciones miValidaciones = new Validaciones();
-        asignarVariables(basep);
+        asignarVariables(BaseD);
         boolean ban_confirmar = true;
-        
+
         if (txtCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+            JOptionPane.showMessageDialog(this, "INGRESE SU CEDULA POR FAVOR");
             ban_confirmar = false;
         } else {
-            if (!miValidaciones.validarid(cedula)) {
-                JOptionPane.showMessageDialog(this, "CEDULA INVALIDO");
+            if (!miValidaciones.validarCedulaEcuatoriana(cedula)) {
+                JOptionPane.showMessageDialog(this, "CEDULA INVALIDA");
                 ban_confirmar = false;
             }
         }
 
-       
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su nombre por favor");
             ban_confirmar = false;
@@ -148,8 +147,8 @@ public class Usuario_registro extends javax.swing.JFrame {
                 ban_confirmar = false;
             }
         }
-        
-         if (txtCorreo.getText().isEmpty()) {
+
+        if (txtCorreo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su correo por favor");
             ban_confirmar = false;
         } else {
@@ -158,8 +157,8 @@ public class Usuario_registro extends javax.swing.JFrame {
                 ban_confirmar = false;
             }
         }
-         
-         if (txtxCalle.getText().isEmpty()) {
+
+        if (txtxCalle.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese su direccion por favor");
             ban_confirmar = false;
         } else {
@@ -167,19 +166,19 @@ public class Usuario_registro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Direccion invalido");
                 ban_confirmar = false;
             }
-         }
-         
-         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "INGRESE su cedula");
+        }
+
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "INGRESE SU TELEFONO POR FAVOR");
             ban_confirmar = false;
         } else {
-            if (!miValidaciones.validarid(telefono)) {
+            if (!miValidaciones.validarCedula(telefono)) {
                 JOptionPane.showMessageDialog(this, "TELEFONO INVALIDO");
                 ban_confirmar = false;
             }
         }
-         
-         if (txtApellido1.getText().isEmpty()) {
+
+        if (txtApellido1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la contraseña por favor");
             ban_confirmar = false;
         } else {
@@ -188,12 +187,7 @@ public class Usuario_registro extends javax.swing.JFrame {
                 ban_confirmar = false;
             }
         }
-         
-         
-         
-         
-         
-         
+
         return ban_confirmar;
     }
 
@@ -272,6 +266,11 @@ public class Usuario_registro extends javax.swing.JFrame {
         jLabel3.setText("Cedula:");
 
         txtCedula.setBackground(new java.awt.Color(134, 153, 167));
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
@@ -609,6 +608,10 @@ public class Usuario_registro extends javax.swing.JFrame {
         MENU_ADM miMenu = new MENU_ADM();
         miMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     /**
      * @param args the command line arguments

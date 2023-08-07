@@ -101,6 +101,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         city1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -436,6 +437,14 @@ public class LoginUsuario extends javax.swing.JFrame {
         });
         bg2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 54, 50));
 
+        jButton1.setText("Registrarse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        bg2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 150, 40));
+
         bg1.add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -490,12 +499,12 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_entrartxt1MouseClicked
 
     private void passtxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passtxt1MousePressed
-        if (String.valueOf(passtxt.getPassword()).equals("********")) {
-            passtxt.setText("");
+        if (String.valueOf(passtxt1.getPassword()).equals("********")) {
+            passtxt1.setText("");
            
         }
-        if (usuariotxt.getText().isEmpty()) {
-            usuariotxt.setText("Ingrese su nombre de usuario");
+        if (usuariotxt1.getText().isEmpty()) {
+            usuariotxt1.setText("Ingrese su nombre de usuario");
 
             
 
@@ -507,13 +516,13 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_usuariotxt1ActionPerformed
 
     private void usuariotxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuariotxt1MousePressed
-        if (usuariotxt.getText().equals("Ingrese su nombre de usuario")) {
+        if (usuariotxt1.getText().equals("Ingrese su nombre de usuario")) {
 
-            usuariotxt.setText("");
+            usuariotxt1.setText("");
          
         }
-        if (String.valueOf(passtxt.getPassword()).isEmpty()) {
-            passtxt.setText("********");
+        if (String.valueOf(passtxt1.getPassword()).isEmpty()) {
+            passtxt1.setText("********");
             
         }
     }//GEN-LAST:event_usuariotxt1MousePressed
@@ -572,6 +581,12 @@ public class LoginUsuario extends javax.swing.JFrame {
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        Usuario_registro ventaina = new Usuario_registro();
+        ventaina.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void limpiarCampos() {
         usuariotxt1.setText("");
         passtxt1.setText("");
@@ -613,22 +628,19 @@ public class LoginUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bg;
     private javax.swing.JPanel bg1;
     private javax.swing.JPanel bg2;
     private javax.swing.JPanel cabecera;
     private javax.swing.JPanel cabecera1;
     private javax.swing.JLabel city;
     private javax.swing.JLabel city1;
-    private javax.swing.JPanel entrarbtn;
     private javax.swing.JPanel entrarbtn1;
     private javax.swing.JPanel entrarbtn2;
-    private javax.swing.JLabel entrartxt;
     private javax.swing.JLabel entrartxt1;
     private javax.swing.JLabel entrartxt2;
-    private javax.swing.JLabel iniciarsesion;
     private javax.swing.JLabel iniciarsesion1;
     private javax.swing.JLabel iniciarsesion2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -637,25 +649,18 @@ public class LoginUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel nombreempresa;
     private javax.swing.JLabel nombreempresa1;
     private javax.swing.JLabel nombreempresa2;
-    private javax.swing.JPasswordField passtxt;
     private javax.swing.JPasswordField passtxt1;
     private javax.swing.JPasswordField passtxt2;
-    private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador1;
-    private javax.swing.JSeparator separador2;
     private javax.swing.JSeparator separador3;
     private javax.swing.JSeparator separador4;
     private javax.swing.JSeparator separador5;
-    private javax.swing.JLabel txtcontrasena;
     private javax.swing.JLabel txtcontrasena1;
     private javax.swing.JLabel txtcontrasena2;
-    private javax.swing.JLabel usuario;
     private javax.swing.JLabel usuario1;
     private javax.swing.JLabel usuario2;
-    private javax.swing.JTextField usuariotxt;
     private javax.swing.JTextField usuariotxt1;
     private javax.swing.JTextField usuariotxt2;
     // End of variables declaration//GEN-END:variables
