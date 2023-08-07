@@ -108,7 +108,7 @@ public class mostar_registros_boletos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Ingresa su Nro de Cuenta Bancaria:");
 
-        jtableregistro_adm.setBackground(new java.awt.Color(0, 0, 102));
+        jtableregistro_adm.setBackground(new java.awt.Color(204, 204, 204));
         jtableregistro_adm.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jtableregistro_adm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

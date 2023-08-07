@@ -144,6 +144,11 @@ public class Admi_eliminar extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
         jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,8 +217,8 @@ public void buscarPorCedula(String cedula) {
         for (int i = 0; i < rowCount; i++) {
             String cedulaTabla = model.getValueAt(i, 0).toString();
             if (cedulaTabla.equals(cedula)) {
-                jtableregistro_adm.getSelectionModel().setSelectionInterval(i, i); 
-                jtableregistro_adm.setSelectionBackground(Color.GREEN); 
+                jtableregistro_adm.getSelectionModel().setSelectionInterval(i, i);
+                jtableregistro_adm.setSelectionBackground(Color.GREEN);
                 encontrado = true;
                 break;
             }
@@ -225,10 +230,10 @@ public void buscarPorCedula(String cedula) {
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         
+
         String cedulaBuscada = txtcedula.getText();
         buscarPorCedula(cedulaBuscada);
-    
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -242,10 +247,63 @@ public void buscarPorCedula(String cedula) {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         this.dispose();
-        MENU_ADM ventaina = new  MENU_ADM();
+        this.dispose();
+        MENU_ADM ventaina = new MENU_ADM();
         ventaina.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        int selectedRow = jtableregistro_adm.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int dialogResult = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar el administrador seleccionado?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            DefaultTableModel model = (DefaultTableModel) jtableregistro_adm.getModel();
+            String cedula = model.getValueAt(selectedRow, 0).toString();
+
+            eliminarAdministrador(cedula);
+
+            // Actualizar la tabla después de la eliminación
+            ObjectContainer baseDatos = null;
+            baseDatos = Db4o.openFile(direccionBD);
+            ObjectSet<Administrador> adm = baseDatos.queryByExample(Administrador.class);
+            mostrarDatos(adm);
+            baseDatos.close();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+    public void eliminarAdministrador(String cedula) {
+          ObjectContainer baseDatos = null;
+    try {
+        baseDatos = Db4o.openFile(direccionBD);
+
+        // Crear un objeto Administrador con la cédula proporcionada
+        Administrador adminEjemplo = new Administrador();
+        adminEjemplo.setCedula(cedula);
+
+        // Realizar la consulta utilizando el objeto Administrador como ejemplo
+        ObjectSet<Administrador> result = baseDatos.queryByExample(adminEjemplo);
+
+        if (result.hasNext()) {
+            Administrador admin = result.next();
+            baseDatos.delete(admin);
+            JOptionPane.showMessageDialog(this, "Administrador eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró ningún administrador con esa cédula.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } finally {
+        if (baseDatos != null) {
+            baseDatos.close();
+        }
+    }
+    }
+
     public void mostrarDatos(ObjectSet result) {
         DefaultTableModel model = (DefaultTableModel) jtableregistro_adm.getModel();
         model.setRowCount(0); // Limpiar la tabla
