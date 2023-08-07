@@ -6,10 +6,12 @@
 package Interfaces;
 
 import clases.Exposicion;
+import clases.ImageTableCellRenderer;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -428,31 +430,47 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     }
 
     //LO SIGUIENTE PARA CARGAR LOS DATOS REGISTRADOS EN LA TABLA
+  
     public void cargarTabla(ObjectContainer BaseD) {
 
-        Exposicion Exbuscar = new Exposicion(null, null, null,null);
+        Exposicion Exbuscar = new Exposicion(null, null, null, null);
         ObjectSet result = BaseD.get(Exbuscar);
         mostrarDatos(result);
     }
 
-    public void mostrarDatos(ObjectSet result) {
-        String matrizExposicion[][] = new String[result.size()][3];
-        if (result.size() == 0) {
-            JOptionPane.showMessageDialog(null, "La exposicion no existe");
-        }
-
+    
+public void mostrarDatos(ObjectSet result) {
+    Object[][] matrizExposicion = new Object[result.size()][4];
+    if (result.size() == 0) {
+        JOptionPane.showMessageDialog(null, "La exposicion no existe");
+    } else {
         for (int i = 0; i < result.size(); i++) {
-            Exposicion miExposicion = new Exposicion();
-            miExposicion = (Exposicion) result.get(i);
+            Exposicion miExposicion = (Exposicion) result.get(i);
             matrizExposicion[i][0] = miExposicion.getCod_exposicion();
             matrizExposicion[i][1] = miExposicion.getNombre_exposicion();
             matrizExposicion[i][2] = miExposicion.getDescripcion_exposicion();
 
-            exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(matrizExposicion, new String[]{"Codigo", "Nombre", "Descripcion"}));
-
+            // Convertir el arreglo de bytes (foto) a un ImageIcon
+            byte[] fotoBytes = miExposicion.getFoto();
+            if (fotoBytes != null) {
+                ImageIcon icono = new ImageIcon(fotoBytes);
+                matrizExposicion[i][3] = icono;
+            } else {
+                matrizExposicion[i][3] = null;
+            }
         }
 
+        // Configurar el modelo de la tabla con los datos y títulos de columna
+        exposiciontbl.setModel(new javax.swing.table.DefaultTableModel(
+            matrizExposicion,
+            new String[]{"Codigo", "Nombre", "Descripcion", "Foto"}
+        ));
+
+        // Asignar el renderer personalizado a la columna de la foto (columna 3)
+        exposiciontbl.getColumnModel().getColumn(3).setCellRenderer(new ImageTableCellRenderer());
     }
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
