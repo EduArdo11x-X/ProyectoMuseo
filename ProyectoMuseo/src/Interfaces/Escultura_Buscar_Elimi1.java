@@ -13,6 +13,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -278,6 +279,8 @@ public class Escultura_Buscar_Elimi1 extends javax.swing.JFrame {
     }
 
     public void mostrarDatos(ObjectSet result) {
+        DefaultTableModel model = (DefaultTableModel) tblescultura.getModel();
+        model.setRowCount(0); // Limpiar la tabla
         String matrizEscultura[][] = new String[result.size()][6];
         if (result.size() == 0) {
             JOptionPane.showMessageDialog(null, "No esculturas existentes");
