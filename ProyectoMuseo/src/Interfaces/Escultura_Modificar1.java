@@ -336,13 +336,13 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnbuscarActionPerformed
 
     private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
-        int aux = evt.getKeyChar();
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 48 && aux <= 57 || aux == 45;
-
-        if (!Letras) {
-            System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
-        }
+//        int aux = evt.getKeyChar();
+//        boolean Letras = aux >= 65 && aux <= 90 || aux >= 48 && aux <= 57 || aux == 45;
+//
+//        if (!Letras) {
+//            System.out.println("esta digitando " + evt.getKeyChar());
+//            evt.consume();
+//        }
     }//GEN-LAST:event_txtcodigoKeyTyped
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped

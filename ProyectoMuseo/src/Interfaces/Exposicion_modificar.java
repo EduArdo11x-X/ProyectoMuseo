@@ -345,13 +345,13 @@ public class Exposicion_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_codigotxtActionPerformed
 
     private void codigotxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigotxtKeyTyped
-int aux = evt.getKeyChar();
-        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
-        
-                if (!Letras) {
-            System.out.println("esta digitando " + evt.getKeyChar());
-        evt.consume();    
-        }          // TODO add your handling code here:
+//int aux = evt.getKeyChar();
+//        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+//        
+//                if (!Letras) {
+//            System.out.println("esta digitando " + evt.getKeyChar());
+//        evt.consume();    
+//        }          // TODO add your handling code here:
     }//GEN-LAST:event_codigotxtKeyTyped
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.

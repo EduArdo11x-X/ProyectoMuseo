@@ -80,7 +80,7 @@ public class Escultura_Regist extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
-        jLabel8.setText("Registrar Exposicion");
+        jLabel8.setText("Registrar Escultura");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -365,13 +365,13 @@ public class Escultura_Regist extends javax.swing.JFrame {
     }//GEN-LAST:event_txtdescripcionKeyTyped
 
     private void txtcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyTyped
-          int aux = evt.getKeyChar();
-        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
-        
-                if (!Letras) {
-            System.out.println("esta digitando " + evt.getKeyChar());
-        evt.consume();
-        }  
+//          int aux = evt.getKeyChar();
+//        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+//        
+//                if (!Letras) {
+//            System.out.println("esta digitando " + evt.getKeyChar());
+//        evt.consume();
+//        }  
     }//GEN-LAST:event_txtcodigoKeyTyped
 
     private void txtpesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesoKeyTyped

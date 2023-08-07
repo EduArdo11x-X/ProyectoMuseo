@@ -73,6 +73,11 @@ public class Evento_registro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 245, 202));
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        nombretxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombretxtActionPerformed(evt);
+            }
+        });
         nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nombretxtKeyTyped(evt);
@@ -379,13 +384,13 @@ public class Evento_registro extends javax.swing.JFrame {
     }//GEN-LAST:event_descripciontxtKeyTyped
 
     private void idextxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idextxtKeyTyped
-      int aux = evt.getKeyChar();
-        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
-        
-                if (!Letras) {
-            System.out.println("esta digitando " + evt.getKeyChar());
-        evt.consume();    
-        }    
+//      int aux = evt.getKeyChar();
+//        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+//        
+//                if (!Letras) {
+//            System.out.println("esta digitando " + evt.getKeyChar());
+//        evt.consume();    
+//        }    
     }//GEN-LAST:event_idextxtKeyTyped
 
     private void mostrarTablaExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaExActionPerformed
@@ -393,6 +398,10 @@ public class Evento_registro extends javax.swing.JFrame {
         cargarTablaExposicion(BaseD);
         cerrarBD(BaseD);
     }//GEN-LAST:event_mostrarTablaExActionPerformed
+
+    private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtActionPerformed
 
     
     
