@@ -58,10 +58,12 @@ public class Mantenimiento_ConsultarEliminar extends javax.swing.JFrame {
                 matrizesTabla[i][0] = Mostrar.getCodigo_mantenimiento();
                 matrizesTabla[i][1] = Mostrar.getDescripcion_mantenimiento();
                 matrizesTabla[i][2] = String.valueOf(Mostrar.getFecha_mantenimiento());
+                matrizesTabla[i][3] = Mostrar.getId_restaurador();
+                matrizesTabla[i][4] = Mostrar.getId_pintura();
                
                 
                 tablaConsultar.setModel(new javax.swing.table.DefaultTableModel(matrizesTabla, new String[]{"*Cod_Mantenimiento", "Descripcion",
-                    "Fecha_mant","*Id_tecnico","*Codigo_juego"}));
+                    "Fecha_mant","*Id_Restaurador","*Codigo_Pintura"}));
             }
         }
     }
@@ -104,22 +106,24 @@ public class Mantenimiento_ConsultarEliminar extends javax.swing.JFrame {
                 BuscarOpcionActionPerformed(evt);
             }
         });
-        jPanel1.add(BuscarOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 180, 40));
+        jPanel1.add(BuscarOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 180, 40));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar (1).png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/buscar.png"))); // NOI18N
+        jButton2.setText("BUSCAR");
         jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 80, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 120, 40));
 
         jLabel2.setText("*CODIGO MANTENIMIENTO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 140, 30));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 120, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 150, 30));
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 120, 30));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/eliminar.png"))); // NOI18N
+        jButton3.setText("ELIMINAR");
         jButton3.setContentAreaFilled(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,7 +135,7 @@ public class Mantenimiento_ConsultarEliminar extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 90, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 120, 40));
 
         tablaConsultar.getTableHeader().setReorderingAllowed(false);
         tablaConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,7 +147,7 @@ public class Mantenimiento_ConsultarEliminar extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 700, 140));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Regresar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         jButton1.setText("Regresar");
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
