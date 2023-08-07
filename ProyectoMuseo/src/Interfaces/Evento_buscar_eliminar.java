@@ -59,11 +59,10 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 11, 13));
+        jPanel1.setBackground(new java.awt.Color(250, 245, 202));
 
-        eliminarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        eliminarbtn.setBackground(new java.awt.Color(255, 255, 255));
         eliminarbtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        eliminarbtn.setForeground(new java.awt.Color(255, 255, 255));
         eliminarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/eliminar.png"))); // NOI18N
         eliminarbtn.setText("Eliminar");
         eliminarbtn.setBorder(null);
@@ -91,9 +90,8 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaevento);
 
-        Buscarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        Buscarbtn.setBackground(new java.awt.Color(255, 255, 255));
         Buscarbtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        Buscarbtn.setForeground(new java.awt.Color(255, 255, 255));
         Buscarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         Buscarbtn.setText("Buscar");
         Buscarbtn.setBorder(null);
@@ -111,9 +109,8 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel7.setText(" BUSCAR Y ELIMINAR EVENTOS ");
 
-        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
@@ -150,25 +147,20 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Filtro:");
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Seleccione un campo para buscar el Evento:");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Ingrese el codigo del Evento a eliminar:");
 
         jLabel5.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo:");
         jLabel5.setToolTipText("ID asignatura");
 
-        codigotxt.setBackground(new java.awt.Color(134, 153, 167));
         codigotxt.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         codigotxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         codigotxt.setText("Ingrese el codigo del ");

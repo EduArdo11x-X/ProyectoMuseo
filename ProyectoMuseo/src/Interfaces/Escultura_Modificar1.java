@@ -72,7 +72,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel1.setText(" MODIFICAR ESCULTURAS");
 
-        bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
+        bttnregresar.setBackground(new java.awt.Color(255, 255, 255));
         bttnregresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         bttnregresar.setText("Regresar");
@@ -96,13 +96,11 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttnregresar)
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnregresar))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
@@ -170,7 +168,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbescultura);
 
-        bttnmostrardatos.setBackground(new java.awt.Color(0, 11, 13));
+        bttnmostrardatos.setBackground(new java.awt.Color(255, 255, 255));
         bttnmostrardatos.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         bttnmostrardatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         bttnmostrardatos.setText("Mostrar Datos");
@@ -180,7 +178,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
             }
         });
 
-        bttonguardar.setBackground(new java.awt.Color(0, 11, 13));
+        bttonguardar.setBackground(new java.awt.Color(255, 255, 255));
         bttonguardar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         bttonguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1).png"))); // NOI18N
         bttonguardar.setText("Guardar");
@@ -190,7 +188,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
             }
         });
 
-        bttnbuscar.setBackground(new java.awt.Color(0, 11, 13));
+        bttnbuscar.setBackground(new java.awt.Color(255, 255, 255));
         bttnbuscar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         bttnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         bttnbuscar.setText("Buscar");

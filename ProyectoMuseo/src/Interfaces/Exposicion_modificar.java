@@ -75,6 +75,7 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
 
+        codigotxt.setBackground(null);
         codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         codigotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,9 +95,8 @@ public class Exposicion_modificar extends javax.swing.JFrame {
             }
         });
 
-        guardarbtn.setBackground(new java.awt.Color(0, 11, 13));
+        guardarbtn.setBackground(null);
         guardarbtn.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        guardarbtn.setForeground(new java.awt.Color(255, 255, 255));
         guardarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado 2.png"))); // NOI18N
         guardarbtn.setText("Guardar");
         guardarbtn.setBorder(null);
@@ -131,9 +131,8 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(descripciontxt);
 
-        mostrarTabla.setBackground(new java.awt.Color(0, 11, 13));
+        mostrarTabla.setBackground(null);
         mostrarTabla.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        mostrarTabla.setForeground(new java.awt.Color(255, 255, 255));
         mostrarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTabla.setText("Mostrar Datos");
         mostrarTabla.setBorder(null);
@@ -143,9 +142,8 @@ public class Exposicion_modificar extends javax.swing.JFrame {
             }
         });
 
-        buscarExposicion.setBackground(new java.awt.Color(0, 11, 13));
+        buscarExposicion.setBackground(null);
         buscarExposicion.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        buscarExposicion.setForeground(new java.awt.Color(255, 255, 255));
         buscarExposicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         buscarExposicion.setText("Cargar Datos");
         buscarExposicion.setBorder(null);
@@ -163,13 +161,12 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Minilogo.png"))); // NOI18N
         jLabel7.setText(" Modificar Exposicion ");
 
-        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setBackground(null);
         botonRegresar.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
-        botonRegresar.setForeground(new java.awt.Color(255, 255, 255));
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
         botonRegresar.setBorder(null);
-        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegresarActionPerformed(evt);

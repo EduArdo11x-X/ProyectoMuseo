@@ -132,7 +132,7 @@ public class Evento_modificar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(descripciontxt);
 
-        btnguardar.setBackground(new java.awt.Color(0, 11, 13));
+        btnguardar.setBackground(new java.awt.Color(255, 255, 255));
         btnguardar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizado.png"))); // NOI18N
         btnguardar.setText("Guardar");
@@ -143,7 +143,7 @@ public class Evento_modificar extends javax.swing.JFrame {
             }
         });
 
-        btnmostrar.setBackground(new java.awt.Color(0, 11, 13));
+        btnmostrar.setBackground(new java.awt.Color(255, 255, 255));
         btnmostrar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         btnmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         btnmostrar.setText("MOSTRAR DATOS");
@@ -154,7 +154,7 @@ public class Evento_modificar extends javax.swing.JFrame {
             }
         });
 
-        btncargar.setBackground(new java.awt.Color(0, 11, 13));
+        btncargar.setBackground(new java.awt.Color(255, 255, 255));
         btncargar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         btncargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         btncargar.setText("CARGAR DATOS");
@@ -174,7 +174,7 @@ public class Evento_modificar extends javax.swing.JFrame {
         jLabel7.setText(" MODIFICAR EVENTOS ");
         jLabel7.setToolTipText("");
 
-        botonRegresar.setBackground(new java.awt.Color(0, 11, 13));
+        botonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         botonRegresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         botonRegresar.setText("Regresar");
@@ -224,7 +224,7 @@ public class Evento_modificar extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(exposiciontbl);
 
-        mostrarTablaEx.setBackground(new java.awt.Color(0, 11, 13));
+        mostrarTablaEx.setBackground(new java.awt.Color(255, 255, 255));
         mostrarTablaEx.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         mostrarTablaEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         mostrarTablaEx.setText("Registro Exposiciones");
