@@ -72,6 +72,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
 
         bttnregresar.setBackground(new java.awt.Color(0, 11, 13));
         bttnregresar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        bttnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/deshacer_1.png"))); // NOI18N
         bttnregresar.setText("Regresar");
         bttnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +119,11 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel7.setText("Altura");
 
+        txtdescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdescripcionActionPerformed(evt);
+            }
+        });
         txtdescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtdescripcionKeyTyped(evt);
@@ -162,6 +168,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
 
         bttnmostrardatos.setBackground(new java.awt.Color(0, 11, 13));
         bttnmostrardatos.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        bttnmostrardatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/actualizar-pagina.png"))); // NOI18N
         bttnmostrardatos.setText("Mostrar Datos");
         bttnmostrardatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +178,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
 
         bttonguardar.setBackground(new java.awt.Color(0, 11, 13));
         bttonguardar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        bttonguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/salvar (1).png"))); // NOI18N
         bttonguardar.setText("Guardar");
         bttonguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +188,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
 
         bttnbuscar.setBackground(new java.awt.Color(0, 11, 13));
         bttnbuscar.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
+        bttnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/lupa.png"))); // NOI18N
         bttnbuscar.setText("Buscar");
         bttnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +221,7 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtaltura, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(txtaltura, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(txtpeso)
                             .addComponent(txtnombre)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -289,16 +298,16 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnregresarActionPerformed
-        this.setVisible(false);
-        MENU_ADM miMenu = new MENU_ADM();
-        miMenu.setVisible(true);
+        this.dispose();
+        MENU_ADM ventaina = new MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_bttnregresarActionPerformed
 
     private void txtalturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtalturaActionPerformed
@@ -355,6 +364,10 @@ public class Escultura_Modificar1 extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtdescripcionKeyTyped
+
+    private void txtdescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescripcionActionPerformed
 
     public void cargarDatos(ObjectContainer BaseD) {
         bttonguardar.setEnabled(false);

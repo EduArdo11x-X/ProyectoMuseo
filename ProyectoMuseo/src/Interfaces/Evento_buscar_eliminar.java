@@ -295,8 +295,8 @@ public class Evento_buscar_eliminar extends javax.swing.JFrame {
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.dispose();
-        MENU_ADM ventaina = new  MENU_ADM();
-        ventaina.setVisible(true);        // TODO add your handling code here:
+        MENU_ADM ventaina = new MENU_ADM();
+        ventaina.setVisible(true);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     public void filtro(ObjectContainer BaseD) {
