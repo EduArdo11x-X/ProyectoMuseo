@@ -68,17 +68,18 @@ public class Control_Guardia_MODIFICAR extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, 30));
         jPanel1.add(txtcodC, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 250, 30));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar (1).png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/buscar.png"))); // NOI18N
+        jButton1.setText("BUSCAR");
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 40, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 140, -1));
 
         btnmodificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editar (1).png"))); // NOI18N
+        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/disco-flexible_1.png"))); // NOI18N
         btnmodificar.setText("Modificar");
         btnmodificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnmodificar.setContentAreaFilled(false);
@@ -87,9 +88,9 @@ public class Control_Guardia_MODIFICAR extends javax.swing.JFrame {
                 btnmodificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 130, 40));
+        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 140, 40));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Regresar.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         jButton3.setText("Regresar");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton3.setContentAreaFilled(false);
@@ -98,7 +99,7 @@ public class Control_Guardia_MODIFICAR extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 130, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 130, 40));
         jPanel1.add(jCalendarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 200, 30));
 
         txtdescripcion.setColumns(20);

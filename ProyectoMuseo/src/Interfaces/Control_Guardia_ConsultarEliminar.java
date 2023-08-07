@@ -114,20 +114,22 @@ public class Control_Guardia_ConsultarEliminar extends javax.swing.JFrame {
         });
         jPanel1.add(BuscarOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 180, 40));
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar (1).png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/buscar.png"))); // NOI18N
+        btnBuscar.setText("BUSCAR");
         btnBuscar.setContentAreaFilled(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 40, 40));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 120, 40));
 
         jLabel2.setText("*CODIGO JUEGO");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 110, 30));
         jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 120, 30));
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/eliminar.png"))); // NOI18N
+        btnEliminar.setText("ELIMINAR");
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,7 +141,7 @@ public class Control_Guardia_ConsultarEliminar extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 40, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 150, 40));
 
         tablaConsultar.getTableHeader().setReorderingAllowed(false);
         tablaConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +153,7 @@ public class Control_Guardia_ConsultarEliminar extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 700, 140));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Regresar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/1286923.png"))); // NOI18N
         jButton1.setText("Regresar");
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +161,7 @@ public class Control_Guardia_ConsultarEliminar extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
