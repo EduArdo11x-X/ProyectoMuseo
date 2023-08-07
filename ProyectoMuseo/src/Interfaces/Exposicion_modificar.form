@@ -183,6 +183,10 @@
               <Font name="Raanana" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="codigotxtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codigotxtKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="nombretxt">
           <Properties>

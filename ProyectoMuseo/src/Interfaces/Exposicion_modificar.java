@@ -76,6 +76,16 @@ public class Exposicion_modificar extends javax.swing.JFrame {
         jLabel3.setText("Descripcion:");
 
         codigotxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
+        codigotxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigotxtActionPerformed(evt);
+            }
+        });
+        codigotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigotxtKeyTyped(evt);
+            }
+        });
 
         nombretxt.setFont(new java.awt.Font("Raanana", 0, 14)); // NOI18N
         nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -329,6 +339,20 @@ public class Exposicion_modificar extends javax.swing.JFrame {
             evt.consume();
         }       // TODO add your handling code here:
     }//GEN-LAST:event_descripciontxtKeyTyped
+
+    private void codigotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigotxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigotxtActionPerformed
+
+    private void codigotxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigotxtKeyTyped
+int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+        evt.consume();    
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_codigotxtKeyTyped
 
     //PARA CARGAR LOS DATOS DE LA BASE DE DATOS, ESTO TIENE QUE IR EN EL BOTON DE BUSCAR EXPOSICION.
     public void cargarDatos(ObjectContainer BaseD) {

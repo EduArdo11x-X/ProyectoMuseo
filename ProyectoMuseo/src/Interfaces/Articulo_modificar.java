@@ -205,6 +205,11 @@ public class Articulo_modificar extends javax.swing.JFrame {
                 txtCodigoActionPerformed(evt);
             }
         });
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyTyped(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
@@ -317,8 +322,6 @@ public class Articulo_modificar extends javax.swing.JFrame {
             }
         });
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-
         jPanel2.setBackground(new java.awt.Color(134, 153, 167));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -362,16 +365,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
 
         txtExi_min.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 0), new java.awt.Color(51, 255, 255), new java.awt.Color(153, 0, 0), new java.awt.Color(102, 0, 102)));
 
@@ -570,9 +564,7 @@ public class Articulo_modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
-        if (txtCodigo.getText().equals("Ingrese el codigo del articulo")) {
-            txtCodigo.setText("");
-        }// TODO add your handling code here:
+      
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void btncargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarActionPerformed
@@ -618,6 +610,16 @@ public class Articulo_modificar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtDescripcionKeyTyped
+
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
+int aux = evt.getKeyChar();
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
+            System.out.println("esta digitando " + evt.getKeyChar());
+        evt.consume();    
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoKeyTyped
 
     /**
      * @param args the command line arguments

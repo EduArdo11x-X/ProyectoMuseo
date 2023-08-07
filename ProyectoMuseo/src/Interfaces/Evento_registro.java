@@ -386,13 +386,12 @@ public class Evento_registro extends javax.swing.JFrame {
 
     private void idextxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idextxtKeyTyped
       int aux = evt.getKeyChar();
-        boolean espacio = aux == 32;
-        boolean Letras = aux >= 65 && aux <= 90 || aux >= 97 && aux <= 122 || espacio;
-
-        if (!Letras) {
+        boolean Letras = aux >= 65 && aux <= 90 ||aux >= 48 && aux <= 57 ||aux == 45;
+        
+                if (!Letras) {
             System.out.println("esta digitando " + evt.getKeyChar());
-            evt.consume();
-        }      
+        evt.consume();    
+        }    
     }//GEN-LAST:event_idextxtKeyTyped
 
     private void mostrarTablaExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaExActionPerformed
